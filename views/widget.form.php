@@ -103,6 +103,7 @@
 		
 	</fieldset>
 
+	<?php /*
 	<!-- Google+ -->
 	<fieldset class="widefat">
 		
@@ -127,6 +128,8 @@
 		</div>
 		
 	</fieldset>
+	*/
+	?>
 	
 	<!-- YouTube -->
 	<fieldset class="widefat">
@@ -274,6 +277,31 @@
 		<div class="socialbox-position">
 			<label for="<?php echo $this->get_field_id('digg_position'); ?>" title="<?php _e('Display position within SocialBox', self::SLUG); ?>"><?php _e('Position:', self::SLUG); ?></label>
 			<input type="text" id="<?php echo $this->get_field_id('digg_position'); ?>" name="<?php echo $this->get_field_name('digg_position'); ?>" value="<?php echo $instance['digg_position']; ?>" size="2" class="widefat" />
+		</div>
+		
+	</fieldset>
+
+	<!-- GitHub -->
+	<fieldset class="widefat">
+		
+		<legend><?php _e('GitHub', self::SLUG); ?></legend>
+		
+		<!-- ID -->
+		<div class="socialbox-id">
+			<label for="<?php echo $this->get_field_id('github_id'); ?>" title="<?php _e('Your gitHub username', self::SLUG); ?>"><?php _e('Username', self::SLUG); ?>:</label>
+			<input type="text" id="<?php echo $this->get_field_id('github_id'); ?>" name="<?php echo $this->get_field_name('github_id'); ?>" value="<?php echo $instance['github_id']; ?>" class="widefat"  />
+		</div>
+		
+		<!-- Default -->
+		<div class="socialbox-default">
+			<label for="<?php echo $this->get_field_id('github_default'); ?>" title="<?php _e('Your fallback follower count', self::SLUG); ?>"><?php _e('Default:', self::SLUG); ?></label>
+			<input type="text" id="<?php echo $this->get_field_id('github_default'); ?>" name="<?php echo $this->get_field_name('github_default'); ?>" value="<?php echo $instance['github_default']; ?>" size="6" class="widefat" />
+		</div>
+		
+		<!-- Position -->
+		<div class="socialbox-position">
+			<label for="<?php echo $this->get_field_id('github_position'); ?>" title="<?php _e('Display position within SocialBox', self::SLUG); ?>"><?php _e('Position:', self::SLUG); ?></label>
+			<input type="text" id="<?php echo $this->get_field_id('github_position'); ?>" name="<?php echo $this->get_field_name('github_position'); ?>" value="<?php echo $instance['github_position']; ?>" size="2" class="widefat" />
 		</div>
 		
 	</fieldset>

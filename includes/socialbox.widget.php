@@ -200,8 +200,8 @@ class SocialBoxWidget extends WP_Widget{
 				return "http://www.facebook.com/" . ((is_numeric($id)) ? "profile.php?id={$id}" : $id);
 			case 'twitter':
 				return "http://twitter.com/{$id}";
-			case 'googleplus':
-				return "https://plus.google.com/{$id}";
+			// case 'googleplus':
+			// 	return "https://plus.google.com/{$id}";
 			case 'youtube':
 				return "http://www.youtube.com/user/{$id}";
 			case 'vimeo':
@@ -213,7 +213,9 @@ class SocialBoxWidget extends WP_Widget{
 			case 'forrst':
 				return "http://forrst.com/people/{$id}";
 			case 'digg':
-				return "http://digg.com/{$id}";			
+				return "http://digg.com/{$id}";
+			case 'github':
+				return "https://github.com/{$id}";	
 		}
 		
 	}
@@ -226,8 +228,8 @@ class SocialBoxWidget extends WP_Widget{
 				return __('Facebook', self::SLUG);
 			case 'twitter':
 				return __('Twitter', self::SLUG);
-			case 'googleplus':
-				return __('Google+', self::SLUG);
+			// case 'googleplus':
+			// 	return __('Google+', self::SLUG);
 			case 'youtube':
 				return __('YouTube', self::SLUG);
 			case 'vimeo':
@@ -239,7 +241,9 @@ class SocialBoxWidget extends WP_Widget{
 			case 'forrst':
 				return __('Forrst', self::SLUG);
 			case 'digg':
-				return __('Digg', self::SLUG);		
+				return __('Digg', self::SLUG);
+			case 'github':
+				return __('GitHub', self::SLUG);
 		}
 
 	}
@@ -252,8 +256,8 @@ class SocialBoxWidget extends WP_Widget{
 				return __('Fans', self::SLUG);
 			case 'twitter':
 				return __('Followers', self::SLUG);
-			case 'googleplus':
-				return __('Followers', self::SLUG);
+			// case 'googleplus':
+			// 	return __('Followers', self::SLUG);
 			case 'youtube':
 				return __('Subscribers', self::SLUG);
 			case 'vimeo':
@@ -265,6 +269,8 @@ class SocialBoxWidget extends WP_Widget{
 			case 'forrst':
 				return __('Followers', self::SLUG);
 			case 'digg':
+				return __('Followers', self::SLUG);
+			case 'github':
 				return __('Followers', self::SLUG);		
 		}
 		
@@ -278,8 +284,8 @@ class SocialBoxWidget extends WP_Widget{
 				return __('Like', self::SLUG);
 			case 'twitter':
 				return __('Follow', self::SLUG);
-			case 'googleplus':
-				return __('Follow', self::SLUG);
+			// case 'googleplus':
+			// 	return __('Follow', self::SLUG);
 			case 'youtube':
 				return __('Subscribe', self::SLUG);
 			case 'vimeo':
@@ -291,7 +297,9 @@ class SocialBoxWidget extends WP_Widget{
 			case 'forrst':
 				return __('Follow', self::SLUG);
 			case 'digg':
-				return __('Follow', self::SLUG);		
+				return __('Follow', self::SLUG);
+			case 'github':
+				return __('Follow', self::SLUG);
 		}
 		
 	}
@@ -304,8 +312,8 @@ class SocialBoxWidget extends WP_Widget{
 				return __('Like on Facebook', self::SLUG);
 			case 'twitter':
 				return __('Follow on Twitter', self::SLUG);
-			case 'googleplus':
-				return __('Add to Circles on Google+', self::SLUG);
+			// case 'googleplus':
+			// 	return __('Add to Circles on Google+', self::SLUG);
 			case 'youtube':
 				return __('Subscribe to Youtube Channel', self::SLUG);
 			case 'vimeo':
@@ -317,7 +325,9 @@ class SocialBoxWidget extends WP_Widget{
 			case 'forrst':
 				return __('Follow on Forrst', self::SLUG);
 			case 'digg':
-				return __('Follow on Digg', self::SLUG);		
+				return __('Follow on Digg', self::SLUG);
+			case 'github':
+				return __('Follow on GitHub', self::SLUG);
 		}
 		
 	}

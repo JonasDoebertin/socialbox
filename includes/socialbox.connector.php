@@ -19,10 +19,10 @@ if(!class_exists('SocialBoxConnector')){
 		 */
 		const TWITTER_API_BASE = "https://api.twitter.com/1/users/show.json?skip_status=true&screen_name=";
 
-		/**
-		* Google Plus Base URL
-		*/
-		const GOOGLEPLUS_API_BASE = "https://plus.google.com/";
+		// /**
+		// * Google Plus Base URL
+		// */
+		// const GOOGLEPLUS_API_BASE = "https://plus.google.com/";
 		
 		/**
 		 * YouTube API Base URL
@@ -64,30 +64,37 @@ if(!class_exists('SocialBoxConnector')){
 		 *
 		 * Will be called by "SocialBox::refresh()"
 		 */
-		public static function getData($network, $id){
+		public static function getData($network, $id, $disableSslVerify){
 			
+			/* If SSL verification is disabled, set the corresponding identifier */
+			$urlIdentifier = ( $disableSslVerify ) ? SocialBox::URL_IDENTIFIER : '';
+
 			switch($network){
 				case 'facebook':
-					return self::getFacebookData($id);
+					return self::getFacebookData($id, $urlIdentifier);
 				case 'twitter':
-					return self::getTwitterData($id);
-				case 'googleplus':
-					return self::getGooglePlusData($id);
+					return self::getTwitterData($id, $urlIdentifier);
+				// case 'googleplus':
+				// 	return self::getGooglePlusData($id, $urlIdentifier);
 				case 'youtube':
-					return self::getYoutubeData($id);
+					return self::getYoutubeData($id, $urlIdentifier);
 				case 'vimeo':
-					return self::getVimeoData($id);
+					return self::getVimeoData($id, $urlIdentifier);
 				case 'feedburner':
-					return self::getFeedburnerData($id);
+					return self::getFeedburnerData($id, $urlIdentifier);
 				case 'dribbble':
-					return self::getDribbbleData($id);
+					return self::getDribbbleData($id, $urlIdentifier);
 				case 'forrst':
-					return self::getForrstData($id);
+					return self::getForrstData($id, $urlIdentifier);
 				case 'digg':
-					return self::getDiggData($id);
+					return self::getDiggData($id, $urlIdentifier);
+				case 'github':
+					return self::getGitHubData($id, $urlIdentifier);
 				default:
-					SocialBox::log($network, $id, '---', "Could not connect to unknown network \"{$network}\"");
-					return false;
+					return array(
+							'success'      => false,
+							'errorMessage' => "Could not connect to unknown network \"{$network}\""
+						);
 			}
 			
 		}
@@ -97,32 +104,42 @@ if(!class_exists('SocialBoxConnector')){
 		 *
 		 * Will be called by "SocialBox::refresh()"
 		 */
-		public static function getFacebookData($facebookId){
+		public static function getFacebookData($facebookId, $urlIdentifier){
 
 			/* Fetch data */
-			$result = wp_remote_get(self::FACEBOOK_API_BASE . $facebookId);
+			$result = wp_remote_get(self::FACEBOOK_API_BASE . $facebookId . $urlIdentifier);
 			
 			/* Check for WordPress errors */
 			if(is_wp_error($result)){
-				SocialBox::log('facebook', $facebookId, '---', $result->get_error_message());
-				return false;
+				return array(
+						'success'      => false,
+						'errorMessage' => $result->get_error_message()
+					);
 			}
 
 			/* Check for unsuccessful http requests */
 			if(wp_remote_retrieve_response_code($result) != 200){
-				SocialBox::log('facebook', $facebookId, wp_remote_retrieve_response_code($result), wp_remote_retrieve_response_message($result));
-				return false;
+				return array(
+						'success'      => false,
+						'errorMessage' => wp_remote_retrieve_response_message($result),
+						'errorCode'    => wp_remote_retrieve_response_code($result)
+					);
 			}
 			
 			/* Check for incorrect data */
 			$data = json_decode(wp_remote_retrieve_body($result), true);
 			if(!is_array($data) or isset($data['error']) or !isset($data['likes'])){
-				SocialBox::log('facebook', $facebookId, '---', 'Got an unexpected result from the Facebook Graph API. Make sure to double check the username!');
-				return false;
+				return array(
+						'success'      => false,
+						'errorMessage' => 'Got an unexpected result from the Facebook Graph API. Make sure to double check the username!'
+					);
 			}
 			
 			/* Return like count */
-			return $data['likes'];
+			return array(
+					'success' => true,
+					'value'   => $data['likes']
+				);
 			
 		}
 		
@@ -131,141 +148,182 @@ if(!class_exists('SocialBoxConnector')){
 		 *
 		 * Will be called by "SocialBox::refresh()"
 		 */
-		public static function getTwitterData($twitterId){
+		public static function getTwitterData($twitterId, $urlIdentifier){
 			
 			/* Fetch data */
-			$result = wp_remote_get(self::TWITTER_API_BASE . $twitterId);
+			$result = wp_remote_get(self::TWITTER_API_BASE . $twitterId . $urlIdentifier);
 			
 			/* Check for WordPress errors */
 			if(is_wp_error($result)){
-				SocialBox::log('twitter', $twitterId, '---', $result->get_error_message());
-				return false;
+				return array(
+						'success'      => false,
+						'errorMessage' => $result->get_error_message()
+					);
 			}
 
 			/* Check for unsuccessful http requests */
 			if(wp_remote_retrieve_response_code($result) != 200){
-				SocialBox::log('twitter', $twitterId, wp_remote_retrieve_response_code($result), wp_remote_retrieve_response_message($result));
-				return false;
+				return array(
+						'success'      => false,
+						'errorMessage' => wp_remote_retrieve_response_message($result),
+						'errorCode'    => wp_remote_retrieve_response_code($result)
+					);
 			}
 			
 			/* Check for incorrect data */
 			$data = json_decode(wp_remote_retrieve_body($result), true);
 			if(!is_array($data) or !isset($data['followers_count'])){
-				SocialBox::log('twitter', $twitterId, '---', 'Got an unexpected result from the Twitter API. Make sure to double check the username!');
-				return false;
-
+				return array(
+						'success'      => false,
+						'errorMessage' => 'Got an unexpected result from the Twitter API. Make sure to double check the username!'
+					);
 			}
 			
 			/* Return followers count */
-			return $data['followers_count'];
+			return array(
+					'success' => true,
+					'value'   => $data['followers_count']
+				);
 			
 		}
 
-		/**
-		 * Get number of circles a user is in
-		 *
-		 * Will be called by "SocialBox::refresh()"
-		 */
-		public static function getGooglePlusData($googlePlusId){
+		// /**
+		//  * Get number of circles a user is in
+		//  *
+		//  * Will be called by "SocialBox::refresh()"
+		//  */
+		// public static function getGooglePlusData($googlePlusId, $urlIdentifier){
 			
-			/* Fetch data */
-			$result = wp_remote_get(self::GOOGLEPLUS_API_BASE . $googlePlusId);
+		// 	/* Fetch data */
+		// 	$result = wp_remote_get(self::GOOGLEPLUS_API_BASE . $googlePlusId . $urlIdentifier);
 
-			/* Check for WordPress errors */
-			if(is_wp_error($result)){
-				SocialBox::log('googleplus', $googlePlusId, '---', $result->get_error_message());
-				return false;
-			}
+		// 	/* Check for WordPress errors */
+		// 	if(is_wp_error($result)){
+		// 		return array(
+		// 				'success'      => false,
+		// 				'errorMessage' => $result->get_error_message()
+		// 			);
+		// 	}
 
-			/* Check for unsuccessful http requests */
-			if(wp_remote_retrieve_response_code($result) != 200){
-				SocialBox::log('googleplus', $googlePlusId, wp_remote_retrieve_response_code($result), wp_remote_retrieve_response_message($result));
-				return false;
-			}
+		// 	/* Check for unsuccessful http requests */
+		// 	if(wp_remote_retrieve_response_code($result) != 200){
+		// 		return array(
+		// 				'success'      => false,
+		// 				'errorMessage' => wp_remote_retrieve_response_message($result),
+		// 				'errorCode'    => wp_remote_retrieve_response_code($result)
+		// 			);
+		// 	}
 			
-			/* Extract HTML from response */
-			$html = wp_remote_retrieve_body($result);
+		// 	/* Extract HTML from response */
+		// 	$html = wp_remote_retrieve_body($result);
 
-			/* Check for empty responses */
-			if(empty($html)){
-				SocialBox::log('googleplus', $googlePlusId, '---', 'Got an unexpected result from scraping the Google+ page. Make sure to double check the username!');
-				return false;
-			}
+		// 	/* Check for empty responses */
+		// 	if(empty($html)){
+		// 		return array(
+		// 				'success'      => false,
+		// 				'errorMessage' => 'Got an unexpected result from scraping the Google+ page. Make sure to double check the username!'
+		// 			);
+		// 	}
 
-			/* Extract the numbers */
-			preg_match('/<h4 class="nPQ0Mb pD8zNd">[^\(]+\((\d+)\)<\/h4>/i', $html, $matches);
+		// 	/* Extract the numbers */
+		// 	preg_match('/<h4 class="nPQ0Mb pD8zNd">[^\(]+\((\d+)\)<\/h4>/i', $html, $matches);
 
-			/* Check for incorrect or missing data */
-			if(!isset($matches) or empty($matches) or !isset($matches[1]) or empty($matches[1])){
-				SocialBox::log('googleplus', $googlePlusId, '---', 'Got an unexpected result from scraping the Google+ page. Make sure to double check the username!');
-				return false;
-			}
+		// 	/* Check for incorrect or missing data */
+		// 	if(!isset($matches) or empty($matches) or !isset($matches[1]) or empty($matches[1])){
+		// 		return array(
+		// 				'success'      => false,
+		// 				'errorMessage' => 'Got an unexpected result from scraping the Google+ page. Maybe the markup structure changed?!'
+		// 			);
+		// 	}
 			
-			/* Return followers count */
-			return $matches[1];
+		// 	/* Return followers count */
+		// 	return array(
+		// 			'success' => true,
+		// 			'value'   => $matches[1]
+		// 		);
 
-		}
+		// }
 		
 		/**
 		 * Get YouTube channel subscriptions for given account
 		 *
 		 * Will be called by "SocialBox::refresh()"
 		 */
-		public static function getYoutubeData($youtubeId){
+		public static function getYoutubeData($youtubeId, $urlIdentifier){
 			
 			/* Fetch data */
-			$result = wp_remote_get(self::YOUTUBE_API_BASE . $youtubeId);
+			$result = wp_remote_get(self::YOUTUBE_API_BASE . $youtubeId . $urlIdentifier);
 			
 			/* Check for WordPress errors */
 			if(is_wp_error($result)){
-				SocialBox::log('youtube', $youtubeId, '---', $result->get_error_message());
-				return false;
+				return array(
+						'success'      => false,
+						'errorMessage' => $result->get_error_message()
+					);
 			}
 
 			/* Check for unsuccessful http requests */
 			if(wp_remote_retrieve_response_code($result) != 200){
-				SocialBox::log('youtube', $youtubeId, wp_remote_retrieve_response_code($result), wp_remote_retrieve_response_message($result));
-				return false;
+				return array(
+						'success'      => false,
+						'errorMessage' => wp_remote_retrieve_response_message($result),
+						'errorCode'    => wp_remote_retrieve_response_code($result)
+					);
 			}
 			
 			/* Check for incorrect data */
 			$data = simplexml_load_string(wp_remote_retrieve_body($result));
 			if(!$data or isset($data->err) or !isset($data->children('http://gdata.youtube.com/schemas/2007')->statistics->attributes()->subscriberCount)){
-				SocialBox::log('youtube', $youtubeId, '---', 'Got an unexpected result from the YouTube API. Make sure to double check the username!');
-				return false;
+				return array(
+						'success'      => false,
+						'errorMessage' => 'Got an unexpected result from the YouTube API. Make sure to double check the username!'
+					);
 			}
 			
 			/* Return subscribers count */
-			return (int) $data->children('http://gdata.youtube.com/schemas/2007')->statistics->attributes()->subscriberCount;
+			return array(
+					'success' => true,
+					'value'   => (int) $data->children('http://gdata.youtube.com/schemas/2007')->statistics->attributes()->subscriberCount
+				);
 			
 		}
 		
-		public static function getVimeoData($vimeoId){
+		public static function getVimeoData($vimeoId, $urlIdentifier){
 			
 			/* Fetch data */
-			$result = wp_remote_get(sprintf(self::VIMEO_API_BASE, $vimeoId));
+			$result = wp_remote_get(sprintf(self::VIMEO_API_BASE, $vimeoId . $urlIdentifier));
 			
 			/* Check for WordPress errors */
 			if(is_wp_error($result)){
-				SocialBox::log('vimeo', $vimeoId, '---', $result->get_error_message());
-				return false;
+				return array(
+						'success'      => false,
+						'errorMessage' => $result->get_error_message()
+					);
 			}
 
 			/* Check for unsuccessful http requests */
 			if(wp_remote_retrieve_response_code($result) != 200){
-				SocialBox::log('vimeo', $vimeoId, wp_remote_retrieve_response_code($result), wp_remote_retrieve_response_message($result));
-				return false;
+				return array(
+						'success'      => false,
+						'errorMessage' => wp_remote_retrieve_response_message($result),
+						'errorCode'    => wp_remote_retrieve_response_code($result)
+					);
 			}
 			
 			/* Check for incorrect data */
 			$data = json_decode(wp_remote_retrieve_body($result), true);
 			if(!is_array($data) or !isset($data['total_subscribers'])){
-				SocialBox::log('vimeo', $vimeoId, '---', 'Got an unexpected result from the Vimeo API. Make sure to double check the username!');
-				return false;
+				return array(
+						'success'      => false,
+						'errorMessage' => 'Got an unexpected result from the Vimeo API. Make sure to double check the username!'
+					);
 			}
 			
 			/* Return followers count */
-			return $data['total_subscribers'];
+			return array(
+					'success' => true,
+					'value'   => $data['total_subscribers']
+				);
 			
 		}
 		
@@ -274,32 +332,42 @@ if(!class_exists('SocialBoxConnector')){
 		 *
 		 * Will be called by "SocialBox::refresh()"
 		 */
-		public static function getFeedburnerData($feedburnerId){
+		public static function getFeedburnerData($feedburnerId, $urlIdentifier){
 			
 			/* Fetch data */
-			$result = wp_remote_get(self::FEEDBURNER_API_BASE . $feedburnerId);
+			$result = wp_remote_get(self::FEEDBURNER_API_BASE . $feedburnerId . $urlIdentifier);
 			
 			/* Check for WordPress errors */
 			if(is_wp_error($result)){
-				SocialBox::log('feedburner', $feedburnerId, '---', $result->get_error_message());
-				return false;
+				return array(
+						'success'      => false,
+						'errorMessage' => $result->get_error_message()
+					);
 			}
 
 			/* Check for unsuccessful http requests */
 			if(wp_remote_retrieve_response_code($result) != 200){
-				SocialBox::log('feedburner', $feedburnerId, wp_remote_retrieve_response_code($result), wp_remote_retrieve_response_message($result));
-				return false;
+				return array(
+						'success'      => false,
+						'errorMessage' => wp_remote_retrieve_response_message($result),
+						'errorCode'    => wp_remote_retrieve_response_code($result)
+					);
 			}
 			
 			/* Check for incorrect data */
 			$data = simplexml_load_string(wp_remote_retrieve_body($result));
 			if(!$data or isset($data->err) or !isset($data->feed->entry['circulation'])){
-				SocialBox::log('feedburner', $feedburnerId, '---', 'Got an unexpected result from the Feedburner Awareness API. Make sure to double check the feed name!');
-				return false;
+				return array(
+						'success'      => false,
+						'errorMessage' => 'Got an unexpected result from the Feedburner Awareness API. Make sure to double check the feeds name!'
+					);
 			}
 			
 			/* Return subscribers count */
-			return (int) $data->feed->entry['circulation'];
+			return array(
+					'success' => true,
+					'value'   => (int) $data->feed->entry['circulation']
+				);
 			
 		}
 		
@@ -308,32 +376,42 @@ if(!class_exists('SocialBoxConnector')){
 		 *
 		 * Will be called by "SocialBox::refresh()"
 		 */
-		public static function getDribbbleData($dribbbleId){
+		public static function getDribbbleData($dribbbleId, $urlIdentifier){
 			
 			/* Fetch data */
-			$result = wp_remote_get(self::DRIBBBLE_API_BASE . $dribbbleId);
+			$result = wp_remote_get(self::DRIBBBLE_API_BASE . $dribbbleId . $urlIdentifier);
 			
 			/* Check for WordPress errors */
 			if(is_wp_error($result)){
-				SocialBox::log('dribbble', $dribbbleId, '---', $result->get_error_message());
-				return false;
+				return array(
+						'success'      => false,
+						'errorMessage' => $result->get_error_message()
+					);
 			}
 
 			/* Check for unsuccessful http requests */
 			if(wp_remote_retrieve_response_code($result) != 200){
-				SocialBox::log('dribbble', $dribbbleId, wp_remote_retrieve_response_code($result), wp_remote_retrieve_response_message($result));
-				return false;
+				return array(
+						'success'      => false,
+						'errorMessage' => wp_remote_retrieve_response_message($result),
+						'errorCode'    => wp_remote_retrieve_response_code($result)
+					);
 			}
 			
 			/* Check for incorrect data */
 			$data = json_decode(wp_remote_retrieve_body($result), true);
 			if(!is_array($data) or !isset($data['followers_count'])){
-				SocialBox::log('dribbble', $dibbbleId, '---', 'Got an unexpected result from the Dribbble API. Make sure to double check the username!');
-				return false;
+				return array(
+						'success'      => false,
+						'errorMessage' => 'Got an unexpected result from the Dribbble API. Make sure to double check the username!'
+					);
 			}
 			
 			/* Return followers count */
-			return $data['followers_count'];
+			return array(
+					'success' => true,
+					'value'   => $data['followers_count']
+				);
 			
 		}
 		
@@ -342,32 +420,42 @@ if(!class_exists('SocialBoxConnector')){
 		 *
 		 * Will be called by "SocialBox::refresh()"
 		 */
-		public static function getForrstData($forrstId){
+		public static function getForrstData($forrstId, $urlIdentifier){
 
 			/* Fetch data */
-			$result = wp_remote_get(self::FORRST_API_BASE . $forrstId, $args);
+			$result = wp_remote_get(self::FORRST_API_BASE . $forrstId . $urlIdentifier);
 
 			/* Check for WordPress errors */
 			if(is_wp_error($result)){
-				SocialBox::log('forrst', $forrstId, '---', $result->get_error_message());
-				return false;
+				return array(
+						'success'      => false,
+						'errorMessage' => $result->get_error_message()
+					);
 			}
 			
 			/* Check for unsuccessful http requests */
 			if(wp_remote_retrieve_response_code($result) != 200){
-				SocialBox::log('forrst', $forrstId, wp_remote_retrieve_response_code($result), wp_remote_retrieve_response_message($result));
-				return false;
+				return array(
+						'success'      => false,
+						'errorMessage' => wp_remote_retrieve_response_message($result),
+						'errorCode'    => wp_remote_retrieve_response_code($result)
+					);
 			}
 			
 			/* Check for incorrect data */
 			$data = json_decode(wp_remote_retrieve_body($result), true);
 			if(!is_array($data) or !isset($data['resp']['typecast_followers'])){
-				SocialBox::log('forrst', $forrstId, '---', 'Got an unexpected result from the Forrst API. Make sure to double check the username!');
-				return false;
+				return array(
+						'success'      => false,
+						'errorMessage' => 'Got an unexpected result from the Forrst API. Make sure to double check the username!'
+					);
 			}
 
 			/* Return followers count */
-			return $data['resp']['typecast_followers'];
+			return array(
+					'success' => true,
+					'value'   => $data['resp']['typecast_followers']
+				);
 			
 		}
 		
@@ -376,32 +464,86 @@ if(!class_exists('SocialBoxConnector')){
 		 *
 		 * Will be called by "SocialBox::refresh()"
 		 */
-		public static function getDiggData($diggId){
+		public static function getDiggData($diggId, $urlIdentifier){
 			
 			/* Fetch data */
-			$result = wp_remote_get(self::DIGG_API_BASE . $diggId);
+			$result = wp_remote_get(self::DIGG_API_BASE . $diggId . $urlIdentifier);
 			
 			/* Check for WordPress errors */
 			if(is_wp_error($result)){
-				SocialBox::log('digg', $diggId, '---', $result->get_error_message());
-				return false;
+				return array(
+						'success'      => false,
+						'errorMessage' => $result->get_error_message()
+					);
 			}
 
 			/* Check for unsuccessful http requests */
 			if(wp_remote_retrieve_response_code($result) != 200){
-				SocialBox::log('digg', $diggId, wp_remote_retrieve_response_code($result), wp_remote_retrieve_response_message($result));
-				return false;
+				return array(
+						'success'      => false,
+						'errorMessage' => wp_remote_retrieve_response_message($result),
+						'errorCode'    => wp_remote_retrieve_response_code($result)
+					);
 			}
 			
 			/* Check for incorrect data */
 			$data = json_decode(wp_remote_retrieve_body($result), true);
 			if(!is_array($data) or !isset($data['users'][$diggId]['followers'])){
-				SocialBox::log('digg', $diggId, '---', 'Got an unexpected result from the Digg API. Make sure to double check the username!');
-				return false;
+				return array(
+						'success'      => false,
+						'errorMessage' => 'Got an unexpected result from the Digg API. Make sure to double check the username!'
+					);
 			}
 			
 			/* Return followers count */
-			return $data['users'][$diggId]['followers'];
+			return array(
+					'success' => true,
+					'value'   => $data['users'][$diggId]['followers']
+				);
+			
+		}
+
+		/**
+		 * Get GitHub followers for given account
+		 *
+		 * Will be called by "SocialBox::refresh()"
+		 */
+		public static function getGitHubData($gitHubId, $urlIdentifier){
+			
+			/* Fetch data */
+			$result = wp_remote_get(self::GITHUB_API_BASE . $gitHubId . $urlIdentifier);
+			
+			/* Check for WordPress errors */
+			if(is_wp_error($result)){
+				return array(
+						'success'      => false,
+						'errorMessage' => $result->get_error_message()
+					);
+			}
+
+			/* Check for unsuccessful http requests */
+			if(wp_remote_retrieve_response_code($result) != 200){
+				return array(
+						'success'      => false,
+						'errorMessage' => wp_remote_retrieve_response_message($result),
+						'errorCode'    => wp_remote_retrieve_response_code($result)
+					);
+			}
+			
+			/* Check for incorrect data */
+			$data = json_decode(wp_remote_retrieve_body($result), true);
+			if(!is_array($data) or !isset($data['followers'])){
+				return array(
+						'success'      => false,
+						'errorMessage' => 'Got an unexpected result from the GitHub API. Make sure to double check the username!'
+					);
+			}
+			
+			/* Return followers count */
+			return array(
+					'success' => true,
+					'value'   => $data['followers']
+				);
 			
 		}
 		

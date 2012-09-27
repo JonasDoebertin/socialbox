@@ -40,7 +40,12 @@ if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
 		/**
 		 * Complete list of supported networks
 		 */
-		const SUPPORTED_NETWORKS = 'facebook,twitter,googleplus,youtube,vimeo,feedburner,dribbble,forrst,digg';
+		const SUPPORTED_NETWORKS = 'facebook,twitter,youtube,vimeo,feedburner,dribbble,forrst,digg,github';
+
+		/**
+		 * This will be appended to the API call urls to identify SocialBoxes http requests
+		 */
+		const URL_IDENTIFIER = '#socialbox';
 
 		/**
 		 * Holds the slug of the settings page, once it has been registered
@@ -110,7 +115,13 @@ if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
 			
 		}
 
-		protected function getOption($key){
+		/**
+		 * Get a specific option value
+		 *
+		 * @param String $key
+		 * @return Mixed
+		 */
+		static protected function getOption($key){
 
 			/* Set up default values */
 			$defaults = array(
@@ -140,13 +151,21 @@ if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
 		 * Disable the SSL certificate validation for a given http request
 		 *
 		 * @param Array $args
+		 * @param String $url
 		 * @return Array
 		 */
 		public function disableSslVerify($args, $url){
 
-			/* TODO: Do this for SocialBox calls only */
-			
-			$args['sslverify'] = false;
+			/* Check if this http request belongs to SocialBox */
+			if( substr($url, -1 * strlen(self::URL_IDENTIFIER)) === self::URL_IDENTIFIER ){
+
+				/* Disable SSL verification flag */
+				$args['sslverify'] = false;
+
+				/* Remove identifier from url */
+				$url = substr($url, 0, strlen($url) - strlen(self::URL_IDENTIFIER));
+
+			}
 
 			return $args;
 
@@ -334,6 +353,9 @@ if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
 
 		}
 
+		/**
+		 * Register all setting sections and fields
+		 */
 		public function registerSettings(){
 
 			/* Register setting */
@@ -513,8 +535,24 @@ if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
 		 */
 		public static function updateCacheElement($elem){
 
+			/* Check if we have to disable SSL verification */
+			$disableSslVerify = ( self::getOption('disable_ssl') == 1 );
+
 			/* Fetch new value */
-			$newValue = SocialBoxConnector::getData($elem['network'], $elem['id']);
+			$result = SocialBoxConnector::getData($elem['network'], $elem['id'], $disableSslVerify);
+
+			/* Check if http request was successful */
+			if( $result['success'] ){
+				
+				$newValue = $result['value'];
+
+			} else{
+
+				$newValue = false;
+				$errorCode = isset($result['errorCode'])? $result['errorCode'] : '---';
+				SocialBox::addLogEntry($elem['network'], $elem['id'], $errorCode, $result['errorMessage']);
+
+			}
 
 			/* Check new value and set the default, if necessary */
 			$elem['value'] = ((is_numeric($newValue)) ? $newValue : $elem['default']);
@@ -555,13 +593,13 @@ if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
 		public static function addLogEntry($network, $id, $status, $msg){
 			
 			/* Proceed when the log is enabled only */
-			if( $this->options['enable_log'] === '1' ){
+			if( SocialBox::getOption('enable_log') === '1' ){
 
 				/* Get existing log entries */
 				$log = get_option(self::SLUG . '_log', array());
 
 				/* Check size of log */
-				if( count($log) >= $this->options['log_entries'] ){
+				if( count($log) >= SocialBox::getOption('log_entries') ){
 					
 					array_shift($log);
 
