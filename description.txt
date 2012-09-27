@@ -1,0 +1,87 @@
+<p>
+	<a href="http://twitter.com/DieserJonas">
+		<img src="http://envato.jonasdoebertin.net/buttons/twitter.png"/>
+	</a>
+	<a href="http://feeds.feedburner.com/jonasdoebertin">
+		<img src="http://envato.jonasdoebertin.net/buttons/feed.png"/>
+	</a>
+</p>
+With SocialBox you get an absolutely easy to use WordPress Plugin which enables you to add a sleek social widget to your WordPress site or blog. It supports several social networks and displays the current numbers of Facebook Page Likes, Twitter, Dribbble, Forrst and Digg Followers and YouTube and Vimeo Channel and Feedburner Feed Subscriptions. You can enter default values which will be shown as a fallback if the related API is not reachable.
+<h4>Features</h4>
+<ul>
+	<li>Displays the number of:
+		<ul>
+			<li>Facebook Page Likes</li>
+			<li>Google+, Twitter, Dribbble, Forrst and Digg Followers</li>
+			<li>YouTube and Vimeo Channel and Feedburner Feed Subscribers</li>
+		</ul>
+	</li>
+	<li>Rearrange and disable any of these networks to perfectly fit your needs</li>
+	<li>Choose from various styles to match your site</li>
+	<li>Use compact (12K, 3.2M) or full (12.000, 3.200.000) numbers</li>
+	<li>Updates every three hours to reduce load time and API calls.</li>
+	<li>Default values as a fallback, if any of the APIs is not reachable</li>
+	<li>Automatic update notifications</li>
+	<li>Full support for all major browsers</li>
+	<li>Localization ready (.pot file included)</li>
+	<li>Free future updates, to support even more networks and additional features</li>
+</ul>
+<h4>Requirements</h4>
+<ul>
+	<li>WordPress 3.0+</li>
+	<li>PHP 5.2+</li>
+	<li>PHP Extensions: cURL &amp; SimpleXML (these are enabled by default on common hosting services)</li>
+</ul>
+<h4>Testimonials</h4>
+<blockquote>
+	"I picked the plugin up a few days ago and was immediately impressed with its quality. While the task it performs is relatively simple, and there are numerous free plugins that can do more or less the same, SocialBox definitely stands above the crowd with it’s high quality. The widget works perfectly, is clear and easy to use, and provides a nice addition to any WordPress site. [...] If you’re looking for a new social widget, I highly recommend this one." - <a href="http://codecanyon.net/user/mordauk">Pippin Williamson (mordauk)</a> <strong>(Read the <a href="http://pippinsplugins.com/review-socialbox-social-widget-for-wordpress/">full review</a>)</strong>
+</blockquote>
+<h4>Future plans</h4>
+<ul>
+	<li>Add even more networks (e.g. Envato, MailChimp, Campaign Monitor, LinkedIn, SoundCloud, Instagram...)</li>
+	<li>Add even more additional styles</li>
+</ul>
+<h4>Updates</h4>
+<strong>Version 1.3.0 (01/XX/2012)</strong>
+<ul>
+	<li>Added additional styles</li>
+	<li>Added (experimental) support for Google+</li>
+	<li>Added an option to use compact numbers (8.4K, 23M, ...)</li>
+	<li>Added an option to set a forced widget & button width</li>
+	<li>Added an options page including a help section and an API error log</li>
+	<li>Improved caching functionality</li>
+	<li>Fixed a bug that could lead to wrong Feedburner URLs</li>
+	<li>Fixed a bug that could lead to "Invalid Header" messages in certain (rare) cases</li>
+	<li>Fixed a bug that could lead to too long cron run times and unsuccesfull refreshes</li>
+	<li>Major plugin code changes and improvements </li>
+	<li>Major HTML / CSS improvements</li>
+	<li>Documentation overhaul</li>
+	<li>Updated localization files</li>
+</ul>
+<strong>Version 1.2.1 (11/27/2011)</strong>
+<ul>
+	<li>Fixed a bug that disabled update notifications</li>
+	<li>Added correct "alt" attributes to the network images</li>
+</ul>
+<strong>Version 1.2.0 (11/24/2011)</strong>
+<ul>
+	<li>Added additional networks: Dribbble, Forrst, Vimeo and Digg</li>
+	<li>Added an option to open links in new Windows/Tabs</li>
+	<li>Added the ability to change order of networks</li>
+	<li>Redesigned Widget options to improve clarity</li>
+	<li>Updated localization files</li>
+	<li>Minor CSS improvements</li>
+</ul>
+<strong>Version 1.1.1 (10/25/2011)</strong>
+<ul>
+	<li>Fixed a bug that could make WP 3.0 & 3.1 stop working after plugin activation in certain situations</li>
+	<li>Added support for WordPress 3.3</li>
+	<li>Minor CSS improvements</li>
+</ul>
+<strong>Version 1.1.0 (10/11/2011)</strong>
+<ul>
+	<li>Added support for YouTube Channels</li>
+	<li>Updated localization files</li>
+</ul>
+<h4>Support</h4>
+If you have any further questions or you need support using or customizing this Widget, feel absolutely free to send a message to <em>support [ at ] jonasdoebertin [ dot ] net</em>. You can also use the contact form on my <a href="http://codecanyon.net/user/JonasDoebertin#from">CodeCanyon profile page</a>. I will do my very best to help and assist you as quick as possible.

@@ -1,0 +1,396 @@
+/*
+ * SocialBox v.1.3.0
+ * Copyright by Jonas Doebertin
+ * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
+ *
+ * -------------------------------------------------------------------------------------------------
+ *
+ * 1. Resets
+ * 2. Style: Classic
+ * 3. Style: Modern
+ * 4. Style: Tuts+ Flavor
+ * 5. Style: Dark
+ * 6. Fonts
+ *
+ */
+
+/*
+ * 1. Resets
+ * ---------------------------------------------------------------------------------------------- */
+div.socialbox-widget,
+div.socialbox-widget ul,
+div.socialbox-widget ul li,
+div.socialbox-widget ul li p,
+div.socialbox-widget ul li img,
+div.socialbox-widget ul li p span,
+div.socialbox-widget ul li a{
+	background: none;
+	border: none;
+	font-style: normal;
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+}
+
+div.socialbox-widget ul,
+div.socialbox-widget ul li{
+	list-style: none;
+}
+
+div.socialbox-widget ul li a,
+div.socialbox-widget ul li img{
+	display: inline;
+	width: auto;
+}
+
+div.socialbox-widget ul li a.socialbox-button{
+	text-align: center;
+}
+
+/*
+ * 2. Style: Classic
+ * ---------------------------------------------------------------------------------------------- */
+div.socialbox-widget.socialbox-style-classic{
+	color: #768a96;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+}
+
+	div.socialbox-widget.socialbox-style-classic ul{
+		background: url(../images/classic-background.png) repeat;
+		border: 1px solid #d8dcdf !important;
+		-webkit-border-radius: 4px;
+		-moz-border-radius: 4px;
+		border-radius: 4px;
+		-webkit-box-shadow: 0px 2px 4px #dfe4e7;
+		-moz-box-shadow: 0px 2px 4px #dfe4e7;
+		box-shadow: 0px 2px 4px #dfe4e7;
+		margin: 0 !important;
+		padding: 0;
+	}
+	
+		div.socialbox-widget.socialbox-style-classic ul li{
+			background-image: none;
+			border-bottom: 1px solid #d8dcdf;
+			height: 40px;
+			overflow: hidden;
+			padding: 19px 9px 0 9px;
+		}
+	
+		div.socialbox-widget.socialbox-style-classic ul li:last-child{
+			border-bottom: none;
+		}
+		
+			div.socialbox-widget.socialbox-style-classic ul li img{
+				border: none;
+				margin-right: 10px;
+				float: left;
+			}
+
+			div.socialbox-widget.socialbox-style-classic ul li p{
+				display: inline;
+				position: relative;
+				top : -3px;
+			}
+		
+				div.socialbox-widget.socialbox-style-classic ul li p span{
+					color: #425763;
+					font-weight: bold;
+				}
+				
+			div.socialbox-widget.socialbox-style-classic ul li a.socialbox-button{
+				background: url(../images/classic-button.png) no-repeat;
+				border: 1px solid #d8dcdf;
+				-webkit-border-radius: 3px;
+				-moz-border-radius: 3px;
+				border-radius: 3px;
+				color: #425763;
+				float: right;
+				font-size: 11px;
+				font-weight: bold;
+				line-height: 11px;
+				padding: 6px 10px;
+				position: relative;
+				text-decoration: none;
+				text-transform: uppercase;
+				top: -4px;
+			}
+			
+			div.socialbox-widget.socialbox-style-classic ul li a.socialbox-button:hover{
+				background: url(../images/classic-button.png) 0 -27px no-repeat;
+			}
+			
+			div.socialbox-widget.socialbox-style-classic ul li a.socialbox-button:active{
+				background: url(../images/classic-button.png) 0 -54px no-repeat;
+			}
+
+/*
+ * 3. Style: Modern
+ * ---------------------------------------------------------------------------------------------- */
+div.socialbox-widget.socialbox-style-modern{
+}
+
+	div.socialbox-widget.socialbox-style-modern ul{}
+
+		div.socialbox-widget.socialbox-style-modern ul li{
+			background: url(../images/modern-background.png) repeat;
+			border: 1px solid #e5e5e5;
+			height: 32px;
+			margin-bottom: 10px;
+			overflow: hidden;
+			padding: 9px 9px 8px 9px;
+		}
+
+		div.socialbox-widget.socialbox-style-modern ul li:last-child{
+			margin-bottom: 0;
+		}
+
+			div.socialbox-widget.socialbox-style-modern ul li img{
+				float: left;
+				margin-right: 10px;
+			}
+
+			div.socialbox-widget.socialbox-style-modern ul li p{
+				color: #999999;
+				font-family: "BebasNeueRegular", Arial, Helvetica, sans-serif;
+				font-size: 20px;
+				line-height: 20px;
+				padding-top: 7px;
+				text-align: right;
+				text-shadow: 0 1px 0 #ffffff;
+			}
+
+				div.socialbox-widget.socialbox-style-modern ul li p span{
+					color: #666666;
+				}
+
+/*
+ * 4. Style: Tuts+ Flavor
+ * ---------------------------------------------------------------------------------------------- */
+div.socialbox-widget.socialbox-style-tutsflavor{
+	background: transparent url(../images/tutsflavor-background.png) repeat;
+	border: 1px solid #f2f1f2;
+}
+
+	div.socialbox-widget.socialbox-style-tutsflavor ul{}
+
+		div.socialbox-widget.socialbox-style-tutsflavor ul li{
+			border-bottom: 1px dashed #d1d1d1;
+			margin: 15px;
+			overflow: hidden;
+			padding-bottom: 15px;
+		}
+
+		div.socialbox-widget.socialbox-style-tutsflavor ul li:last-child{
+			border: none;
+			padding-bottom: 0;
+		}
+
+			div.socialbox-widget.socialbox-style-tutsflavor ul li img{
+				float: left;
+				margin-right: 15px;
+			}
+
+			div.socialbox-widget.socialbox-style-tutsflavor ul li p{
+				display: inline;
+				font-family: "BebasNeueRegular", Arial, Helvetica, sans-serif;
+				font-size: 14px;
+				line-height: 14px;
+				text-shadow: 0 1px 0 #FFFFFF;
+				position: relative;
+				top: 4px;
+			}
+
+			div.socialbox-widget.socialbox-style-tutsflavor ul li a.socialbox-button{
+				border: 1px solid #e7a943;
+				border-bottom-color: #d6982f;
+				border-top-color: #f5b74e;
+				color: #623f1d;
+				cursor: pointer;
+				float: right;
+				font-size: 12px;
+				font-weight: bold;
+				line-height: 12px;
+				padding: 8px 10px;
+				text-decoration: none;
+				text-shadow: 0 1px 0 #fede9d;
+				-webkit-box-shadow: 0px 1px 2px #d9d9d9, inset 0px 1px 0px #ffe598;
+				-moz-box-shadow: 0px 1px 2px #d9d9d9, inset 0px 1px 0px #ffe598;
+				box-shadow: 0px 1px 2px #d9d9d9, inset 0px 1px 0px #ffe598;
+				-webkit-border-radius: 5px;
+				-moz-border-radius: 5px;
+				border-radius: 5px;
+				/* Gradient */
+				background-color: #feda71;
+				background-image: -webkit-gradient(linear, left top, left bottom, from(#feda71), to(#febb49));
+				background-image: -webkit-linear-gradient(top, #feda71, #febb49);
+				background-image:    -moz-linear-gradient(top, #feda71, #febb49);
+				background-image:     -ms-linear-gradient(top, #feda71, #febb49);
+				background-image:      -o-linear-gradient(top, #feda71, #febb49);
+				background-image:         linear-gradient(top, #feda71, #febb49);
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#feda71', EndColorStr='#febb49');
+			}
+
+			div.socialbox-widget.socialbox-style-tutsflavor ul li a.socialbox-button:hover{
+				background-color: #fee296;
+				background-image: -webkit-gradient(linear, left top, left bottom, from(#fee296), to(#fec166));
+				background-image: -webkit-linear-gradient(top, #fee296, #fec166);
+				background-image:    -moz-linear-gradient(top, #fee296, #fec166);
+				background-image:     -ms-linear-gradient(top, #fee296, #fec166);
+				background-image:      -o-linear-gradient(top, #fee296, #fec166);
+				background-image:         linear-gradient(top, #fee296, #fec166);
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#fee296', EndColorStr='#fec166');
+			}
+
+/*
+ * 5. Style: Dark
+ * ---------------------------------------------------------------------------------------------- */
+div.socialbox-widget.socialbox-style-dark{
+	
+}
+
+	div.socialbox-widget.socialbox-style-dark ul{
+		background: #373737;
+		border: 1px solid #080808;
+		-webkit-border-radius: 5px;
+		-moz-border-radius: 5px;
+		border-radius: 5px;
+		-webkit-background-clip: padding-box;
+		-moz-background-clip: padding;
+		background-clip: padding-box;
+		-webkit-box-shadow: 0 2px 1px rgba(0, 0, 0, .40);
+		-moz-box-shadow: 	0 2px 1px rgba(0, 0, 0, .40);
+		box-shadow: 		0 2px 1px rgba(0, 0, 0, .40);
+		margin: 0 !important;
+		padding: 0;
+		
+	}
+
+		div.socialbox-widget.socialbox-style-dark ul li{
+			border-top: 1px solid #444444;
+			border-bottom: 1px solid #080808;
+			height: 34px;
+			overflow: hidden;
+			padding: 19px 9px 0 9px;
+			/* Gradient */
+			background-color: #3b3b3b;
+			background-image: -webkit-gradient(linear, left top, left bottom, from(#3b3b3b), to(#2d2d2d));
+			background-image: -webkit-linear-gradient(top, #3b3b3b, #2d2d2d);
+			background-image:    -moz-linear-gradient(top, #3b3b3b, #2d2d2d);
+			background-image:     -ms-linear-gradient(top, #3b3b3b, #2d2d2d);
+			background-image:      -o-linear-gradient(top, #3b3b3b, #2d2d2d);
+			background-image:         linear-gradient(top, #3b3b3b, #2d2d2d);
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#3b3b3b', EndColorStr='#2d2d2d');
+		}
+
+			div.socialbox-widget.socialbox-style-dark ul li:first-child{
+				border-top: none;
+				-webkit-border-top-left-radius: 4px;
+				-moz-border-radius-topleft: 4px;
+				border-top-left-radius: 4px;
+				-webkit-border-top-right-radius: 4px;
+				-moz-border-radius-topright: 4px;
+				border-top-right-radius: 4px;
+				-webkit-box-shadow: inset 0 1px 0 #777777;
+				-moz-box-shadow: 	inset 0 1px 0 #777777;
+				box-shadow: 		inset 0 1px 0 #777777;
+			}
+
+
+			div.socialbox-widget.socialbox-style-dark ul li:last-child{
+				border-bottom: none;
+			}
+
+			div.socialbox-widget.socialbox-style-dark ul li img{
+				border: none;
+				margin-right: 10px;
+				float: left;
+			}
+
+			div.socialbox-widget.socialbox-style-dark ul li p{
+				color: #858585;
+				display: inline;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 13px;
+				position: relative;
+				text-shadow: 0 1px #050505;
+				top : -3px;
+			}
+
+				div.socialbox-widget.socialbox-style-dark ul li p span{
+					font-weight: bold;
+				}
+
+			div.socialbox-widget.socialbox-style-dark ul li a.socialbox-button{
+				background: #a8a8a8;
+				border: 1px solid #080808;
+				-webkit-border-radius: 3px;
+				-moz-border-radius: 3px;
+				border-radius: 4px;
+				-webkit-box-shadow: inset 0 1px 0 #cdcdcd, 0 1px 0 #404040;
+				-moz-box-shadow: inset 0 1px 0 #cdcdcd, 0 1px 0 #404040;
+				box-shadow: inset 0 1px 0 #cdcdcd, 0 1px 0 #404040;
+				color: #2d2d2d;
+				float: right;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 11px;
+				font-weight: bold;
+				line-height: 11px;
+				padding: 6px 10px;
+				position: relative;
+				text-decoration: none;
+				text-shadow: 0 1px 0 #929292;
+				text-transform: uppercase;
+				top: -5px;
+				/* Gradient */
+				background-color: #a8a8a8;
+				background-image: -webkit-gradient(linear, left top, left bottom, from(#a8a8a8), to(#5e5e5e));
+				background-image: -webkit-linear-gradient(top, #a8a8a8, #5e5e5e);
+				background-image:    -moz-linear-gradient(top, #a8a8a8, #5e5e5e);
+				background-image:     -ms-linear-gradient(top, #a8a8a8, #5e5e5e);
+				background-image:      -o-linear-gradient(top, #a8a8a8, #5e5e5e);
+				background-image:         linear-gradient(top, #a8a8a8, #5e5e5e);
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#a8a8a8', EndColorStr='#5e5e5e');
+				/* Background Fix */
+				-webkit-background-clip: padding-box;
+				-moz-background-clip: padding;
+				background-clip: padding-box;
+			}
+
+			div.socialbox-widget.socialbox-style-dark ul li a.socialbox-button:hover{
+				background-color: #aeaeae;
+				background-image: -webkit-gradient(linear, left top, left bottom, from(#aeaeae), to(#6a6a6a));
+				background-image: -webkit-linear-gradient(top, #aeaeae, #6a6a6a);
+				background-image:    -moz-linear-gradient(top, #aeaeae, #6a6a6a);
+				background-image:     -ms-linear-gradient(top, #aeaeae, #6a6a6a);
+				background-image:      -o-linear-gradient(top, #aeaeae, #6a6a6a);
+				background-image:         linear-gradient(top, #aeaeae, #6a6a6a);
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#aeaeae', EndColorStr='#6a6a6a');
+			}
+
+			div.socialbox-widget.socialbox-style-dark ul li a.socialbox-button:active{
+				-webkit-box-shadow: inset 0 1px 0 #585858, 0 1px 0 #414141;
+				-moz-box-shadow: inset 0 1px 0 #585858, 0 1px 0 #414141;
+				box-shadow: inset 0 1px 0 #585858, 0 1px 0 #414141;
+				color: #212121;
+				text-shadow: 0 1px 0 #7f7f7f;
+				/* Gradient */
+				background-color: #4d4d4d;
+				background-image: -webkit-gradient(linear, left top, left bottom, from(#4d4d4d), to(#747474));
+				background-image: -webkit-linear-gradient(top, #4d4d4d, #747474);
+				background-image:    -moz-linear-gradient(top, #4d4d4d, #747474);
+				background-image:     -ms-linear-gradient(top, #4d4d4d, #747474);
+				background-image:      -o-linear-gradient(top, #4d4d4d, #747474);
+				background-image:         linear-gradient(top, #4d4d4d, #747474);
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#4d4d4d', EndColorStr='#747474');
+			}
+
+/*
+ * 6. Fonts
+ * ---------------------------------------------------------------------------------------------- */
+@font-face{
+	font-family: 'BebasNeueRegular';
+	font-weight: normal;
+	src: url('../fonts/BebasNeue-webfont.eot');
+	src: url('../fonts/BebasNeue-webfont.eot?iefix') format('eot'), url('../fonts/BebasNeue-webfont.woff') format('woff'), url('../fonts/BebasNeue-webfont.ttf') format('truetype'), url('../fonts/BebasNeue-webfont.svg#webfont4Bjy2lJe') format('svg');
+}

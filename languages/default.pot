@@ -1,0 +1,664 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: SocialBox\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-08 14:04+0100\n"
+"PO-Revision-Date: 2012-04-08 14:04+0100\n"
+"Last-Translator: Jonas Döbertin <jonas@doebertin.de>\n"
+"Language-Team: JonasDoebertin <support@jonasdoebertin.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-Country: UNITED STATES\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../socialbox.php:119
+#: ../additional_files/1.1.0/socialbox.php:70
+#: ../additional_files/1.1.1/socialbox.php:94
+#: ../additional_files/1.2.0/socialbox.php:95
+#: ../additional_files/1.2.1/socialbox.php:95
+msgid "Every Three Hours"
+msgstr ""
+
+#: ../socialbox.php:206
+#: ../additional_files/1.1.0/socialbox.php:154
+#: ../additional_files/1.1.1/socialbox.php:201
+#: ../additional_files/1.2.0/socialbox.php:182
+#: ../additional_files/1.2.1/socialbox.php:182
+msgid "SocialBox update available!"
+msgstr ""
+
+#: ../socialbox.php:207
+#: ../additional_files/1.1.0/socialbox.php:155
+#: ../additional_files/1.1.1/socialbox.php:202
+#: ../additional_files/1.2.0/socialbox.php:183
+#: ../additional_files/1.2.1/socialbox.php:183
+#, php-format
+msgid "New Version: %s (%s). Info and download at the <a href=\"%s\">plugin page</a>."
+msgstr ""
+
+#: ../socialbox.php:263
+msgid "SocialBox"
+msgstr ""
+
+#: ../socialbox.php:442
+msgid "Adds a super easy Social Box Widget which displays the current numbers of Facebook Page Likes, Google+, Twitter, Dribbble, Forrst and Digg Followers and YouTube and Vimeo Channel and Feedburner Feed Subscriptions."
+msgstr ""
+
+#: ../socialbox.php:685
+#: ../additional_files/1.2.0/includes/form.php:39
+#: ../additional_files/1.2.1/socialbox.php:536
+#: ../additional_files/1.2.1/includes/form.php:39
+msgid "Facebook"
+msgstr ""
+
+#: ../socialbox.php:687
+#: ../additional_files/1.2.0/includes/form.php:64
+#: ../additional_files/1.2.1/socialbox.php:538
+#: ../additional_files/1.2.1/includes/form.php:64
+msgid "Twitter"
+msgstr ""
+
+#: ../socialbox.php:689
+msgid "Google+"
+msgstr ""
+
+#: ../socialbox.php:691
+#: ../additional_files/1.2.0/includes/form.php:89
+#: ../additional_files/1.2.1/socialbox.php:540
+#: ../additional_files/1.2.1/includes/form.php:89
+msgid "YouTube"
+msgstr ""
+
+#: ../socialbox.php:693
+#: ../additional_files/1.2.0/includes/form.php:114
+#: ../additional_files/1.2.1/socialbox.php:542
+#: ../additional_files/1.2.1/includes/form.php:114
+msgid "Vimeo"
+msgstr ""
+
+#: ../socialbox.php:695
+#: ../additional_files/1.2.0/includes/form.php:139
+#: ../additional_files/1.2.1/socialbox.php:544
+#: ../additional_files/1.2.1/includes/form.php:139
+msgid "Feedburner"
+msgstr ""
+
+#: ../socialbox.php:697
+#: ../additional_files/1.2.0/includes/form.php:164
+#: ../additional_files/1.2.1/socialbox.php:546
+#: ../additional_files/1.2.1/includes/form.php:164
+msgid "Dribbble"
+msgstr ""
+
+#: ../socialbox.php:699
+#: ../additional_files/1.2.0/includes/form.php:189
+#: ../additional_files/1.2.1/socialbox.php:548
+#: ../additional_files/1.2.1/includes/form.php:189
+msgid "Forrst"
+msgstr ""
+
+#: ../socialbox.php:701
+#: ../additional_files/1.2.0/includes/form.php:214
+#: ../additional_files/1.2.1/socialbox.php:550
+#: ../additional_files/1.2.1/includes/form.php:214
+msgid "Digg"
+msgstr ""
+
+#: ../socialbox.php:711
+#: ../additional_files/1.1.0/includes/widget.php:22
+#: ../additional_files/1.1.1/includes/widget.php:22
+#: ../additional_files/1.2.0/socialbox.php:535
+#: ../additional_files/1.2.1/socialbox.php:560
+msgid "Fans"
+msgstr ""
+
+#: ../socialbox.php:713
+#: ../socialbox.php:715
+#: ../socialbox.php:723
+#: ../socialbox.php:725
+#: ../socialbox.php:727
+#: ../additional_files/1.1.0/includes/widget.php:37
+#: ../additional_files/1.1.1/includes/widget.php:37
+#: ../additional_files/1.2.0/socialbox.php:537
+#: ../additional_files/1.2.0/socialbox.php:545
+#: ../additional_files/1.2.0/socialbox.php:547
+#: ../additional_files/1.2.0/socialbox.php:549
+#: ../additional_files/1.2.1/socialbox.php:562
+#: ../additional_files/1.2.1/socialbox.php:570
+#: ../additional_files/1.2.1/socialbox.php:572
+#: ../additional_files/1.2.1/socialbox.php:574
+msgid "Followers"
+msgstr ""
+
+#: ../socialbox.php:717
+#: ../socialbox.php:719
+#: ../socialbox.php:721
+#: ../additional_files/1.1.0/includes/widget.php:52
+#: ../additional_files/1.1.0/includes/widget.php:67
+#: ../additional_files/1.1.1/includes/widget.php:52
+#: ../additional_files/1.1.1/includes/widget.php:67
+#: ../additional_files/1.2.0/socialbox.php:539
+#: ../additional_files/1.2.0/socialbox.php:541
+#: ../additional_files/1.2.0/socialbox.php:543
+#: ../additional_files/1.2.1/socialbox.php:564
+#: ../additional_files/1.2.1/socialbox.php:566
+#: ../additional_files/1.2.1/socialbox.php:568
+msgid "Subscribers"
+msgstr ""
+
+#: ../socialbox.php:737
+#: ../additional_files/1.1.0/includes/widget.php:24
+#: ../additional_files/1.1.1/includes/widget.php:24
+#: ../additional_files/1.2.0/socialbox.php:559
+#: ../additional_files/1.2.1/socialbox.php:584
+msgid "Like"
+msgstr ""
+
+#: ../socialbox.php:739
+#: ../socialbox.php:741
+#: ../socialbox.php:749
+#: ../socialbox.php:751
+#: ../socialbox.php:753
+#: ../additional_files/1.1.0/includes/widget.php:39
+#: ../additional_files/1.1.1/includes/widget.php:39
+#: ../additional_files/1.2.0/socialbox.php:561
+#: ../additional_files/1.2.0/socialbox.php:569
+#: ../additional_files/1.2.0/socialbox.php:571
+#: ../additional_files/1.2.0/socialbox.php:573
+#: ../additional_files/1.2.1/socialbox.php:586
+#: ../additional_files/1.2.1/socialbox.php:594
+#: ../additional_files/1.2.1/socialbox.php:596
+#: ../additional_files/1.2.1/socialbox.php:598
+msgid "Follow"
+msgstr ""
+
+#: ../socialbox.php:743
+#: ../socialbox.php:745
+#: ../socialbox.php:747
+#: ../additional_files/1.1.0/includes/widget.php:54
+#: ../additional_files/1.1.0/includes/widget.php:69
+#: ../additional_files/1.1.1/includes/widget.php:54
+#: ../additional_files/1.1.1/includes/widget.php:69
+#: ../additional_files/1.2.0/socialbox.php:563
+#: ../additional_files/1.2.0/socialbox.php:565
+#: ../additional_files/1.2.0/socialbox.php:567
+#: ../additional_files/1.2.1/socialbox.php:588
+#: ../additional_files/1.2.1/socialbox.php:590
+#: ../additional_files/1.2.1/socialbox.php:592
+msgid "Subscribe"
+msgstr ""
+
+#: ../socialbox.php:763
+#: ../additional_files/1.1.0/includes/widget.php:22
+#: ../additional_files/1.1.0/includes/widget.php:24
+#: ../additional_files/1.1.1/includes/widget.php:22
+#: ../additional_files/1.1.1/includes/widget.php:24
+#: ../additional_files/1.2.0/socialbox.php:583
+#: ../additional_files/1.2.1/socialbox.php:608
+msgid "Like on Facebook"
+msgstr ""
+
+#: ../socialbox.php:765
+#: ../additional_files/1.1.0/includes/widget.php:37
+#: ../additional_files/1.1.0/includes/widget.php:39
+#: ../additional_files/1.1.1/includes/widget.php:37
+#: ../additional_files/1.1.1/includes/widget.php:39
+#: ../additional_files/1.2.0/socialbox.php:585
+#: ../additional_files/1.2.1/socialbox.php:610
+msgid "Follow on Twitter"
+msgstr ""
+
+#: ../socialbox.php:767
+msgid "Add to Circles on Google+"
+msgstr ""
+
+#: ../socialbox.php:769
+#: ../additional_files/1.2.0/socialbox.php:587
+#: ../additional_files/1.2.1/socialbox.php:612
+msgid "Subscribe to Youtube Channel"
+msgstr ""
+
+#: ../socialbox.php:771
+#: ../additional_files/1.2.0/socialbox.php:589
+#: ../additional_files/1.2.1/socialbox.php:614
+msgid "Subscribe to Vimeo Channel"
+msgstr ""
+
+#: ../socialbox.php:773
+#: ../additional_files/1.2.0/socialbox.php:591
+#: ../additional_files/1.2.1/socialbox.php:616
+msgid "Subscribe to Feed"
+msgstr ""
+
+#: ../socialbox.php:775
+#: ../additional_files/1.2.0/socialbox.php:593
+#: ../additional_files/1.2.1/socialbox.php:618
+msgid "Follow on Dribbble"
+msgstr ""
+
+#: ../socialbox.php:777
+#: ../additional_files/1.2.0/socialbox.php:595
+#: ../additional_files/1.2.1/socialbox.php:620
+msgid "Follow on Forrst"
+msgstr ""
+
+#: ../socialbox.php:779
+#: ../additional_files/1.2.0/socialbox.php:597
+#: ../additional_files/1.2.1/socialbox.php:622
+msgid "Follow on Digg"
+msgstr ""
+
+#: ../additional_files/1.1.0/socialbox.php:333
+#: ../additional_files/1.1.1/socialbox.php:405
+#: ../additional_files/1.2.0/socialbox.php:315
+#: ../additional_files/1.2.1/socialbox.php:315
+msgid "Displays the numbers of Twitter Followers, Facebook Fans and Youtube Channel and Feedburner Feed Subscribers"
+msgstr ""
+
+#: ../additional_files/1.1.0/includes/form.php:15
+#: ../additional_files/1.1.1/includes/form.php:15
+msgid "Facebook:"
+msgstr ""
+
+#: ../additional_files/1.1.0/includes/form.php:17
+#: ../additional_files/1.1.1/includes/form.php:17
+msgid "Your Facebook ID or <abbr title=\"E.g. nettutsplus or john.smith\">username</abbr>"
+msgstr ""
+
+#: ../additional_files/1.1.0/includes/form.php:22
+#: ../additional_files/1.1.1/includes/form.php:22
+msgid "Twitter:"
+msgstr ""
+
+#: ../additional_files/1.1.0/includes/form.php:24
+#: ../additional_files/1.1.1/includes/form.php:24
+msgid "Your Twitter <abbr title=\"E.g. envatowebdev\">screenname</abbr>"
+msgstr ""
+
+#: ../additional_files/1.1.0/includes/form.php:29
+#: ../additional_files/1.1.1/includes/form.php:29
+msgid "YouTube:"
+msgstr ""
+
+#: ../additional_files/1.1.0/includes/form.php:31
+#: ../additional_files/1.1.1/includes/form.php:31
+msgid "Your YouTube <abbr title=\"E.g. nettutsplus\">channel</abbr>"
+msgstr ""
+
+#: ../additional_files/1.1.0/includes/form.php:36
+#: ../additional_files/1.1.1/includes/form.php:36
+msgid "FeedBurner:"
+msgstr ""
+
+#: ../additional_files/1.1.0/includes/form.php:38
+#: ../additional_files/1.1.1/includes/form.php:38
+msgid "Your Feeds Feedburner <abbr>name</abbr>"
+msgstr ""
+
+#: ../additional_files/1.1.0/includes/form.php:44
+#: ../additional_files/1.1.1/includes/form.php:44
+#: ../additional_files/1.2.0/includes/form.php:30
+#: ../additional_files/1.2.1/includes/form.php:30
+msgid "Show Buttons"
+msgstr ""
+
+#: ../additional_files/1.1.0/includes/form.php:45
+#: ../additional_files/1.1.1/includes/form.php:45
+#: ../additional_files/1.2.0/includes/form.php:31
+#: ../additional_files/1.2.1/includes/form.php:31
+msgid "Display Follow/Subscribe buttons"
+msgstr ""
+
+#: ../additional_files/1.1.0/includes/form.php:51
+#: ../additional_files/1.1.1/includes/form.php:51
+msgid "Set Default Values"
+msgstr ""
+
+#: ../additional_files/1.1.0/includes/form.php:52
+#: ../additional_files/1.1.1/includes/form.php:52
+msgid "Will be shown, if the API is not reachable."
+msgstr ""
+
+#: ../additional_files/1.1.0/includes/form.php:59
+#: ../additional_files/1.1.1/includes/form.php:59
+msgid "Facebook Default:"
+msgstr ""
+
+#: ../additional_files/1.1.0/includes/form.php:61
+#: ../additional_files/1.1.1/includes/form.php:61
+#: ../additional_files/1.2.0/includes/form.php:49
+#: ../additional_files/1.2.1/includes/form.php:49
+msgid "Your fallback like count"
+msgstr ""
+
+#: ../additional_files/1.1.0/includes/form.php:66
+#: ../additional_files/1.1.1/includes/form.php:66
+msgid "Twitter Default:"
+msgstr ""
+
+#: ../additional_files/1.1.0/includes/form.php:68
+#: ../additional_files/1.1.1/includes/form.php:68
+msgid "Your fallback followers count"
+msgstr ""
+
+#: ../additional_files/1.1.0/includes/form.php:73
+#: ../additional_files/1.1.1/includes/form.php:73
+msgid "YouTube Default:"
+msgstr ""
+
+#: ../additional_files/1.1.0/includes/form.php:75
+#: ../additional_files/1.1.0/includes/form.php:83
+#: ../additional_files/1.1.1/includes/form.php:75
+#: ../additional_files/1.1.1/includes/form.php:83
+msgid "Your fallback subscriptions count"
+msgstr ""
+
+#: ../additional_files/1.1.0/includes/form.php:81
+#: ../additional_files/1.1.1/includes/form.php:81
+msgid "FeedBurner Default:"
+msgstr ""
+
+#: ../additional_files/1.1.0/includes/widget.php:52
+#: ../additional_files/1.1.0/includes/widget.php:54
+#: ../additional_files/1.1.1/includes/widget.php:52
+#: ../additional_files/1.1.1/includes/widget.php:54
+msgid "Subscribe to Channel"
+msgstr ""
+
+#: ../additional_files/1.1.0/includes/widget.php:67
+#: ../additional_files/1.1.0/includes/widget.php:69
+#: ../additional_files/1.1.1/includes/widget.php:67
+#: ../additional_files/1.1.1/includes/widget.php:69
+msgid "Subscribe to RSS Feed"
+msgstr ""
+
+#: ../additional_files/1.2.0/includes/form.php:18
+#: ../additional_files/1.2.1/includes/form.php:18
+msgid "General Settings"
+msgstr ""
+
+#: ../additional_files/1.2.0/includes/form.php:23
+#: ../additional_files/1.2.1/includes/form.php:23
+msgid "Open Links in new Window/Tab"
+msgstr ""
+
+#: ../additional_files/1.2.0/includes/form.php:24
+#: ../additional_files/1.2.1/includes/form.php:24
+msgid "Forces Links to be opened in a new window/tab"
+msgstr ""
+
+#: ../additional_files/1.2.0/includes/form.php:43
+#: ../additional_files/1.2.1/includes/form.php:43
+msgid "Your Pages ID or Shortname (e.g. nettutsplus)"
+msgstr ""
+
+#: ../additional_files/1.2.0/includes/form.php:43
+#: ../additional_files/1.2.1/includes/form.php:43
+msgid "Page ID/Name:"
+msgstr ""
+
+#: ../additional_files/1.2.0/includes/form.php:49
+#: ../additional_files/1.2.0/includes/form.php:74
+#: ../additional_files/1.2.0/includes/form.php:99
+#: ../additional_files/1.2.0/includes/form.php:124
+#: ../additional_files/1.2.0/includes/form.php:149
+#: ../additional_files/1.2.0/includes/form.php:174
+#: ../additional_files/1.2.0/includes/form.php:199
+#: ../additional_files/1.2.0/includes/form.php:224
+#: ../additional_files/1.2.1/includes/form.php:49
+#: ../additional_files/1.2.1/includes/form.php:74
+#: ../additional_files/1.2.1/includes/form.php:99
+#: ../additional_files/1.2.1/includes/form.php:124
+#: ../additional_files/1.2.1/includes/form.php:149
+#: ../additional_files/1.2.1/includes/form.php:174
+#: ../additional_files/1.2.1/includes/form.php:199
+#: ../additional_files/1.2.1/includes/form.php:224
+msgid "Default:"
+msgstr ""
+
+#: ../additional_files/1.2.0/includes/form.php:55
+#: ../additional_files/1.2.0/includes/form.php:80
+#: ../additional_files/1.2.0/includes/form.php:105
+#: ../additional_files/1.2.0/includes/form.php:130
+#: ../additional_files/1.2.0/includes/form.php:155
+#: ../additional_files/1.2.0/includes/form.php:180
+#: ../additional_files/1.2.0/includes/form.php:205
+#: ../additional_files/1.2.0/includes/form.php:230
+#: ../additional_files/1.2.1/includes/form.php:55
+#: ../additional_files/1.2.1/includes/form.php:80
+#: ../additional_files/1.2.1/includes/form.php:105
+#: ../additional_files/1.2.1/includes/form.php:130
+#: ../additional_files/1.2.1/includes/form.php:155
+#: ../additional_files/1.2.1/includes/form.php:180
+#: ../additional_files/1.2.1/includes/form.php:205
+#: ../additional_files/1.2.1/includes/form.php:230
+msgid "Display position within SocialBox"
+msgstr ""
+
+#: ../additional_files/1.2.0/includes/form.php:55
+#: ../additional_files/1.2.0/includes/form.php:80
+#: ../additional_files/1.2.0/includes/form.php:105
+#: ../additional_files/1.2.0/includes/form.php:130
+#: ../additional_files/1.2.0/includes/form.php:155
+#: ../additional_files/1.2.0/includes/form.php:180
+#: ../additional_files/1.2.0/includes/form.php:205
+#: ../additional_files/1.2.0/includes/form.php:230
+#: ../additional_files/1.2.1/includes/form.php:55
+#: ../additional_files/1.2.1/includes/form.php:80
+#: ../additional_files/1.2.1/includes/form.php:105
+#: ../additional_files/1.2.1/includes/form.php:130
+#: ../additional_files/1.2.1/includes/form.php:155
+#: ../additional_files/1.2.1/includes/form.php:180
+#: ../additional_files/1.2.1/includes/form.php:205
+#: ../additional_files/1.2.1/includes/form.php:230
+msgid "Position:"
+msgstr ""
+
+#: ../additional_files/1.2.0/includes/form.php:68
+#: ../additional_files/1.2.1/includes/form.php:68
+msgid "Your Twitter screenname (e.g. envatowebdev)"
+msgstr ""
+
+#: ../additional_files/1.2.0/includes/form.php:68
+#: ../additional_files/1.2.0/includes/form.php:168
+#: ../additional_files/1.2.0/includes/form.php:193
+#: ../additional_files/1.2.0/includes/form.php:218
+#: ../additional_files/1.2.1/includes/form.php:68
+#: ../additional_files/1.2.1/includes/form.php:168
+#: ../additional_files/1.2.1/includes/form.php:193
+#: ../additional_files/1.2.1/includes/form.php:218
+msgid "Username:"
+msgstr ""
+
+#: ../additional_files/1.2.0/includes/form.php:74
+#: ../additional_files/1.2.0/includes/form.php:174
+#: ../additional_files/1.2.0/includes/form.php:199
+#: ../additional_files/1.2.0/includes/form.php:224
+#: ../additional_files/1.2.1/includes/form.php:74
+#: ../additional_files/1.2.1/includes/form.php:174
+#: ../additional_files/1.2.1/includes/form.php:199
+#: ../additional_files/1.2.1/includes/form.php:224
+msgid "Your fallback follower count"
+msgstr ""
+
+#: ../additional_files/1.2.0/includes/form.php:93
+#: ../additional_files/1.2.1/includes/form.php:93
+msgid "Your YouTube Channel (e.g. nettutsplus)"
+msgstr ""
+
+#: ../additional_files/1.2.0/includes/form.php:93
+#: ../additional_files/1.2.0/includes/form.php:118
+#: ../additional_files/1.2.1/includes/form.php:93
+#: ../additional_files/1.2.1/includes/form.php:118
+msgid "Channel:"
+msgstr ""
+
+#: ../additional_files/1.2.0/includes/form.php:99
+#: ../additional_files/1.2.0/includes/form.php:124
+#: ../additional_files/1.2.0/includes/form.php:149
+#: ../additional_files/1.2.1/includes/form.php:99
+#: ../additional_files/1.2.1/includes/form.php:124
+#: ../additional_files/1.2.1/includes/form.php:149
+msgid "Your fallback subscriber count"
+msgstr ""
+
+#: ../additional_files/1.2.0/includes/form.php:118
+#: ../additional_files/1.2.1/includes/form.php:118
+msgid "Your Vimeo Channel"
+msgstr ""
+
+#: ../additional_files/1.2.0/includes/form.php:143
+#: ../additional_files/1.2.1/includes/form.php:143
+msgid "Your Feeds Feedburner name (e.g. nettuts or psdtuts)"
+msgstr ""
+
+#: ../additional_files/1.2.0/includes/form.php:143
+#: ../additional_files/1.2.1/includes/form.php:143
+msgid "Feedname:"
+msgstr ""
+
+#: ../additional_files/1.2.0/includes/form.php:168
+#: ../additional_files/1.2.1/includes/form.php:168
+msgid "Your Dribbble username (e.g. envato)"
+msgstr ""
+
+#: ../additional_files/1.2.0/includes/form.php:193
+#: ../additional_files/1.2.1/includes/form.php:193
+msgid "Your Forrst username"
+msgstr ""
+
+#: ../additional_files/1.2.0/includes/form.php:218
+#: ../additional_files/1.2.1/includes/form.php:218
+msgid "Your Digg username"
+msgstr ""
+
+#: ../views/options-page.frame.php:15
+msgid "About"
+msgstr ""
+
+#: ../views/options-page.frame.php:16
+msgid "Help"
+msgstr ""
+
+#: ../views/options-page.frame.php:17
+msgid "API Log"
+msgstr ""
+
+#: ../views/options-page.help.php:57
+#: ../views/widget.form.php:63
+msgid "Page ID/Name"
+msgstr ""
+
+#: ../views/options-page.help.php:64
+#: ../views/options-page.help.php:96
+#: ../views/options-page.help.php:102
+#: ../views/options-page.help.php:108
+#: ../views/widget.form.php:88
+#: ../views/widget.form.php:213
+#: ../views/widget.form.php:238
+#: ../views/widget.form.php:263
+msgid "Username"
+msgstr ""
+
+#: ../views/options-page.help.php:70
+#: ../views/widget.form.php:113
+msgid "User ID"
+msgstr ""
+
+#: ../views/options-page.help.php:77
+msgid "Youtube"
+msgstr ""
+
+#: ../views/options-page.help.php:77
+#: ../views/options-page.help.php:83
+#: ../views/widget.form.php:138
+#: ../views/widget.form.php:163
+msgid "Channel"
+msgstr ""
+
+#: ../views/options-page.help.php:89
+#: ../views/widget.form.php:188
+msgid "Feedname"
+msgstr ""
+
+#: ../views/options-page.log.php:21
+#: ../views/options-page.log.php:30
+msgid "Time"
+msgstr ""
+
+#: ../views/options-page.log.php:22
+#: ../views/options-page.log.php:31
+msgid "Network"
+msgstr ""
+
+#: ../views/options-page.log.php:23
+msgid "Username/ID"
+msgstr ""
+
+#: ../views/options-page.log.php:24
+#: ../views/options-page.log.php:33
+msgid "Status Code"
+msgstr ""
+
+#: ../views/options-page.log.php:25
+#: ../views/options-page.log.php:34
+msgid "Message"
+msgstr ""
+
+#: ../views/options-page.log.php:32
+msgid "Userame/ID"
+msgstr ""
+
+#: ../views/options-page.log.php:49
+msgid "Y/m/d H:i:s"
+msgstr ""
+
+#: ../views/widget.form.php:44
+msgid "Choose the widgets display style"
+msgstr ""
+
+#: ../views/widget.form.php:50
+msgid "Use Compact Numbers"
+msgstr ""
+
+#: ../views/widget.form.php:51
+msgid "Show 12K instead of 12.300"
+msgstr ""
+
+#: ../views/widget.form.php:113
+msgid "Your Google+ ID (e.g. 104560124403688998123)"
+msgstr ""
+
+#: ../views/widget.form.php:119
+msgid "Your fallback count"
+msgstr ""
+
+#: ../views/widget.form.php:284
+msgid "Additional Settings"
+msgstr ""
+
+#: ../views/widget.form.php:288
+msgid "Forced Widget Width:"
+msgstr ""
+
+#: ../views/widget.form.php:290
+msgid "Force Widget to have a specific width (0 to disable)"
+msgstr ""
+
+#: ../views/widget.form.php:295
+msgid "Forced Button Width:"
+msgstr ""
+
+#: ../views/widget.form.php:297
+msgid "Force Buttons to have a specific width (0 to disable)"
+msgstr ""
+
+#: ../views/widget.form.php:307
+msgid "Need support? <a href=\"http://support.jonasdoebertin.net/\" title=\"Get support!\">Get some!</a>"
+msgstr ""
+
