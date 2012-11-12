@@ -2,23 +2,17 @@
 /*
 Plugin Name: 	SocialBox
 Plugin URI: 	http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
-Description: 	Adds a super easy Social Box Widget which displays the current numbers of Facebook Page Likes, Google+, Twitter, Dribbble, Forrst and Digg Followers and YouTube and Vimeo Channel and Feedburner Feed Subscriptions.
-Version: 		1.3.0
+Description: 	Adds a super easy Social Box Widget which displays the current numbers of Facebook Page Likes, Twitter, Dribbble, Forrst and Digg Followers and YouTube and Vimeo Channel and Feedburner Feed Subscriptions.
+Version: 		1.2.1
 Author: 		JonasDoebertin
 Author URI: 	http://codecanyon.net/user/JonasDoebertin
+License: 		Sold exclusively on CodeCanyon
 */
 
 if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
-
-	/* Define constants for url and path to the plugins files */
-	define('SOCIALBOX_PATH', plugin_dir_path(__FILE__));
-	define('SOCIALBOX_URL', plugins_url('', __FILE__));
 	
-	/* Include SocialBoxWidget class. This will provide the widget logic. */
-	require_once SOCIALBOX_PATH . '/includes/socialbox.widget.php';
-
-	/* Include SocialBoxConnector class. This will connect to the different APIs. */
-	require_once SOCIALBOX_PATH . '/includes/socialbox.connector.php';
+	/* Include SocialBoxConnector class. This will connect to the APIs */
+	require_once 'includes/socialbox.connector.php';
 	
 	class SocialBox{
 		
@@ -30,7 +24,7 @@ if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
 		/**
 		 * The plugins current version number
 		 */
-		const VERSION = '1.3.0';
+		const VERSION = '1.2.1';
 		
 		/**
 		 * Update check script URL
@@ -40,34 +34,19 @@ if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
 		/**
 		 * Complete list of supported networks
 		 */
-		const SUPPORTED_NETWORKS = 'facebook,twitter,youtube,vimeo,feedburner,dribbble,forrst,digg,github';
-
-		/**
-		 * This will be appended to the API call urls to identify SocialBoxes http requests
-		 */
-		const URL_IDENTIFIER = '#socialbox';
-
-		/**
-		 * Holds the slug of the settings page, once it has been registered
-		 */
-		protected $settingsPageSlug;
+		const SUPPORTED_NETWORKS = 'facebook,twitter,youtube,vimeo,feedburner,dribbble,forrst,digg';
 		
 		/**
 		 * Create an instance of the plugin
 		 */
 		public function __construct(){
-
-			/* Disable SSL-Verification when corresponding settings is enabled */
-			if( $this->getOption('disable_ssl') === '1' ){
-				add_filter('http_request_args', array($this, 'disableSslVerify'), 10, 2);
-			}
 			
 			/* Inject custom cron schedule */
 			add_filter('cron_schedules', array($this, 'addCronSchedule'));
 			
 			/* Register custom actions */
-			add_action(self::SLUG . '_update_cache', array($this, 'refreshAll'));
-			add_action(self::SLUG . '_check_for_update', array($this, 'checkForUpdate'));
+			add_action(self::SLUG . '_fetch', array($this, 'refreshAll'));
+			add_action(self::SLUG . '_update', array($this, 'checkForUpdates'));
 			
 			/* Register (de)activation hook */
 			register_activation_hook(__FILE__, array($this, 'activatePlugin'));
@@ -76,7 +55,7 @@ if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
 			/* If an update is available, then notify */
 			/* TODO: Double check version numbers */
 			if(is_admin()){
-				$info = get_option(self::SLUG . '_updateinfo', null);
+				$info = get_option(self::SLUG . '_update', null);
 				if(is_array($info) and $info['update']){
 					add_action('admin_notices', array($this, 'addAdminNotice'));
 				}	
@@ -91,84 +70,16 @@ if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
 			/* Register Widget Stylesheets */
 			if(is_admin()){
 				
-				/* Add custom "Settings" link to plugin actions */
-				add_action('plugin_action_links_' . basename(dirname(__FILE__)) . '/' . basename(__FILE__), array($this, 'addPluginActionLink'));
-
 				/* Register additional styles for "widgets" admin page */
 				add_action('admin_print_styles-widgets.php', array($this, 'registerAdminStyle'));
-
-				/* Register Options Page */
-				add_action('admin_menu', array($this, 'addOptionsPage'));
-
-				/* Register Settings */
-				add_action('admin_init', array($this, 'registerSettings'));
-
-				/* Register styles for options page */
-				add_action('admin_print_styles-settings_page_' . self::SLUG, array($this, 'addOptionsPageStyle'));
 				
 			} else if(is_active_widget(false, false, self::SLUG, true)){
 				
 				/* Register SocialBox widget styles */
-				add_action('wp_enqueue_scripts', array($this, 'registerStyle'));
+				add_action('wp_print_styles', array($this, 'registerStyle'));
 				
-			}
+			}			
 			
-		}
-
-		/**
-		 * Get a specific option value
-		 *
-		 * @param String $key
-		 * @return Mixed
-		 */
-		static protected function getOption($key){
-
-			/* Set up default values */
-			$defaults = array(
-				'update_interval' =>	180,
-				'disable_ssl' =>		0,
-				'enable_log' =>			0,
-				'log_entries' =>		20
-			);
-
-			/* Load existing values */
-			$options = get_option(self::SLUG . '_options', array());
-			if( ! is_array($options) ){
-
-				$options = array();
-
-			}
-
-			/* Combine default and existing values */
-			$options = array_merge($defaults, $options);
-
-			/* Return requested option value */
-			return $options[$key];
-
-		}
-
-		/**
-		 * Disable the SSL certificate validation for a given http request
-		 *
-		 * @param Array $args
-		 * @param String $url
-		 * @return Array
-		 */
-		public function disableSslVerify($args, $url){
-
-			/* Check if this http request belongs to SocialBox */
-			if( substr($url, -1 * strlen(self::URL_IDENTIFIER)) === self::URL_IDENTIFIER ){
-
-				/* Disable SSL verification flag */
-				$args['sslverify'] = false;
-
-				/* Remove identifier from url */
-				$url = substr($url, 0, strlen($url) - strlen(self::URL_IDENTIFIER));
-
-			}
-
-			return $args;
-
 		}
 		
 		/**
@@ -179,10 +90,9 @@ if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
 		 */
 		public function addCronSchedule($schedules){
 			
-			/* Add "Every Ten Minutes" for cache updates */
-			$schedules['tenminutely'] = array(
-				'interval' => 600,
-				'display' => __('Every Ten Minutes')
+			$schedules['threehourly'] = array(
+				'interval' => 10800,
+				'display' => __('Every Three Hours')
 			);
 			return $schedules;
 			
@@ -193,7 +103,7 @@ if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
 		 *
 		 * This will be executed as scheduled cron event
 		 */
-		public function checkForUpdate(){
+		public function checkForUpdates(){
 			
 			$query = array(
 				'slug' => self::SLUG,
@@ -204,27 +114,21 @@ if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
 			$result = wp_remote_get($url);
 			
 			/* Check for unsuccessful http requests */
-			if( is_wp_error($result) or (wp_remote_retrieve_response_code($result) != 200) ){
-				
-				$updateinfo = array(
+			if(is_wp_error($result) or (wp_remote_retrieve_response_code($result) != 200)){
+				$info = array(
 					'update' => false
 				);
-
-			} else{
-
-				/* Check for incorrect data */
-				$updateinfo = unserialize(wp_remote_retrieve_body($result));
-				if( !is_array($updateinfo) or isset($updateinfo['error']) or !isset($updateinfo['update'])){
-					
-					$updateinfo = array(
-						'update' => false
-					);
-
-				}
-
 			}
 							
-			update_option(self::SLUG . '_updateinfo', $info);
+			/* Check for incorrect data */
+			$info = unserialize(wp_remote_retrieve_body($result));
+			if(!is_array($info) or isset($info['error']) or !isset($info['update'])){
+				$info = array(
+					'update' => false
+				);
+			}
+			
+			update_option(self::SLUG . '_update', $info);
 			
 		}
 		
@@ -236,13 +140,12 @@ if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
 		public function activatePlugin(){
 			
 			/* Add options */
-			add_option(self::SLUG . '_updateinfo', array());
-			add_option(self::SLUG . '_options', array());
-			add_option(self::SLUG . '_cache', array());
+			add_option(self::SLUG . '_update', null);
+			add_option(self::SLUG . '_options', null);
 			
 			/* Register cron events */
-			wp_schedule_event(time(), 'tenminutely', self::SLUG . '_update_cache');
-			wp_schedule_event(time(), 'daily', self::SLUG . '_check_for_update');
+			wp_schedule_event(time(), 'threehourly', self::SLUG . '_fetch');
+			wp_schedule_event(time(), 'daily', self::SLUG . '_update');
 			
 		}
 		
@@ -254,13 +157,12 @@ if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
 		public function deactivatePlugin(){
 			
 			/* Delete options */
-			delete_option(self::SLUG . '_updateinfo');
-			delete_option(self::SLUG . '_cache');
+			delete_option(self::SLUG . '_update');
 			//delete_option(self::SLUG . '_options');
 			
 			/* Deregister cron events */
-			wp_clear_scheduled_hook(self::SLUG . '_update_cache');
-			wp_clear_scheduled_hook(self::SLUG . '_check_for_update');
+			wp_clear_scheduled_hook(self::SLUG . '_fetch');
+			wp_clear_scheduled_hook(self::SLUG . '_update');
 			
 		}
 		
@@ -296,15 +198,6 @@ if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
 			register_widget('SocialBoxWidget');
 			
 		}
-
-		public function addPluginActionLink($actionLinks){
-
-			$html = '<a href="options-general.php?page=' . self::SLUG . '&tab=settings" title="' . __('SocialBox Settings', self::SLUG) . '">' . __('Settings', self::SLUG) . '</a>';
-    		
-    		array_unshift($actionLinks, $html);
-			return $actionLinks;
-
-		}
 		
 		/**
 		 * Register the widgets admin stylesheet
@@ -314,15 +207,15 @@ if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
 		public function registerAdminStyle(){
 			
 			/* register Style */
-			wp_register_style(self::SLUG . '-widgets-page', plugins_url('css/widgets-page.css', __FILE__), array(), self::VERSION, 'screen');
+			wp_register_style(self::SLUG . '-admin', plugins_url('css/socialbox-admin.css', __FILE__), array(), self::VERSION, 'screen');
 						
 			/* Enqueue Style */
-			wp_enqueue_style(self::SLUG . '-widgets-page');
+			wp_enqueue_style(self::SLUG . '-admin');
 			
 		}
 		
 		/**
-		 * Register & enqueue the widgets stylesheet
+		 * Register the widgets stylesheet
 		 *
 		 * Will be run in "wp_print_styles" action and only on frontend pages and if widget is actually used
 		 */
@@ -335,322 +228,416 @@ if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
 			wp_enqueue_style(self::SLUG);
 			
 		}
-
-		/**
-		 * Add the options page
-		 *
-		 * Will be run in "admin_menu" action
-		 */
-		public function addOptionsPage(){
-
-			$this->settingsPageSlug = add_options_page(
-				__('SocialBox', self::SLUG),
-				__('SocialBox', self::SLUG),
-				'manage_options',
-				self::SLUG,
-				array($this, 'renderOptionsPage')
-			);
-
-		}
-
-		/**
-		 * Register all setting sections and fields
-		 */
-		public function registerSettings(){
-
-			/* Register setting */
-			register_setting(
-				self::SLUG . '_options',
-				self::SLUG . '_options',
-				null
-			);
-
-			/* Register settings section for "Advanced Settings" */
-			add_settings_section(
-				self::SLUG . '_advanced',
-				__('Advanced Settings', self::SLUG),
-				array($this, 'printAdvancedSettingsSection'),
-				self::SLUG
-			);
-
-			add_settings_field(
-				'update_interval',
-				__('Update Interval', self::SLUG),
-				array($this, 'printUpdateIntervalSettingsField'),
-				self::SLUG,
-				self::SLUG . '_advanced',
-				array('label_for' => self::SLUG . '_update_interval')
-			);
-
-			add_settings_field(
-				'disable_ssl',
-				__('SSL-Verification', self::SLUG),
-				array($this, 'printDisableSslSettingsField'),
-				self::SLUG,
-				self::SLUG . '_advanced',
-				array('label_for' => self::SLUG . '_disable_ssl')
-			);
-
-			/* Register settings section for "Debugging Settings" */
-			add_settings_section(
-				self::SLUG . '_debugging',
-				__('Debugging', self::SLUG),
-				array($this, 'printDebuggingSettingsSection'),
-				self::SLUG
-			);
-
-			add_settings_field(
-				'enable_log',
-				__('API Log', self::SLUG),
-				array($this, 'printEnableLogSettingsField'),
-				self::SLUG,
-				self::SLUG . '_debugging',
-				array('label_for' => self::SLUG . '_enable_log')
-			);
-
-			add_settings_field(
-				'log_entries',
-				__('API Log Entries', self::SLUG),
-				array($this, 'printLogEntriesSettingsField'),
-				self::SLUG,
-				self::SLUG . '_debugging',
-				array('label_for' => self::SLUG . '_log_entries')
-			);
-
-		}
-
-		public function printAdvancedSettingsSection(){
-
-			echo '<p>' . __('Some advanced options to tweak SocialBox\'s internals', self::SLUG) . '</p>';
-
-		}
-
-		public function printUpdateIntervalSettingsField($args){
-
-			$html = '<input type="text" id="' . $args['label_for'] . '" name="' . self::SLUG . '_options[update_interval]" value="' . $this->getOption('update_interval') . '" />';
-			$html .= '<p class="description">' . __('The time (in minutes) that SocialBox waits before refreshing it\'s data. (Default: 180 = 3 hours)', self::SLUG) . '</p>';
-
-			echo $html;
-
-		}
-
-		public function printDisableSslSettingsField($args){
-
-		    $html = '<input type="checkbox" id="' . $args['label_for'] . '" name="' . self::SLUG . '_options[disable_ssl]" value="1" ' . checked(1, $this->getOption('disable_ssl'), false) . '/>';    
-		    $html .= ' <label for="' . $args['label_for'] . '">' . __('Disable SSL-Verification on API requests.', self::SLUG) . '</label>';
-		    $html .= '<p class="description">' . __('This can be useful on most "local servers" like MAMP or XAMPP.', self::SLUG) . '</p>';
-		  
-		    echo $html;
-
-		}
-
-		public function printDebuggingSettingsSection(){
-
-			echo '<p>' . __('Debugging should help you when SocialBox doesn\'t work as expected.', self::SLUG) . '</p>';
-
-		}
-
-		public function printEnableLogSettingsField($args){
-
-		    $html = '<input type="checkbox" id="' . $args['label_for'] . '" name="' . self::SLUG . '_options[enable_log]" value="1" ' . checked(1, $this->getOption('enable_log'), false) . '/>';    
-		    $html .= ' <label for="' . $args['label_for'] . '">' . __('Enable the API log', self::SLUG) . '</label>';
-		    $html .= '<p class="description">' . __('This should help you, if you\'re receiving no data for your networks', self::SLUG) . '</p>';
-		  
-		    echo $html;
-
-		}
-
-		public function printLogEntriesSettingsField($args){
-
-			$html = '<input type="text" id="' . $args['label_for'] . '" name="' . self::SLUG . '_options[log_entries]" value="' . $this->getOption('log_entries') . '" />';
-			$html .= '<p class="description">' . __('Number of log entries to keep', self::SLUG) . '</p>';
-
-			echo $html;
-
-		}
-
-		/**
-		 * Register & enqueue styles for the options page
-		 *
-		 * Will be run in "admin_print_styles-settings_page_socialbox" action
-		 */
-		public function addOptionsPageStyle(){
-			
-			wp_register_style(self::SLUG . '-options', plugins_url('css/options-page.css', __FILE__), array(), self::VERSION, 'screen');
-			wp_enqueue_style(self::SLUG . '-options');
-
-		}
-
-		/**
-		 * Render the options page
-		 *
-		 * This will make sure, that at least the default tab is active
-		 */
-		public function renderOptionsPage(){
-			
-			$tab = (isset($_GET['tab']) and !empty($_GET['tab'])) ? $_GET['tab'] : 'settings';
-			include SOCIALBOX_PATH . '/views/options-page.frame.php';
-
-		}
 		
 		/**
-		 * Refresh the cache
+		 * Refresh the social data for each SocialBox widget
 		 *
-		 * This will be executed as scheduled cron event or when updating a widgets settings
+		 * This will be executed as scheduled cron event
 		 */
-		public static function updateCache(){
+		public function refreshAll(){
 			
 			/* Abort if no widget has been set up */
-			$cache = get_option(self::SLUG . '_cache', null);
-			if( !is_array($cache) ){
+			$opts = get_option(self::SLUG . '_options', null);
+			if(!is_array($opts)){
 				return;
 			}
-
-			/* Get refresh interval */
-			$updateInterval = self::getOption('update_interval');
 			
-			/* Call update function for each cache element that needs to be updated */
-			foreach($cache as $elem){
+			/* Call static refresh function for each widget */
+			foreach($opts as $widgetId => $widget){
+				SocialBox::refresh($widgetId);
+			}
+			
+		}
 
-				/* Calculate cache element age (in minutes) */
-				$elemAge = (time() - $elem['lastUpdated']) / 60;
+		/**
+		 * Refresh data for given Widget
+		 *
+		 * Will be called after updating a Widgets settings or by "SocialBox::doFetch()"
+		 */
+		public static function refresh($widgetId){
+			
+			/* Get options if available or cancel*/
+			$opts = get_option(SocialBox::SLUG . '_options', null);
+			if(is_array($opts) and isset($opts[$widgetId])){
+				
+				$widget = $opts[$widgetId];
+				
+			} else{
+				
+				return;
+				
+			}
 
-				/* Calculate max cache elem age */
-				$maxElemAge = $updateInterval - mt_rand(0, round($updateInterval / 5));
-
-				if( $elemAge >= $maxElemAge ){
-
-					self::updateCacheElement($elem);
+			/* Loop through supported networks and update data */
+			foreach(self::getSupportedNetworks() as $network){
+				
+				if(isset($widget[$network . '_id']) and !empty($widget[$network . '_id'])){
+					
+					$newCount = SocialBoxConnector::getData($network, $widget[$network . '_id']);
+					$widget[$network . '_count'] = ((is_numeric($newCount)) ? $newCount : $widget[$network . '_default']);
 
 				}
 
 			}
-			
-		}
 
-		/**
-		 * Update given cache element
-		 *
-		 * Will be called by "SocialBox::updateCache()"
-		 */
-		public static function updateCacheElement($elem){
-
-			/* Check if we have to disable SSL verification */
-			$disableSslVerify = ( self::getOption('disable_ssl') == 1 );
-
-			/* Fetch new value */
-			$result = SocialBoxConnector::getData($elem['network'], $elem['id'], $disableSslVerify);
-
-			/* Check if http request was successful */
-			if( $result['success'] ){
-				
-				$newValue = $result['value'];
-
-			} else{
-
-				$newValue = false;
-				$errorCode = isset($result['errorCode'])? $result['errorCode'] : '---';
-				SocialBox::addLogEntry($elem['network'], $elem['id'], $errorCode, $result['errorMessage']);
-
+			/* FIX: Feedburner sometimes returns 0 instead of actual value. Let's compensate that! */
+			if(isset($widget['feedburner_id']) and !empty($widget['feedburner_id']) and( $widget['feedburner_count'] == 0) and ($widget['feedburner_default'] != 0)){
+				$widget['feedburner_count']	= $widget['feedburner_default'];
 			}
-
-			/* Check new value and set the default, if necessary */
-			$elem['value'] = ((is_numeric($newValue)) ? $newValue : $elem['default']);
-
-			/* FIX: Feedburner sometimes returns 0 instead of actual value. Let's compensate for that! */
-			if( ($elem['network'] == 'feedburner') and ($newValue == 0) ){
-
-				$elem['value'] = $elem['default'];
-
-			}
-
-			$elem['lastUpdated'] = time();
 			
-			/* Save updated cache element */
-			$cache = get_option(SocialBox::SLUG . '_cache', array());
-			$cache[$elem['network'] . '||' . $elem['id']] = $elem;
-			update_option(SocialBox::SLUG . '_cache', $cache);
+			/* Save new data */
+			$opts[$widgetId] = $widget;
+			update_option(SocialBox::SLUG . '_options', $opts);
 			
 		}
 		
-		/**
-		 * Return an array of all supported networks
-		 *
-		 * @return Array
-		 */
 		public static function getSupportedNetworks(){
 			return explode(',', self::SUPPORTED_NETWORKS);
 		}
-
+		
+	}
+	
+	class SocialBoxWidget extends WP_Widget{
+		
 		/**
-		 * Add an entry to the API Log
-		 *
-		 * @param String $network The slug of the related network
-		 * @param String $id The username/id for the related network
-		 * @param String $status A status flag
-		 * @param String $msg The actual error message
+		 * The Widgets slug
 		 */
-		public static function addLogEntry($network, $id, $status, $msg){
-			
-			/* Proceed when the log is enabled only */
-			if( SocialBox::getOption('enable_log') === '1' ){
-
-				/* Get existing log entries */
-				$log = get_option(self::SLUG . '_log', array());
-
-				/* Check size of log */
-				if( count($log) >= SocialBox::getOption('log_entries') ){
-					
-					array_shift($log);
-
-				}
-
-				$log[] = array(
-					'timestamp' => time(),
-					'network'   => $network,
-					'id'        => $id,
-					'status'    => $status,
-					'message'   => $msg
-				);
-
-				update_option(self::SLUG . '_log', $log);
-
-			}			
-
-		}
-
+		const SLUG = 'socialbox';
+		
 		/**
-		 * Get an array with all entries from the API log
+		 * Create a widget instance and set the base infos
+		 */
+		public function __construct(){
+			
+			/* Widget settings */
+			$widgetOpts = array(
+				'classname' => self::SLUG,
+				'description' => __('Displays the numbers of Twitter Followers, Facebook Fans and Youtube Channel and Feedburner Feed Subscribers', self::SLUG)
+			);
+			
+			/* Widget control settings */
+			$controlOpts = array(
+				'id_base' => self::SLUG,
+				'width' => 280
+			);
+			
+			/* Create the widget */
+			parent::__construct(self::SLUG, 'SocialBox', $widgetOpts, $controlOpts);
+			
+		}
+		
+		/**
+		 * Display the actual Widget
 		 *
+		 * @param Array $args
+		 * @param Array $instance
+		 */
+		public function widget($args, $instance){
+			
+			extract($args);
+			
+			/* Get data of main plugin option */
+			$opts = get_option(self::SLUG . '_options', null);
+			
+			/* Build up network data array */
+			$networks = array();
+			foreach(SocialBox::getSupportedNetworks() as $network){
+				
+				if(isset($instance[$network . '_id']) and !empty($instance[$network . '_id'])){
+					$networks[] = array(
+						'type' 			=> $network,
+						'id' 			=> $instance[$network . '_id'],
+						'position' 		=> $instance[$network . '_position'],
+						'count' 		=> (isset($opts[$this->id][$network . '_count']) ? $opts[$this->id][$network . '_count'] : 0),
+						'link' 			=> $this->getNetworkLink($network, $instance[$network . '_id']),
+						'name' 			=> $this->getNetworkName($network),
+						'metric' 		=> $this->getNetworkMetric($network),
+						'buttonText' 	=> $this->getNetworkButtonText($network),
+						'buttonHint' 	=> $this->getNetworkButtonHint($network)
+					);
+				}
+				
+			}
+			usort($networks, array($this, 'sortByPosition'));
+			
+			/* Get additional options */
+			$newWindow = $instance['new_window'];
+			$showButtons = $instance['show_buttons'];
+			
+			//print_r($networks);
+			
+			/* Before Widget HTML */
+			echo $before_widget;
+				
+			/* Social Box */
+			include 'includes/widget.php';
+			
+			/* After Widget HTML */
+			echo $after_widget;
+			
+			
+		}
+		
+		/**
+		 * Update Widget settings and refresh data for this Widget
+		 *
+		 * @param Array $newInstance
+		 * @param Array $oldInstance
 		 * @return Array
 		 */
-		public static function getLog(){
+		public function update($newInstance, $oldInstance){
 			
-			/* If log is enabled, return its content */
-			if( self::getOption('enable_log') === '1' ){
-
-				return get_option(self::SLUG . '_log', array());
-
+			/* Update widget settings */
+			$instance = $oldInstance;
+			$instance['new_window'] = $newInstance['new_window'];
+			$instance['show_buttons'] = $newInstance['show_buttons'];
+			$instance['facebook_id'] = trim(strip_tags($newInstance['facebook_id']));
+			$instance['facebook_default'] = ((is_numeric($newInstance['facebook_default'])) ? trim($newInstance['facebook_default']) : 0);
+			$instance['facebook_position'] = ((is_numeric($newInstance['facebook_position'])) ? trim($newInstance['facebook_position']) : 1);
+			$instance['twitter_id'] = trim(strip_tags($newInstance['twitter_id']));
+			$instance['twitter_default'] = ((is_numeric($newInstance['twitter_default'])) ? trim($newInstance['twitter_default']) : 0);
+			$instance['twitter_position'] = ((is_numeric($newInstance['twitter_position'])) ? trim($newInstance['twitter_position']) : 1);
+			$instance['youtube_id'] = trim(strip_tags($newInstance['youtube_id']));
+			$instance['youtube_default'] = ((is_numeric($newInstance['youtube_default'])) ? trim($newInstance['youtube_default']) : 0);
+			$instance['youtube_position'] = ((is_numeric($newInstance['youtube_position'])) ? trim($newInstance['youtube_position']) : 1);
+			$instance['vimeo_id'] = trim(strip_tags($newInstance['vimeo_id']));
+			$instance['vimeo_default'] = ((is_numeric($newInstance['vimeo_default'])) ? trim($newInstance['vimeo_default']) : 0);
+			$instance['vimeo_position'] = ((is_numeric($newInstance['vimeo_position'])) ? trim($newInstance['vimeo_position']) : 1);
+			$instance['feedburner_id'] = trim(strip_tags($newInstance['feedburner_id']));
+			$instance['feedburner_default'] = ((is_numeric($newInstance['feedburner_default'])) ? trim($newInstance['feedburner_default']) : 0);
+			$instance['feedburner_position'] = ((is_numeric($newInstance['feedburner_position'])) ? trim($newInstance['feedburner_position']) : 1);
+			$instance['dribbble_id'] = trim(strip_tags($newInstance['dribbble_id']));
+			$instance['dribbble_default'] = ((is_numeric($newInstance['dribbble_default'])) ? trim($newInstance['dribbble_default']) : 0);
+			$instance['dribbble_position'] = ((is_numeric($newInstance['dribbble_position'])) ? trim($newInstance['dribbble_position']) : 1);
+			$instance['forrst_id'] = trim(strip_tags($newInstance['forrst_id']));
+			$instance['forrst_default'] = ((is_numeric($newInstance['forrst_default'])) ? trim($newInstance['forrst_default']) : 0);
+			$instance['forrst_position'] = ((is_numeric($newInstance['forrst_position'])) ? trim($newInstance['forrst_position']) : 1);
+			$instance['digg_id'] = trim(strip_tags($newInstance['digg_id']));
+			$instance['digg_default'] = ((is_numeric($newInstance['digg_default'])) ? trim($newInstance['digg_default']) : 0);
+			$instance['digg_position'] = ((is_numeric($newInstance['digg_position'])) ? trim($newInstance['digg_position']) : 1);
+			
+			/* Save changes to global plugin options */
+			$opts = get_option(self::SLUG . '_options', null);
+			if(!is_array($opts)){
+				$opts = array();
 			}
+			$opts[$this->id] = array(
+				'facebook_id' => $instance['facebook_id'],
+				'facebook_default' => $instance['facebook_default'],
+				'twitter_id' => $instance['twitter_id'],
+				'twitter_default' => $instance['twitter_default'],
+				'youtube_id' => $instance['youtube_id'],
+				'youtube_default' => $instance['youtube_default'],
+				'vimeo_id' => $instance['vimeo_id'],
+				'vimeo_default' => $instance['vimeo_default'],
+				'feedburner_id' => $instance['feedburner_id'],
+				'feedburner_default' => $instance['feedburner_default'],
+				'dribbble_id' => $instance['dribbble_id'],
+				'dribbble_default' => $instance['dribbble_default'],
+				'forrst_id' => $instance['forrst_id'],
+				'forrst_default' => $instance['forrst_default'],
+				'digg_id' => $instance['digg_id'],
+				'digg_default' => $instance['digg_default']
+			);
+			update_option(self::SLUG . '_options', $opts);
+			
+			/* Force data refresh */
+			SocialBox::refresh($this->id);
+			
+			return $instance;
+			
+		}
+		
+		/**
+		 * Show the Widgets settings form
+		 *
+		 * @param Array $instance
+		 */
+		public function form($instance){
+			
+			/* Apply default values */
+			$defaults = array(
+				'facebook_id' => 			'',
+				'facebook_default' => 		0,
+				'facebook_position' =>		1,
+				'twitter_id' => 			'',
+				'twitter_default' => 		0,
+				'twitter_position' =>		2,
+				'youtube_id' => 			'',
+				'youtube_default' => 		0,
+				'youtube_position' =>		3,
+				'vimeo_id' => 				'',
+				'vimeo_default' => 			0,
+				'vimeo_position' =>			4,
+				'feedburner_id' => 			'',
+				'feedburner_default' => 	0,
+				'feedburner_position' =>	5,
+				'dribbble_id' => 			'',
+				'dribbble_default' => 		0,
+				'dribbble_position' =>		6,
+				'forrst_id' => 				'',
+				'forrst_default' => 		0,
+				'forrst_position' =>		7,
+				'digg_id' => 				'',
+				'digg_default' => 			0,
+				'digg_position' =>			8,
+				'new_window' => 			false,
+				'show_buttons' => 			true
+			);
+			$instance = wp_parse_args((array) $instance, $defaults);
+			
+			/* Show Widget Options */
+			include 'includes/form.php';
+			
+		}
+		
+		private function sortByPosition($a, $b){
+		
+			return $a['position'] - $b['position'];
+		
+		}
+		
+		/**
+		 * Helper - Returns a link to the network specific user account
+		 *
+		 * @param String $network
+		 * @param String $id
+		 * @return String
+		 */
+		private function getNetworkLink($network, $id){
+			
+			switch($network){
+				
+				case 'facebook':
+					return "http://www.facebook.com/" . ((is_numeric($id)) ? "profile.php?id={$id}" : $id);
+				case 'twitter':
+					return "http://twitter.com/{$id}";
+				case 'youtube':
+					return "http://www.youtube.com/user/{$id}";
+				case 'vimeo':
+					return "http://vimeo.com/channels/{$id}";
+				case 'feedburner':
+					return "http://feeds.feedburner.com/{$id}";
+				case 'dribbble':
+					return "http://dribbble.com/{$id}";
+				case 'forrst':
+					return "http://forrst.com/people/{$id}";
+				case 'digg':
+					return "http://digg.com/{$id}";			
+			}
+			
+		}
 
-			return false;			
+		private function getNetworkName($network){
+			
+			switch($network){
+				
+				case 'facebook':
+					return __('Facebook', self::SLUG);
+				case 'twitter':
+					return __('Twitter', self::SLUG);
+				case 'youtube':
+					return __('YouTube', self::SLUG);
+				case 'vimeo':
+					return __('Vimeo', self::SLUG);
+				case 'feedburner':
+					return __('Feedburner', self::SLUG);
+				case 'dribbble':
+					return __('Dribbble', self::SLUG);
+				case 'forrst':
+					return __('Forrst', self::SLUG);
+				case 'digg':
+					return __('Digg', self::SLUG);		
+			}
 
 		}
 
+		private function getNetworkMetric($network){
+			
+			switch($network){
+				
+				case 'facebook':
+					return __('Fans', self::SLUG);
+				case 'twitter':
+					return __('Followers', self::SLUG);
+				case 'youtube':
+					return __('Subscribers', self::SLUG);
+				case 'vimeo':
+					return __('Subscribers', self::SLUG);
+				case 'feedburner':
+					return __('Subscribers', self::SLUG);
+				case 'dribbble':
+					return __('Followers', self::SLUG);
+				case 'forrst':
+					return __('Followers', self::SLUG);
+				case 'digg':
+					return __('Followers', self::SLUG);		
+			}
+			
+		}
+		
+		private function getNetworkButtonText($network){
+			
+			switch($network){
+				
+				case 'facebook':
+					return __('Like', self::SLUG);
+				case 'twitter':
+					return __('Follow', self::SLUG);
+				case 'youtube':
+					return __('Subscribe', self::SLUG);
+				case 'vimeo':
+					return __('Subscribe', self::SLUG);
+				case 'feedburner':
+					return __('Subscribe', self::SLUG);
+				case 'dribbble':
+					return __('Follow', self::SLUG);
+				case 'forrst':
+					return __('Follow', self::SLUG);
+				case 'digg':
+					return __('Follow', self::SLUG);		
+			}
+			
+		}
+
+		private function getNetworkButtonHint($network){
+			
+			switch($network){
+				
+				case 'facebook':
+					return __('Like on Facebook', self::SLUG);
+				case 'twitter':
+					return __('Follow on Twitter', self::SLUG);
+				case 'youtube':
+					return __('Subscribe to Youtube Channel', self::SLUG);
+				case 'vimeo':
+					return __('Subscribe to Vimeo Channel', self::SLUG);
+				case 'feedburner':
+					return __('Subscribe to Feed', self::SLUG);
+				case 'dribbble':
+					return __('Follow on Dribbble', self::SLUG);
+				case 'forrst':
+					return __('Follow on Forrst', self::SLUG);
+				case 'digg':
+					return __('Follow on Digg', self::SLUG);		
+			}
+			
+		}
+		
 		/**
-		 * Get absolute URL for $path
+		 * Helper - Get absolute URL for $path
 		 *
 		 * @param String $path
 		 * @return String
 		 */
 		private function getUrl($path){
 			
-			return SOCIALBOX_URL . '/' . $path;
+			return plugins_url($path, __FILE__);
 			
 		}
 		
 		/**
-		 * Echo absolute URL for $path
+		 * Helper - Echo absolute URL for $path
 		 *
 		 * @param String $path
 		 */
@@ -666,7 +653,5 @@ if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
 
 /* Create instance of SocialBox*/
 if(class_exists('SocialBox')){
-
 	$SocialBox = new SocialBox();
-
 }
