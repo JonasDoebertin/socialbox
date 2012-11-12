@@ -2,7 +2,7 @@
 /*
 Plugin Name: 	SocialBox
 Plugin URI: 	http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
-Description: 	Adds a super easy Social Box Widget which displays the current numbers of Facebook Page Likes, Google+, Twitter, Dribbble, Forrst and Digg Followers and YouTube and Vimeo Channel and Feedburner Feed Subscriptions.
+Description: 	Adds a super easy Social Box Widget which displays the current numbers of Facebook Page Likes, Google+, Twitter, Dribbble, Forrst and Digg Followers and YouTube and Vimeo Channel Subscriptions.
 Version: 		1.3.0
 Author: 		JonasDoebertin
 Author URI: 	http://codecanyon.net/user/JonasDoebertin
@@ -40,7 +40,7 @@ if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
 		/**
 		 * Complete list of supported networks
 		 */
-		const SUPPORTED_NETWORKS = 'facebook,twitter,youtube,vimeo,feedburner,dribbble,forrst,digg,github';
+		const SUPPORTED_NETWORKS = 'facebook,twitter,youtube,vimeo,dribbble,forrst,digg,github';
 
 		/**
 		 * This will be appended to the API call urls to identify SocialBoxes http requests
@@ -556,13 +556,6 @@ if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
 
 			/* Check new value and set the default, if necessary */
 			$elem['value'] = ((is_numeric($newValue)) ? $newValue : $elem['default']);
-
-			/* FIX: Feedburner sometimes returns 0 instead of actual value. Let's compensate for that! */
-			if( ($elem['network'] == 'feedburner') and ($newValue == 0) ){
-
-				$elem['value'] = $elem['default'];
-
-			}
 
 			$elem['lastUpdated'] = time();
 			

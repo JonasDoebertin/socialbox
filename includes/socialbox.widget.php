@@ -15,7 +15,7 @@ class SocialBoxWidget extends WP_Widget{
 		/* Widget settings */
 		$widgetOpts = array(
 			'classname' => self::SLUG,
-			'description' => __('Adds a super easy SocialBox Widget which displays the current numbers of Facebook Page Likes, Google+, Twitter, Dribbble, Forrst and Digg Followers and YouTube and Vimeo Channel and Feedburner Feed Subscriptions.', self::SLUG)
+			'description' => __('Adds a super easy SocialBox Widget which displays the current numbers of Facebook Page Likes, Google+, Twitter, Dribbble, Forrst and Digg Followers and YouTube and Vimeo Channel Subscriptions.', self::SLUG)
 		);
 		
 		/* Widget control settings */
@@ -206,8 +206,6 @@ class SocialBoxWidget extends WP_Widget{
 				return "http://www.youtube.com/user/{$id}";
 			case 'vimeo':
 				return "http://vimeo.com/channels/{$id}";
-			case 'feedburner':
-				return "http://feedproxy.google.com/{$id}";
 			case 'dribbble':
 				return "http://dribbble.com/{$id}";
 			case 'forrst':
@@ -234,8 +232,6 @@ class SocialBoxWidget extends WP_Widget{
 				return __('YouTube', self::SLUG);
 			case 'vimeo':
 				return __('Vimeo', self::SLUG);
-			case 'feedburner':
-				return __('Feedburner', self::SLUG);
 			case 'dribbble':
 				return __('Dribbble', self::SLUG);
 			case 'forrst':
@@ -261,8 +257,6 @@ class SocialBoxWidget extends WP_Widget{
 			case 'youtube':
 				return __('Subscribers', self::SLUG);
 			case 'vimeo':
-				return __('Subscribers', self::SLUG);
-			case 'feedburner':
 				return __('Subscribers', self::SLUG);
 			case 'dribbble':
 				return __('Followers', self::SLUG);
@@ -290,8 +284,6 @@ class SocialBoxWidget extends WP_Widget{
 				return __('Subscribe', self::SLUG);
 			case 'vimeo':
 				return __('Subscribe', self::SLUG);
-			case 'feedburner':
-				return __('Subscribe', self::SLUG);
 			case 'dribbble':
 				return __('Follow', self::SLUG);
 			case 'forrst':
@@ -318,8 +310,6 @@ class SocialBoxWidget extends WP_Widget{
 				return __('Subscribe to Youtube Channel', self::SLUG);
 			case 'vimeo':
 				return __('Subscribe to Vimeo Channel', self::SLUG);
-			case 'feedburner':
-				return __('Subscribe to Feed', self::SLUG);
 			case 'dribbble':
 				return __('Follow on Dribbble', self::SLUG);
 			case 'forrst':

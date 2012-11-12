@@ -6,14 +6,14 @@
 		<img src="http://envato.jonasdoebertin.net/buttons/feed.png"/>
 	</a>
 </p>
-With SocialBox you get an absolutely easy to use WordPress Plugin which enables you to add a sleek social widget to your WordPress site or blog. It supports several social networks and displays the current numbers of Facebook Page Likes, Twitter, Dribbble, Forrst and Digg Followers and YouTube and Vimeo Channel and Feedburner Feed Subscriptions. You can enter default values which will be shown as a fallback if the related API is not reachable.
+With SocialBox you get an absolutely easy to use WordPress Plugin which enables you to add a sleek social widget to your WordPress site or blog. It supports several social networks and displays the current numbers of Facebook Page Likes, Twitter, Dribbble, Forrst and Digg Followers and YouTube and Vimeo Channel Subscriptions. You can enter default values which will be shown as a fallback if the related API is not reachable.
 <h4>Features</h4>
 <ul>
 	<li>Displays the number of:
 		<ul>
 			<li>Facebook Page Likes</li>
 			<li>Twitter, Dribbble, Forrst, Digg and GitHub Followers</li>
-			<li>YouTube and Vimeo Channel and Feedburner Feed Subscribers</li>
+			<li>YouTube and Vimeo Channel Subscribers</li>
 		</ul>
 	</li>
 	<li>Rearrange and disable any of these networks to perfectly fit your needs</li>
@@ -49,8 +49,8 @@ With SocialBox you get an absolutely easy to use WordPress Plugin which enables 
 	<li>Added an option to use compact numbers (8.4K, 23M, ...)</li>
 	<li>Added an option to set a forced widget & button width</li>
 	<li>Added an options page including a help section and an API error log</li>
+	<li>Removed support for Feedburner (Google abandoned Feedburner, please don't ask ME why)</li>
 	<li>Improved caching functionality</li>
-	<li>Fixed a bug that could lead to wrong Feedburner URLs</li>
 	<li>Fixed a bug that could lead to "Invalid Header" messages in certain (rare) cases</li>
 	<li>Fixed a bug that could lead to too long cron run times and unsuccesfull refreshes</li>
 	<li>Major plugin code changes and improvements </li>

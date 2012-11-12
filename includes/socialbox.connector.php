@@ -35,11 +35,6 @@ if(!class_exists('SocialBoxConnector')){
 		const VIMEO_API_BASE = "http://vimeo.com/api/v2/channel/%s/info.json";
 		
 		/**
-		 * Feedburner API Base URL
-		 */
-		const FEEDBURNER_API_BASE = "http://feedburner.google.com/api/awareness/1.0/GetFeedData?uri=";
-		
-		/**
 		 * Dribbble API Base URL
 		 */
 		const DRIBBBLE_API_BASE = "http://api.dribbble.com/players/";
@@ -80,8 +75,6 @@ if(!class_exists('SocialBoxConnector')){
 					return self::getYoutubeData($id, $urlIdentifier);
 				case 'vimeo':
 					return self::getVimeoData($id, $urlIdentifier);
-				case 'feedburner':
-					return self::getFeedburnerData($id, $urlIdentifier);
 				case 'dribbble':
 					return self::getDribbbleData($id, $urlIdentifier);
 				case 'forrst':
@@ -323,50 +316,6 @@ if(!class_exists('SocialBoxConnector')){
 			return array(
 					'success' => true,
 					'value'   => $data['total_subscribers']
-				);
-			
-		}
-		
-		/**
-		 * Get Feedburner subscriptions for given feed
-		 *
-		 * Will be called by "SocialBox::refresh()"
-		 */
-		public static function getFeedburnerData($feedburnerId, $urlIdentifier){
-			
-			/* Fetch data */
-			$result = wp_remote_get(self::FEEDBURNER_API_BASE . $feedburnerId . $urlIdentifier);
-			
-			/* Check for WordPress errors */
-			if(is_wp_error($result)){
-				return array(
-						'success'      => false,
-						'errorMessage' => $result->get_error_message()
-					);
-			}
-
-			/* Check for unsuccessful http requests */
-			if(wp_remote_retrieve_response_code($result) != 200){
-				return array(
-						'success'      => false,
-						'errorMessage' => wp_remote_retrieve_response_message($result),
-						'errorCode'    => wp_remote_retrieve_response_code($result)
-					);
-			}
-			
-			/* Check for incorrect data */
-			$data = simplexml_load_string(wp_remote_retrieve_body($result));
-			if(!$data or isset($data->err) or !isset($data->feed->entry['circulation'])){
-				return array(
-						'success'      => false,
-						'errorMessage' => 'Got an unexpected result from the Feedburner Awareness API. Make sure to double check the feeds name!'
-					);
-			}
-			
-			/* Return subscribers count */
-			return array(
-					'success' => true,
-					'value'   => (int) $data->feed->entry['circulation']
 				);
 			
 		}
