@@ -7,12 +7,12 @@ if(!class_exists('SocialBoxConnector')){
 		/**
 		 * Facebook API Base URL
 		 */
-		const FACEBOOK_API_BASE = "http://graph.facebook.com/";
+		const FACEBOOK_API_BASE = "https://graph.facebook.com/";
 		
 		/**
 		 * Twitter API Base URL
 		 */
-		const TWITTER_API_BASE = "http://api.twitter.com/1/users/show.json?skip_status=true&screen_name=";
+		const TWITTER_API_BASE = "https://api.twitter.com/1/users/show.json?skip_status=true&screen_name=";
 		
 		/**
 		 * YouTube API Base URL
