@@ -66,7 +66,7 @@ if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
 			add_filter('cron_schedules', array($this, 'addCronSchedule'));
 			
 			/* Register custom actions */
-			add_action(self::SLUG . '_update_cache', array($this, 'refreshAll'));
+			add_action(self::SLUG . '_update_cache', array($this, 'updateCache'));
 			add_action(self::SLUG . '_check_for_update', array($this, 'checkForUpdate'));
 			
 			/* Register (de)activation hook */
