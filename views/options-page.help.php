@@ -86,13 +86,6 @@
 			<img src="<?php $this->url('images/help/vimeo-id.jpg'); ?>" /><br/>
 		</dd>
 
-		<dt><?php echo __('Feedburner', self::SLUG) . ' ' . __('Feedname', self::SLUG); ?></dt>
-		<dd>
-			Please enter your Feeds "address name" (as seen in the URL).<br/>
-			<img src="<?php $this->url('images/help/feedburner-id.jpg'); ?>" /><br/>
-			<strong>Note:</strong> SocialBox will only display the subscriber number, if the Awareness API is enabled for that feed. You can enable it in your Feedburner Feed settings.
-		</dd>
-
 		<dt><?php echo __('Dribbble', self::SLUG) . ' ' . __('Username', self::SLUG); ?></dt>
 		<dd>
 			To display this number, please enter your Dribbble Username.<br/>

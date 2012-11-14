@@ -20,7 +20,7 @@
 			<ul>
 				<li><p>Facebook Page Likes</p></li>
 				<li><p>Google+, Twitter, Dribbble, Forrst and Digg Followers</p></li>
-				<li><p>YouTube and Vimeo Channel and Feedburner Feed Subscribers</p></li>
+				<li><p>YouTube and Vimeo Channel Subscribers</p></li>
 			</ul>
 		</li>
 		<li><p>A wide range of options to customize the Widgets appearance.</p></li>
@@ -48,8 +48,8 @@
 	<h4 class="socialbox-help-divider-top">Copyright</h4>
 	<p>
 		<strong>SocialBox - Social WordPress Widget</strong><br/>
-		Version 1.3.0 (01/XX/2012)<br/>
-		&copy; 2011 - 2012 by <a href="http://codecanyon.net/user/JonasDoebertin" title="JonasDoebertin on CodeCanyon">Jonas Döbertin</a>
+		Version 1.3.0 (11/15/2012)<br/>
+		&copy; 2011 - 2012 by <a href="http://codecanyon.net/user/JonasDoebertin?ref=JonasDoebertin" title="JonasDoebertin on CodeCanyon">Jonas Döbertin</a>
 	</p>
 
 </div>

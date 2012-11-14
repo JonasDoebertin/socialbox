@@ -181,31 +181,6 @@
 		
 	</fieldset>
 	
-	<!-- Feedburner -->
-	<fieldset class="widefat">
-		
-		<legend><?php _e('Feedburner', self::SLUG); ?></legend>
-		
-		<!-- ID -->
-		<div class="socialbox-id">
-			<label for="<?php echo $this->get_field_id('feedburner_id'); ?>" title="<?php _e('Your Feeds Feedburner name (e.g. nettuts or psdtuts)', self::SLUG); ?>"><?php _e('Feedname', self::SLUG); ?>:</label>
-			<input type="text" id="<?php echo $this->get_field_id('feedburner_id'); ?>" name="<?php echo $this->get_field_name('feedburner_id'); ?>" value="<?php echo $instance['feedburner_id']; ?>" class="widefat"  />
-		</div>
-		
-		<!-- Default -->
-		<div class="socialbox-default">
-			<label for="<?php echo $this->get_field_id('feedburner_default'); ?>" title="<?php _e('Your fallback subscriber count', self::SLUG); ?>"><?php _e('Default:', self::SLUG); ?></label>
-			<input type="text" id="<?php echo $this->get_field_id('feedburner_default'); ?>" name="<?php echo $this->get_field_name('feedburner_default'); ?>" value="<?php echo $instance['feedburner_default']; ?>" size="6" class="widefat" />
-		</div>
-		
-		<!-- Position -->
-		<div class="socialbox-position">
-			<label for="<?php echo $this->get_field_id('feedburner_position'); ?>" title="<?php _e('Display position within SocialBox', self::SLUG); ?>"><?php _e('Position:', self::SLUG); ?></label>
-			<input type="text" id="<?php echo $this->get_field_id('feedburner_position'); ?>" name="<?php echo $this->get_field_name('feedburner_position'); ?>" value="<?php echo $instance['feedburner_position']; ?>" size="2" class="widefat" />
-		</div>
-		
-	</fieldset>
-	
 	<!-- Dribbble -->
 	<fieldset class="widefat">
 		
