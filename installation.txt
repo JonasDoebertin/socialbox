@@ -18,4 +18,4 @@ To install SocialBox, simply follow these steps:
 		
 	(4)	After the installation has finished, click "Activate Plugin" to enable SocialBox.
 	
-	(5) That's it! Navigate to the admin page "Settings > SocialBox" to get more information on how to set up your social networks.
+	(5) That's it! Navigate to the admin page "Settings > SocialBox > Help" to get more information on how to set up your social networks.
