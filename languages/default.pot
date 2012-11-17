@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SocialBox\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-11-12 21:50+0100\n"
-"PO-Revision-Date: 2012-11-12 21:51+0100\n"
+"POT-Creation-Date: 2012-11-17 19:25+0100\n"
+"PO-Revision-Date: 2012-11-17 19:25+0100\n"
 "Last-Translator: Jonas Döbertin <jonas@doebertin.de>\n"
 "Language-Team: JonasDoebertin <support@jonasdoebertin.net>\n"
 "Language: en_US\n"
@@ -128,22 +128,22 @@ msgstr ""
 msgid "Vimeo"
 msgstr ""
 
-#: ../includes/socialbox.widget.php:236 ../views/options-page.help.php:96
-#: ../views/widget.form.php:212
+#: ../includes/socialbox.widget.php:236 ../views/options-page.help.php:89
+#: ../views/widget.form.php:187
 msgid "Dribbble"
 msgstr ""
 
-#: ../includes/socialbox.widget.php:238 ../views/options-page.help.php:102
-#: ../views/widget.form.php:237
+#: ../includes/socialbox.widget.php:238 ../views/options-page.help.php:95
+#: ../views/widget.form.php:212
 msgid "Forrst"
 msgstr ""
 
-#: ../includes/socialbox.widget.php:240 ../views/options-page.help.php:108
-#: ../views/widget.form.php:262
+#: ../includes/socialbox.widget.php:240 ../views/options-page.help.php:101
+#: ../views/widget.form.php:237
 msgid "Digg"
 msgstr ""
 
-#: ../includes/socialbox.widget.php:242 ../views/widget.form.php:287
+#: ../includes/socialbox.widget.php:242 ../views/widget.form.php:262
 msgid "GitHub"
 msgstr ""
 
@@ -219,11 +219,11 @@ msgstr ""
 msgid "Page ID/Name"
 msgstr ""
 
-#: ../views/options-page.help.php:64 ../views/options-page.help.php:96
-#: ../views/options-page.help.php:102 ../views/options-page.help.php:108
-#: ../views/widget.form.php:88 ../views/widget.form.php:216
-#: ../views/widget.form.php:241 ../views/widget.form.php:266
-#: ../views/widget.form.php:291
+#: ../views/options-page.help.php:64 ../views/options-page.help.php:89
+#: ../views/options-page.help.php:95 ../views/options-page.help.php:101
+#: ../views/widget.form.php:88 ../views/widget.form.php:191
+#: ../views/widget.form.php:216 ../views/widget.form.php:241
+#: ../views/widget.form.php:266
 msgid "Username"
 msgstr ""
 
@@ -242,14 +242,6 @@ msgstr ""
 #: ../views/options-page.help.php:77 ../views/options-page.help.php:83
 #: ../views/widget.form.php:141 ../views/widget.form.php:166
 msgid "Channel"
-msgstr ""
-
-#: ../views/options-page.help.php:89 ../views/widget.form.php:187
-msgid "Feedburner"
-msgstr ""
-
-#: ../views/options-page.help.php:89 ../views/widget.form.php:191
-msgid "Feedname"
 msgstr ""
 
 #: ../views/options-page.log.php:21 ../views/options-page.log.php:30
@@ -332,7 +324,6 @@ msgstr ""
 #: ../views/widget.form.php:147 ../views/widget.form.php:172
 #: ../views/widget.form.php:197 ../views/widget.form.php:222
 #: ../views/widget.form.php:247 ../views/widget.form.php:272
-#: ../views/widget.form.php:297
 msgid "Default:"
 msgstr ""
 
@@ -340,7 +331,6 @@ msgstr ""
 #: ../views/widget.form.php:153 ../views/widget.form.php:178
 #: ../views/widget.form.php:203 ../views/widget.form.php:228
 #: ../views/widget.form.php:253 ../views/widget.form.php:278
-#: ../views/widget.form.php:303
 msgid "Display position within SocialBox"
 msgstr ""
 
@@ -348,7 +338,6 @@ msgstr ""
 #: ../views/widget.form.php:153 ../views/widget.form.php:178
 #: ../views/widget.form.php:203 ../views/widget.form.php:228
 #: ../views/widget.form.php:253 ../views/widget.form.php:278
-#: ../views/widget.form.php:303
 msgid "Position:"
 msgstr ""
 
@@ -356,9 +345,9 @@ msgstr ""
 msgid "Your Twitter screenname (e.g. envatowebdev)"
 msgstr ""
 
-#: ../views/widget.form.php:94 ../views/widget.form.php:222
-#: ../views/widget.form.php:247 ../views/widget.form.php:272
-#: ../views/widget.form.php:297
+#: ../views/widget.form.php:94 ../views/widget.form.php:197
+#: ../views/widget.form.php:222 ../views/widget.form.php:247
+#: ../views/widget.form.php:272
 msgid "Your fallback follower count"
 msgstr ""
 
@@ -367,7 +356,6 @@ msgid "Your YouTube Channel (e.g. nettutsplus)"
 msgstr ""
 
 #: ../views/widget.form.php:147 ../views/widget.form.php:172
-#: ../views/widget.form.php:197
 msgid "Your fallback subscriber count"
 msgstr ""
 
@@ -376,46 +364,42 @@ msgid "Your Vimeo Channel"
 msgstr ""
 
 #: ../views/widget.form.php:191
-msgid "Your Feeds Feedburner name (e.g. nettuts or psdtuts)"
-msgstr ""
-
-#: ../views/widget.form.php:216
 msgid "Your Dribbble username (e.g. envato)"
 msgstr ""
 
-#: ../views/widget.form.php:241
+#: ../views/widget.form.php:216
 msgid "Your Forrst username"
 msgstr ""
 
-#: ../views/widget.form.php:266
+#: ../views/widget.form.php:241
 msgid "Your Digg username"
 msgstr ""
 
-#: ../views/widget.form.php:291
+#: ../views/widget.form.php:266
 msgid "Your gitHub username"
 msgstr ""
 
-#: ../views/widget.form.php:312
+#: ../views/widget.form.php:287
 msgid "Additional Settings"
 msgstr ""
 
-#: ../views/widget.form.php:316
+#: ../views/widget.form.php:291
 msgid "Forced Widget Width:"
 msgstr ""
 
-#: ../views/widget.form.php:318
+#: ../views/widget.form.php:293
 msgid "Force Widget to have a specific width (0 to disable)"
 msgstr ""
 
-#: ../views/widget.form.php:323
+#: ../views/widget.form.php:298
 msgid "Forced Button Width:"
 msgstr ""
 
-#: ../views/widget.form.php:325
+#: ../views/widget.form.php:300
 msgid "Force Buttons to have a specific width (0 to disable)"
 msgstr ""
 
-#: ../views/widget.form.php:335
+#: ../views/widget.form.php:310
 msgid ""
 "Need support? <a href=\"http://support.jonasdoebertin.net/\" title=\"Get "
 "support!\">Get some!</a>"
