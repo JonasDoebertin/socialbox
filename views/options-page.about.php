@@ -48,7 +48,7 @@
 	<h4 class="socialbox-help-divider-top">Copyright</h4>
 	<p>
 		<strong>SocialBox - Social WordPress Widget</strong><br/>
-		Version 1.3.0 (11/15/2012)<br/>
+		Version 1.3.0 (11/17/2012)<br/>
 		&copy; 2011 - 2012 by <a href="http://codecanyon.net/user/JonasDoebertin?ref=JonasDoebertin" title="JonasDoebertin on CodeCanyon">Jonas Döbertin</a>
 	</p>
 

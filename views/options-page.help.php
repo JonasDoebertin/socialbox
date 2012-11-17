@@ -67,12 +67,12 @@
 			<img src="<?php $this->url('images/help/twitter-id.jpg'); ?>" />
 		</dd>
 
-		<dt><?php echo __('Google+', self::SLUG) . ' ' . __('User ID', self::SLUG); ?></dt>
+		<!--<dt><?php echo __('Google+', self::SLUG) . ' ' . __('User ID', self::SLUG); ?></dt>
 		<dd>
 			Please enter your pages "Shortname" (the part of the URL after "facebook.com/".<br/>
 			<img src="<?php $this->url('images/help/googleplus-id.jpg'); ?>" /><br/>
 			<strong>Note:</strong> SocialBox will only display the "Like" number, if access to your page is not restricted in any way (only certain Countries, etc.)
-		</dd>
+		</dd>-->
 
 		<dt><?php echo __('Youtube', self::SLUG) . ' ' . __('Channel', self::SLUG); ?></dt>
 		<dd>
@@ -95,13 +95,19 @@
 		<dt><?php echo __('Forrst', self::SLUG) . ' ' . __('Username', self::SLUG); ?></dt>
 		<dd>
 			To display this number, please enter your Username (as seen in the URL).<br/>
-			<strong>http://forrst.com/people/&lt;YOURUSERNAME&gt;</strong>
+			<strong>http://forrst.com/people/&lt;YOUR_USERNAME&gt;</strong>
 		</dd>
 
 		<dt><?php echo __('Digg', self::SLUG) . ' ' . __('Username', self::SLUG); ?></dt>
 		<dd>
 			To display this number, please enter your Shortname.<br/>
 			<img src="<?php $this->url('images/help/digg-id.jpg'); ?>" /><br/>
+		</dd>
+		
+		<dt><?php echo __('GitHub', self::SLUG) . ' ' . __('Username', self::SLUG); ?></dt>
+		<dd>
+			To display this number, please enter your Username.<br/>
+			<strong>https://github.com/&lt;YOUR_USERNAME&gt;</strong>
 		</dd>
 
 	</dl>
