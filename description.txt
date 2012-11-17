@@ -7,6 +7,12 @@
 	</a>
 </p>
 With SocialBox you get an absolutely easy to use WordPress Plugin which enables you to add a sleek social widget to your WordPress site or blog. It supports several social networks and displays the current numbers of Facebook Page Likes, Twitter, Dribbble, Forrst and Digg Followers and YouTube and Vimeo Channel Subscriptions. You can enter default values which will be shown as a fallback if the related API is not reachable.
+<br/>
+<br/>
+<br/>
+<a href="http://codecanyon.net/item/socialbox-social-php-widget/946223">
+	<img src="http://envato.jonasdoebertin.net/buttons/socialbox-tryphp.png" />
+</a>
 <h4>Features</h4>
 <ul>
 	<li>Displays the number of:
@@ -19,12 +25,12 @@ With SocialBox you get an absolutely easy to use WordPress Plugin which enables 
 	<li>Rearrange and disable any of these networks to perfectly fit your needs</li>
 	<li>Choose from various styles to match your site</li>
 	<li>Use compact (12K, 3.2M) or full (12.000, 3.200.000) numbers</li>
-	<li>Updates every three hours to reduce load time and API calls.</li>
+	<li>Updates at an configurable interval to reduce load time and API calls.</li>
 	<li>Default values as a fallback, if any of the APIs is not reachable</li>
 	<li>Automatic update notifications</li>
 	<li>Full support for all major browsers</li>
 	<li>Localization ready (.pot file included)</li>
-	<li>Free future updates, to support even more networks and additional features</li>
+	<li>Free future updates, to support even more networks and additional styles and features</li>
 </ul>
 <h4>Requirements</h4>
 <ul>
@@ -36,13 +42,16 @@ With SocialBox you get an absolutely easy to use WordPress Plugin which enables 
 <blockquote>
 	"I picked the plugin up a few days ago and was immediately impressed with its quality. While the task it performs is relatively simple, and there are numerous free plugins that can do more or less the same, SocialBox definitely stands above the crowd with it’s high quality. The widget works perfectly, is clear and easy to use, and provides a nice addition to any WordPress site. [...] If you’re looking for a new social widget, I highly recommend this one." - <a href="http://codecanyon.net/user/mordauk">Pippin Williamson (mordauk)</a> <strong>(Read the <a href="http://pippinsplugins.com/review-socialbox-social-widget-for-wordpress/">full review</a>)</strong>
 </blockquote>
+<blockquote>
+	"It was a love at first sight with me and this plugin [...]. One thing i love most is it’s speed, it loads quickly than any other these type of plugins (that i have seen). It’s a plugin that worth buying, and it only costs 4$ [...]." - <a href="http://wpbox.in/">Saeed Salam</a> <strong>(Read the <a href="http://wpbox.in/socialbox-plugin-social-widget-for-wordpress/">full review</a>)</strong>
+</blockquote>
 <h4>Future plans</h4>
 <ul>
 	<li>Add even more networks (e.g. Envato, Google+, MailChimp, Campaign Monitor, LinkedIn, SoundCloud, Instagram...)</li>
 	<li>Add even more additional styles</li>
 </ul>
 <h4>Updates</h4>
-<strong>Version 1.3.0 (01/XX/2012)</strong>
+<strong>Version 1.3.0 (01/17/2012)</strong>
 <ul>
 	<li>Added additional styles</li>
 	<li>Added support for GitHub</li>
@@ -51,8 +60,8 @@ With SocialBox you get an absolutely easy to use WordPress Plugin which enables 
 	<li>Added an options page including a help section and an API error log</li>
 	<li>Removed support for Feedburner (Google abandoned Feedburner, please don't ask ME why)</li>
 	<li>Improved caching functionality</li>
-	<li>Fixed a bug that could lead to "Invalid Header" messages in certain (rare) cases</li>
-	<li>Fixed a bug that could lead to too long cron run times and unsuccesfull refreshes</li>
+	<li>Fixed a bug that could lead to "Invalid Header" messages in certain cases</li>
+	<li>Fixed a bug that could lead to too long cron run times and unsuccessful refreshes</li>
 	<li>Major plugin code changes and improvements </li>
 	<li>Major HTML / CSS improvements</li>
 	<li>Documentation overhaul</li>
@@ -83,5 +92,3 @@ With SocialBox you get an absolutely easy to use WordPress Plugin which enables 
 	<li>Added support for YouTube Channels</li>
 	<li>Updated localization files</li>
 </ul>
-<h4>Support</h4>
-If you have any further questions or you need support using or customizing this Widget, feel absolutely free to send a message to <em>support [ at ] jonasdoebertin [ dot ] net</em>. You can also use the contact form on my <a href="http://codecanyon.net/user/JonasDoebertin#from">CodeCanyon profile page</a>. I will do my very best to help and assist you as quick as possible.

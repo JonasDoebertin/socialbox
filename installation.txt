@@ -13,9 +13,15 @@ To install SocialBox, simply follow these steps:
 	
 	(2) Select "Upload" from the available options (click it).
 	
-	(3) Select the zip file you found this installation in and click "Install now".
+	(3) Select the zip file "socialbox-plugin.zip" and click "Install now".
 		WordPress will upload and install the plugin for you.
 		
 	(4)	After the installation has finished, click "Activate Plugin" to enable SocialBox.
 	
-	(5) That's it! Navigate to the admin page "Settings > SocialBox > Help" to get more information on how to set up your social networks.
+	(5) That's it!
+	
+	
+2. Configuration
+---------------------------------------------------------------------------------------------- */
+
+Navigate to the admin page "Settings > SocialBox > Help" to get more information on how to set up your social networks.
