@@ -13,7 +13,7 @@
 		
 		<?php foreach($networks as $network): ?>
 			
-			<li>
+			<li class="socialbox-network-<?php echo $network['type']; ?>">
 				
 				<a href="<?php echo $network['link']; ?>" title="<?php echo $network['buttonHint']; ?>" <?php if($newWindow) echo 'target="_blank"'; ?>>
 					<img src="<?php $this->url('images/icons/' . $network['type'] . '_' . $iconSize . '.png'); ?>" alt="<?php echo $network['name']; ?>" />

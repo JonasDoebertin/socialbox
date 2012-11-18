@@ -338,6 +338,7 @@ class SocialBoxWidget extends WP_Widget{
 			case 'classic':
 			case 'tutsflavor':
 			case 'dark':
+			case 'colorful':
 			case 'plainlarge':
 			case 'plainsmall':
 			default:
@@ -358,6 +359,7 @@ class SocialBoxWidget extends WP_Widget{
 
 			case 'modern':
 			case 'tutsflavor':
+			case 'colorful':
 			case 'plainlarge':
 				return '32';
 			

@@ -10,7 +10,8 @@
  * 3. Style: Modern
  * 4. Style: Tuts+ Flavor
  * 5. Style: Dark
- * 6. Fonts
+ * 6. Style: Colorful
+ * 7. Fonts
  *
  */
 
@@ -384,9 +385,78 @@ div.socialbox-widget.socialbox-style-dark{
 				background-image:         linear-gradient(top, #4d4d4d, #747474);
 				filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#4d4d4d', EndColorStr='#747474');
 			}
+			
+/*
+ * 6. Style: Colorful
+ * ---------------------------------------------------------------------------------------------- */
+div.socialbox-widget.socialbox-style-colorful{
+	color: #3a3a3a;
+	font-size: 11px;
+}
+
+	div.socialbox-widget.socialbox-style-colorful ul{
+		background: #e3e3e3;
+		padding: 10px;
+	}
+	
+		div.socialbox-widget.socialbox-style-colorful ul li{
+			-webkit-background-clip: padding-box;
+			-moz-background-clip: padding;
+			background-clip: padding-box;
+			border: 1px solid #ffffff;
+			-webkit-border-radius: 4px;
+			-moz-border-radius: 4px;
+			border-radius: 4px;
+			margin-bottom: 3px;
+			overflow: hidden;
+			padding: 9px;
+			/* Gradient */
+			background-color: #f4f4f4;
+			background-image: -webkit-gradient(linear, left top, left bottom, from(#ffffff), to(#f4f4f4));
+			background-image: -webkit-linear-gradient(top, #ffffff, #f4f4f4);
+			background-image:    -moz-linear-gradient(top, #ffffff, #f4f4f4);
+			background-image:     -ms-linear-gradient(top, #ffffff, #f4f4f4);
+			background-image:      -o-linear-gradient(top, #ffffff, #f4f4f4);
+			background-image:         linear-gradient(top, #ffffff, #f4f4f4);
+			filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#f4f4f4');
+		}
+		
+			div.socialbox-widget.socialbox-style-colorful ul li img{
+				border: none;
+				margin-right: 10px;
+				float: left;
+			}
+			
+			div.socialbox-widget.socialbox-style-colorful ul li p{
+				color: #3a3a3a;
+				display: inline;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 12px;
+				line-height: 32px;
+			}
+			
+				div.socialbox-widget.socialbox-style-colorful ul li p span{
+					font-weight: bold;
+				}
+				
+			div.socialbox-widget.socialbox-style-colorful ul li a.socialbox-button{
+				background: lightgray;
+				border: 1px solid black;
+				-webkit-border-radius: 4px;
+				-moz-border-radius: 4px;
+				border-radius: 4px;
+				color: #ffffff;
+				float: right;
+				font-size: 12px;
+				font-weight: bold;
+				line-height: 20px;
+				padding: 5px 15px;
+				text-shadow: 1px 1px rgba(0,0,0,0.5);
+				text-transform: uppercase;
+			}
 
 /*
- * 6. Fonts
+ * 7. Fonts
  * ---------------------------------------------------------------------------------------------- */
 @font-face{
 	font-family: 'BebasNeueRegular';
