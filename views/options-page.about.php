@@ -9,7 +9,7 @@
 <div class="socialbox-wrap">
 
 	<p class="socialbox-help-description">
-		The &raquo;SocialBox - Social WordPress Widget&laquo; plugin for WordPress enables you to add a sleek social widget to your WordPress site or blog. It supports several social networks and displays the current numbers of Facebook Page Likes, Google+, Twitter, Dribbble, Forrst and Digg Followers and YouTube and Vimeo Channel and Feedburner Feed Subscriptions.
+		The &raquo;SocialBox - Social WordPress Widget&laquo; plugin for WordPress enables you to add a sleek social widget to your WordPress site or blog. It supports several social networks and displays the current numbers of Facebook Page Likes, Twitter, Dribbble, Forrst and Digg Followers and YouTube and Vimeo Channel and Feedburner Feed Subscriptions.
 	</p>
 
 	<h4 class="socialbox-help-divider-top">Main Features</h4>
@@ -19,7 +19,7 @@
 			<p>Displays the number of:</p>
 			<ul>
 				<li><p>Facebook Page Likes</p></li>
-				<li><p>Google+, Twitter, Dribbble, Forrst and Digg Followers</p></li>
+				<li><p>Twitter, Dribbble, Forrst and Digg Followers</p></li>
 				<li><p>YouTube and Vimeo Channel Subscribers</p></li>
 			</ul>
 		</li>
