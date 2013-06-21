@@ -142,41 +142,6 @@ if(!class_exists('SocialBoxConnector')){
 		 * Will be called by "SocialBox::refresh()"
 		 */
 		public static function getTwitterData($twitterId, $urlIdentifier){
-			
-			// /* Fetch data */
-			// $result = wp_remote_get(self::TWITTER_API_BASE . $twitterId . $urlIdentifier);
-			
-			// /* Check for WordPress errors */
-			// if(is_wp_error($result)){
-			// 	return array(
-			// 			'success'      => false,
-			// 			'errorMessage' => $result->get_error_message()
-			// 		);
-			// }
-
-			// /* Check for unsuccessful http requests */
-			// if(wp_remote_retrieve_response_code($result) != 200){
-			// 	return array(
-			// 			'success'      => false,
-			// 			'errorMessage' => wp_remote_retrieve_response_message($result),
-			// 			'errorCode'    => wp_remote_retrieve_response_code($result)
-			// 		);
-			// }
-			
-			// /* Check for incorrect data */
-			// $data = json_decode(wp_remote_retrieve_body($result), true);
-			// if(!is_array($data) or !isset($data['followers_count'])){
-			// 	return array(
-			// 			'success'      => false,
-			// 			'errorMessage' => 'Got an unexpected result from the Twitter API. Make sure to double check the username!'
-			// 		);
-			// }
-			
-			// /* Return followers count */
-			// return array(
-			// 		'success' => true,
-			// 		'value'   => $data['followers_count']
-			// 	);
 
 			/* Fetch data */
 			$result = wp_remote_get(self::TWITTER_API_BASE . $twitterId . $urlIdentifier);
