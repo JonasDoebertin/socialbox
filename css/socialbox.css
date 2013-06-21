@@ -419,6 +419,9 @@ div.socialbox-widget.socialbox-style-colorful{
 			background-image:      -o-linear-gradient(top, #ffffff, #f4f4f4);
 			background-image:         linear-gradient(top, #ffffff, #f4f4f4);
 			filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#f4f4f4');
+			-webkit-box-shadow: 0px 1px 1px rgba(0,0,0,0.3);
+			-moz-box-shadow: 0px 1px 1px rgba(0,0,0,0.3);
+			box-shadow: 0px 1px 1px rgba(0,0,0,0.3);
 		}
 		
 			div.socialbox-widget.socialbox-style-colorful ul li img{
@@ -434,10 +437,10 @@ div.socialbox-widget.socialbox-style-colorful{
 				font-family: Arial, Helvetica, sans-serif;
 				font-size: 12px;
 				line-height: 32px;
-				/*-webkit-transition: color 0.25s ease;
+				-webkit-transition: color 0.25s ease;
 				-moz-transition: color 0.25s ease;
 				-o-transition: color 0.25s ease;
-				transition: color 0.25s ease;*/
+				transition: color 0.25s ease;
 			}
 			
 				div.socialbox-widget.socialbox-style-colorful ul li p span{
@@ -469,7 +472,6 @@ div.socialbox-widget.socialbox-style-colorful{
 			
 			div.socialbox-widget.socialbox-style-colorful ul li.socialbox-network-facebook a.socialbox-button{
 				border-color: #374d90;
-				border-top-color: #566dab;
 				-webkit-box-shadow: inset 0px 1px 0px #789ac5;
 				-moz-box-shadow: inset 0px 1px 0px #789ac5;
 				box-shadow: inset 0px 1px 0px #789ac5;
@@ -481,6 +483,48 @@ div.socialbox-widget.socialbox-style-colorful{
 				background-image:      -o-linear-gradient(top, #617db3, #2a4585);
 				background-image:         linear-gradient(top, #617db3, #2a4585);
 				filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#617db3', EndColorStr='#2a4585');
+			}
+			
+			div.socialbox-widget.socialbox-style-colorful ul li.socialbox-network-twitter:hover p{
+				color: #32a1d1;
+			}
+			
+			div.socialbox-widget.socialbox-style-colorful ul li.socialbox-network-twitter a.socialbox-button{
+				border-color: #47d1d7;
+				border-top-color: #a8eaec;
+				-webkit-box-shadow: inset 0px 1px 0px #dbf7f8;
+				-moz-box-shadow: inset 0px 1px 0px #dbf7f8;
+				box-shadow: inset 0px 1px 0px #dbf7f8;
+				/* Gradient */
+				background-image: -webkit-gradient(linear, left top, left bottom, from(#b6edef), to(#88e1e6));
+				background-image: -webkit-linear-gradient(top, #b6edef, #88e1e6);
+				background-image:    -moz-linear-gradient(top, #b6edef, #88e1e6);
+				background-image:     -ms-linear-gradient(top, #b6edef, #88e1e6);
+				background-image:      -o-linear-gradient(top, #b6edef, #88e1e6);
+				background-image:         linear-gradient(top, #b6edef, #88e1e6);
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#b6edef', EndColorStr='#88e1e6');
+			}
+			
+			div.socialbox-widget.socialbox-style-colorful ul li.socialbox-network-github:hover p{
+				color: #353535;
+			}
+			
+			div.socialbox-widget.socialbox-style-colorful ul li.socialbox-network-github a.socialbox-button{
+				color: #000000;
+				border-color: #acacac;
+				border-top-color: #e1e1e1;
+				-webkit-box-shadow: inset 0px 1px 0px #ffffff;
+				-moz-box-shadow: inset 0px 1px 0px #ffffff;
+				box-shadow: inset 0px 1px 0px #ffffff;
+				text-shadow: 1px 1px rgba(255,255,255,.75);
+				/* Gradient */
+				background-image: -webkit-gradient(linear, left top, left bottom, from(#f8f8f8), to(#d5d5d5));
+				background-image: -webkit-linear-gradient(top, #f8f8f8, #d5d5d5);
+				background-image:    -moz-linear-gradient(top, #f8f8f8, #d5d5d5);
+				background-image:     -ms-linear-gradient(top, #f8f8f8, #d5d5d5);
+				background-image:      -o-linear-gradient(top, #f8f8f8, #d5d5d5);
+				background-image:         linear-gradient(top, ##f8f8f8, #d5d5d5);
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f8f8f8', EndColorStr='#d5d5d5');
 			}
 
 /*
