@@ -1,6 +1,6 @@
 <?php
 /*
- * SocialBox v.1.3.0
+ * SocialBox v.1.3.1
  * Copyright by Jonas Doebertin
  * Available at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
