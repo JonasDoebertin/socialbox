@@ -1,6 +1,6 @@
 <?php
 /*
- * SocialBox v.1.3.0
+ * SocialBox v.1.3.1
  * Copyright by Jonas Doebertin
  * Available at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
@@ -17,7 +17,7 @@ if(!class_exists('SocialBoxConnector')){
 		/**
 		 * Twitter API Base URL
 		 */
-		const TWITTER_API_BASE = "https://api.twitter.com/1/users/show.json?skip_status=true&screen_name=";
+		const TWITTER_API_BASE = "https://mobile.twitter.com/";
 
 		// /**
 		// * Google Plus Base URL
@@ -143,6 +143,41 @@ if(!class_exists('SocialBoxConnector')){
 		 */
 		public static function getTwitterData($twitterId, $urlIdentifier){
 			
+			// /* Fetch data */
+			// $result = wp_remote_get(self::TWITTER_API_BASE . $twitterId . $urlIdentifier);
+			
+			// /* Check for WordPress errors */
+			// if(is_wp_error($result)){
+			// 	return array(
+			// 			'success'      => false,
+			// 			'errorMessage' => $result->get_error_message()
+			// 		);
+			// }
+
+			// /* Check for unsuccessful http requests */
+			// if(wp_remote_retrieve_response_code($result) != 200){
+			// 	return array(
+			// 			'success'      => false,
+			// 			'errorMessage' => wp_remote_retrieve_response_message($result),
+			// 			'errorCode'    => wp_remote_retrieve_response_code($result)
+			// 		);
+			// }
+			
+			// /* Check for incorrect data */
+			// $data = json_decode(wp_remote_retrieve_body($result), true);
+			// if(!is_array($data) or !isset($data['followers_count'])){
+			// 	return array(
+			// 			'success'      => false,
+			// 			'errorMessage' => 'Got an unexpected result from the Twitter API. Make sure to double check the username!'
+			// 		);
+			// }
+			
+			// /* Return followers count */
+			// return array(
+			// 		'success' => true,
+			// 		'value'   => $data['followers_count']
+			// 	);
+
 			/* Fetch data */
 			$result = wp_remote_get(self::TWITTER_API_BASE . $twitterId . $urlIdentifier);
 			
@@ -162,20 +197,33 @@ if(!class_exists('SocialBoxConnector')){
 						'errorCode'    => wp_remote_retrieve_response_code($result)
 					);
 			}
+
+			/* Extract HTML from response */
+			$html = wp_remote_retrieve_body($result);
 			
-			/* Check for incorrect data */
-			$data = json_decode(wp_remote_retrieve_body($result), true);
-			if(!is_array($data) or !isset($data['followers_count'])){
+			/* Check for empty responses */
+			if(empty($html)){
 				return array(
 						'success'      => false,
-						'errorMessage' => 'Got an unexpected result from the Twitter API. Make sure to double check the username!'
+						'errorMessage' => 'Got an unexpected result. Make sure to double check the username!'
+					);
+			}
+
+			/* Extract the numbers */
+			preg_match_all('/<div class="statnum">(\d+)<\/div>/i', $html, $matches);
+
+			/* Check for incorrect or missing data */
+			if(!isset($matches) or empty($matches) or !isset($matches[1][2]) or empty($matches[1][2])){
+				return array(
+						'success'      => false,
+						'errorMessage' => 'Got an unexpected result. Please file a support request!'
 					);
 			}
 			
 			/* Return followers count */
 			return array(
 					'success' => true,
-					'value'   => $data['followers_count']
+					'value'   => $matches[1][2]
 				);
 			
 		}
