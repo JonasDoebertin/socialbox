@@ -210,7 +210,7 @@ if(!class_exists('SocialBoxConnector')){
 			}
 
 			/* Extract the numbers */
-			preg_match_all('/<div class="statnum">(\d+)<\/div>/i', $html, $matches);
+			preg_match_all('/<div class="statnum">([\d\.,]+)<\/div>/i', $html, $matches);
 
 			/* Check for incorrect or missing data */
 			if(!isset($matches) or empty($matches) or !isset($matches[1][2]) or empty($matches[1][2])){
@@ -223,7 +223,7 @@ if(!class_exists('SocialBoxConnector')){
 			/* Return followers count */
 			return array(
 					'success' => true,
-					'value'   => $matches[1][2]
+					'value'   => intval(str_replace(array(',', '.'), '', $matches[1][2]))
 				);
 			
 		}
