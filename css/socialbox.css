@@ -505,8 +505,29 @@ div.socialbox-widget.socialbox-style-colorful{
 				filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#b6edef', EndColorStr='#88e1e6');
 			}
 			
+			div.socialbox-widget.socialbox-style-colorful ul li.socialbox-network-youtube:hover p{
+				color: #981a1d;
+			}
+			
+			div.socialbox-widget.socialbox-style-colorful ul li.socialbox-network-youtube a.socialbox-button{
+				border-color: #981a1d;
+				border-top-color: #be302f;
+				-webkit-box-shadow: inset 0px 1px 0px #d66b55;
+				-moz-box-shadow: inset 0px 1px 0px #d66b55;
+				box-shadow: inset 0px 1px 0px #d66b55;
+				text-shadow: 1px 1px #b92527;
+				/* Gradient */
+				background-image: -webkit-gradient(linear, left top, left bottom, from(#ed292b), to(#ce2a2d));
+				background-image: -webkit-linear-gradient(top, #ed292b, #ce2a2d);
+				background-image:    -moz-linear-gradient(top, #ed292b, #ce2a2d);
+				background-image:     -ms-linear-gradient(top, #ed292b, #ce2a2d);
+				background-image:      -o-linear-gradient(top, #ed292b, #ce2a2d);
+				background-image:         linear-gradient(top, #ed292b, #ce2a2d);
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ed292b', EndColorStr='#ce2a2d');
+			}
+			
 			div.socialbox-widget.socialbox-style-colorful ul li.socialbox-network-github:hover p{
-				color: #353535;
+				color: #707070;
 			}
 			
 			div.socialbox-widget.socialbox-style-colorful ul li.socialbox-network-github a.socialbox-button{
