@@ -526,6 +526,25 @@ div.socialbox-widget.socialbox-style-colorful{
 				filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#ed292b', EndColorStr='#ce2a2d');
 			}
 			
+			div.socialbox-widget.socialbox-style-colorful ul li.socialbox-network-vimeo:hover p{
+				color: #0c70b7;
+			}
+			
+			div.socialbox-widget.socialbox-style-colorful ul li.socialbox-network-vimeo a.socialbox-button{
+				border-color: #0c70b7;
+				border-top-color: #4fbdde;
+				-webkit-box-shadow: inset 0px 1px 0px #7fd2e8;
+				-moz-box-shadow: inset 0px 1px 0px #7fd2e8;
+				box-shadow: inset 0px 1px 0px #7fd2e8;
+				text-shadow: 1px 1px 0px rgba(0,0,0,0.4);
+				background-image: -webkit-linear-gradient(top, #47c0df, #19a0d0);
+				background-image:    -moz-linear-gradient(top, #47c0df, #19a0d0);
+				background-image:     -ms-linear-gradient(top, #47c0df, #19a0d0);
+				background-image:      -o-linear-gradient(top, #47c0df, #19a0d0);
+				background-image:         linear-gradient(top, #47c0df, #19a0d0);
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#47c0df', EndColorStr='#19a0d0');
+			}
+			
 			div.socialbox-widget.socialbox-style-colorful ul li.socialbox-network-github:hover p{
 				color: #707070;
 			}
