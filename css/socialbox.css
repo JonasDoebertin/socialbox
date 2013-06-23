@@ -564,6 +564,25 @@ div.socialbox-widget.socialbox-style-colorful{
 				filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#eb578f', EndColorStr='#c8396f');
 			}
 			
+			div.socialbox-widget.socialbox-style-colorful ul li.socialbox-network-forrst:hover p{
+				color: #163f19;
+			}
+			
+			div.socialbox-widget.socialbox-style-colorful ul li.socialbox-network-forrst a.socialbox-button{
+				border-color: #123515;
+				border-top-color: #255325;
+				-webkit-box-shadow: inset 0px 1px 0px #377c36;
+				-moz-box-shadow: inset 0px 1px 0px #377c36;
+				box-shadow: inset 0px 1px 0px #377c36;
+				text-shadow: 1px 1px 0px rgba(0,0,0,0.4);
+				background-image: -webkit-linear-gradient(top, #2a602a, #163f19);
+				background-image:    -moz-linear-gradient(top, #2a602a, #163f19);
+				background-image:     -ms-linear-gradient(top, #2a602a, #163f19);
+				background-image:      -o-linear-gradient(top, #2a602a, #163f19);
+				background-image:         linear-gradient(top, #2a602a, #163f19);
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#2a602a', EndColorStr='#163f19');
+			}
+			
 			div.socialbox-widget.socialbox-style-colorful ul li.socialbox-network-github:hover p{
 				color: #707070;
 			}
