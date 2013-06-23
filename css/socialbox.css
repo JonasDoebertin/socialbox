@@ -545,6 +545,25 @@ div.socialbox-widget.socialbox-style-colorful{
 				filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#47c0df', EndColorStr='#19a0d0');
 			}
 			
+			div.socialbox-widget.socialbox-style-colorful ul li.socialbox-network-dribbble:hover p{
+				color: #a62f5c;
+			}
+			
+			div.socialbox-widget.socialbox-style-colorful ul li.socialbox-network-dribbble a.socialbox-button{
+				border-color: #a62f5c;
+				border-top-color: #cf4d7e;
+				-webkit-box-shadow: inset 0px 1px 0px #f374b3;
+				-moz-box-shadow: inset 0px 1px 0px #f374b3;
+				box-shadow: inset 0px 1px 0px #f374b3;
+				text-shadow: 1px 1px 0px rgba(0,0,0,0.4);
+				background-image: -webkit-linear-gradient(top, #eb578f, #c8396f);
+				background-image:    -moz-linear-gradient(top, #eb578f, #c8396f);
+				background-image:     -ms-linear-gradient(top, #eb578f, #c8396f);
+				background-image:      -o-linear-gradient(top, #eb578f, #c8396f);
+				background-image:         linear-gradient(top, #eb578f, #c8396f);
+				filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#eb578f', EndColorStr='#c8396f');
+			}
+			
 			div.socialbox-widget.socialbox-style-colorful ul li.socialbox-network-github:hover p{
 				color: #707070;
 			}
