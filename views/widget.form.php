@@ -35,6 +35,7 @@
 					<option <?php if($instance['style'] == 'modern' ) echo 'selected="selected"'; ?> value="modern">Modern</option>
 					<option <?php if($instance['style'] == 'tutsflavor' ) echo 'selected="selected"'; ?> value="tutsflavor">Tuts+ Flavor</option>
 					<option <?php if($instance['style'] == 'dark' ) echo 'selected="selected"'; ?> value="dark">Dark</option>
+					<option <?php if($instance['style'] == 'colorful' ) echo 'selected="selected"'; ?> value="colorful">Colorful</option>
 				</optgroup>
 				<optgroup label="Plain Styles">
 					<option <?php if($instance['style'] == 'plainsmall' ) echo 'selected="selected"'; ?> value="plainsmall">Plain (small icons)</option>
