@@ -231,31 +231,6 @@
 		</div>
 		
 	</fieldset>
-	
-	<!-- Digg -->
-	<fieldset class="widefat">
-		
-		<legend><?php _e('Digg', self::SLUG); ?></legend>
-		
-		<!-- ID -->
-		<div class="socialbox-id">
-			<label for="<?php echo $this->get_field_id('digg_id'); ?>" title="<?php _e('Your Digg username', self::SLUG); ?>"><?php _e('Username', self::SLUG); ?>:</label>
-			<input type="text" id="<?php echo $this->get_field_id('digg_id'); ?>" name="<?php echo $this->get_field_name('digg_id'); ?>" value="<?php echo $instance['digg_id']; ?>" class="widefat"  />
-		</div>
-		
-		<!-- Default -->
-		<div class="socialbox-default">
-			<label for="<?php echo $this->get_field_id('digg_default'); ?>" title="<?php _e('Your fallback follower count', self::SLUG); ?>"><?php _e('Default:', self::SLUG); ?></label>
-			<input type="text" id="<?php echo $this->get_field_id('digg_default'); ?>" name="<?php echo $this->get_field_name('digg_default'); ?>" value="<?php echo $instance['digg_default']; ?>" size="6" class="widefat" />
-		</div>
-		
-		<!-- Position -->
-		<div class="socialbox-position">
-			<label for="<?php echo $this->get_field_id('digg_position'); ?>" title="<?php _e('Display position within SocialBox', self::SLUG); ?>"><?php _e('Position:', self::SLUG); ?></label>
-			<input type="text" id="<?php echo $this->get_field_id('digg_position'); ?>" name="<?php echo $this->get_field_name('digg_position'); ?>" value="<?php echo $instance['digg_position']; ?>" size="2" class="widefat" />
-		</div>
-		
-	</fieldset>
 
 	<!-- GitHub -->
 	<fieldset class="widefat">
