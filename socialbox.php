@@ -2,7 +2,7 @@
 /*
 Plugin Name: 	SocialBox
 Plugin URI: 	http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
-Description: 	Adds a super easy Social Box Widget which displays the current numbers of Facebook Page Likes, Twitter, Dribbble, Forrst and Digg Followers and YouTube and Vimeo Channel Subscriptions.
+Description: 	Adds a super easy Social Box Widget which displays the current numbers of Facebook Page Likes, Twitter, Dribbble and Forrst Followers and YouTube and Vimeo Channel Subscriptions.
 Version: 		1.3.2
 Author: 		JonasDoebertin
 Author URI: 	http://codecanyon.net/user/JonasDoebertin
@@ -40,7 +40,7 @@ if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
 		/**
 		 * Complete list of supported networks
 		 */
-		const SUPPORTED_NETWORKS = 'facebook,twitter,youtube,vimeo,dribbble,forrst,digg,github';
+		const SUPPORTED_NETWORKS = 'facebook,twitter,youtube,vimeo,dribbble,forrst,github';
 
 		/**
 		 * This will be appended to the API call urls to identify SocialBoxes http requests
