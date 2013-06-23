@@ -43,11 +43,6 @@ if(!class_exists('SocialBoxConnector')){
 		 * Forrst API Base URL
 		 */
 		const FORRST_API_BASE = "https://forrst.com/api/v2/users/info?username=";
-		
-		/**
-		 * Digg API Base URL
-		 */
-		const DIGG_API_BASE = "http://services.digg.com/2.0/user.getInfo?usernames=";
 
 		/**
 		 * GitHub API Base URL
@@ -79,8 +74,6 @@ if(!class_exists('SocialBoxConnector')){
 					return self::getDribbbleData($id, $urlIdentifier);
 				case 'forrst':
 					return self::getForrstData($id, $urlIdentifier);
-				case 'digg':
-					return self::getDiggData($id, $urlIdentifier);
 				case 'github':
 					return self::getGitHubData($id, $urlIdentifier);
 				default:
@@ -421,50 +414,6 @@ if(!class_exists('SocialBoxConnector')){
 			
 		}
 		
-		/**
-		 * Get Digg followers for given account
-		 *
-		 * Will be called by "SocialBox::refresh()"
-		 */
-		public static function getDiggData($diggId, $urlIdentifier){
-			
-			/* Fetch data */
-			$result = wp_remote_get(self::DIGG_API_BASE . $diggId . $urlIdentifier);
-			
-			/* Check for WordPress errors */
-			if(is_wp_error($result)){
-				return array(
-						'success'      => false,
-						'errorMessage' => $result->get_error_message()
-					);
-			}
-
-			/* Check for unsuccessful http requests */
-			if(wp_remote_retrieve_response_code($result) != 200){
-				return array(
-						'success'      => false,
-						'errorMessage' => wp_remote_retrieve_response_message($result),
-						'errorCode'    => wp_remote_retrieve_response_code($result)
-					);
-			}
-			
-			/* Check for incorrect data */
-			$data = json_decode(wp_remote_retrieve_body($result), true);
-			if(!is_array($data) or !isset($data['users'][$diggId]['followers'])){
-				return array(
-						'success'      => false,
-						'errorMessage' => 'Got an unexpected result from the Digg API. Make sure to double check the username!'
-					);
-			}
-			
-			/* Return followers count */
-			return array(
-					'success' => true,
-					'value'   => $data['users'][$diggId]['followers']
-				);
-			
-		}
-
 		/**
 		 * Get GitHub followers for given account
 		 *

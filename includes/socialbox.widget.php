@@ -20,7 +20,7 @@ class SocialBoxWidget extends WP_Widget{
 		/* Widget settings */
 		$widgetOpts = array(
 			'classname' => self::SLUG,
-			'description' => __('Adds a super easy SocialBox Widget which displays the current numbers of Facebook Page Likes, Google+, Twitter, Dribbble, Forrst and Digg Followers and YouTube and Vimeo Channel Subscriptions.', self::SLUG)
+			'description' => __('Adds a super easy SocialBox Widget which displays the current numbers of Facebook Page Likes, Google+, Twitter, Dribbble and Forrst Followers and YouTube and Vimeo Channel Subscriptions.', self::SLUG)
 		);
 		
 		/* Widget control settings */
@@ -215,8 +215,6 @@ class SocialBoxWidget extends WP_Widget{
 				return "http://dribbble.com/{$id}";
 			case 'forrst':
 				return "http://forrst.com/people/{$id}";
-			case 'digg':
-				return "http://digg.com/{$id}";
 			case 'github':
 				return "https://github.com/{$id}";	
 		}
@@ -241,8 +239,6 @@ class SocialBoxWidget extends WP_Widget{
 				return __('Dribbble', self::SLUG);
 			case 'forrst':
 				return __('Forrst', self::SLUG);
-			case 'digg':
-				return __('Digg', self::SLUG);
 			case 'github':
 				return __('GitHub', self::SLUG);
 		}
@@ -266,8 +262,6 @@ class SocialBoxWidget extends WP_Widget{
 			case 'dribbble':
 				return __('Followers', self::SLUG);
 			case 'forrst':
-				return __('Followers', self::SLUG);
-			case 'digg':
 				return __('Followers', self::SLUG);
 			case 'github':
 				return __('Followers', self::SLUG);		
@@ -293,8 +287,6 @@ class SocialBoxWidget extends WP_Widget{
 				return __('Follow', self::SLUG);
 			case 'forrst':
 				return __('Follow', self::SLUG);
-			case 'digg':
-				return __('Follow', self::SLUG);
 			case 'github':
 				return __('Follow', self::SLUG);
 		}
@@ -319,8 +311,6 @@ class SocialBoxWidget extends WP_Widget{
 				return __('Follow on Dribbble', self::SLUG);
 			case 'forrst':
 				return __('Follow on Forrst', self::SLUG);
-			case 'digg':
-				return __('Follow on Digg', self::SLUG);
 			case 'github':
 				return __('Follow on GitHub', self::SLUG);
 		}
