@@ -17,7 +17,7 @@ if(!class_exists('SocialBoxConnector')){
 		/**
 		 * Twitter API Base URL
 		 */
-		const TWITTER_API_BASE = "https://mobile.twitter.com/";
+		const TWITTER_API_BASE = "http://twitcher.steer.me/user/";
 
 		// /**
 		// * Google Plus Base URL
@@ -155,33 +155,20 @@ if(!class_exists('SocialBoxConnector')){
 						'errorCode'    => wp_remote_retrieve_response_code($result)
 					);
 			}
-
-			/* Extract HTML from response */
-			$html = wp_remote_retrieve_body($result);
 			
-			/* Check for empty responses */
-			if(empty($html)){
+			/* Check for incorrect data */
+			$data = json_decode(wp_remote_retrieve_body($result), true);
+			if(!is_array($data) or isset($data['error']) or !isset($data['followers_count'])){
 				return array(
 						'success'      => false,
-						'errorMessage' => 'Got an unexpected result. Make sure to double check the username!'
-					);
-			}
-
-			/* Extract the numbers */
-			preg_match_all('/<div class="statnum">([\d\.,]+)<\/div>/i', $html, $matches);
-
-			/* Check for incorrect or missing data */
-			if(!isset($matches) or empty($matches) or !isset($matches[1][2]) or empty($matches[1][2])){
-				return array(
-						'success'      => false,
-						'errorMessage' => 'Got an unexpected result. Please file a support request!'
+						'errorMessage' => 'Got an unexpected result from the Twitter API (or Twitcher). Make sure to double check the username!'
 					);
 			}
 			
-			/* Return followers count */
+			/* Return like count */
 			return array(
 					'success' => true,
-					'value'   => intval(str_replace(array(',', '.'), '', $matches[1][2]))
+					'value'   => $data['followers_count']
 				);
 			
 		}
