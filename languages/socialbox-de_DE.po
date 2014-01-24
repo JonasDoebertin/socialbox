@@ -3,26 +3,26 @@ msgstr ""
 "Project-Id-Version: SocialBox\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-08-21 14:58+0100\n"
-"PO-Revision-Date: 2013-08-21 14:59+0100\n"
+"PO-Revision-Date: 2013-08-21 15:15+0100\n"
 "Last-Translator: Jonas Döbertin <jonas@doebertin.de>\n"
-"Language-Team: JonasDoebertin <support@jonasdoebertin.net>\n"
-"Language: en_US\n"
+"Language-Team: Jonas Döbertin\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-SourceCharset: UTF-8\n"
 "X-Generator: Poedit 1.5.7\n"
+"Language: de_DE\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../socialbox.php:185
 msgid "Every Ten Minutes"
-msgstr ""
+msgstr "Alle 10 Minuten"
 
 #: ../socialbox.php:280
 msgid "SocialBox update available!"
-msgstr ""
+msgstr "Socialbox-Aktualisierung verfügbar!"
 
 #: ../socialbox.php:281
 #, php-format
@@ -30,77 +30,82 @@ msgid ""
 "New Version: %s (%s). Info and download at the <a href=\"%s\">plugin page</"
 "a>."
 msgstr ""
+"Neue Version: %s (%s). Infos und Download auf der <a href=\"%s\">Plugin-"
+"Seite</a>."
 
 #: ../socialbox.php:302
 msgid "SocialBox Settings"
-msgstr ""
+msgstr "SocialBox Einstellungen"
 
 #: ../socialbox.php:302 ../views/options-page.frame.php:15
 msgid "Settings"
-msgstr ""
+msgstr "Einstellungen"
 
 #: ../socialbox.php:347 ../socialbox.php:348
 #: ../views/options-page.frame.php:14
 msgid "SocialBox"
-msgstr ""
+msgstr "SocialBox"
 
 #: ../socialbox.php:371
 msgid "Advanced Settings"
-msgstr ""
+msgstr "Erweiterte Einstellungen"
 
 #: ../socialbox.php:378
 msgid "Update Interval"
-msgstr ""
+msgstr "Update-Intervall"
 
 #: ../socialbox.php:387
 msgid "SSL-Verification"
-msgstr ""
+msgstr "SSL-Überprüfung"
 
 #: ../socialbox.php:397
 msgid "Debugging"
-msgstr ""
+msgstr "Debugging"
 
 #: ../socialbox.php:404 ../views/options-page.frame.php:18
 msgid "API Log"
-msgstr ""
+msgstr "API-Log"
 
 #: ../socialbox.php:413
 msgid "API Log Entries"
-msgstr ""
+msgstr "API-Log Einträge"
 
 #: ../socialbox.php:424
 msgid "Some advanced options to tweak SocialBox's internals"
-msgstr ""
+msgstr "Einige erweiterte Einstellungen um an SocialBoxs Innerem zu schrauben"
 
 #: ../socialbox.php:431
 msgid ""
 "The time (in minutes) that SocialBox waits before refreshing it's data. "
 "(Default: 180 = 3 hours)"
 msgstr ""
+"Die Zeit (in Minuten) die SocialBox wartet, bevor die Daten aktualisiert "
+"werden. (Standard: 180 = 3 Stunden)"
 
 #: ../socialbox.php:440
 msgid "Disable SSL-Verification on API requests."
-msgstr ""
+msgstr "SSL-Überprüfung für API-Anfragen deaktivieren."
 
 #: ../socialbox.php:441
 msgid "This can be useful on most \"local servers\" like MAMP or XAMPP."
-msgstr ""
+msgstr "Dies ist nützlich bei \"lokalen Servern \" wie MAMP oder XAMPP."
 
 #: ../socialbox.php:449
 msgid "Debugging should help you when SocialBox doesn't work as expected."
 msgstr ""
+"Debugging sollte helfen, wenn SocialBox einmal nicht wie erwartet arbeitet."
 
 #: ../socialbox.php:456
 msgid "Enable the API log"
-msgstr ""
+msgstr "API-Log aktivieren"
 
 #: ../socialbox.php:457
 msgid "This should help you, if you're receiving no data for your networks"
-msgstr ""
+msgstr "Dies sollte helfen, falls keine Daten für die Netzwerke erscheinen"
 
 #: ../socialbox.php:466
 msgid "Number of log entries to keep"
-msgstr ""
+msgstr "Anzahl an gespeicherten API-Log Einträgen"
 
 #: ../includes/socialbox.widget.php:23
 msgid ""
@@ -108,122 +113,125 @@ msgid ""
 "Facebook Page Likes, Google+, Twitter, Dribbble and Forrst Followers and "
 "YouTube and Vimeo Channel Subscriptions."
 msgstr ""
+"Eine wunderbar einfach zu bedienendes SocialBox Widget, welches die aktuelle "
+"Anzahl an Facebook \"Gefällt mir\"-Angaben, Twitter, Dribbble und Forrst "
+"Followern und Youtube und Vimeo Abonnenten anzeigt."
 
 #: ../includes/socialbox.widget.php:229 ../views/options-page.help.php:57
 #: ../views/widget.form.php:60
 msgid "Facebook"
-msgstr ""
+msgstr "Facebook"
 
 #: ../includes/socialbox.widget.php:231 ../views/options-page.help.php:64
 #: ../views/widget.form.php:85
 msgid "Twitter"
-msgstr ""
+msgstr "Twitter"
 
 #: ../includes/socialbox.widget.php:235 ../views/widget.form.php:138
 msgid "YouTube"
-msgstr ""
+msgstr "Youtube"
 
 #: ../includes/socialbox.widget.php:237 ../views/options-page.help.php:83
 #: ../views/widget.form.php:163
 msgid "Vimeo"
-msgstr ""
+msgstr "Vimeo"
 
 #: ../includes/socialbox.widget.php:239 ../views/options-page.help.php:89
 #: ../views/widget.form.php:188
 msgid "Dribbble"
-msgstr ""
+msgstr "Dribbble"
 
 #: ../includes/socialbox.widget.php:241 ../views/options-page.help.php:95
 #: ../views/widget.form.php:213
 msgid "Forrst"
-msgstr ""
+msgstr "Forrst"
 
 #: ../includes/socialbox.widget.php:243 ../views/options-page.help.php:101
 #: ../views/widget.form.php:238
 msgid "GitHub"
-msgstr ""
+msgstr "Github"
 
 #: ../includes/socialbox.widget.php:253
 msgid "Fans"
-msgstr ""
+msgstr "\"Gefällt mir\"-Angaben"
 
 #: ../includes/socialbox.widget.php:255 ../includes/socialbox.widget.php:263
 #: ../includes/socialbox.widget.php:265 ../includes/socialbox.widget.php:267
 msgid "Followers"
-msgstr ""
+msgstr "Follower"
 
 #: ../includes/socialbox.widget.php:259 ../includes/socialbox.widget.php:261
 msgid "Subscribers"
-msgstr ""
+msgstr "Abonnenten"
 
 #: ../includes/socialbox.widget.php:277
 msgid "Like"
-msgstr ""
+msgstr "Gefällt mir"
 
 #: ../includes/socialbox.widget.php:279 ../includes/socialbox.widget.php:287
 #: ../includes/socialbox.widget.php:289 ../includes/socialbox.widget.php:291
 msgid "Follow"
-msgstr ""
+msgstr "Folgen"
 
 #: ../includes/socialbox.widget.php:283 ../includes/socialbox.widget.php:285
 msgid "Subscribe"
-msgstr ""
+msgstr "Abonnieren"
 
 #: ../includes/socialbox.widget.php:301
 msgid "Like on Facebook"
-msgstr ""
+msgstr "\"Gefällt mir\" auf Facebook"
 
 #: ../includes/socialbox.widget.php:303
 msgid "Follow on Twitter"
-msgstr ""
+msgstr "Auf Twitter folgen"
 
 #: ../includes/socialbox.widget.php:307
 msgid "Subscribe to Youtube Channel"
-msgstr ""
+msgstr "Youtube-Kanal abonnieren"
 
 #: ../includes/socialbox.widget.php:309
 msgid "Subscribe to Vimeo Channel"
-msgstr ""
+msgstr "Vimeo-Kanal abonnieren"
 
 #: ../includes/socialbox.widget.php:311
 msgid "Follow on Dribbble"
-msgstr ""
+msgstr "Auf Dribbble folgen"
 
 #: ../includes/socialbox.widget.php:313
 msgid "Follow on Forrst"
-msgstr ""
+msgstr "Auf Forrst folgen"
 
 #: ../includes/socialbox.widget.php:315
 msgid "Follow on GitHub"
-msgstr ""
+msgstr "Auf Github folgen"
 
 #: ../views/options-page.frame.php:16
 msgid "About"
-msgstr ""
+msgstr "Über"
 
 #: ../views/options-page.frame.php:17
 msgid "Help"
-msgstr ""
+msgstr "Hilfe"
 
 #: ../views/options-page.help.php:12
 msgid "Table of Contents"
-msgstr ""
+msgstr "Inhaltsübersicht"
 
 #: ../views/options-page.help.php:14 ../views/options-page.help.php:25
 msgid "Quick Setup"
-msgstr ""
+msgstr "Quick-Setup"
 
 #: ../views/options-page.help.php:15 ../views/options-page.help.php:34
 msgid "General Widget Options"
-msgstr ""
+msgstr "Widget-Einstellungen"
 
 #: ../views/options-page.help.php:16 ../views/options-page.help.php:46
 msgid "General Network Options"
-msgstr ""
+msgstr "Netzwerk-Einstellungen"
 
 #: ../views/options-page.help.php:17 ../views/options-page.help.php:109
 msgid "Additional Widget Options"
-msgstr ""
+msgstr "Erweiterte Einstellungen"
 
 #: ../views/options-page.help.php:22
 msgid ""
@@ -231,6 +239,9 @@ msgid ""
 "\"http://support.jonasdoebertin.net\" title=\"Get support!\">support."
 "jonasdoebertin.net</a>"
 msgstr ""
+"Für alle weiteren Fragen, öffne bitte ein Ticket auf meiner Support-Seite: "
+"<a href=\"http://support.jonasdoebertin.net\" title=\"Hilfe bekommen!"
+"\">support.jonasdoebertin.net</a>"
 
 #: ../views/options-page.help.php:26
 msgid "There is really not much to it. Just follow these simple steps:"
@@ -271,7 +282,7 @@ msgstr ""
 
 #: ../views/options-page.help.php:39 ../views/widget.form.php:26
 msgid "Show Buttons"
-msgstr ""
+msgstr "Zeige Buttons"
 
 #: ../views/options-page.help.php:40
 msgid ""
@@ -294,7 +305,7 @@ msgstr ""
 
 #: ../views/options-page.help.php:48
 msgid "Default"
-msgstr ""
+msgstr "Standard"
 
 #: ../views/options-page.help.php:49
 msgid ""
@@ -305,7 +316,7 @@ msgstr ""
 
 #: ../views/options-page.help.php:51
 msgid "Position"
-msgstr ""
+msgstr "Position"
 
 #: ../views/options-page.help.php:52
 msgid ""
@@ -329,7 +340,7 @@ msgstr ""
 
 #: ../views/options-page.help.php:61
 msgid "Note:"
-msgstr ""
+msgstr "Hinweis:"
 
 #: ../views/options-page.help.php:61
 msgid ""
@@ -342,7 +353,7 @@ msgstr ""
 #: ../views/widget.form.php:89 ../views/widget.form.php:192
 #: ../views/widget.form.php:217 ../views/widget.form.php:242
 msgid "Username"
-msgstr ""
+msgstr "Benutzername"
 
 #: ../views/options-page.help.php:66
 msgid "Please enter your regular Twitter Username (without the @-symbol)."
@@ -350,7 +361,7 @@ msgstr ""
 
 #: ../views/options-page.help.php:70
 msgid "Google+"
-msgstr ""
+msgstr "Google+"
 
 #: ../views/options-page.help.php:70
 msgid "User ID"
@@ -358,12 +369,12 @@ msgstr ""
 
 #: ../views/options-page.help.php:77
 msgid "Youtube"
-msgstr ""
+msgstr "Youtube"
 
 #: ../views/options-page.help.php:77 ../views/options-page.help.php:83
 #: ../views/widget.form.php:142 ../views/widget.form.php:167
 msgid "Channel"
-msgstr ""
+msgstr "Kanal"
 
 #: ../views/options-page.help.php:79
 msgid "Please enter your Channels \"Shortname\" (as seen in the URL)."
@@ -410,11 +421,11 @@ msgstr ""
 
 #: ../views/options-page.log.php:21 ../views/options-page.log.php:30
 msgid "Time"
-msgstr ""
+msgstr "Zeitpunkt"
 
 #: ../views/options-page.log.php:22 ../views/options-page.log.php:31
 msgid "Network"
-msgstr ""
+msgstr "Netzwerk"
 
 #: ../views/options-page.log.php:23
 msgid "Username/ID"

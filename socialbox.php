@@ -86,7 +86,7 @@ if(!class_exists('SocialBox') and !class_exists('SocialBoxWidget')){
 			add_action('widgets_init', array($this, 'registerWidget'));
 			
 			/* Register and load textdomain */
-			load_plugin_textdomain(self::SLUG, null, basename(dirname(__FILE__)) . '/languages/');
+			load_plugin_textdomain(self::SLUG, null, dirname(plugin_basename(__FILE__)) . '/languages/');
 			
 			/* Register Widget Stylesheets */
 			if(is_admin()){
