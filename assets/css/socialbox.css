@@ -58,7 +58,7 @@ div.socialbox-widget.socialbox-style-classic{
 }
 
 	div.socialbox-widget.socialbox-style-classic ul{
-		background: url(../images/classic-background.png) repeat;
+		background: url(../img/classic-background.png) repeat;
 		border: 1px solid #d8dcdf !important;
 		-webkit-border-radius: 4px;
 		-moz-border-radius: 4px;
@@ -100,7 +100,7 @@ div.socialbox-widget.socialbox-style-classic{
 				}
 				
 			div.socialbox-widget.socialbox-style-classic ul li a.socialbox-button{
-				background: url(../images/classic-button.png) no-repeat;
+				background: url(../img/classic-button.png) no-repeat;
 				border: 1px solid #d8dcdf;
 				-webkit-border-radius: 3px;
 				-moz-border-radius: 3px;
@@ -118,11 +118,11 @@ div.socialbox-widget.socialbox-style-classic{
 			}
 			
 			div.socialbox-widget.socialbox-style-classic ul li a.socialbox-button:hover{
-				background: url(../images/classic-button.png) 0 -27px no-repeat;
+				background: url(../img/classic-button.png) 0 -27px no-repeat;
 			}
 			
 			div.socialbox-widget.socialbox-style-classic ul li a.socialbox-button:active{
-				background: url(../images/classic-button.png) 0 -54px no-repeat;
+				background: url(../img/classic-button.png) 0 -54px no-repeat;
 			}
 
 /*
@@ -134,7 +134,7 @@ div.socialbox-widget.socialbox-style-modern{
 	div.socialbox-widget.socialbox-style-modern ul{}
 
 		div.socialbox-widget.socialbox-style-modern ul li{
-			background: url(../images/modern-background.png) repeat;
+			background: url(../img/modern-background.png) repeat;
 			border: 1px solid #e5e5e5;
 			height: 32px;
 			margin-bottom: 10px;
@@ -169,7 +169,7 @@ div.socialbox-widget.socialbox-style-modern{
  * 4. Style: Tuts+ Flavor
  * ---------------------------------------------------------------------------------------------- */
 div.socialbox-widget.socialbox-style-tutsflavor{
-	background: transparent url(../images/tutsflavor-background.png) repeat;
+	background: transparent url(../img/tutsflavor-background.png) repeat;
 	border: 1px solid #f2f1f2;
 }
 
@@ -620,5 +620,8 @@ div.socialbox-widget.socialbox-style-colorful{
 	font-family: 'BebasNeueRegular';
 	font-weight: normal;
 	src: url('../fonts/BebasNeue-webfont.eot');
-	src: url('../fonts/BebasNeue-webfont.eot?iefix') format('eot'), url('../fonts/BebasNeue-webfont.woff') format('woff'), url('../fonts/BebasNeue-webfont.ttf') format('truetype'), url('../fonts/BebasNeue-webfont.svg#webfont4Bjy2lJe') format('svg');
+	src: url('../fonts/BebasNeue-webfont.eot?iefix') format('eot'),
+	     url('../fonts/BebasNeue-webfont.woff') format('woff'),
+	     url('../fonts/BebasNeue-webfont.ttf') format('truetype'),
+	     url('../fonts/BebasNeue-webfont.svg#webfont4Bjy2lJe') format('svg');
 }
