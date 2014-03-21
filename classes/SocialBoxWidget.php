@@ -122,7 +122,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		$instance['facebook_metric'] = $newInstance['facebook_metric'];
 
 		/* Update cache elements */
-		$cache = get_option(self::SLUG . '_cache', array());
+		$cache = get_option('socialbox_cache', array());
 		foreach(JD_SocialBox::getSupportedNetworks() as $network) {
 			
 			/* Only if the ID is not blank */
@@ -159,11 +159,11 @@ class JD_SocialBoxWidget extends WP_Widget{
 				}
 			}
 		}
-		update_option(self::SLUG . '_cache', $cache);
+		update_option('socialbox_cache', $cache);
 		
 		/* Force cache refresh */
 		/* TODO: !ENABLE! */
-		// JD_SocialBox::updateCache();
+		JD_SocialBox::updateCache(true);
 		
 		return $instance;
 	}

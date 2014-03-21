@@ -16,11 +16,6 @@ class JD_SocialBox{
 	const SLUG = 'socialbox';
 	
 	/**
-	 * The plugins current version number
-	 */
-	const VERSION = '1.3.2';
-	
-	/**
 	 * Update check script URL
 	 */
 	const UPDATE_BASE = "http://updates.jonasdoebertin.net/";
@@ -185,7 +180,7 @@ class JD_SocialBox{
 		
 		$query = array(
 			'slug' => self::SLUG,
-			'version' => self::VERSION
+			'version' => JD_SOCIALBOX_VERSION
 		);
 		$url = self::UPDATE_BASE . '?' . http_build_query($query);
 		
@@ -486,10 +481,10 @@ class JD_SocialBox{
 	 *
 	 * This will be executed as scheduled cron event or when updating a widgets settings
 	 */
-	public static function updateCache(){
+	public static function updateCache($forced = false) {
 		
 		/* Abort if no widget has been set up */
-		$cache = get_option(self::SLUG . '_cache', null);
+		$cache = get_option('socialbox_cache', null);
 		if( !is_array($cache) ){
 			return;
 		}
@@ -498,60 +493,50 @@ class JD_SocialBox{
 		$updateInterval = self::getOption('update_interval');
 		
 		/* Call update function for each cache element that needs to be updated */
-		foreach($cache as $elem){
+		foreach($cache as $item){
 
 			/* Calculate cache element age (in minutes) */
-			$elemAge = (time() - $elem['lastUpdated']) / 60;
+			$elemAge = (time() - $item['lastUpdated']) / 60;
 
-			/* Calculate max cache elem age */
+			/* Calculate max cache item age */
 			$maxElemAge = $updateInterval - mt_rand(0, round($updateInterval / 5));
 
-			if( $elemAge >= $maxElemAge ){
+			if($forced or ($elemAge >= $maxElemAge)) {
 
-				self::updateCacheElement($elem);
-
+				//self::updateCacheElement($item);
+				self::updateCacheItem($item);
 			}
 
 		}
 		
 	}
 
-	/**
-	 * Update given cache element
-	 *
-	 * Will be called by "SocialBox::updateCache()"
-	 */
-	public static function updateCacheElement($elem){
+	public static function updateCacheItem($item){
 
-		/* Check if we have to disable SSL verification */
-		$disableSslVerify = ( self::getOption('disable_ssl') == 1 );
+		/* Fetch new value from connector */
+		$result = JD_SocialBoxConnector::get($item);
 
-		/* Fetch new value */
-		$result = SocialBoxConnector::getData($elem['network'], $elem['id'], $disableSslVerify);
-
-		/* Check if http request was successful */
-		if( $result['success'] ){
-			
+		/* Set new value if fetch was successful */
+		if($result['successful']) {
 			$newValue = $result['value'];
 
-		} else{
+		/* Indicate that fetch was unseccessful */
+		} else {
+			$newValue = null;
 
-			$newValue = false;
-			$errorCode = isset($result['errorCode'])? $result['errorCode'] : '---';
-			SocialBox::addLogEntry($elem['network'], $elem['id'], $errorCode, $result['errorMessage']);
-
+			/* TODO */
+			//$errorCode = isset($result['errorCode'])? $result['errorCode'] : '---';
+			//SocialBox::addLogEntry($elem['network'], $elem['id'], $errorCode, $result['errorMessage']);
 		}
 
-		/* Check new value and set the default, if necessary */
-		$elem['value'] = ((is_numeric($newValue)) ? $newValue : $elem['default']);
-
-		$elem['lastUpdated'] = time();
+		/* Update cache item */
+		$item['value']       = ((!is_null($newValue)) ? $newValue : (int)$item['default']);
+		$item['lastUpdated'] = time();
 		
-		/* Save updated cache element */
-		$cache = get_option(SocialBox::SLUG . '_cache', array());
-		$cache[$elem['network'] . '||' . $elem['id']] = $elem;
-		update_option(SocialBox::SLUG . '_cache', $cache);
-		
+		/* Save updated cache item */
+		$cache = get_option('socialbox_cache', array());
+		$cache[$item['network'] . '||' . $item['id']] = $item;
+		update_option('socialbox_cache', $cache);
 	}
 	
 	/**

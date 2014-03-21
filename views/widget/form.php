@@ -74,8 +74,8 @@
 			<select id="<?php echo $this->get_field_id('facebook_metric'); ?>" name="<?php echo $this->get_field_name('facebook_metric'); ?>" class="widefat">
 				<option <?php if($instance['facebook_metric'] == 'likes' ) echo 'selected="selected"'; ?> value="likes">Likes</option>
 				<option <?php if($instance['facebook_metric'] == 'checkins' ) echo 'selected="selected"'; ?> value="checkins">Checkins</option>
-				<option <?php if($instance['facebook_metric'] == 'talkingabout' ) echo 'selected="selected"'; ?> value="talkingabout">Talking About</option>
-				<option <?php if($instance['facebook_metric'] == 'werehere' ) echo 'selected="selected"'; ?> value="werehere">Were Here</option>
+				<option <?php if($instance['facebook_metric'] == 'talking_about_count' ) echo 'selected="selected"'; ?> value="talking_about_count">Talking About</option>
+				<option <?php if($instance['facebook_metric'] == 'were_here_count' ) echo 'selected="selected"'; ?> value="were_here_count">Were Here</option>
 			</select>
 		</p>
 		
