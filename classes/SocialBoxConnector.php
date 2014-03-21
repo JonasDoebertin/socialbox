@@ -58,7 +58,7 @@ class JD_SocialBoxConnector{
 	public static function getData($network, $id, $disableSslVerify){
 		
 		/* If SSL verification is disabled, set the corresponding identifier */
-		$urlIdentifier = ( $disableSslVerify ) ? SocialBox::URL_IDENTIFIER : '';
+		$urlIdentifier = ( $disableSslVerify ) ? JD_SocialBox::URL_IDENTIFIER : '';
 
 		switch($network){
 			case 'facebook':

@@ -28,8 +28,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		
 		/* Widget control settings */
 		$controlOpts = array(
-			'id_base' => self::SLUG,
-			'width' => 280
+			'id_base' => self::SLUG
 		);
 		
 		/* Create the widget */
@@ -52,7 +51,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		
 		/* Build up network data array */
 		$networks = array();
-		foreach(SocialBox::getSupportedNetworks() as $network){
+		foreach(JD_SocialBox::getSupportedNetworks() as $network){
 			
 			if( array_key_exists($network . '_id', $instance) and !empty($instance[$network . '_id']) ){
 				
@@ -87,7 +86,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		echo $before_widget;
 			
 		/* Social Box */
-		include SOCIALBOX_PATH . '/views/widget.widget.php';
+		include JD_SOCIALBOX_PATH . '/views/widget.widget.php';
 		
 		/* After Widget HTML */
 		echo $after_widget;
@@ -103,7 +102,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 */
 	public function update($newInstance, $oldInstance){
 		
-		/* Update general widget settings */
+		/* Update general widget options */
 		$instance = $oldInstance;
 		$instance['new_window']          = $newInstance['new_window'];
 		$instance['show_buttons']        = $newInstance['show_buttons'];
@@ -112,15 +111,21 @@ class JD_SocialBoxWidget extends WP_Widget{
 		$instance['forced_widget_width'] = ((is_numeric($newInstance['forced_widget_width'])) ? trim($newInstance['forced_widget_width']) : 0);
 		$instance['forced_button_width'] = ((is_numeric($newInstance['forced_button_width'])) ? trim($newInstance['forced_button_width']) : 0);
 		
+		/* Update values for common options for each network */
+		foreach(JD_SocialBox::getSupportedNetworks() as $network) {
+			$instance[$network . '_id']       = trim(strip_tags($newInstance[$network . '_id']));
+			$instance[$network . '_default']  = ((is_numeric($newInstance[$network . '_default'])) ? trim($newInstance[$network . '_default']) : 0);
+			$instance[$network . '_position'] = ((is_numeric($newInstance[$network . '_position'])) ? trim($newInstance[$network . '_position']) : 1);
+		}
+
+		/* Update values for uncommon/special options */
+		$instance['facebook_metric'] = $newInstance['facebook_metric'];
+
+
+
 		$cache = get_option(self::SLUG . '_cache', array());
 
-		foreach(SocialBox::getSupportedNetworks() as $network){
-
-			/* Update network related widget settings */
-			$instance[$network . '_id']         = trim(strip_tags($newInstance[$network . '_id']));
-			$instance[$network . '_default']    = ((is_numeric($newInstance[$network . '_default'])) ? trim($newInstance[$network . '_default']) : 0);
-			$instance[$network . '_position']   = ((is_numeric($newInstance[$network . '_position'])) ? trim($newInstance[$network . '_position']) : 1);
-
+		foreach(JD_SocialBox::getSupportedNetworks() as $network){
 			/* Add cache elements for this network if it doesn't exist already */
 			if( !empty($instance[$network . '_id']) ){
 
@@ -147,7 +152,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		update_option(self::SLUG . '_cache', $cache);
 		
 		/* Force cache refresh */
-		SocialBox::updateCache();
+		JD_SocialBox::updateCache();
 		
 		return $instance;
 		
@@ -160,7 +165,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 */
 	public function form($instance){
 		
-		/* Apply default values */
+		/* Apply general default values */
 		$defaults = array(
 			'new_window'          => true,
 			'show_buttons'        => true,
@@ -170,21 +175,22 @@ class JD_SocialBoxWidget extends WP_Widget{
 			'forced_button_width' => 0
 		);
 
+		/* Set default values for common options of each network */
 		$pos = 1;
-
-		foreach(SocialBox::getSupportedNetworks() as $network){
-
+		foreach(JD_SocialBox::getSupportedNetworks() as $network){
 			$defaults[$network . '_id'] = '';
 			$defaults[$network . '_default'] = 0;
 			$defaults[$network . '_position'] = $pos++;
-
 		}
 
+		/* Set default values for uncommon/special options */
+		$defaults['facebook_metric'] = 'likes';
+
+		/* Merge defaults and actual option values */
 		$instance = wp_parse_args((array) $instance, $defaults);
 		
-		/* Show Widget Options */
-		include SOCIALBOX_PATH . '/views/widget.form.php';
-		
+		/* Include corresponding view */
+		include JD_SOCIALBOX_PATH . '/views/widget/form.php';
 	}
 	
 	private function sortByPosition($a, $b){
@@ -420,7 +426,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 */
 	private function getUrl($path){
 		
-		return SOCIALBOX_URL . '/' . $path;
+		return JD_SOCIALBOX_URL . '/' . $path;
 		
 	}
 	

@@ -302,7 +302,7 @@ class JD_SocialBox{
 	public function registerAdminStyle(){
 		
 		/* register Style */
-		wp_register_style(self::SLUG . '-widgets-page', plugins_url('assets/css/widgets-page.css', __FILE__), array(), self::VERSION, 'screen');
+		wp_register_style(self::SLUG . '-widgets-page', JD_SOCIALBOX_URL . '/assets/css/widgets-page.css', array(), JD_SOCIALBOX_VERSION, 'screen');
 					
 		/* Enqueue Style */
 		wp_enqueue_style(self::SLUG . '-widgets-page');
@@ -317,7 +317,7 @@ class JD_SocialBox{
 	public function registerStyle(){
 		
 		/* Register style */
-		wp_register_style(self::SLUG, plugins_url('assets/css/socialbox.css', __FILE__), array(), self::VERSION, 'screen');
+		wp_register_style(self::SLUG, JD_SOCIALBOX_URL . '/assets/css/socialbox.css', array(), JD_SOCIALBOX_VERSION, 'screen');
 		
 		/* Enqueue style */
 		wp_enqueue_style(self::SLUG);
@@ -464,7 +464,7 @@ class JD_SocialBox{
 	 */
 	public function addOptionsPageStyle(){
 		
-		wp_register_style(self::SLUG . '-options', plugins_url('assets/css/options-page.css', __FILE__), array(), self::VERSION, 'screen');
+		wp_register_style(self::SLUG . '-options', JD_SOCIALBOX_URL . '/assets/css/options-page.css', array(), JD_SOCIALBOX_VERSION, 'screen');
 		wp_enqueue_style(self::SLUG . '-options');
 
 	}

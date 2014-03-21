@@ -1,17 +1,21 @@
-<?php
+<?php if(!defined('ABSPATH')) die('Direct access is not allowed.');
+
+
 /*
- * SocialBox v.1.3.2
- * Copyright by Jonas Doebertin
+ * SocialBox 1.4.0
+ * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
+
+
 ?>
 
 <div class="socialbox-options">
 
 	<!-- General Settings -->
-	<fieldset class="widefat socialbox-general">
+	<fieldset class="socialbox-general">
 		
-		<legend><?php _e('General Settings', self::SLUG); ?></legend>
+		<h5><?php _e('General Settings', self::SLUG); ?></h5>
 		
 		<p>
 			<!-- Open New Window -->
@@ -55,15 +59,25 @@
 	</fieldset>
 	
 	<!-- Facebook -->
-	<fieldset class="widefat">
+	<fieldset>
 		
-		<legend><?php _e('Facebook', self::SLUG); ?></legend>
-		
-		<!-- ID -->
-		<div class="socialbox-id">
-			<label for="<?php echo $this->get_field_id('facebook_id'); ?>" title="<?php _e('Your Pages ID or Shortname (e.g. nettutsplus)', self::SLUG); ?>"><?php _e('Page ID/Name', self::SLUG); ?>:</label>
-			<input type="text" id="<?php echo $this->get_field_id('facebook_id'); ?>" name="<?php echo $this->get_field_name('facebook_id'); ?>" value="<?php echo $instance['facebook_id']; ?>" class="widefat"  />
-		</div>
+		<h5><?php _e('Facebook', self::SLUG); ?></h5>
+
+		<p>
+			<!-- Page ID -->
+			<label for="<?php echo $this->get_field_id('facebook_id'); ?>" title="<?php _e('Your Pages ID or Shortname (e.g. envato)', self::SLUG); ?>"><?php _e('Page ID or Shortname', self::SLUG); ?>:</label><br/>
+			<input type="text" id="<?php echo $this->get_field_id('facebook_id'); ?>" name="<?php echo $this->get_field_name('facebook_id'); ?>" value="<?php echo $instance['facebook_id']; ?>" class="widefat" />
+		</p>
+		<p>
+			<!-- Metric -->
+			<label for="<?php echo $this->get_field_id('facebook_metric'); ?>" title="<?php _e('What metric shall be displayed', self::SLUG); ?>"><?php _e('Metric', self::SLUG); ?>:</label>
+			<select id="<?php echo $this->get_field_id('facebook_metric'); ?>" name="<?php echo $this->get_field_name('facebook_metric'); ?>" class="widefat">
+				<option <?php if($instance['facebook_metric'] == 'likes' ) echo 'selected="selected"'; ?> value="likes">Likes</option>
+				<option <?php if($instance['facebook_metric'] == 'checkins' ) echo 'selected="selected"'; ?> value="checkins">Checkins</option>
+				<option <?php if($instance['facebook_metric'] == 'talkingabout' ) echo 'selected="selected"'; ?> value="talkingabout">Talking About</option>
+				<option <?php if($instance['facebook_metric'] == 'werehere' ) echo 'selected="selected"'; ?> value="werehere">Were Here</option>
+			</select>
+		</p>
 		
 		<!-- Default -->
 		<div class="socialbox-default">
@@ -80,15 +94,15 @@
 	</fieldset>
 	
 	<!-- Twitter -->
-	<fieldset class="widefat">
+	<fieldset>
 		
-		<legend><?php _e('Twitter', self::SLUG); ?></legend>
+		<h5><?php _e('Twitter', self::SLUG); ?></h5>
 		
 		<!-- ID -->
-		<div class="socialbox-id">
+		<p>
 			<label for="<?php echo $this->get_field_id('twitter_id'); ?>" title="<?php _e('Your Twitter screenname (e.g. envatowebdev)', self::SLUG); ?>"><?php _e('Username', self::SLUG); ?>:</label>
-			<input type="text" id="<?php echo $this->get_field_id('twitter_id'); ?>" name="<?php echo $this->get_field_name('twitter_id'); ?>" value="<?php echo $instance['twitter_id']; ?>" class="widefat"  />
-		</div>
+			<input type="text" id="<?php echo $this->get_field_id('twitter_id'); ?>" name="<?php echo $this->get_field_name('twitter_id'); ?>" value="<?php echo $instance['twitter_id']; ?>" class="widefat" />
+		</p>
 		
 		<!-- Default -->
 		<div class="socialbox-default">
@@ -133,15 +147,15 @@
 	?>
 	
 	<!-- YouTube -->
-	<fieldset class="widefat">
+	<fieldset>
 		
-		<legend><?php _e('YouTube', self::SLUG); ?></legend>
+		<h5><?php _e('YouTube', self::SLUG); ?></h5>
 		
 		<!-- ID -->
-		<div class="socialbox-id">
+		<p>
 			<label for="<?php echo $this->get_field_id('youtube_id'); ?>" title="<?php _e('Your YouTube Channel (e.g. nettutsplus)', self::SLUG); ?>"><?php _e('Channel', self::SLUG); ?>:</label>
-			<input type="text" id="<?php echo $this->get_field_id('youtube_id'); ?>" name="<?php echo $this->get_field_name('youtube_id'); ?>" value="<?php echo $instance['youtube_id']; ?>" class="widefat"  />
-		</div>
+			<input type="text" id="<?php echo $this->get_field_id('youtube_id'); ?>" name="<?php echo $this->get_field_name('youtube_id'); ?>" value="<?php echo $instance['youtube_id']; ?>" class="widefat" />
+		</p>
 		
 		<!-- Default -->
 		<div class="socialbox-default">
@@ -158,15 +172,15 @@
 	</fieldset>
 	
 	<!-- Vimeo -->
-	<fieldset class="widefat">
+	<fieldset>
 		
-		<legend><?php _e('Vimeo', self::SLUG); ?></legend>
+		<h5><?php _e('Vimeo', self::SLUG); ?></h5>
 		
 		<!-- ID -->
-		<div class="socialbox-id">
+		<p>
 			<label for="<?php echo $this->get_field_id('vimeo_id'); ?>" title="<?php _e('Your Vimeo Channel', self::SLUG); ?>"><?php _e('Channel', self::SLUG); ?>:</label>
-			<input type="text" id="<?php echo $this->get_field_id('vimeo_id'); ?>" name="<?php echo $this->get_field_name('vimeo_id'); ?>" value="<?php echo $instance['vimeo_id']; ?>" class="widefat"  />
-		</div>
+			<input type="text" id="<?php echo $this->get_field_id('vimeo_id'); ?>" name="<?php echo $this->get_field_name('vimeo_id'); ?>" value="<?php echo $instance['vimeo_id']; ?>" class="widefat" />
+		</p>
 		
 		<!-- Default -->
 		<div class="socialbox-default">
@@ -183,15 +197,15 @@
 	</fieldset>
 	
 	<!-- Dribbble -->
-	<fieldset class="widefat">
+	<fieldset>
 		
-		<legend><?php _e('Dribbble', self::SLUG); ?></legend>
+		<h5><?php _e('Dribbble', self::SLUG); ?></h5>
 		
 		<!-- ID -->
-		<div class="socialbox-id">
+		<p>
 			<label for="<?php echo $this->get_field_id('dribbble_id'); ?>" title="<?php _e('Your Dribbble username (e.g. envato)', self::SLUG); ?>"><?php _e('Username', self::SLUG); ?>:</label>
-			<input type="text" id="<?php echo $this->get_field_id('dribbble_id'); ?>" name="<?php echo $this->get_field_name('dribbble_id'); ?>" value="<?php echo $instance['dribbble_id']; ?>" class="widefat"  />
-		</div>
+			<input type="text" id="<?php echo $this->get_field_id('dribbble_id'); ?>" name="<?php echo $this->get_field_name('dribbble_id'); ?>" value="<?php echo $instance['dribbble_id']; ?>" class="widefat" />
+		</p>
 		
 		<!-- Default -->
 		<div class="socialbox-default">
@@ -208,15 +222,15 @@
 	</fieldset>
 	
 	<!-- Forrst -->
-	<fieldset class="widefat">
+	<fieldset>
 		
-		<legend><?php _e('Forrst', self::SLUG); ?></legend>
+		<h5><?php _e('Forrst', self::SLUG); ?></h5>
 		
 		<!-- ID -->
-		<div class="socialbox-id">
+		<p>
 			<label for="<?php echo $this->get_field_id('forrst_id'); ?>" title="<?php _e('Your Forrst username', self::SLUG); ?>"><?php _e('Username', self::SLUG); ?>:</label>
-			<input type="text" id="<?php echo $this->get_field_id('forrst_id'); ?>" name="<?php echo $this->get_field_name('forrst_id'); ?>" value="<?php echo $instance['forrst_id']; ?>" class="widefat"  />
-		</div>
+			<input type="text" id="<?php echo $this->get_field_id('forrst_id'); ?>" name="<?php echo $this->get_field_name('forrst_id'); ?>" value="<?php echo $instance['forrst_id']; ?>" class="widefat" />
+		</p>
 		
 		<!-- Default -->
 		<div class="socialbox-default">
@@ -233,15 +247,15 @@
 	</fieldset>
 
 	<!-- GitHub -->
-	<fieldset class="widefat">
+	<fieldset>
 		
-		<legend><?php _e('GitHub', self::SLUG); ?></legend>
+		<h5><?php _e('GitHub', self::SLUG); ?></h5>
 		
 		<!-- ID -->
-		<div class="socialbox-id">
+		<p>
 			<label for="<?php echo $this->get_field_id('github_id'); ?>" title="<?php _e('Your gitHub username', self::SLUG); ?>"><?php _e('Username', self::SLUG); ?>:</label>
 			<input type="text" id="<?php echo $this->get_field_id('github_id'); ?>" name="<?php echo $this->get_field_name('github_id'); ?>" value="<?php echo $instance['github_id']; ?>" class="widefat"  />
-		</div>
+		</p>
 		
 		<!-- Default -->
 		<div class="socialbox-default">
@@ -258,9 +272,9 @@
 	</fieldset>
 
 	<!-- Additional Settings -->
-	<fieldset class="widefat">
+	<fieldset>
 		
-		<legend><?php _e('Additional Settings', self::SLUG); ?></legend>
+		<h5><?php _e('Additional Settings', self::SLUG); ?></h5>
 
 		<p>
 			<!-- Fixed Widget Width -->
@@ -279,7 +293,7 @@
 	</fieldset>
 
 	<!-- Support Note -->
-	<fieldset class="widefat socialbox-support">
+	<fieldset class="socialbox-support">
 		
 		<p>
 			<small>
