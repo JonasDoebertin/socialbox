@@ -51,7 +51,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		
 		/* Build up network data array */
 		$networks = array();
-		foreach(JD_SocialBox::getSupportedNetworks() as $network){
+		foreach(JD_SocialBoxHelper::getSupportedNetworks() as $network){
 			
 			if( array_key_exists($network . '_id', $instance) and !empty($instance[$network . '_id']) ){
 				
@@ -59,7 +59,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 					'type' 				=> $network,
 					'id' 				=> $instance[$network . '_id'],
 					'position' 			=> $instance[$network . '_position'],
-					'count' 			=> ( $cache[$network . '||' . $instance[$network . '_id']] !== null )? $cache[$network . '||' . $instance[$network . '_id']]['value'] : 0,
+					'count' 			=> ( $cache[$network . '||' . $instance[$network . '_id']] !== null )? $cache[$network . '||' . $instance[$network . '_id']]['value'] : $instance[$network . '_default'],
 					'link' 				=> $this->getNetworkLink($network, $instance[$network . '_id']),
 					'name' 				=> $this->getNetworkName($network),
 					'metric' 			=> $this->getNetworkMetric($network),
@@ -112,7 +112,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		$instance['forced_button_width'] = ((is_numeric($newInstance['forced_button_width'])) ? trim($newInstance['forced_button_width']) : 0);
 		
 		/* Update values for common options for each network */
-		foreach(JD_SocialBox::getSupportedNetworks() as $network) {
+		foreach(JD_SocialBoxHelper::getSupportedNetworks() as $network) {
 			$instance[$network . '_id']       = trim(strip_tags($newInstance[$network . '_id']));
 			$instance[$network . '_default']  = ((is_numeric($newInstance[$network . '_default'])) ? trim($newInstance[$network . '_default']) : 0);
 			$instance[$network . '_position'] = ((is_numeric($newInstance[$network . '_position'])) ? trim($newInstance[$network . '_position']) : 1);
@@ -123,7 +123,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 
 		/* Update cache elements */
 		$cache = get_option('socialbox_cache', array());
-		foreach(JD_SocialBox::getSupportedNetworks() as $network) {
+		foreach(JD_SocialBoxHelper::getSupportedNetworks() as $network) {
 			
 			/* Only if the ID is not blank */
 			if(!empty($instance[$network . '_id'])) {
@@ -136,8 +136,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 						'network' =>		$network,
 						'id' =>				$instance[$network . '_id'],
 						'lastUpdated' =>	0,
-						'value' =>			null,
-						'default' =>		$instance[$network . '_default']
+						'value' =>			null
 					);
 
 					/* Add uncommon/special attributes */
@@ -150,7 +149,6 @@ class JD_SocialBoxWidget extends WP_Widget{
 
 					/* Update common attributes */
 					$cache[$network . '||' . $instance[$network . '_id']]['lastUpdated'] = null;
-					$cache[$network . '||' . $instance[$network . '_id']]['default'] = $instance[$network . '_default'];
 
 					/* Update uncommon/special attributes */
 					if($network == 'facebook') {
@@ -187,7 +185,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 
 		/* Set default values for common options of each network */
 		$pos = 1;
-		foreach(JD_SocialBox::getSupportedNetworks() as $network){
+		foreach(JD_SocialBoxHelper::getSupportedNetworks() as $network){
 			$defaults[$network . '_id'] = '';
 			$defaults[$network . '_default'] = 0;
 			$defaults[$network . '_position'] = $pos++;

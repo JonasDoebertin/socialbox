@@ -40,10 +40,10 @@ class JD_SocialBox{
 	 */
 	public function __construct(){
 
-		/* Disable SSL-Verification when corresponding settings is enabled */
-		if( $this->getOption('disable_ssl') === '1' ){
-			add_filter('http_request_args', array($this, 'disableSslVerify'), 10, 2);
-		}
+		// /* Disable SSL-Verification when corresponding settings is enabled */
+		// if( JD_SocialBoxHelper::getOption('disable_ssl') === '1' ){
+		// 	add_filter('http_request_args', array($this, 'disableSslVerify'), 10, 2);
+		// }
 		
 		/* Inject custom cron schedule */
 		add_filter('cron_schedules', array($this, 'addCronSchedule'));
@@ -51,10 +51,6 @@ class JD_SocialBox{
 		/* Register custom actions */
 		add_action(self::SLUG . '_update_cache', array($this, 'updateCache'));
 		add_action(self::SLUG . '_check_for_update', array($this, 'checkForUpdate'));
-		
-		/* Register (de)activation hook */
-		register_activation_hook(__FILE__, array($this, 'activatePlugin'));
-		register_deactivation_hook(__FILE__, array($this, 'deactivatePlugin'));
 		
 		/* If an update is available, then notify */
 		/* TODO: Double check version numbers */
@@ -69,26 +65,27 @@ class JD_SocialBox{
 		add_action('widgets_init', array($this, 'registerWidget'));
 		
 		/* Register and load textdomain */
-		load_plugin_textdomain(self::SLUG, null, dirname(plugin_basename(__FILE__)) . '/languages/');
+		load_plugin_textdomain('socialbox', null, dirname(JD_SOCIALBOX_BASENAME) . '/languages/');
 		
-		/* Register Widget Stylesheets */
+		/* Backend only stuff */
 		if(is_admin()){
 			
 			/* Add custom "Settings" link to plugin actions */
-			add_action('plugin_action_links_' . basename(dirname(__FILE__)) . '/' . basename(__FILE__), array($this, 'addPluginActionLink'));
+			add_action('plugin_action_links_' . JD_SOCIALBOX_BASENAME, array($this, 'addPluginActionLink'));
 
-			/* Register additional styles for "widgets" admin page */
-			add_action('admin_print_styles-widgets.php', array($this, 'registerAdminStyle'));
+			/* Register additional styles for "widgets.php" admin page */
+			add_action('admin_print_styles-widgets.php', array($this, 'registerWidgetsPageStyle'));
 
 			/* Register Options Page */
-			add_action('admin_menu', array($this, 'addOptionsPage'));
+			add_action('admin_menu', array($this, 'registerOptionsPage'));
 
 			/* Register Settings */
 			add_action('admin_init', array($this, 'registerSettings'));
 
 			/* Register styles for options page */
-			add_action('admin_print_styles-settings_page_' . self::SLUG, array($this, 'addOptionsPageStyle'));
-			
+			add_action('admin_print_styles-settings_page_socialbox', array($this, 'registerOptionsPageStyle'));
+		
+		/* Fronted only stuff */
 		} else if(is_active_widget(false, false, self::SLUG, true)){
 			
 			/* Register SocialBox widget styles */
@@ -96,38 +93,6 @@ class JD_SocialBox{
 			
 		}
 		
-	}
-
-	/**
-	 * Get a specific option value
-	 *
-	 * @param String $key
-	 * @return Mixed
-	 */
-	static protected function getOption($key){
-
-		/* Set up default values */
-		$defaults = array(
-			'update_interval' =>	180,
-			'disable_ssl' =>		0,
-			'enable_log' =>			0,
-			'log_entries' =>		20
-		);
-
-		/* Load existing values */
-		$options = get_option(self::SLUG . '_options', array());
-		if( ! is_array($options) ){
-
-			$options = array();
-
-		}
-
-		/* Combine default and existing values */
-		$options = array_merge($defaults, $options);
-
-		/* Return requested option value */
-		return $options[$key];
-
 	}
 
 	/**
@@ -160,15 +125,15 @@ class JD_SocialBox{
 	 * @param Array $schedules Preexisting cron schedule timeframes
 	 * @return Array Extended cron schedule timeframes
 	 */
-	public function addCronSchedule($schedules){
-		
+	public function addCronSchedule($schedules) {
+
 		/* Add "Every Ten Minutes" for cache updates */
-		$schedules['tenminutely'] = array(
+		$schedules['everytenminutes'] = array(
 			'interval' => 600,
 			'display' => __('Every Ten Minutes')
 		);
 		return $schedules;
-		
+
 	}
 	
 	/**
@@ -176,7 +141,7 @@ class JD_SocialBox{
 	 *
 	 * This will be executed as scheduled cron event
 	 */
-	public function checkForUpdate(){
+	public function checkForUpdate() {
 		
 		$query = array(
 			'slug' => self::SLUG,
@@ -217,16 +182,24 @@ class JD_SocialBox{
 	 * Will be run through register_activation_hook()
 	 */
 	public function activatePlugin(){
-		
+
 		/* Add options */
 		add_option(self::SLUG . '_updateinfo', array());
 		add_option(self::SLUG . '_options', array());
 		add_option(self::SLUG . '_cache', array());
 		
 		/* Register cron events */
-		wp_schedule_event(time(), 'tenminutely', self::SLUG . '_update_cache');
+		wp_schedule_event(time(), 'everytenminutes', self::SLUG . '_update_cache');
 		wp_schedule_event(time(), 'daily', self::SLUG . '_check_for_update');
 		
+		/*
+			Save last version used.
+			By doing this, we can perform upgrade routines
+			based on the previously installed versions
+			in the future.
+		 */
+		add_option('socialbox_last_version', JD_SOCIALBOX_VERSION);
+
 	}
 	
 	/**
@@ -235,11 +208,10 @@ class JD_SocialBox{
 	 * Will be run through register_deactivation_hook
 	 */
 	public function deactivatePlugin(){
-		
+
 		/* Delete options */
 		delete_option(self::SLUG . '_updateinfo');
 		delete_option(self::SLUG . '_cache');
-		//delete_option(self::SLUG . '_options');
 		
 		/* Deregister cron events */
 		wp_clear_scheduled_hook(self::SLUG . '_update_cache');
@@ -294,7 +266,7 @@ class JD_SocialBox{
 	 *
 	 * Will be run in "admin_print_styles-widgets.php" action and only on widgets admin page
 	 */
-	public function registerAdminStyle(){
+	public function registerWidgetsPageStyle(){
 		
 		/* register Style */
 		wp_register_style(self::SLUG . '-widgets-page', JD_SOCIALBOX_URL . '/assets/css/widgets-page.css', array(), JD_SOCIALBOX_VERSION, 'screen');
@@ -324,7 +296,7 @@ class JD_SocialBox{
 	 *
 	 * Will be run in "admin_menu" action
 	 */
-	public function addOptionsPage(){
+	public function registerOptionsPage(){
 
 		$this->settingsPageSlug = add_options_page(
 			__('SocialBox', self::SLUG),
@@ -410,7 +382,7 @@ class JD_SocialBox{
 
 	public function printUpdateIntervalSettingsField($args){
 
-		$html = '<input type="text" id="' . $args['label_for'] . '" name="' . self::SLUG . '_options[update_interval]" value="' . $this->getOption('update_interval') . '" />';
+		$html = '<input type="text" id="' . $args['label_for'] . '" name="' . self::SLUG . '_options[update_interval]" value="' . JD_SocialBoxHelper::getOption('update_interval') . '" />';
 		$html .= '<p class="description">' . __('The time (in minutes) that SocialBox waits before refreshing it\'s data. (Default: 180 = 3 hours)', self::SLUG) . '</p>';
 
 		echo $html;
@@ -419,7 +391,7 @@ class JD_SocialBox{
 
 	public function printDisableSslSettingsField($args){
 
-	    $html = '<input type="checkbox" id="' . $args['label_for'] . '" name="' . self::SLUG . '_options[disable_ssl]" value="1" ' . checked(1, $this->getOption('disable_ssl'), false) . '/>';    
+	    $html = '<input type="checkbox" id="' . $args['label_for'] . '" name="' . self::SLUG . '_options[disable_ssl]" value="1" ' . checked(1, JD_SocialBoxHelper::getOption('disable_ssl'), false) . '/>';    
 	    $html .= ' <label for="' . $args['label_for'] . '">' . __('Disable SSL-Verification on API requests.', self::SLUG) . '</label>';
 	    $html .= '<p class="description">' . __('This can be useful on most "local servers" like MAMP or XAMPP.', self::SLUG) . '</p>';
 	  
@@ -435,7 +407,7 @@ class JD_SocialBox{
 
 	public function printEnableLogSettingsField($args){
 
-	    $html = '<input type="checkbox" id="' . $args['label_for'] . '" name="' . self::SLUG . '_options[enable_log]" value="1" ' . checked(1, $this->getOption('enable_log'), false) . '/>';    
+	    $html = '<input type="checkbox" id="' . $args['label_for'] . '" name="' . self::SLUG . '_options[enable_log]" value="1" ' . checked(1, JD_SocialBoxHelper::getOption('enable_log'), false) . '/>';    
 	    $html .= ' <label for="' . $args['label_for'] . '">' . __('Enable the API log', self::SLUG) . '</label>';
 	    $html .= '<p class="description">' . __('This should help you, if you\'re receiving no data for your networks', self::SLUG) . '</p>';
 	  
@@ -445,7 +417,7 @@ class JD_SocialBox{
 
 	public function printLogEntriesSettingsField($args){
 
-		$html = '<input type="text" id="' . $args['label_for'] . '" name="' . self::SLUG . '_options[log_entries]" value="' . $this->getOption('log_entries') . '" />';
+		$html = '<input type="text" id="' . $args['label_for'] . '" name="' . self::SLUG . '_options[log_entries]" value="' . JD_SocialBoxHelper::getOption('log_entries') . '" />';
 		$html .= '<p class="description">' . __('Number of log entries to keep', self::SLUG) . '</p>';
 
 		echo $html;
@@ -457,7 +429,7 @@ class JD_SocialBox{
 	 *
 	 * Will be run in "admin_print_styles-settings_page_socialbox" action
 	 */
-	public function addOptionsPageStyle(){
+	public function registerOptionsPageStyle(){
 		
 		wp_register_style(self::SLUG . '-options', JD_SOCIALBOX_URL . '/assets/css/options-page.css', array(), JD_SOCIALBOX_VERSION, 'screen');
 		wp_enqueue_style(self::SLUG . '-options');
@@ -490,7 +462,7 @@ class JD_SocialBox{
 		}
 
 		/* Get refresh interval */
-		$updateInterval = self::getOption('update_interval');
+		$updateInterval = JD_SocialBoxHelper::getOption('update_interval');
 		
 		/* Call update function for each cache element that needs to be updated */
 		foreach($cache as $item){
@@ -538,15 +510,6 @@ class JD_SocialBox{
 		$cache[$item['network'] . '||' . $item['id']] = $item;
 		update_option('socialbox_cache', $cache);
 	}
-	
-	/**
-	 * Return an array of all supported networks
-	 *
-	 * @return Array
-	 */
-	public static function getSupportedNetworks(){
-		return explode(',', self::SUPPORTED_NETWORKS);
-	}
 
 	/**
 	 * Add an entry to the API Log
@@ -559,13 +522,13 @@ class JD_SocialBox{
 	public static function addLogEntry($network, $id, $status, $msg){
 		
 		/* Proceed when the log is enabled only */
-		if( SocialBox::getOption('enable_log') === '1' ){
+		if( JD_SocialBoxHelper::getOption('enable_log') === '1' ){
 
 			/* Get existing log entries */
 			$log = get_option(self::SLUG . '_log', array());
 
 			/* Check size of log */
-			if( count($log) >= SocialBox::getOption('log_entries') ){
+			if( count($log) >= JD_SocialBoxHelper::getOption('log_entries') ){
 				
 				array_shift($log);
 
@@ -593,7 +556,7 @@ class JD_SocialBox{
 	public static function getLog(){
 		
 		/* If log is enabled, return its content */
-		if( self::getOption('enable_log') === '1' ){
+		if( JD_SocialBoxHelper::getOption('enable_log') === '1' ){
 
 			return get_option(self::SLUG . '_log', array());
 
