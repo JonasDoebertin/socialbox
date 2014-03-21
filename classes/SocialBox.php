@@ -11,11 +11,6 @@
 class JD_SocialBox{
 	
 	/**
-	 * The plugins slug
-	 */
-	const SLUG = 'socialbox';
-	
-	/**
 	 * Update check script URL
 	 */
 	const UPDATE_BASE = "http://updates.jonasdoebertin.net/";
@@ -49,13 +44,13 @@ class JD_SocialBox{
 		add_filter('cron_schedules', array($this, 'addCronSchedule'));
 		
 		/* Register custom actions */
-		add_action(self::SLUG . '_update_cache', array($this, 'updateCache'));
-		add_action(self::SLUG . '_check_for_update', array($this, 'checkForUpdate'));
+		add_action('socialbox_update_cache', array($this, 'updateCache'));
+		add_action('socialbox_check_for_update', array($this, 'checkForUpdate'));
 		
 		/* If an update is available, then notify */
 		/* TODO: Double check version numbers */
 		if(is_admin()){
-			$info = get_option(self::SLUG . '_updateinfo', null);
+			$info = get_option('socialbox_updateinfo', null);
 			if(is_array($info) and $info['update']){
 				add_action('admin_notices', array($this, 'addAdminNotice'));
 			}	
@@ -86,7 +81,7 @@ class JD_SocialBox{
 			add_action('admin_print_styles-settings_page_socialbox', array($this, 'registerOptionsPageStyle'));
 		
 		/* Fronted only stuff */
-		} else if(is_active_widget(false, false, self::SLUG, true)){
+		} else if(is_active_widget(false, false, 'socialbox', true)){
 			
 			/* Register SocialBox widget styles */
 			add_action('wp_enqueue_scripts', array($this, 'registerStyle'));
@@ -144,7 +139,7 @@ class JD_SocialBox{
 	public function checkForUpdate() {
 		
 		$query = array(
-			'slug' => self::SLUG,
+			'slug' => 'socialbox',
 			'version' => JD_SOCIALBOX_VERSION
 		);
 		$url = self::UPDATE_BASE . '?' . http_build_query($query);
@@ -172,7 +167,7 @@ class JD_SocialBox{
 
 		}
 						
-		update_option(self::SLUG . '_updateinfo', $info);
+		update_option('socialbox_updateinfo', $info);
 		
 	}
 	
@@ -184,13 +179,13 @@ class JD_SocialBox{
 	public function activatePlugin(){
 
 		/* Add options */
-		add_option(self::SLUG . '_updateinfo', array());
-		add_option(self::SLUG . '_options', array());
-		add_option(self::SLUG . '_cache', array());
+		add_option('socialbox_updateinfo', array());
+		add_option('socialbox_options', array());
+		add_option('socialbox_cache', array());
 		
 		/* Register cron events */
-		wp_schedule_event(time(), 'everytenminutes', self::SLUG . '_update_cache');
-		wp_schedule_event(time(), 'daily', self::SLUG . '_check_for_update');
+		wp_schedule_event(time(), 'everytenminutes', 'socialbox_update_cache');
+		wp_schedule_event(time(), 'daily', 'socialbox_check_for_update');
 		
 		/*
 			Save last version used.
@@ -210,12 +205,12 @@ class JD_SocialBox{
 	public function deactivatePlugin(){
 
 		/* Delete options */
-		delete_option(self::SLUG . '_updateinfo');
-		delete_option(self::SLUG . '_cache');
+		delete_option('socialbox_updateinfo');
+		delete_option('socialbox_cache');
 		
 		/* Deregister cron events */
-		wp_clear_scheduled_hook(self::SLUG . '_update_cache');
-		wp_clear_scheduled_hook(self::SLUG . '_check_for_update');
+		wp_clear_scheduled_hook('socialbox_update_cache');
+		wp_clear_scheduled_hook('socialbox_check_for_update');
 		
 	}
 	
@@ -226,14 +221,14 @@ class JD_SocialBox{
 	 */
 	public function addAdminNotice(){
 		
-		$info = get_option(self::SLUG . '_update');
+		$info = get_option('socialbox_update');
 		
 		?>
 		
 		<div id="message" class="updated">
 			<p>
-				<strong><?php _e('SocialBox update available!', self::SLUG); ?></strong>
-				<?php printf(__('New Version: %s (%s). Info and download at the <a href="%s">plugin page</a>.', self::SLUG), $info['version'], $info['date'], $info['link']); ?>
+				<strong><?php _e('SocialBox update available!', 'socialbox'); ?></strong>
+				<?php printf(__('New Version: %s (%s). Info and download at the <a href="%s">plugin page</a>.', 'socialbox'), $info['version'], $info['date'], $info['link']); ?>
 			</p>
 		</div>
 		
@@ -254,7 +249,7 @@ class JD_SocialBox{
 
 	public function addPluginActionLink($actionLinks){
 
-		$html = '<a href="options-general.php?page=' . self::SLUG . '&tab=settings" title="' . __('SocialBox Settings', self::SLUG) . '">' . __('Settings', self::SLUG) . '</a>';
+		$html = '<a href="options-general.php?page=socialbox&tab=settings" title="' . __('SocialBox Settings', 'socialbox') . '">' . __('Settings', 'socialbox') . '</a>';
 		
 		array_unshift($actionLinks, $html);
 		return $actionLinks;
@@ -269,10 +264,10 @@ class JD_SocialBox{
 	public function registerWidgetsPageStyle(){
 		
 		/* register Style */
-		wp_register_style(self::SLUG . '-widgets-page', JD_SOCIALBOX_URL . '/assets/css/widgets-page.css', array(), JD_SOCIALBOX_VERSION, 'screen');
+		wp_register_style('socialbox-widgets-page', JD_SOCIALBOX_URL . '/assets/css/widgets-page.css', array(), JD_SOCIALBOX_VERSION, 'screen');
 					
 		/* Enqueue Style */
-		wp_enqueue_style(self::SLUG . '-widgets-page');
+		wp_enqueue_style('socialbox-widgets-page');
 		
 	}
 	
@@ -284,10 +279,10 @@ class JD_SocialBox{
 	public function registerStyle(){
 		
 		/* Register style */
-		wp_register_style(self::SLUG, JD_SOCIALBOX_URL . '/assets/css/socialbox.css', array(), JD_SOCIALBOX_VERSION, 'screen');
+		wp_register_style('socialbox', JD_SOCIALBOX_URL . '/assets/css/socialbox.css', array(), JD_SOCIALBOX_VERSION, 'screen');
 		
 		/* Enqueue style */
-		wp_enqueue_style(self::SLUG);
+		wp_enqueue_style('socialbox');
 		
 	}
 
@@ -299,10 +294,10 @@ class JD_SocialBox{
 	public function registerOptionsPage(){
 
 		$this->settingsPageSlug = add_options_page(
-			__('SocialBox', self::SLUG),
-			__('SocialBox', self::SLUG),
+			__('SocialBox', 'socialbox'),
+			__('SocialBox', 'socialbox'),
 			'manage_options',
-			self::SLUG,
+			'socialbox',
 			array($this, 'renderOptionsPage')
 		);
 
@@ -315,75 +310,75 @@ class JD_SocialBox{
 
 		/* Register setting */
 		register_setting(
-			self::SLUG . '_options',
-			self::SLUG . '_options',
+			'socialbox_options',
+			'socialbox_options',
 			null
 		);
 
 		/* Register settings section for "Advanced Settings" */
 		add_settings_section(
-			self::SLUG . '_advanced',
-			__('Advanced Settings', self::SLUG),
+			'socialbox_advanced',
+			__('Advanced Settings', 'socialbox'),
 			array($this, 'printAdvancedSettingsSection'),
-			self::SLUG
+			'socialbox'
 		);
 
 		add_settings_field(
 			'update_interval',
-			__('Update Interval', self::SLUG),
+			__('Update Interval', 'socialbox'),
 			array($this, 'printUpdateIntervalSettingsField'),
-			self::SLUG,
-			self::SLUG . '_advanced',
-			array('label_for' => self::SLUG . '_update_interval')
+			'socialbox',
+			'socialbox' . '_advanced',
+			array('label_for' => 'socialbox_update_interval')
 		);
 
 		add_settings_field(
 			'disable_ssl',
-			__('SSL-Verification', self::SLUG),
+			__('SSL-Verification', 'socialbox'),
 			array($this, 'printDisableSslSettingsField'),
-			self::SLUG,
-			self::SLUG . '_advanced',
-			array('label_for' => self::SLUG . '_disable_ssl')
+			'socialbox',
+			'socialbox' . '_advanced',
+			array('label_for' => 'socialbox_disable_ssl')
 		);
 
 		/* Register settings section for "Debugging Settings" */
 		add_settings_section(
-			self::SLUG . '_debugging',
-			__('Debugging', self::SLUG),
+			'socialbox_debugging',
+			__('Debugging', 'socialbox'),
 			array($this, 'printDebuggingSettingsSection'),
-			self::SLUG
+			'socialbox'
 		);
 
 		add_settings_field(
 			'enable_log',
-			__('API Log', self::SLUG),
+			__('API Log', 'socialbox'),
 			array($this, 'printEnableLogSettingsField'),
-			self::SLUG,
-			self::SLUG . '_debugging',
-			array('label_for' => self::SLUG . '_enable_log')
+			'socialbox',
+			'socialbox_debugging',
+			array('label_for' => 'socialbox_enable_log')
 		);
 
 		add_settings_field(
 			'log_entries',
-			__('API Log Entries', self::SLUG),
+			__('API Log Entries', 'socialbox'),
 			array($this, 'printLogEntriesSettingsField'),
-			self::SLUG,
-			self::SLUG . '_debugging',
-			array('label_for' => self::SLUG . '_log_entries')
+			'socialbox',
+			'socialbox_debugging',
+			array('label_for' => 'socialbox_log_entries')
 		);
 
 	}
 
 	public function printAdvancedSettingsSection(){
 
-		echo '<p>' . __('Some advanced options to tweak SocialBox\'s internals', self::SLUG) . '</p>';
+		echo '<p>' . __('Some advanced options to tweak SocialBox\'s internals', 'socialbox') . '</p>';
 
 	}
 
 	public function printUpdateIntervalSettingsField($args){
 
-		$html = '<input type="text" id="' . $args['label_for'] . '" name="' . self::SLUG . '_options[update_interval]" value="' . JD_SocialBoxHelper::getOption('update_interval') . '" />';
-		$html .= '<p class="description">' . __('The time (in minutes) that SocialBox waits before refreshing it\'s data. (Default: 180 = 3 hours)', self::SLUG) . '</p>';
+		$html = '<input type="text" id="' . $args['label_for'] . '" name="socialbox_options[update_interval]" value="' . JD_SocialBoxHelper::getOption('update_interval') . '" />';
+		$html .= '<p class="description">' . __('The time (in minutes) that SocialBox waits before refreshing it\'s data. (Default: 180 = 3 hours)', 'socialbox') . '</p>';
 
 		echo $html;
 
@@ -391,9 +386,9 @@ class JD_SocialBox{
 
 	public function printDisableSslSettingsField($args){
 
-	    $html = '<input type="checkbox" id="' . $args['label_for'] . '" name="' . self::SLUG . '_options[disable_ssl]" value="1" ' . checked(1, JD_SocialBoxHelper::getOption('disable_ssl'), false) . '/>';    
-	    $html .= ' <label for="' . $args['label_for'] . '">' . __('Disable SSL-Verification on API requests.', self::SLUG) . '</label>';
-	    $html .= '<p class="description">' . __('This can be useful on most "local servers" like MAMP or XAMPP.', self::SLUG) . '</p>';
+	    $html = '<input type="checkbox" id="' . $args['label_for'] . '" name="socialbox_options[disable_ssl]" value="1" ' . checked(1, JD_SocialBoxHelper::getOption('disable_ssl'), false) . '/>';    
+	    $html .= ' <label for="' . $args['label_for'] . '">' . __('Disable SSL-Verification on API requests.', 'socialbox') . '</label>';
+	    $html .= '<p class="description">' . __('This can be useful on most "local servers" like MAMP or XAMPP.', 'socialbox') . '</p>';
 	  
 	    echo $html;
 
@@ -401,15 +396,15 @@ class JD_SocialBox{
 
 	public function printDebuggingSettingsSection(){
 
-		echo '<p>' . __('Debugging should help you when SocialBox doesn\'t work as expected.', self::SLUG) . '</p>';
+		echo '<p>' . __('Debugging should help you when SocialBox doesn\'t work as expected.', 'socialbox') . '</p>';
 
 	}
 
 	public function printEnableLogSettingsField($args){
 
-	    $html = '<input type="checkbox" id="' . $args['label_for'] . '" name="' . self::SLUG . '_options[enable_log]" value="1" ' . checked(1, JD_SocialBoxHelper::getOption('enable_log'), false) . '/>';    
-	    $html .= ' <label for="' . $args['label_for'] . '">' . __('Enable the API log', self::SLUG) . '</label>';
-	    $html .= '<p class="description">' . __('This should help you, if you\'re receiving no data for your networks', self::SLUG) . '</p>';
+	    $html = '<input type="checkbox" id="' . $args['label_for'] . '" name="socialbox_options[enable_log]" value="1" ' . checked(1, JD_SocialBoxHelper::getOption('enable_log'), false) . '/>';    
+	    $html .= ' <label for="' . $args['label_for'] . '">' . __('Enable the API log', 'socialbox') . '</label>';
+	    $html .= '<p class="description">' . __('This should help you, if you\'re receiving no data for your networks', 'socialbox') . '</p>';
 	  
 	    echo $html;
 
@@ -417,8 +412,8 @@ class JD_SocialBox{
 
 	public function printLogEntriesSettingsField($args){
 
-		$html = '<input type="text" id="' . $args['label_for'] . '" name="' . self::SLUG . '_options[log_entries]" value="' . JD_SocialBoxHelper::getOption('log_entries') . '" />';
-		$html .= '<p class="description">' . __('Number of log entries to keep', self::SLUG) . '</p>';
+		$html = '<input type="text" id="' . $args['label_for'] . '" name="socialbox_options[log_entries]" value="' . JD_SocialBoxHelper::getOption('log_entries') . '" />';
+		$html .= '<p class="description">' . __('Number of log entries to keep', 'socialbox') . '</p>';
 
 		echo $html;
 
@@ -431,8 +426,8 @@ class JD_SocialBox{
 	 */
 	public function registerOptionsPageStyle(){
 		
-		wp_register_style(self::SLUG . '-options', JD_SOCIALBOX_URL . '/assets/css/options-page.css', array(), JD_SOCIALBOX_VERSION, 'screen');
-		wp_enqueue_style(self::SLUG . '-options');
+		wp_register_style('socialbox-options', JD_SOCIALBOX_URL . '/assets/css/options-page.css', array(), JD_SOCIALBOX_VERSION, 'screen');
+		wp_enqueue_style('socialbox-options');
 
 	}
 
@@ -525,7 +520,7 @@ class JD_SocialBox{
 		if( JD_SocialBoxHelper::getOption('enable_log') === '1' ){
 
 			/* Get existing log entries */
-			$log = get_option(self::SLUG . '_log', array());
+			$log = get_option('socialbox_log', array());
 
 			/* Check size of log */
 			if( count($log) >= JD_SocialBoxHelper::getOption('log_entries') ){
@@ -542,7 +537,7 @@ class JD_SocialBox{
 				'message'   => $msg
 			);
 
-			update_option(self::SLUG . '_log', $log);
+			update_option('socialbox_log', $log);
 
 		}			
 
@@ -558,7 +553,7 @@ class JD_SocialBox{
 		/* If log is enabled, return its content */
 		if( JD_SocialBoxHelper::getOption('enable_log') === '1' ){
 
-			return get_option(self::SLUG . '_log', array());
+			return get_option('socialbox_log', array());
 
 		}
 

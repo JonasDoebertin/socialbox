@@ -12,8 +12,8 @@
 
 	<form method="post" action="options.php">
 		<?php
-			settings_fields(self::SLUG . '_options');
-			do_settings_sections(self::SLUG);
+			settings_fields('socialbox_options');
+			do_settings_sections('socialbox');
 			submit_button();
 		?>
 	</form>

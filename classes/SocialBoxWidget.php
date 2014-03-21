@@ -9,12 +9,7 @@
 
 
 class JD_SocialBoxWidget extends WP_Widget{
-		
-	/**
-	 * The widgets slug
-	 */
-	const SLUG = 'socialbox';
-	
+
 	/**
 	 * Create a widget instance and set the base infos
 	 */
@@ -22,17 +17,17 @@ class JD_SocialBoxWidget extends WP_Widget{
 		
 		/* Widget settings */
 		$widgetOpts = array(
-			'classname' => self::SLUG,
-			'description' => __('Adds a super easy SocialBox Widget which displays the current numbers of Facebook Page Likes, Google+, Twitter, Dribbble and Forrst Followers and YouTube and Vimeo Channel Subscriptions.', self::SLUG)
+			'classname' => 'socialbox',
+			'description' => __('Adds a super easy SocialBox Widget which displays the current numbers of Facebook Page Likes, Google+, Twitter, Dribbble and Forrst Followers and YouTube and Vimeo Channel Subscriptions.', 'socialbox')
 		);
 		
 		/* Widget control settings */
 		$controlOpts = array(
-			'id_base' => self::SLUG
+			'id_base' => 'socialbox'
 		);
 		
 		/* Create the widget */
-		parent::__construct(self::SLUG, 'SocialBox', $widgetOpts, $controlOpts);
+		parent::__construct('socialbox', 'SocialBox', $widgetOpts, $controlOpts);
 		
 	}
 	
@@ -47,7 +42,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		extract($args);
 		
 		/* Get cache */
-		$cache = get_option(self::SLUG . '_cache', array());
+		$cache = get_option('socialbox_cache', array());
 		
 		/* Build up network data array */
 		$networks = array();
@@ -243,21 +238,19 @@ class JD_SocialBoxWidget extends WP_Widget{
 		switch($network){
 			
 			case 'facebook':
-				return __('Facebook', self::SLUG);
+				return __('Facebook', 'socialbox');
 			case 'twitter':
-				return __('Twitter', self::SLUG);
-			// case 'googleplus':
-			// 	return __('Google+', self::SLUG);
+				return __('Twitter', 'socialbox');
 			case 'youtube':
-				return __('YouTube', self::SLUG);
+				return __('YouTube', 'socialbox');
 			case 'vimeo':
-				return __('Vimeo', self::SLUG);
+				return __('Vimeo', 'socialbox');
 			case 'dribbble':
-				return __('Dribbble', self::SLUG);
+				return __('Dribbble', 'socialbox');
 			case 'forrst':
-				return __('Forrst', self::SLUG);
+				return __('Forrst', 'socialbox');
 			case 'github':
-				return __('GitHub', self::SLUG);
+				return __('GitHub', 'socialbox');
 		}
 
 	}
@@ -267,21 +260,19 @@ class JD_SocialBoxWidget extends WP_Widget{
 		switch($network){
 			
 			case 'facebook':
-				return __('Fans', self::SLUG);
+				return __('Fans', 'socialbox');
 			case 'twitter':
-				return __('Followers', self::SLUG);
-			// case 'googleplus':
-			// 	return __('Followers', self::SLUG);
+				return __('Followers', 'socialbox');
 			case 'youtube':
-				return __('Subscribers', self::SLUG);
+				return __('Subscribers', 'socialbox');
 			case 'vimeo':
-				return __('Subscribers', self::SLUG);
+				return __('Subscribers', 'socialbox');
 			case 'dribbble':
-				return __('Followers', self::SLUG);
+				return __('Followers', 'socialbox');
 			case 'forrst':
-				return __('Followers', self::SLUG);
+				return __('Followers', 'socialbox');
 			case 'github':
-				return __('Followers', self::SLUG);		
+				return __('Followers', 'socialbox');		
 		}
 		
 	}
@@ -291,21 +282,19 @@ class JD_SocialBoxWidget extends WP_Widget{
 		switch($network){
 			
 			case 'facebook':
-				return __('Like', self::SLUG);
+				return __('Like', 'socialbox');
 			case 'twitter':
-				return __('Follow', self::SLUG);
-			// case 'googleplus':
-			// 	return __('Follow', self::SLUG);
+				return __('Follow', 'socialbox');
 			case 'youtube':
-				return __('Subscribe', self::SLUG);
+				return __('Subscribe', 'socialbox');
 			case 'vimeo':
-				return __('Subscribe', self::SLUG);
+				return __('Subscribe', 'socialbox');
 			case 'dribbble':
-				return __('Follow', self::SLUG);
+				return __('Follow', 'socialbox');
 			case 'forrst':
-				return __('Follow', self::SLUG);
+				return __('Follow', 'socialbox');
 			case 'github':
-				return __('Follow', self::SLUG);
+				return __('Follow', 'socialbox');
 		}
 		
 	}
@@ -315,21 +304,19 @@ class JD_SocialBoxWidget extends WP_Widget{
 		switch($network){
 			
 			case 'facebook':
-				return __('Like on Facebook', self::SLUG);
+				return __('Like on Facebook', 'socialbox');
 			case 'twitter':
-				return __('Follow on Twitter', self::SLUG);
-			// case 'googleplus':
-			// 	return __('Add to Circles on Google+', self::SLUG);
+				return __('Follow on Twitter', 'socialbox');
 			case 'youtube':
-				return __('Subscribe to Youtube Channel', self::SLUG);
+				return __('Subscribe to Youtube Channel', 'socialbox');
 			case 'vimeo':
-				return __('Subscribe to Vimeo Channel', self::SLUG);
+				return __('Subscribe to Vimeo Channel', 'socialbox');
 			case 'dribbble':
-				return __('Follow on Dribbble', self::SLUG);
+				return __('Follow on Dribbble', 'socialbox');
 			case 'forrst':
-				return __('Follow on Forrst', self::SLUG);
+				return __('Follow on Forrst', 'socialbox');
 			case 'github':
-				return __('Follow on GitHub', self::SLUG);
+				return __('Follow on GitHub', 'socialbox');
 		}
 		
 	}
