@@ -477,7 +477,7 @@ class JD_SocialBox{
 	public function renderOptionsPage(){
 		
 		$tab = (isset($_GET['tab']) and !empty($_GET['tab'])) ? $_GET['tab'] : 'settings';
-		include SOCIALBOX_PATH . '/views/options-page.frame.php';
+		include JD_SOCIALBOX_PATH . '/views/options-page/frame.php';
 
 	}
 	
