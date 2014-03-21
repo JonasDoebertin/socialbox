@@ -100,7 +100,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 * @param Array $oldInstance
 	 * @return Array
 	 */
-	public function update($newInstance, $oldInstance){
+	public function update($newInstance, $oldInstance) {
 		
 		/* Update general widget options */
 		$instance = $oldInstance;
@@ -121,14 +121,17 @@ class JD_SocialBoxWidget extends WP_Widget{
 		/* Update values for uncommon/special options */
 		$instance['facebook_metric'] = $newInstance['facebook_metric'];
 
+		/* Update cache elements */
 		$cache = get_option(self::SLUG . '_cache', array());
+		foreach(JD_SocialBox::getSupportedNetworks() as $network) {
+			
+			/* Only if the ID is not blank */
+			if(!empty($instance[$network . '_id'])) {
 
-		foreach(JD_SocialBox::getSupportedNetworks() as $network){
-			/* Add cache elements for this network if it doesn't exist already */
-			if( !empty($instance[$network . '_id']) ){
+				/* Create cache element if it doesn't exists */
+				if(!array_key_exists($network . '||' . $instance[$network . '_id'], $cache)) {
 
-				if( !array_key_exists($network . '||' . $instance[$network . '_id'], $cache) ){
-
+					/* Add common attributes */
 					$cache[$network . '||' . $instance[$network . '_id']] = array(
 						'network' =>		$network,
 						'id' =>				$instance[$network . '_id'],
@@ -137,23 +140,32 @@ class JD_SocialBoxWidget extends WP_Widget{
 						'default' =>		$instance[$network . '_default']
 					);
 
-				} else{
+					/* Add uncommon/special attributes */
+					if($network == 'facebook') {
+						$cache[$network . '||' . $instance['facebook_id']]['metric'] = $instance['facebook_metric'];
+					}
 
+				/* Update cache element if it exists */
+				} else {
+
+					/* Update common attributes */
 					$cache[$network . '||' . $instance[$network . '_id']]['lastUpdated'] = null;
+					$cache[$network . '||' . $instance[$network . '_id']]['default'] = $instance[$network . '_default'];
 
+					/* Update uncommon/special attributes */
+					if($network == 'facebook') {
+						$cache[$network . '||' . $instance['facebook_id']]['metric'] = $instance['facebook_metric'];
+					}
 				}
-
 			}
-
 		}
-
 		update_option(self::SLUG . '_cache', $cache);
 		
 		/* Force cache refresh */
-		JD_SocialBox::updateCache();
+		/* TODO: !ENABLE! */
+		// JD_SocialBox::updateCache();
 		
 		return $instance;
-		
 	}
 	
 	/**
