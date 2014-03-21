@@ -121,8 +121,6 @@ class JD_SocialBoxWidget extends WP_Widget{
 		/* Update values for uncommon/special options */
 		$instance['facebook_metric'] = $newInstance['facebook_metric'];
 
-
-
 		$cache = get_option(self::SLUG . '_cache', array());
 
 		foreach(JD_SocialBox::getSupportedNetworks() as $network){

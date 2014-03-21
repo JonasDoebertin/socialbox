@@ -8,8 +8,6 @@
 /*------------------------------------*\
 	$WIDGET FORM
 \*------------------------------------*/
-
-
 .socialbox-options{
 	width: 100%;
 
@@ -32,23 +30,13 @@
 		p{
 			margin: 0 0 10px 0;
 		}
-	}
 
-
-
-
-}
-		
-
-		
-		.socialbox-options fieldset .socialbox-id{
-			width: 140px;
-		}
-		
-		.socialbox-options fieldset .socialbox-default{
+		.socialbox-default{
 			width: 80px;
 		}
-		
-		.socialbox-options fieldset .socialbox-position{
+
+		.socialbox-position{
 			width: 60px;
 		}
+	}
+}
