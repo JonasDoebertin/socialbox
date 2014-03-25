@@ -20,6 +20,6 @@ This WordPress plugin is comprised of two parts:
 
 This WordPress plugin makes use of Third-Party work:
 
-	(1) Social Network Icon Pack by Komodo Media
-		Licensed under a Creative Commons Attribution-Share Alike 3.0 Unported License
-		http://www.komodomedia.com
+	(1) Social Media Icons by Rogie King
+		Licensed under a WTFPL License
+		http://rog.ie/

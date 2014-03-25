@@ -18,7 +18,7 @@
 			
 			<li class="socialbox-network-<?php echo $network['type']; ?>">
 				<a href="<?php echo $network['link']; ?>" title="<?php echo $network['buttonHint']; ?>" <?php if($newWindow) echo 'target="_blank"'; ?>>
-					<img src="<?php $this->url('images/icons/' . $network['type'] . '_' . $iconSize . '.png'); ?>" alt="<?php echo $network['name']; ?>" />
+					<img src="<?php echo JD_SOCIALBOX_URL . '/assets/img/icons/32/' . $network['type'] . '.png' ?>" alt="<?php echo $network['name']; ?>" width="<?php echo $iconSize ?>" height="<?php echo $iconSize ?>"/>
 				</a>
 				<p>
 					<span><?php echo $this->formatNumber($network['count'], $compactNumbers); ?></span> <?php echo $network['metric']; ?>
