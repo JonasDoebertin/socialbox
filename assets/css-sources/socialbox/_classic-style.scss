@@ -1,0 +1,70 @@
+/*------------------------------------*\
+	$CLASSIC STYLE
+\*------------------------------------*/
+.socialbox-widget.socialbox-style-classic{
+	color: #768a96;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 14px;
+
+	ul{
+		background: url(../img/classic-background.png) repeat;
+		border: 1px solid #d8dcdf !important;
+		@include simple-border-radius(4px);
+		@include single-box-shadow(0px 2px 4px #dfe4e7);
+		margin: 0 !important;
+		padding: 0;
+
+		li{
+			background-image: none;
+			border-bottom: 1px solid #d8dcdf;
+			height: 40px;
+			overflow: hidden;
+			padding: 19px 9px 0 9px;
+
+			&:last-child{
+				border-bottom: none;
+			}
+
+			img{
+				border: none;
+				margin-right: 10px;
+				float: left;
+			}
+
+			p{
+				display: inline;
+				position: relative;
+				top : -3px;
+				
+				span{
+					color: #425763;
+					font-weight: bold;
+				}
+			}
+
+			a.socialbox-button{
+				background: url(../img/classic-button.png) no-repeat;
+				border: 1px solid #d8dcdf;
+				@include simple-border-radius(3px);
+				color: #425763;
+				float: right;
+				font-size: 11px;
+				font-weight: bold;
+				line-height: 11px;
+				padding: 6px 10px;
+				position: relative;
+				text-decoration: none;
+				text-transform: uppercase;
+				top: -4px;
+
+				&:hover{
+					background: url(../img/classic-button.png) 0 -27px no-repeat;
+				}
+
+				&:active{
+					background: url(../img/classic-button.png) 0 -54px no-repeat;
+				}
+			}
+		}
+	}
+}
