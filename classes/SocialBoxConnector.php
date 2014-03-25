@@ -185,7 +185,7 @@ class JD_SocialBoxConnector{
 		/* Return value */
 		return array(
 			'successful' => true,
-			'value'      => $$data['followers']
+			'value'      => $data['followers']
 		);
 	}
 
