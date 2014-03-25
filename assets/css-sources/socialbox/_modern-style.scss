@@ -1,0 +1,40 @@
+/*------------------------------------*\
+	$MODERN STYLE
+\*------------------------------------*/
+.socialbox-widget.socialbox-style-modern{
+
+	ul{
+
+		li{
+			background: url(../img/modern-background.png) repeat;
+			border: 1px solid #e5e5e5;
+			height: 32px;
+			margin-bottom: 10px;
+			overflow: hidden;
+			padding: 9px 9px 8px 9px;
+
+			&:last-child{
+				margin-bottom: 0;
+			}
+
+			img{
+				float: left;
+				margin-right: 10px;
+			}
+
+			p{
+				color: #999999;
+				font-family: "BebasNeueRegular", Arial, Helvetica, sans-serif;
+				font-size: 20px;
+				line-height: 20px;
+				padding-top: 7px;
+				text-align: right;
+				text-shadow: 0 1px 0 #ffffff;
+
+				span{
+					color: #666666;
+				}
+			}
+		}
+	}
+}

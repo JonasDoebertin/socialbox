@@ -30,5 +30,7 @@
 	-webkit-border-radius: $radius;
 	-moz-border-radius: $radius;
 	border-radius: $radius;
-	background-clip: padding-box;
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding;
+	background-clip: padding-box
 }
