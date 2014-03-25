@@ -25,8 +25,8 @@
 	<h4 class="socialbox-help-divider-top"><?php _e('Quick Setup', 'socialbox'); ?></h4>
 	<p><?php _e('There is really not much to it. Just follow these simple steps:', 'socialbox'); ?></p>
 	<ol>
-		<li><p><?php _e('Install and activate the Plugin. (by the time you\'re reading this, you\'ve already completed this step)', 'socialbox'); ?></p></li>
-		<li><p><?php _e('Head over to the <a href="widgets.php" title="Appearance > Widgets">Appearance > Widgets</a> Page, and drag a SocialBox Widget from the &raquo;Available Widgets&laquo; section to your desired Widget Area / Sidebar.', 'socialbox'); ?></p></li>
+		<li><p><?php _e('Install and activate the plugin. (by the time you\'re reading this, you\'ve already completed this step)', 'socialbox'); ?></p></li>
+		<li><p><?php _e('Head over to the <a href="widgets.php" title="Appearance > Widgets">Appearance > Widgets</a> Page and drag a SocialBox Widget from the &raquo;Available Widgets&laquo; section to your desired Widget Area or Sidebar.', 'socialbox'); ?></p></li>
 		<li><p><?php _e('Enter the Usernames / User IDs for the Social Networks you want to show up.', 'socialbox'); ?></p></li>
 		<li><p><?php _e('And finally, hit &raquo;Save&laquo;. That\'s it!', 'socialbox'); ?></p></li>
 	</ol>
@@ -57,39 +57,41 @@
 		<dt><?php echo __('Facebook', 'socialbox') . ' ' . __('Page ID/Name', 'socialbox'); ?></dt>
 		<dd>
 			<?php _e('Please enter your pages "Shortname" (the part of the URL after "facebook.com/".', 'socialbox'); ?><br/>
-			<img src="<?php $this->url('images/help/facebook-id.jpg'); ?>" /><br/>
+			<img src="<?php echo JD_SOCIALBOX_URL . '/assets/img/help/facebook-id.jpg' ?>" /><br/>
 			<strong><?php _e('Note:', 'socialbox'); ?></strong> <?php _e('SocialBox will only display the "Like" number, if access to your page is not restricted in any way (only certain Countries, etc.)', 'socialbox'); ?>
 		</dd>
 
 		<dt><?php echo __('Twitter', 'socialbox') . ' ' . __('Username', 'socialbox'); ?></dt>
 		<dd>
-			<?php _e('Please enter your regular Twitter Username (without the @-symbol).', 'socialbox'); ?><br/>
-			<img src="<?php $this->url('images/help/twitter-id.jpg'); ?>" />
+			<?php _e('Please enter your regular Twitter Username (without the @-symbol) as the username.', 'socialbox'); ?><br/>
+			<?php _e('To maintain your API key and your access token, follow these steps:', 'socialbox') ?>
+			<ol>
+				<li><p><?php _e('Visit <a href="https://dev.twitter.com/">Twitter Developers</a> and sign in with your Twitter account.', 'socialbox'); ?></p></li>
+				<li><p><?php _e('Go to <a href="https://apps.twitter.com/">My Applications</a> and click "Create a new Application".', 'socialbox'); ?></p></li>
+				<li><p><?php _e('Enter any value for "Name", "Description" and "Website", agree to the "Developer Rules" and click "Create your Twitter application".', 'socialbox'); ?></p></li>
+				<li><p><?php _e('At the top of the newly created apps overview page click on the "API Keys" tab.', 'socialbox'); ?></p></li>
+				<li><p><?php _e('At the bottom of the page click "Create my access token".', 'socialbox'); ?></p></li>
+				<li><p><?php _e('Copy the "API Key", "API Secret", "Access Token" and "Access Token Secret" and enter them in the respective fields.', 'socialbox'); ?></p></li>
+			</ol>
+			<img src="<?php echo JD_SOCIALBOX_URL . '/assets/img/help/twitter-id.jpg' ?>" />
 		</dd>
-
-		<!--<dt><?php echo __('Google+', 'socialbox') . ' ' . __('User ID', 'socialbox'); ?></dt>
-		<dd>
-			Please enter your pages "Shortname" (the part of the URL after "facebook.com/".<br/>
-			<img src="<?php $this->url('images/help/googleplus-id.jpg'); ?>" /><br/>
-			<strong>Note:</strong> SocialBox will only display the "Like" number, if access to your page is not restricted in any way (only certain Countries, etc.)
-		</dd>-->
 
 		<dt><?php echo __('Youtube', 'socialbox') . ' ' . __('Channel', 'socialbox'); ?></dt>
 		<dd>
 			<?php _e('Please enter your Channels "Shortname" (as seen in the URL).', 'socialbox'); ?><br/>
-			<img src="<?php $this->url('images/help/youtube-id.jpg'); ?>" /><br/>
+			<img src="<?php echo JD_SOCIALBOX_URL . '/assets/img/help/youtube-id.jpg' ?>" /><br/>
 		</dd>
 
 		<dt><?php echo __('Vimeo', 'socialbox') . ' ' . __('Channel', 'socialbox'); ?></dt>
 		<dd>
 			<?php _e('Please enter the Channels "shortname" (as seen in the URL).', 'socialbox'); ?><br/>
-			<img src="<?php $this->url('images/help/vimeo-id.jpg'); ?>" /><br/>
+			<img src="<?php echo JD_SOCIALBOX_URL . '/assets/img/help/vimeo-id.jpg' ?>" /><br/>
 		</dd>
 
 		<dt><?php echo __('Dribbble', 'socialbox') . ' ' . __('Username', 'socialbox'); ?></dt>
 		<dd>
 			<?php _e('To display this number, please enter your Dribbble Username.', 'socialbox'); ?><br/>
-			<img src="<?php $this->url('images/help/dribbble-id.jpg'); ?>" /><br/>
+			<img src="<?php echo JD_SOCIALBOX_URL . '/assets/img/help/dribbble-id.jpg' ?>" /><br/>
 		</dd>
 
 		<dt><?php echo __('Forrst', 'socialbox') . ' ' . __('Username', 'socialbox'); ?></dt>
@@ -114,5 +116,33 @@
 		<dt><?php _e('Forced Button Width', 'socialbox'); ?></dt>
 		<dd><?php _e('If set to something other than "0", this will force the "Follow" buttons (if enabled) into the specified width. Use this option, if you want to see consistent buttons (the captions will be centered).', 'socialbox'); ?></dd>
 	</dl>
+
+	<h4 class="socialbox-help-divider-top">License</h4>
+	<p><strong>This WordPress Plugin is comprised of two parts:</strong></p>
+	<ol>
+		<li>
+			<p>The PHP code is licensed under the GPL license as is WordPress itself: <a href="http://wordpress.org/about/gpl/" title="GNU General Public License">http://wordpress.org/about/gpl</a></p>
+		</li>
+		<li>
+			<p>All other parts of the plugin including, but not limited to, the CSS code, images, language files and design are licensed according to the license purchased at CodeCanyon: <a href="http://codecanyon.net/licenses/regular_extended" title="Regular &amp; Extended License | CodeCanyon">http://codecanyon.net/licenses/regular_extended</a></p>
+		</li>
+	</ol>
+
+	<h4 class="socialbox-help-divider-top">Third-Party Components</h4>
+
+	<p><strong>This WordPress plugin makes use of Third-Party work:</strong></p>
+	<ol>
+		<li>
+			<p><strong>Social Media Icons</strong><br/>
+			By <a href="http://komodomedia.com">Rogie King</a>. Licensed under a <a href="http://www.wtfpl.net/">WTFPL License</a>.</p>
+		</li>
+	</ol>
+
+	<h4 class="socialbox-help-divider-top">Copyright</h4>
+	<p>
+		<strong>SocialBox - Social WordPress Widget</strong><br/>
+		Version 1.4.0<br/>
+		&copy; 2011 - 2014 by <a href="http://codecanyon.net/user/jdpowered?ref=jdpowered" title="jdpowered on CodeCanyon">Jonas Döbertin</a>
+	</p>
 
 </div>
