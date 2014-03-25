@@ -54,7 +54,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 					'type' 				=> $network,
 					'id' 				=> $instance[$network . '_id'],
 					'position' 			=> $instance[$network . '_position'],
-					'count' 			=> ( $cache[$network . '||' . $instance[$network . '_id']] !== null )? $cache[$network . '||' . $instance[$network . '_id']]['value'] : $instance[$network . '_default'],
+					'count' 			=> ( $cache[$network . '||' . $instance[$network . '_id']]['value'] !== null )? $cache[$network . '||' . $instance[$network . '_id']]['value'] : $instance[$network . '_default'],
 					'link' 				=> $this->getNetworkLink($network, $instance[$network . '_id']),
 					'name' 				=> $this->getNetworkName($network),
 					'metric' 			=> $this->getNetworkMetric($network),
