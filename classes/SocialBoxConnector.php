@@ -42,9 +42,26 @@ class JD_SocialBoxConnector{
 
 	protected static function twitter($item) {
 
+		/* Build new Twitter API Connector object */
+		$Twitter = new TwitterOAuth($item['api_key'], $item['api_secret'], $item['access_token'], $item['access_token_secret']);
+
+		/* Fetch data from API */
+		$result = $Twitter->get('users/show', array('screen_name' => $item['id'], 'include_entities' => false));
+
+		/* Check for http errors */
+		if($Twitter->lastStatusCode() != 200) {
+			return array('successful' => false);
+		}
+
+		/* Check for incorrect data */
+		if(is_null($result) or !isset($result->followers_count)){
+			return array('successful' => false);
+		}
+
 		/* Return value */
 		return array(
-			'successful' => false
+			'successful' => true,
+			'value'      => $result->followers_count
 		);
 
 	}

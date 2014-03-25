@@ -35,6 +35,12 @@ require_once JD_SOCIALBOX_PATH . '/classes/SocialBoxWidget.php';
 require_once JD_SOCIALBOX_PATH . '/classes/SocialBoxConnector.php';
 require_once JD_SOCIALBOX_PATH . '/classes/SocialBoxHelper.php';
 
+/**
+ * Load vendor classes
+ */
+require_once JD_SOCIALBOX_PATH . '/vendor/abraham/twitteroauth/OAuth.php';
+require_once JD_SOCIALBOX_PATH . '/vendor/abraham/twitteroauth/TwitterOAuth.php';
+
 
 /**
  * Register activation and deactivation hooks
