@@ -81,7 +81,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		echo $before_widget;
 			
 		/* Social Box */
-		include JD_SOCIALBOX_PATH . '/views/widget.widget.php';
+		include JD_SOCIALBOX_PATH . '/views/widget/widget.php';
 		
 		/* After Widget HTML */
 		echo $after_widget;
