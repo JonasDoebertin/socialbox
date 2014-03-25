@@ -115,6 +115,10 @@ class JD_SocialBoxWidget extends WP_Widget{
 
 		/* Update values for uncommon/special options */
 		$instance['facebook_metric'] = $newInstance['facebook_metric'];
+		$instance['twitter_api_key'] = $newInstance['twitter_api_key'];
+		$instance['twitter_api_secret'] = $newInstance['twitter_api_secret'];
+		$instance['twitter_access_token'] = $newInstance['twitter_access_token'];
+		$instance['twitter_access_token_secret'] = $newInstance['twitter_access_token_secret'];
 
 		/* Update cache elements */
 		$cache = get_option('socialbox_cache', array());
@@ -137,6 +141,11 @@ class JD_SocialBoxWidget extends WP_Widget{
 					/* Add uncommon/special attributes */
 					if($network == 'facebook') {
 						$cache[$network . '||' . $instance['facebook_id']]['metric'] = $instance['facebook_metric'];
+					} else if($network == 'twitter') {
+						$cache[$network . '||' . $instance['twitter_id']]['api_key'] = $instance['twitter_api_key'];
+						$cache[$network . '||' . $instance['twitter_id']]['api_secret'] = $instance['twitter_api_secret'];
+						$cache[$network . '||' . $instance['twitter_id']]['access_token'] = $instance['twitter_access_token'];
+						$cache[$network . '||' . $instance['twitter_id']]['access_token_secret'] = $instance['twitter_access_token_secret'];
 					}
 
 				/* Update cache element if it exists */
@@ -148,6 +157,11 @@ class JD_SocialBoxWidget extends WP_Widget{
 					/* Update uncommon/special attributes */
 					if($network == 'facebook') {
 						$cache[$network . '||' . $instance['facebook_id']]['metric'] = $instance['facebook_metric'];
+					} else if($network == 'twitter') {
+						$cache[$network . '||' . $instance['twitter_id']]['api_key'] = $instance['twitter_api_key'];
+						$cache[$network . '||' . $instance['twitter_id']]['api_secret'] = $instance['twitter_api_secret'];
+						$cache[$network . '||' . $instance['twitter_id']]['access_token'] = $instance['twitter_access_token'];
+						$cache[$network . '||' . $instance['twitter_id']]['access_token_secret'] = $instance['twitter_access_token_secret'];
 					}
 				}
 			}
@@ -188,6 +202,10 @@ class JD_SocialBoxWidget extends WP_Widget{
 
 		/* Set default values for uncommon/special options */
 		$defaults['facebook_metric'] = 'likes';
+		$defaults['twitter_api_key'] = '';
+		$defaults['twitter_api_secret'] = '';
+		$defaults['twitter_access_token'] = '';
+		$defaults['twitter_access_token_secret'] = '';
 
 		/* Merge defaults and actual option values */
 		$instance = wp_parse_args((array) $instance, $defaults);

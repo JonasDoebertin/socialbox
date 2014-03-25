@@ -99,10 +99,34 @@
 
 	<fieldset>
 		
-		<!-- ID -->
+		<!-- Username -->
 		<p>
 			<label for="<?php echo $this->get_field_id('twitter_id'); ?>" title="<?php _e('Your Twitter screenname (e.g. envatowebdev)', 'socialbox'); ?>"><?php _e('Username', 'socialbox'); ?>:</label>
 			<input type="text" id="<?php echo $this->get_field_id('twitter_id'); ?>" name="<?php echo $this->get_field_name('twitter_id'); ?>" value="<?php echo $instance['twitter_id']; ?>" class="widefat" />
+		</p>
+
+		<!-- API Key -->
+		<p>
+			<label for="<?php echo $this->get_field_id('twitter_api_key'); ?>" title="<?php _e('Your Twitter application API key', 'socialbox'); ?>"><?php _e('API Key', 'socialbox'); ?>:</label>
+			<input type="text" id="<?php echo $this->get_field_id('twitter_api_key'); ?>" name="<?php echo $this->get_field_name('twitter_api_key'); ?>" value="<?php echo $instance['twitter_api_key']; ?>" class="widefat" />
+		</p>
+
+		<!-- API Secret -->
+		<p>
+			<label for="<?php echo $this->get_field_id('twitter_api_secret'); ?>" title="<?php _e('Your Twitter application API secret', 'socialbox'); ?>"><?php _e('API Secret', 'socialbox'); ?>:</label>
+			<input type="text" id="<?php echo $this->get_field_id('twitter_api_secret'); ?>" name="<?php echo $this->get_field_name('twitter_api_secret'); ?>" value="<?php echo $instance['twitter_api_secret']; ?>" class="widefat" />
+		</p>
+
+		<!-- Access Token -->
+		<p>
+			<label for="<?php echo $this->get_field_id('twitter_access_token'); ?>" title="<?php _e('Your Twitter application access token', 'socialbox'); ?>"><?php _e('Access Token', 'socialbox'); ?>:</label>
+			<input type="text" id="<?php echo $this->get_field_id('twitter_access_token'); ?>" name="<?php echo $this->get_field_name('twitter_access_token'); ?>" value="<?php echo $instance['twitter_access_token']; ?>" class="widefat" />
+		</p>
+
+		<!-- Access Token Secret -->
+		<p>
+			<label for="<?php echo $this->get_field_id('twitter_access_token_secret'); ?>" title="<?php _e('Your Twitter application access token secret', 'socialbox'); ?>"><?php _e('Access Token Secret', 'socialbox'); ?>:</label>
+			<input type="text" id="<?php echo $this->get_field_id('twitter_access_token_secret'); ?>" name="<?php echo $this->get_field_name('twitter_access_token_secret'); ?>" value="<?php echo $instance['twitter_access_token_secret']; ?>" class="widefat" />
 		</p>
 		
 		<!-- Default -->
