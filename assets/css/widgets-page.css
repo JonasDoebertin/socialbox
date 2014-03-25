@@ -8,9 +8,12 @@
 	$WIDGET FORM
 \*------------------------------------*/
 .socialbox-options { width: 100%; }
-.socialbox-options fieldset { margin: 10px 0; overflow: hidden; padding: 10px 10px 0 10px; }
-.socialbox-options fieldset.socialbox-general, .socialbox-options fieldset.socialbox-support { background-color: #fafafa; }
-.socialbox-options fieldset h5 { font-size: 14px; line-height: 1.5; margin: 0 0 10px 0; }
+.socialbox-options h5 { background-color: #444444; color: #f5f5f5; font-size: 12px; line-height: 1.5; padding: 10px; margin: 10px 0 0 0; }
+.socialbox-options fieldset { background-color: #fafafa; margin: 0 0 20px 0; overflow: hidden; padding: 10px; }
+.socialbox-options fieldset.socialbox-support { background-color: #444444; color: #f5f5f5; }
+.socialbox-options fieldset.socialbox-support a { color: #f5f5f5; }
+.socialbox-options fieldset.socialbox-support p { margin: 0; }
 .socialbox-options fieldset p { margin: 0 0 10px 0; }
+.socialbox-options fieldset .socialbox-default, .socialbox-options fieldset .socialbox-position { float: left; margin-right: 10px; }
 .socialbox-options fieldset .socialbox-default { width: 80px; }
 .socialbox-options fieldset .socialbox-position { width: 60px; }

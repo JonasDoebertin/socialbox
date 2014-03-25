@@ -13,9 +13,9 @@
 <div class="socialbox-options">
 
 	<!-- General Settings -->
+	<h5><?php _e('General Settings', 'socialbox'); ?></h5>
+
 	<fieldset class="socialbox-general">
-		
-		<h5><?php _e('General Settings', 'socialbox'); ?></h5>
 		
 		<p>
 			<!-- Open New Window -->
@@ -59,17 +59,18 @@
 	</fieldset>
 	
 	<!-- Facebook -->
-	<fieldset>
-		
-		<h5><?php _e('Facebook', 'socialbox'); ?></h5>
+	<h5><?php _e('Facebook', 'socialbox'); ?></h5>
 
+	<fieldset>
+
+		<!-- Page ID -->
 		<p>
-			<!-- Page ID -->
 			<label for="<?php echo $this->get_field_id('facebook_id'); ?>" title="<?php _e('Your Pages ID or Shortname (e.g. envato)', 'socialbox'); ?>"><?php _e('Page ID or Shortname', 'socialbox'); ?>:</label><br/>
 			<input type="text" id="<?php echo $this->get_field_id('facebook_id'); ?>" name="<?php echo $this->get_field_name('facebook_id'); ?>" value="<?php echo $instance['facebook_id']; ?>" class="widefat" />
 		</p>
+
+		<!-- Metric -->
 		<p>
-			<!-- Metric -->
 			<label for="<?php echo $this->get_field_id('facebook_metric'); ?>" title="<?php _e('What metric shall be displayed', 'socialbox'); ?>"><?php _e('Metric', 'socialbox'); ?>:</label>
 			<select id="<?php echo $this->get_field_id('facebook_metric'); ?>" name="<?php echo $this->get_field_name('facebook_metric'); ?>" class="widefat">
 				<option <?php if($instance['facebook_metric'] == 'likes' ) echo 'selected="selected"'; ?> value="likes">Likes</option>
@@ -94,9 +95,9 @@
 	</fieldset>
 	
 	<!-- Twitter -->
+	<h5><?php _e('Twitter', 'socialbox'); ?></h5>
+
 	<fieldset>
-		
-		<h5><?php _e('Twitter', 'socialbox'); ?></h5>
 		
 		<!-- ID -->
 		<p>
@@ -117,39 +118,11 @@
 		</div>
 		
 	</fieldset>
-
-	<?php /*
-	<!-- Google+ -->
-	<fieldset class="widefat">
-		
-		<legend><?php _e('Google+', 'socialbox'); ?></legend>
-		
-		<!-- ID -->
-		<div class="socialbox-id">
-			<label for="<?php echo $this->get_field_id('googleplus_id'); ?>" title="<?php _e('Your Google+ ID (e.g. 104560124403688998123)', 'socialbox'); ?>"><?php _e('User ID', 'socialbox'); ?>:</label>
-			<input type="text" id="<?php echo $this->get_field_id('googleplus_id'); ?>" name="<?php echo $this->get_field_name('googleplus_id'); ?>" value="<?php echo $instance['googleplus_id']; ?>" class="widefat"  />
-		</div>
-		
-		<!-- Default -->
-		<div class="socialbox-default">
-			<label for="<?php echo $this->get_field_id('googleplus_default'); ?>" title="<?php _e('Your fallback count', 'socialbox'); ?>"><?php _e('Default:', 'socialbox'); ?></label>
-			<input type="text" id="<?php echo $this->get_field_id('googleplus_default'); ?>" name="<?php echo $this->get_field_name('googleplus_default'); ?>" value="<?php echo $instance['googleplus_default']; ?>" size="6" class="widefat" />
-		</div>
-		
-		<!-- Position -->
-		<div class="socialbox-position">
-			<label for="<?php echo $this->get_field_id('googleplus_position'); ?>" title="<?php _e('Display position within SocialBox', 'socialbox'); ?>"><?php _e('Position:', 'socialbox'); ?></label>
-			<input type="text" id="<?php echo $this->get_field_id('googleplus_position'); ?>" name="<?php echo $this->get_field_name('googleplus_position'); ?>" value="<?php echo $instance['googleplus_position']; ?>" size="2" class="widefat" />
-		</div>
-		
-	</fieldset>
-	*/
-	?>
 	
 	<!-- YouTube -->
+	<h5><?php _e('YouTube', 'socialbox'); ?></h5>
+
 	<fieldset>
-		
-		<h5><?php _e('YouTube', 'socialbox'); ?></h5>
 		
 		<!-- ID -->
 		<p>
@@ -172,10 +145,10 @@
 	</fieldset>
 	
 	<!-- Vimeo -->
+	<h5><?php _e('Vimeo', 'socialbox'); ?></h5>
+
 	<fieldset>
-		
-		<h5><?php _e('Vimeo', 'socialbox'); ?></h5>
-		
+
 		<!-- ID -->
 		<p>
 			<label for="<?php echo $this->get_field_id('vimeo_id'); ?>" title="<?php _e('Your Vimeo Channel', 'socialbox'); ?>"><?php _e('Channel', 'socialbox'); ?>:</label>
@@ -197,9 +170,9 @@
 	</fieldset>
 	
 	<!-- Dribbble -->
+	<h5><?php _e('Dribbble', 'socialbox'); ?></h5>
+
 	<fieldset>
-		
-		<h5><?php _e('Dribbble', 'socialbox'); ?></h5>
 		
 		<!-- ID -->
 		<p>
@@ -222,10 +195,10 @@
 	</fieldset>
 	
 	<!-- Forrst -->
+	<h5><?php _e('Forrst', 'socialbox'); ?></h5>
+
 	<fieldset>
-		
-		<h5><?php _e('Forrst', 'socialbox'); ?></h5>
-		
+
 		<!-- ID -->
 		<p>
 			<label for="<?php echo $this->get_field_id('forrst_id'); ?>" title="<?php _e('Your Forrst username', 'socialbox'); ?>"><?php _e('Username', 'socialbox'); ?>:</label>
@@ -247,10 +220,10 @@
 	</fieldset>
 
 	<!-- GitHub -->
+	<h5><?php _e('GitHub', 'socialbox'); ?></h5>
+
 	<fieldset>
-		
-		<h5><?php _e('GitHub', 'socialbox'); ?></h5>
-		
+
 		<!-- ID -->
 		<p>
 			<label for="<?php echo $this->get_field_id('github_id'); ?>" title="<?php _e('Your gitHub username', 'socialbox'); ?>"><?php _e('Username', 'socialbox'); ?>:</label>
@@ -272,9 +245,9 @@
 	</fieldset>
 
 	<!-- Additional Settings -->
-	<fieldset>
-		
-		<h5><?php _e('Additional Settings', 'socialbox'); ?></h5>
+	<h5><?php _e('Additional Settings', 'socialbox'); ?></h5>
+
+	<fieldset class="socialbox-additional">
 
 		<p>
 			<!-- Fixed Widget Width -->
@@ -297,7 +270,7 @@
 		
 		<p>
 			<small>
-				<?php _e('Need support? <a href="http://support.jonasdoebertin.net/" title="Get support!">Get some!</a>', 'socialbox'); ?>
+				<?php _e('Need help?', 'socialbox') ?> <a href="http://support.jonasdoebertin.net/" title="<?php _e('Visit the support page!', 'socialbox') ?>"><?php _e('Get some!', 'socialbox'); ?></a>
 			</small>
 		</p>
 
