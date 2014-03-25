@@ -11,19 +11,9 @@
 class JD_SocialBox{
 	
 	/**
-	 * Update check script URL
-	 */
-	const UPDATE_BASE = "http://updates.jonasdoebertin.net/";
-	
-	/**
 	 * Complete list of supported networks
 	 */
 	const SUPPORTED_NETWORKS = 'facebook,twitter,youtube,vimeo,dribbble,forrst,github';
-
-	/**
-	 * This will be appended to the API call urls to identify SocialBoxes http requests
-	 */
-	const URL_IDENTIFIER = '#socialbox';
 
 	/**
 	 * Holds the slug of the settings page, once it has been registered
@@ -35,26 +25,14 @@ class JD_SocialBox{
 	 */
 	public function __construct(){
 
-		// /* Disable SSL-Verification when corresponding settings is enabled */
-		// if( JD_SocialBoxHelper::getOption('disable_ssl') === '1' ){
-		// 	add_filter('http_request_args', array($this, 'disableSslVerify'), 10, 2);
-		// }
+		global $pagenow;
 		
 		/* Inject custom cron schedule */
 		add_filter('cron_schedules', array($this, 'addCronSchedule'));
 		
 		/* Register custom actions */
 		add_action('socialbox_update_cache', array($this, 'updateCache'));
-		add_action('socialbox_check_for_update', array($this, 'checkForUpdate'));
-		
-		/* If an update is available, then notify */
-		/* TODO: Double check version numbers */
-		if(is_admin()){
-			$info = get_option('socialbox_updateinfo', null);
-			if(is_array($info) and $info['update']){
-				add_action('admin_notices', array($this, 'addAdminNotice'));
-			}	
-		}
+		add_action('socialbox_update_plugin', array($this, 'updatePlugin'));
 		
 		/* Register Widget */
 		add_action('widgets_init', array($this, 'registerWidget'));
@@ -64,6 +42,14 @@ class JD_SocialBox{
 		
 		/* Backend only stuff */
 		if(is_admin()){
+
+			/* Display update notice */
+			if($pagenow == 'index.php') {
+				$info = get_option('socialbox_update', array());
+				if(isset($info['update_available']) and $info['update_available']) {
+					add_action('admin_notices', array($this, 'addAdminNotice'));
+				}	
+			}
 			
 			/* Add custom "Settings" link to plugin actions */
 			add_action('plugin_action_links_' . JD_SOCIALBOX_BASENAME, array($this, 'addPluginActionLink'));
@@ -85,33 +71,7 @@ class JD_SocialBox{
 			
 			/* Register SocialBox widget styles */
 			add_action('wp_enqueue_scripts', array($this, 'registerStyle'));
-			
 		}
-		
-	}
-
-	/**
-	 * Disable the SSL certificate validation for a given http request
-	 *
-	 * @param Array $args
-	 * @param String $url
-	 * @return Array
-	 */
-	public function disableSslVerify($args, $url){
-
-		/* Check if this http request belongs to SocialBox */
-		if( substr($url, -1 * strlen(self::URL_IDENTIFIER)) === self::URL_IDENTIFIER ){
-
-			/* Disable SSL verification flag */
-			$args['sslverify'] = false;
-
-			/* Remove identifier from url */
-			$url = substr($url, 0, strlen($url) - strlen(self::URL_IDENTIFIER));
-
-		}
-
-		return $args;
-
 	}
 	
 	/**
@@ -128,7 +88,6 @@ class JD_SocialBox{
 			'display' => __('Every Ten Minutes')
 		);
 		return $schedules;
-
 	}
 	
 	/**
@@ -136,39 +95,53 @@ class JD_SocialBox{
 	 *
 	 * This will be executed as scheduled cron event
 	 */
-	public function checkForUpdate() {
+	public static function updatePlugin() {
 		
-		$query = array(
-			'slug' => 'socialbox',
-			'version' => JD_SOCIALBOX_VERSION
-		);
-		$url = self::UPDATE_BASE . '?' . http_build_query($query);
+		/* Fetch latest version */
+		$result = wp_remote_get('http://updates.jd-powered.net/?slug=socialboxwp');
 		
-		$result = wp_remote_get($url);
-		
-		/* Check for unsuccessful http requests */
-		if( is_wp_error($result) or (wp_remote_retrieve_response_code($result) != 200) ){
+		/* Check for common errors */
+		if(is_wp_error($result) or (wp_remote_retrieve_response_code($result) != 200)) {
 			
-			$updateinfo = array(
-				'update' => false
-			);
-
-		} else{
-
-			/* Check for incorrect data */
-			$updateinfo = unserialize(wp_remote_retrieve_body($result));
-			if( !is_array($updateinfo) or isset($updateinfo['error']) or !isset($updateinfo['update'])){
-				
-				$updateinfo = array(
-					'update' => false
-				);
-
-			}
-
+			/* Update info and abort */
+			update_option('socialbox_update', array(
+				'last_checked'     => time(),
+				'update_available' => false
+			));
+			return;
 		}
-						
-		update_option('socialbox_updateinfo', $info);
-		
+
+		/* Decode response */
+		$response = json_decode(wp_remote_retrieve_body($result), true);
+
+		/* Check for incorrect data */
+		if(isset($response['error']) or !isset($response['latest_version'])) {
+			
+			/* Update info and abort */
+			update_option('socialbox_update', array(
+				'last_checked'     => time(),
+				'update_available' => false
+			));
+			return;
+		}
+
+		/* Check if remote version is newer */
+		if(version_compare($response['latest_version'], JD_SOCIALBOX_VERSION) == 1) {
+			
+			update_option('socialbox_update', array(
+				'last_checked'     => time(),
+				'update_available' => true,
+				'latest_version'   => $response['latest_version'],
+				'download_url'     => $response['download_url'],
+				'product_url'      => $response['product_url']
+			));
+		} else {
+
+			update_option('socialbox_update', array(
+				'last_checked'     => time(),
+				'update_available' => false
+			));
+		}
 	}
 	
 	/**
@@ -176,16 +149,25 @@ class JD_SocialBox{
 	 *
 	 * Will be run through register_activation_hook()
 	 */
-	public function activatePlugin(){
+	public static function activatePlugin(){
+
+		/* Prepare for updated version */
+		$lastVersion = get_option('socialbox_last_version', false);
+		if(!$lastVersion or (version_compare('1.4.0', $lastVersion) == 1)) {
+			/* Remove all data from pre-1.4.0 versions */
+			delete_option('socialbox_update');
+			delete_option('socialbox_options');
+			delete_option('socialbox_cache');
+		}
 
 		/* Add options */
-		add_option('socialbox_updateinfo', array());
+		add_option('socialbox_update', array());
 		add_option('socialbox_options', array());
 		add_option('socialbox_cache', array());
 		
 		/* Register cron events */
 		wp_schedule_event(time(), 'everytenminutes', 'socialbox_update_cache');
-		wp_schedule_event(time(), 'daily', 'socialbox_check_for_update');
+		wp_schedule_event(time(), 'daily', 'socialbox_update_plugin');
 		
 		/*
 			Save last version used.
@@ -193,8 +175,10 @@ class JD_SocialBox{
 			based on the previously installed versions
 			in the future.
 		 */
-		add_option('socialbox_last_version', JD_SOCIALBOX_VERSION);
+		update_option('socialbox_last_version', JD_SOCIALBOX_VERSION);
 
+		/* Trigger update check */
+		self::updatePlugin();
 	}
 	
 	/**
@@ -202,16 +186,14 @@ class JD_SocialBox{
 	 *
 	 * Will be run through register_deactivation_hook
 	 */
-	public function deactivatePlugin(){
+	public static function deactivatePlugin(){
 
 		/* Delete options */
-		delete_option('socialbox_updateinfo');
-		delete_option('socialbox_cache');
+		delete_option('socialbox_update');
 		
 		/* Deregister cron events */
 		wp_clear_scheduled_hook('socialbox_update_cache');
-		wp_clear_scheduled_hook('socialbox_check_for_update');
-		
+		wp_clear_scheduled_hook('socialbox_update_plugin');
 	}
 	
 	/**
@@ -221,19 +203,8 @@ class JD_SocialBox{
 	 */
 	public function addAdminNotice(){
 		
-		$info = get_option('socialbox_update');
-		
-		?>
-		
-		<div id="message" class="updated">
-			<p>
-				<strong><?php _e('SocialBox update available!', 'socialbox'); ?></strong>
-				<?php printf(__('New Version: %s (%s). Info and download at the <a href="%s">plugin page</a>.', 'socialbox'), $info['version'], $info['date'], $info['link']); ?>
-			</p>
-		</div>
-		
-		<?php
-		
+		$info = get_option('socialbox_update', array());
+		include JD_SOCIALBOX_PATH . '/views/update.php';
 	}
 	
 	/**
@@ -244,7 +215,6 @@ class JD_SocialBox{
 	public function registerWidget(){
 		
 		register_widget('JD_SocialBoxWidget');
-		
 	}
 
 	public function addPluginActionLink($actionLinks){
@@ -253,7 +223,6 @@ class JD_SocialBox{
 		
 		array_unshift($actionLinks, $html);
 		return $actionLinks;
-
 	}
 	
 	/**
@@ -268,7 +237,6 @@ class JD_SocialBox{
 					
 		/* Enqueue Style */
 		wp_enqueue_style('socialbox-widgets-page');
-		
 	}
 	
 	/**
@@ -283,7 +251,6 @@ class JD_SocialBox{
 		
 		/* Enqueue style */
 		wp_enqueue_style('socialbox');
-		
 	}
 
 	/**
@@ -300,7 +267,6 @@ class JD_SocialBox{
 			'socialbox',
 			array($this, 'renderOptionsPage')
 		);
-
 	}
 
 	/**
@@ -340,39 +306,11 @@ class JD_SocialBox{
 			'socialbox' . '_advanced',
 			array('label_for' => 'socialbox_disable_ssl')
 		);
-
-		/* Register settings section for "Debugging Settings" */
-		add_settings_section(
-			'socialbox_debugging',
-			__('Debugging', 'socialbox'),
-			array($this, 'printDebuggingSettingsSection'),
-			'socialbox'
-		);
-
-		add_settings_field(
-			'enable_log',
-			__('API Log', 'socialbox'),
-			array($this, 'printEnableLogSettingsField'),
-			'socialbox',
-			'socialbox_debugging',
-			array('label_for' => 'socialbox_enable_log')
-		);
-
-		add_settings_field(
-			'log_entries',
-			__('API Log Entries', 'socialbox'),
-			array($this, 'printLogEntriesSettingsField'),
-			'socialbox',
-			'socialbox_debugging',
-			array('label_for' => 'socialbox_log_entries')
-		);
-
 	}
 
 	public function printAdvancedSettingsSection(){
 
 		echo '<p>' . __('Some advanced options to tweak SocialBox\'s internals', 'socialbox') . '</p>';
-
 	}
 
 	public function printUpdateIntervalSettingsField($args){
@@ -381,7 +319,6 @@ class JD_SocialBox{
 		$html .= '<p class="description">' . __('The time (in minutes) that SocialBox waits before refreshing it\'s data. (Default: 180 = 3 hours)', 'socialbox') . '</p>';
 
 		echo $html;
-
 	}
 
 	public function printDisableSslSettingsField($args){
@@ -391,32 +328,6 @@ class JD_SocialBox{
 	    $html .= '<p class="description">' . __('This can be useful on most "local servers" like MAMP or XAMPP.', 'socialbox') . '</p>';
 	  
 	    echo $html;
-
-	}
-
-	public function printDebuggingSettingsSection(){
-
-		echo '<p>' . __('Debugging should help you when SocialBox doesn\'t work as expected.', 'socialbox') . '</p>';
-
-	}
-
-	public function printEnableLogSettingsField($args){
-
-	    $html = '<input type="checkbox" id="' . $args['label_for'] . '" name="socialbox_options[enable_log]" value="1" ' . checked(1, JD_SocialBoxHelper::getOption('enable_log'), false) . '/>';    
-	    $html .= ' <label for="' . $args['label_for'] . '">' . __('Enable the API log', 'socialbox') . '</label>';
-	    $html .= '<p class="description">' . __('This should help you, if you\'re receiving no data for your networks', 'socialbox') . '</p>';
-	  
-	    echo $html;
-
-	}
-
-	public function printLogEntriesSettingsField($args){
-
-		$html = '<input type="text" id="' . $args['label_for'] . '" name="socialbox_options[log_entries]" value="' . JD_SocialBoxHelper::getOption('log_entries') . '" />';
-		$html .= '<p class="description">' . __('Number of log entries to keep', 'socialbox') . '</p>';
-
-		echo $html;
-
 	}
 
 	/**
@@ -428,7 +339,6 @@ class JD_SocialBox{
 		
 		wp_register_style('socialbox-options', JD_SOCIALBOX_URL . '/assets/css/options-page.css', array(), JD_SOCIALBOX_VERSION, 'screen');
 		wp_enqueue_style('socialbox-options');
-
 	}
 
 	/**
@@ -440,7 +350,6 @@ class JD_SocialBox{
 		
 		$tab = (isset($_GET['tab']) and !empty($_GET['tab'])) ? $_GET['tab'] : 'settings';
 		include JD_SOCIALBOX_PATH . '/views/options-page/frame.php';
-
 	}
 	
 	/**
@@ -460,7 +369,7 @@ class JD_SocialBox{
 		$updateInterval = JD_SocialBoxHelper::getOption('update_interval');
 		
 		/* Call update function for each cache element that needs to be updated */
-		foreach($cache as $item){
+		foreach($cache as $item) {
 
 			/* Calculate cache element age (in minutes) */
 			$elemAge = (time() - $item['lastUpdated']) / 60;
@@ -473,12 +382,10 @@ class JD_SocialBox{
 				//self::updateCacheElement($item);
 				self::updateCacheItem($item);
 			}
-
 		}
-		
 	}
 
-	public static function updateCacheItem($item){
+	public static function updateCacheItem($item) {
 
 		/* Fetch new value from connector */
 		$result = JD_SocialBoxConnector::get($item);
@@ -486,18 +393,16 @@ class JD_SocialBox{
 		/* Set new value if fetch was successful */
 		if($result['successful']) {
 			$newValue = $result['value'];
+			self::logActivity(true, $item['network'], $item['id']);
 
 		/* Indicate that fetch was unseccessful */
 		} else {
 			$newValue = null;
-
-			/* TODO */
-			//$errorCode = isset($result['errorCode'])? $result['errorCode'] : '---';
-			//SocialBox::addLogEntry($elem['network'], $elem['id'], $errorCode, $result['errorMessage']);
+			self::logActivity(false, $item['network'], $item['id']);
 		}
 
 		/* Update cache item */
-		$item['value']       = ((!is_null($newValue)) ? $newValue : (int)$item['default']);
+		$item['value']       = $newValue;
 		$item['lastUpdated'] = time();
 		
 		/* Save updated cache item */
@@ -514,33 +419,26 @@ class JD_SocialBox{
 	 * @param String $status A status flag
 	 * @param String $msg The actual error message
 	 */
-	public static function addLogEntry($network, $id, $status, $msg){
-		
-		/* Proceed when the log is enabled only */
-		if( JD_SocialBoxHelper::getOption('enable_log') === '1' ){
+	public static function logActivity($successful, $network, $id) {
 
-			/* Get existing log entries */
-			$log = get_option('socialbox_log', array());
+		/* Get existing log entries */
+		$log = get_option('socialbox_log', array());
 
-			/* Check size of log */
-			if( count($log) >= JD_SocialBoxHelper::getOption('log_entries') ){
-				
-				array_shift($log);
+		/* Add new log entry */
+		$log[] = array(
+			'timestamp' => time(),
+			'successful' => $successful,
+			'network' => $network,
+			'id' => $id
+		);
 
-			}
+		/* Trancate log */
+		if(count($log) > 20){
+			array_shift($log);
+		}
 
-			$log[] = array(
-				'timestamp' => time(),
-				'network'   => $network,
-				'id'        => $id,
-				'status'    => $status,
-				'message'   => $msg
-			);
-
-			update_option('socialbox_log', $log);
-
-		}			
-
+		/* Save updated log */
+		update_option('socialbox_log', $log);
 	}
 
 	/**
@@ -548,17 +446,9 @@ class JD_SocialBox{
 	 *
 	 * @return Array
 	 */
-	public static function getLog(){
+	public static function getLog() {
 		
-		/* If log is enabled, return its content */
-		if( JD_SocialBoxHelper::getOption('enable_log') === '1' ){
-
-			return get_option('socialbox_log', array());
-
-		}
-
-		return false;			
-
+		return get_option('socialbox_log', array());
 	}
 
 	/**
@@ -567,10 +457,9 @@ class JD_SocialBox{
 	 * @param String $path
 	 * @return String
 	 */
-	private function getUrl($path){
+	private function getUrl($path) {
 		
 		return JD_SOCIALBOX_URL . '/' . $path;
-		
 	}
 	
 	/**
@@ -578,10 +467,8 @@ class JD_SocialBox{
 	 *
 	 * @param String $path
 	 */
-	private function url($path){
+	private function url($path) {
 		
 		echo $this->getUrl($path);
-		
 	}
-	
 }
