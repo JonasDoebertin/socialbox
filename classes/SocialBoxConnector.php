@@ -18,7 +18,7 @@ class JD_SocialBoxConnector{
 	protected static function facebook($item) {
 
 		/* Fetch data from Graph API */
-		$result = wp_remote_get('https://graph.facebook.com/' . $item['id']);
+		$result = wp_remote_get('https://graph.facebook.com/' . $item['id'], array('sslverify' => false));
 
 		/* Check for common errors */
 		if(self::wasCommonError($result)) {
@@ -142,7 +142,7 @@ class JD_SocialBoxConnector{
 	protected static function forrst($item) {
 
 		/* Fetch data from Forrst API */
-		$result = wp_remote_get('https://forrst.com/api/v2/users/info?username=' . $item['id']);
+		$result = wp_remote_get('https://forrst.com/api/v2/users/info?username=' . $item['id'], array('sslverify' => false));
 
 		/* Check for common errors */
 		if(self::wasCommonError($result)) {
@@ -167,7 +167,7 @@ class JD_SocialBoxConnector{
 	protected static function github($item) {
 
 		/* Fetch data from GitHub API */
-		$result = wp_remote_get('https://api.github.com/users/' . $item['id']);
+		$result = wp_remote_get('https://api.github.com/users/' . $item['id'], array('sslverify' => false));
 
 		/* Check for common errors */
 		if(self::wasCommonError($result)) {
