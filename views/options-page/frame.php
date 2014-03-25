@@ -15,7 +15,7 @@
 		<a class="nav-tab <?php if($tab == 'settings') echo 'nav-tab-active'; ?>" href="?page=socialbox&amp;tab=settings"><?php _e('Settings', 'socialbox'); ?></a>
 		<a class="nav-tab <?php if($tab == 'about') echo 'nav-tab-active'; ?>" href="?page=socialbox&amp;tab=about"><?php _e('About', 'socialbox'); ?></a>
 		<a class="nav-tab <?php if($tab == 'help') echo 'nav-tab-active'; ?>" href="?page=socialbox&amp;tab=help"><?php _e('Help', 'socialbox'); ?></a>
-		<a class="nav-tab <?php if($tab == 'log') echo 'nav-tab-active'; ?>" href="?page=socialbox&amp;tab=log"><?php _e('API Log', 'socialbox'); ?></a>
+		<a class="nav-tab <?php if($tab == 'log') echo 'nav-tab-active'; ?>" href="?page=socialbox&amp;tab=log"><?php _e('Log', 'socialbox'); ?></a>
 	</h2>
 
 	<?php 
