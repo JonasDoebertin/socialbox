@@ -8,14 +8,10 @@
 /* Get the log entries */
 $log = $this->getLog();
 
-
-
 ?>
 
 <div class="socialbox-wrap socialbox-log">
-
 	<table class="wp-list-table widefat" cellspacing="0">
-		
 		<thead>
 			<tr>
 				<th scope="col" class="socialbox-time-column"><?php _e('Time', 'socialbox'); ?></th>
@@ -35,7 +31,7 @@ $log = $this->getLog();
 			<?php if( (empty($log) or (count($log) == 0)) ): ?>
 
 				<tr>
-					<td colspan="3" class="socialbox-empty-log"><?php _e('Set up a SocialBox widget first...', 'socialbox'); ?></td>
+					<td colspan="3" class="empty-log"><?php _e('Set up a SocialBox widget first...', 'socialbox'); ?></td>
 				</tr>
 
 			<?php else: ?>
@@ -55,7 +51,5 @@ $log = $this->getLog();
 			<?php endif; ?>
 
 		</tbody>
-
 	</table>
-
 </div>
