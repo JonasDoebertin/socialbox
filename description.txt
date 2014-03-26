@@ -1,24 +1,13 @@
-<p>
-	<a href="http://twitter.com/DieserJonas">
-		<img src="http://envato.jonasdoebertin.net/buttons/twitter.png"/>
-	</a>
-	<a href="http://feeds.feedburner.com/jonasdoebertin">
-		<img src="http://envato.jonasdoebertin.net/buttons/feed.png"/>
-	</a>
-</p>
-With SocialBox you get an absolutely easy to use WordPress Plugin which enables you to add a sleek social widget to your WordPress site or blog. It supports several social networks and displays the current numbers of Facebook Page Likes, Twitter, Dribbble, Forrst and Digg Followers and YouTube and Vimeo Channel Subscriptions. You can enter default values which will be shown as a fallback if the related API is not reachable.
-<br/>
-<br/>
-<br/>
-<a href="http://codecanyon.net/item/socialbox-social-php-widget/946223">
-	<img src="http://envato.jonasdoebertin.net/buttons/socialbox-tryphp.png" />
-</a>
-<h4>Features</h4>
+<p><a href="http://twitter.com/DieserJonas" title="Follow me on Twitter"><img src="http://jd-daten.de/envato/button-left-twitter.png" alt="Follow me on Twitter - News, Updates & more"/></a><a href="http://themeforest.net/user/jdpowered/follow" title="Follow me on the Envato Marketplaces - New Themes and Plugins"><img src="http://jd-daten.de/envato/button-right-envato.png" alt="Follow me on the Envato Marketplaces"/></a></p>
+
+<p>With SocialBox you get an absolutely easy to use WordPress Plugin which enables you to add a sleek social widget to your WordPress site or blog. It supports several social networks and displays a variety of statistics from several social networks including, but not limited to, the current number of Facebook Page Likes, Twitter, Dribbble, Forrst &amp; GitHub Followers and YouTube and Vimeo Channel Subscriptions. You can enter sensible default values which will be shown as a fallback if the related APIs are not reachable.</p>
+
+<h3>Features</h3>
 <ul>
 	<li>Displays the number of:
 		<ul>
-			<li>Facebook Page Likes</li>
-			<li>Twitter, Dribbble, Forrst, Digg and GitHub Followers</li>
+			<li>Facebook Page Likes, Checkins &amp; Talking About</li>
+			<li>Twitter, Dribbble, Forrst &amp; GitHub Followers</li>
 			<li>YouTube and Vimeo Channel Subscribers</li>
 		</ul>
 	</li>
@@ -26,53 +15,75 @@ With SocialBox you get an absolutely easy to use WordPress Plugin which enables 
 	<li>Choose from various styles to match your site</li>
 	<li>Use compact (12K, 3.2M) or full (12.000, 3.200.000) numbers</li>
 	<li>Updates at an configurable interval to reduce load time and API calls.</li>
-	<li>Default values as a fallback, if any of the APIs is not reachable</li>
+	<li>Default values as a fallback, if any of the APIs are not reachable</li>
 	<li>Automatic update notifications</li>
 	<li>Full support for all major browsers</li>
 	<li>Localization ready (.pot file included)</li>
 	<li>Free future updates, to support even more networks and additional styles and features</li>
 </ul>
+
 <h4>Requirements</h4>
 <ul>
 	<li>WordPress 3.0+</li>
 	<li>PHP 5.2+</li>
 	<li>PHP Extensions: cURL &amp; SimpleXML (these are enabled by default on common hosting services)</li>
 </ul>
-<h4>Testimonials</h4>
+
+<h3>Testimonials</h3>
 <blockquote>
 	"I picked the plugin up a few days ago and was immediately impressed with its quality. While the task it performs is relatively simple, and there are numerous free plugins that can do more or less the same, SocialBox definitely stands above the crowd with it’s high quality. The widget works perfectly, is clear and easy to use, and provides a nice addition to any WordPress site. [...] If you’re looking for a new social widget, I highly recommend this one." - <a href="http://codecanyon.net/user/mordauk">Pippin Williamson (mordauk)</a> <strong>(Read the <a href="http://pippinsplugins.com/review-socialbox-social-widget-for-wordpress/">full review</a>)</strong>
 </blockquote>
 <blockquote>
 	"It was a love at first sight with me and this plugin [...]. One thing i love most is it’s speed, it loads quickly than any other these type of plugins (that i have seen). It’s a plugin that worth buying, and it only costs 4$ [...]." - <a href="http://wpbox.in/">Saeed Salam</a> <strong>(Read the <a href="http://wpbox.in/socialbox-plugin-social-widget-for-wordpress/">full review</a>)</strong>
 </blockquote>
-<h4>Future plans</h4>
+
+<h3>Updates</h3>
+<strong>Version 1.4.0</strong> <em>Pending</em><br/>
+<strong>Important:</strong> After updating the plugin please re-save all your SocialBox widgets!<br/>
 <ul>
-	<li>Add even more networks (e.g. Envato, Google+, MailChimp, Campaign Monitor, LinkedIn, SoundCloud, Instagram...)</li>
-	<li>Add even more additional styles</li>
+	<li>Added an option to choose from Facebook Page Likes, Checkins &amp; Talking About</li>
+	<li>Added a more stable way of fetching Twitter followers</li>
+	<li>Added Sass/Compass source files</li>
+	<li>Fixed a bug that could prevent regular updates of the numbers</li>
+	<li>Major plugin code changes and improvements</li>
+	<li>Updated language files</li>
 </ul>
-<h4>Updates</h4>
-<strong>Version 1.3.0 (01/17/2012)</strong>
+
+<strong>Version 1.3.2</strong><br/>
+<ul>
+	<li><strong>Fixed a bug</strong> that caused to display "0" for Twitter users with more then 1k followers</li>
+</ul>
+
+<strong>Version 1.3.1</strong><br/>
+<ul>
+	<li><strong>Fixed a bug</strong> that caused to display "0" for all Twitter users</li>
+</ul>
+
+<strong>Version 1.3.0</strong><br/>
+<strong>Important:</strong> After updating the plugin please re-save all your SocialBox widgets!<br/>
 <ul>
 	<li>Added additional styles</li>
 	<li>Added support for GitHub</li>
 	<li>Added an option to use compact numbers (8.4K, 23M, ...)</li>
-	<li>Added an option to set a forced widget & button width</li>
+	<li>Added an option to set a forced widget &amp; button width</li>
 	<li>Added an options page including a help section and an API error log</li>
 	<li>Removed support for Feedburner (Google abandoned Feedburner, please don't ask ME why)</li>
 	<li>Improved caching functionality</li>
 	<li>Fixed a bug that could lead to "Invalid Header" messages in certain cases</li>
 	<li>Fixed a bug that could lead to too long cron run times and unsuccessful refreshes</li>
-	<li>Major plugin code changes and improvements </li>
+	<li>Major plugin code changes and improvements</li>
 	<li>Major HTML / CSS improvements</li>
 	<li>Documentation overhaul</li>
 	<li>Updated localization files</li>
 </ul>
-<strong>Version 1.2.1 (11/27/2011)</strong>
+
+<strong>Version 1.2.1</strong>
 <ul>
 	<li>Fixed a bug that disabled update notifications</li>
 	<li>Added correct "alt" attributes to the network images</li>
 </ul>
-<strong>Version 1.2.0 (11/24/2011)</strong>
+
+<strong>Version 1.2.0</strong>
 <ul>
 	<li>Added additional networks: Dribbble, Forrst, Vimeo and Digg</li>
 	<li>Added an option to open links in new Windows/Tabs</li>
@@ -81,13 +92,15 @@ With SocialBox you get an absolutely easy to use WordPress Plugin which enables 
 	<li>Updated localization files</li>
 	<li>Minor CSS improvements</li>
 </ul>
-<strong>Version 1.1.1 (10/25/2011)</strong>
+
+<strong>Version 1.1.1</strong>
 <ul>
 	<li>Fixed a bug that could make WP 3.0 & 3.1 stop working after plugin activation in certain situations</li>
 	<li>Added support for WordPress 3.3</li>
 	<li>Minor CSS improvements</li>
 </ul>
-<strong>Version 1.1.0 (10/11/2011)</strong>
+
+<strong>Version 1.1.0</strong>
 <ul>
 	<li>Added support for YouTube Channels</li>
 	<li>Updated localization files</li>
