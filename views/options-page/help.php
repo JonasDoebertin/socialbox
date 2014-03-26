@@ -2,7 +2,7 @@
 
 
 /*
- * SocialBox 1.4.0
+ * SocialBox 1.4.1
  * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
@@ -145,7 +145,7 @@
 	<h4 class="socialbox-help-divider-top">Copyright</h4>
 	<p>
 		<strong>SocialBox - Social WordPress Widget</strong><br/>
-		Version 1.4.0<br/>
+		Version 1.4.1<br/>
 		&copy; 2011 - 2014 by <a href="http://codecanyon.net/user/jdpowered?ref=jdpowered" title="jdpowered on CodeCanyon">Jonas Döbertin</a>
 	</p>
 
