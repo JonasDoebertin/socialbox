@@ -44,7 +44,7 @@ class JD_SocialBox{
 		if(is_admin()){
 
 			/* Display update notice */
-			if($pagenow == 'index.php') {
+			if(in_array($pagenow, array('index.php', 'plugins.php'))) {
 				$info = get_option('socialbox_update', array());
 				if(isset($info['update_available']) and $info['update_available']) {
 					add_action('admin_notices', array($this, 'addAdminNotice'));
