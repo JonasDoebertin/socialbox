@@ -50,17 +50,26 @@ class JD_SocialBoxWidget extends WP_Widget{
 			
 			if( array_key_exists($network . '_id', $instance) and !empty($instance[$network . '_id']) ){
 				
-				$networks[] = array(
+				$new = array(
 					'type' 				=> $network,
 					'id' 				=> $instance[$network . '_id'],
 					'position' 			=> $instance[$network . '_position'],
 					'count' 			=> ( $cache[$network . '||' . $instance[$network . '_id']]['value'] !== null )? $cache[$network . '||' . $instance[$network . '_id']]['value'] : $instance[$network . '_default'],
 					'link' 				=> $this->getNetworkLink($network, $instance[$network . '_id']),
 					'name' 				=> $this->getNetworkName($network),
-					'metric' 			=> $this->getNetworkMetric($network),
 					'buttonText' 		=> $this->getNetworkButtonText($network),
 					'buttonHint' 		=> $this->getNetworkButtonHint($network)
 				);
+
+				/* Set metric */
+				if(in_array($network, array('facebook'))) {
+					$new['metric'] = $this->getComplexNetworkMetric($network, $instance[$network . '_metric']);
+				} else {
+					$new['metric'] = $this->getSimpleNetworkMetric($network);
+				}
+
+				/* Add network to list */
+				$networks[] = $new;
 
 			}
 			
@@ -273,12 +282,9 @@ class JD_SocialBoxWidget extends WP_Widget{
 
 	}
 
-	private function getNetworkMetric($network){
+	private function getSimpleNetworkMetric($network){
 		
 		switch($network){
-			
-			case 'facebook':
-				return __('Fans', 'socialbox');
 			case 'twitter':
 				return __('Followers', 'socialbox');
 			case 'youtube':
@@ -292,13 +298,31 @@ class JD_SocialBoxWidget extends WP_Widget{
 			case 'github':
 				return __('Followers', 'socialbox');		
 		}
+	}
+
+	private function getComplexNetworkMetric($network, $metric) {
 		
+		/* Facebook */
+		if($network == 'facebook') {
+			switch($metric) {
+				case 'likes':
+					return __('Likes', 'socialbox');
+				case 'checkins':
+					return __('Checkins', 'socialbox');
+				case 'were_here_count':
+					return __('Were Here', 'socialbox');
+				case 'talking_about_count':
+					return __('Talking About', 'socialbox');
+			}
+		}
+
+		/* Default value */
+		return __('Unknown', 'socialbox');
 	}
 	
-	private function getNetworkButtonText($network){
+	private function getNetworkButtonText($network) {
 		
 		switch($network){
-			
 			case 'facebook':
 				return __('Like', 'socialbox');
 			case 'twitter':
@@ -314,13 +338,11 @@ class JD_SocialBoxWidget extends WP_Widget{
 			case 'github':
 				return __('Follow', 'socialbox');
 		}
-		
 	}
 
-	private function getNetworkButtonHint($network){
+	private function getNetworkButtonHint($network) {
 		
 		switch($network){
-			
 			case 'facebook':
 				return __('Like on Facebook', 'socialbox');
 			case 'twitter':
@@ -336,7 +358,6 @@ class JD_SocialBoxWidget extends WP_Widget{
 			case 'github':
 				return __('Follow on GitHub', 'socialbox');
 		}
-		
 	}
 
 	/**
@@ -345,10 +366,9 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 * @param String $style
 	 * @return Bool
 	 */
-	private function getAllowButtons($style = 'classic'){
+	private function getAllowButtons($style = 'classic') {
 		
 		switch($style){
-
 			case 'modern':
 				return false;
 
@@ -361,7 +381,6 @@ class JD_SocialBoxWidget extends WP_Widget{
 			default:
 				return true;
 		}
-
 	}
 
 	/**
@@ -373,7 +392,6 @@ class JD_SocialBoxWidget extends WP_Widget{
 	private function getIconSize($style = 'classic'){
 		
 		switch($style){
-
 			case 'modern':
 			case 'tutsflavor':
 			case 'colorful':
@@ -386,21 +404,15 @@ class JD_SocialBoxWidget extends WP_Widget{
 			default:
 				return '16';
 		}
-
 	}
 
-	private function formatNumber($number, $useCompactNumbers){
+	private function formatNumber($number, $useCompactNumbers) {
 		
 		if($useCompactNumbers){
-			
 			return $this->getCompactNumber($number);
-
-		} else{
-			
+		} else {
 			return number_format($number);
-
 		}
-
 	}
 
 	/**
@@ -409,10 +421,9 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 * @param Int $number
 	 * @return String
 	 */
-	private function getCompactNumber($number){
+	private function getCompactNumber($number) {
 
 		switch(true){
-			
 			case $number < 1000:
 				return $number;
 
@@ -428,7 +439,6 @@ class JD_SocialBoxWidget extends WP_Widget{
 			default:
 				return floor($number / 1000000) . 'M';
 		}
-
 	}
 	
 	/**
@@ -437,10 +447,9 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 * @param String $path
 	 * @return String
 	 */
-	private function getUrl($path){
+	private function getUrl($path) {
 		
 		return JD_SOCIALBOX_URL . '/' . $path;
-		
 	}
 	
 	/**
@@ -448,10 +457,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 *
 	 * @param String $path
 	 */
-	private function url($path){
+	private function url($path) {
 		
 		echo $this->getUrl($path);
-		
 	}
-	
 }
