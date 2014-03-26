@@ -39,13 +39,14 @@
 
 <h3>Updates</h3>
 <strong>Version 1.4.0</strong> <em>Pending</em><br/>
-<strong>Important:</strong> After updating the plugin please re-save all your SocialBox widgets!<br/>
+<strong>Important:</strong> After updating the plugin please re-setup all your SocialBox widgets!<br/>
 <ul>
 	<li>Added an option to choose from Facebook Page Likes, Checkins &amp; Talking About</li>
 	<li>Added a more stable way of fetching Twitter followers</li>
 	<li>Added Sass/Compass source files</li>
 	<li>Fixed a bug that could prevent regular updates of the numbers</li>
 	<li>Updated social network icons</li>
+	<li>Improved support for WordPress 3.8</li>
 	<li>Major plugin code changes and improvements</li>
 	<li>Updated language files</li>
 </ul>
