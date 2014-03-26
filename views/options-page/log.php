@@ -1,12 +1,16 @@
-<?php
+<?php if(!defined('ABSPATH')) die('Direct access is not allowed.');
+
+
 /*
- * SocialBox v.1.3.2
- * Copyright by Jonas Doebertin
- * Available at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
+ * SocialBox 1.4.0
+ * Copyright by Jonas Döbertin
+ * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
+
 
 /* Get the log entries */
 $log = $this->getLog();
+
 
 ?>
 
