@@ -1,1 +1,10 @@
-LinkedIn, MailChimp, DeviantArt, Flickr, Reddit
+Vimeo:
+	- total_subscribers
+	- total_videos
+
+Dribbble:
+	- followers_count
+	- likes_received_count
+	- comments_received_count
+	- rebounds_received_count
+	- shots_count":64

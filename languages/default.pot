@@ -2,289 +2,265 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SocialBox\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-21 14:58+0100\n"
-"PO-Revision-Date: 2013-08-21 14:59+0100\n"
-"Last-Translator: Jonas Döbertin <jonas@doebertin.de>\n"
-"Language-Team: JonasDoebertin <support@jonasdoebertin.net>\n"
+"POT-Creation-Date: 2014-03-26 09:21+0100\n"
+"PO-Revision-Date: 2014-03-26 09:21+0100\n"
+"Last-Translator: Jonas Döbertin <hallo@jonasdoebertin.net>\n"
+"Language-Team: Jonas Döbertin <support@jd-powered.net>\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: .\n"
-"X-Poedit-SourceCharset: utf-8\n"
-"X-Generator: Poedit 1.5.7\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Generator: Poedit 1.6.4\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../socialbox.php:185
+#: ../classes/SocialBox.php:88
 msgid "Every Ten Minutes"
 msgstr ""
 
-#: ../socialbox.php:280
-msgid "SocialBox update available!"
-msgstr ""
-
-#: ../socialbox.php:281
-#, php-format
-msgid ""
-"New Version: %s (%s). Info and download at the <a href=\"%s\">plugin page</"
-"a>."
-msgstr ""
-
-#: ../socialbox.php:302
+#: ../classes/SocialBox.php:222
 msgid "SocialBox Settings"
 msgstr ""
 
-#: ../socialbox.php:302 ../views/options-page.frame.php:15
+#: ../classes/SocialBox.php:222 ../views/options-page/frame.php:19
 msgid "Settings"
 msgstr ""
 
-#: ../socialbox.php:347 ../socialbox.php:348
-#: ../views/options-page.frame.php:14
+#: ../classes/SocialBox.php:264 ../classes/SocialBox.php:265
+#: ../views/options-page/frame.php:18
 msgid "SocialBox"
 msgstr ""
 
-#: ../socialbox.php:371
+#: ../classes/SocialBox.php:287
 msgid "Advanced Settings"
 msgstr ""
 
-#: ../socialbox.php:378
+#: ../classes/SocialBox.php:294
 msgid "Update Interval"
 msgstr ""
 
-#: ../socialbox.php:387
+#: ../classes/SocialBox.php:303
 msgid "SSL-Verification"
 msgstr ""
 
-#: ../socialbox.php:397
-msgid "Debugging"
-msgstr ""
-
-#: ../socialbox.php:404 ../views/options-page.frame.php:18
-msgid "API Log"
-msgstr ""
-
-#: ../socialbox.php:413
-msgid "API Log Entries"
-msgstr ""
-
-#: ../socialbox.php:424
+#: ../classes/SocialBox.php:313
 msgid "Some advanced options to tweak SocialBox's internals"
 msgstr ""
 
-#: ../socialbox.php:431
+#: ../classes/SocialBox.php:319
 msgid ""
 "The time (in minutes) that SocialBox waits before refreshing it's data. "
 "(Default: 180 = 3 hours)"
 msgstr ""
 
-#: ../socialbox.php:440
+#: ../classes/SocialBox.php:327
 msgid "Disable SSL-Verification on API requests."
 msgstr ""
 
-#: ../socialbox.php:441
+#: ../classes/SocialBox.php:328
 msgid "This can be useful on most \"local servers\" like MAMP or XAMPP."
 msgstr ""
 
-#: ../socialbox.php:449
-msgid "Debugging should help you when SocialBox doesn't work as expected."
-msgstr ""
-
-#: ../socialbox.php:456
-msgid "Enable the API log"
-msgstr ""
-
-#: ../socialbox.php:457
-msgid "This should help you, if you're receiving no data for your networks"
-msgstr ""
-
-#: ../socialbox.php:466
-msgid "Number of log entries to keep"
-msgstr ""
-
-#: ../includes/socialbox.widget.php:23
+#: ../classes/SocialBoxWidget.php:21
 msgid ""
 "Adds a super easy SocialBox Widget which displays the current numbers of "
 "Facebook Page Likes, Google+, Twitter, Dribbble and Forrst Followers and "
 "YouTube and Vimeo Channel Subscriptions."
 msgstr ""
 
-#: ../includes/socialbox.widget.php:229 ../views/options-page.help.php:57
-#: ../views/widget.form.php:60
+#: ../classes/SocialBoxWidget.php:268 ../views/options-page/help.php:61
+#: ../views/widget/form.php:62
 msgid "Facebook"
 msgstr ""
 
-#: ../includes/socialbox.widget.php:231 ../views/options-page.help.php:64
-#: ../views/widget.form.php:85
+#: ../classes/SocialBoxWidget.php:270 ../views/options-page/help.php:68
+#: ../views/widget/form.php:98
 msgid "Twitter"
 msgstr ""
 
-#: ../includes/socialbox.widget.php:235 ../views/widget.form.php:138
+#: ../classes/SocialBoxWidget.php:272 ../views/widget/form.php:147
 msgid "YouTube"
 msgstr ""
 
-#: ../includes/socialbox.widget.php:237 ../views/options-page.help.php:83
-#: ../views/widget.form.php:163
+#: ../classes/SocialBoxWidget.php:274 ../views/options-page/help.php:89
+#: ../views/widget/form.php:172
 msgid "Vimeo"
 msgstr ""
 
-#: ../includes/socialbox.widget.php:239 ../views/options-page.help.php:89
-#: ../views/widget.form.php:188
+#: ../classes/SocialBoxWidget.php:276 ../views/options-page/help.php:95
+#: ../views/widget/form.php:197
 msgid "Dribbble"
 msgstr ""
 
-#: ../includes/socialbox.widget.php:241 ../views/options-page.help.php:95
-#: ../views/widget.form.php:213
+#: ../classes/SocialBoxWidget.php:278 ../views/options-page/help.php:101
+#: ../views/widget/form.php:222
 msgid "Forrst"
 msgstr ""
 
-#: ../includes/socialbox.widget.php:243 ../views/options-page.help.php:101
-#: ../views/widget.form.php:238
+#: ../classes/SocialBoxWidget.php:280 ../views/options-page/help.php:107
+#: ../views/widget/form.php:247
 msgid "GitHub"
 msgstr ""
 
-#: ../includes/socialbox.widget.php:253
-msgid "Fans"
-msgstr ""
-
-#: ../includes/socialbox.widget.php:255 ../includes/socialbox.widget.php:263
-#: ../includes/socialbox.widget.php:265 ../includes/socialbox.widget.php:267
+#: ../classes/SocialBoxWidget.php:289 ../classes/SocialBoxWidget.php:295
+#: ../classes/SocialBoxWidget.php:297 ../classes/SocialBoxWidget.php:299
 msgid "Followers"
 msgstr ""
 
-#: ../includes/socialbox.widget.php:259 ../includes/socialbox.widget.php:261
+#: ../classes/SocialBoxWidget.php:291 ../classes/SocialBoxWidget.php:293
 msgid "Subscribers"
 msgstr ""
 
-#: ../includes/socialbox.widget.php:277
+#: ../classes/SocialBoxWidget.php:309
+msgid "Likes"
+msgstr ""
+
+#: ../classes/SocialBoxWidget.php:311
+msgid "Checkins"
+msgstr ""
+
+#: ../classes/SocialBoxWidget.php:313
+msgid "Were Here"
+msgstr ""
+
+#: ../classes/SocialBoxWidget.php:315
+msgid "Talking About"
+msgstr ""
+
+#: ../classes/SocialBoxWidget.php:320
+msgid "Unknown"
+msgstr ""
+
+#: ../classes/SocialBoxWidget.php:327
 msgid "Like"
 msgstr ""
 
-#: ../includes/socialbox.widget.php:279 ../includes/socialbox.widget.php:287
-#: ../includes/socialbox.widget.php:289 ../includes/socialbox.widget.php:291
+#: ../classes/SocialBoxWidget.php:329 ../classes/SocialBoxWidget.php:335
+#: ../classes/SocialBoxWidget.php:337 ../classes/SocialBoxWidget.php:339
 msgid "Follow"
 msgstr ""
 
-#: ../includes/socialbox.widget.php:283 ../includes/socialbox.widget.php:285
+#: ../classes/SocialBoxWidget.php:331 ../classes/SocialBoxWidget.php:333
 msgid "Subscribe"
 msgstr ""
 
-#: ../includes/socialbox.widget.php:301
+#: ../classes/SocialBoxWidget.php:347
 msgid "Like on Facebook"
 msgstr ""
 
-#: ../includes/socialbox.widget.php:303
+#: ../classes/SocialBoxWidget.php:349
 msgid "Follow on Twitter"
 msgstr ""
 
-#: ../includes/socialbox.widget.php:307
+#: ../classes/SocialBoxWidget.php:351
 msgid "Subscribe to Youtube Channel"
 msgstr ""
 
-#: ../includes/socialbox.widget.php:309
+#: ../classes/SocialBoxWidget.php:353
 msgid "Subscribe to Vimeo Channel"
 msgstr ""
 
-#: ../includes/socialbox.widget.php:311
+#: ../classes/SocialBoxWidget.php:355
 msgid "Follow on Dribbble"
 msgstr ""
 
-#: ../includes/socialbox.widget.php:313
+#: ../classes/SocialBoxWidget.php:357
 msgid "Follow on Forrst"
 msgstr ""
 
-#: ../includes/socialbox.widget.php:315
+#: ../classes/SocialBoxWidget.php:359
 msgid "Follow on GitHub"
 msgstr ""
 
-#: ../views/options-page.frame.php:16
-msgid "About"
-msgstr ""
-
-#: ../views/options-page.frame.php:17
+#: ../views/options-page/frame.php:20
 msgid "Help"
 msgstr ""
 
-#: ../views/options-page.help.php:12
+#: ../views/options-page/frame.php:21
+msgid "Log"
+msgstr ""
+
+#: ../views/options-page/help.php:16
 msgid "Table of Contents"
 msgstr ""
 
-#: ../views/options-page.help.php:14 ../views/options-page.help.php:25
+#: ../views/options-page/help.php:18 ../views/options-page/help.php:29
 msgid "Quick Setup"
 msgstr ""
 
-#: ../views/options-page.help.php:15 ../views/options-page.help.php:34
+#: ../views/options-page/help.php:19 ../views/options-page/help.php:38
 msgid "General Widget Options"
 msgstr ""
 
-#: ../views/options-page.help.php:16 ../views/options-page.help.php:46
+#: ../views/options-page/help.php:20 ../views/options-page/help.php:50
 msgid "General Network Options"
 msgstr ""
 
-#: ../views/options-page.help.php:17 ../views/options-page.help.php:109
+#: ../views/options-page/help.php:21 ../views/options-page/help.php:115
 msgid "Additional Widget Options"
 msgstr ""
 
-#: ../views/options-page.help.php:22
+#: ../views/options-page/help.php:26
 msgid ""
 "For all further questions, please open a ticket at my support site: <a href="
 "\"http://support.jonasdoebertin.net\" title=\"Get support!\">support."
 "jonasdoebertin.net</a>"
 msgstr ""
 
-#: ../views/options-page.help.php:26
+#: ../views/options-page/help.php:30
 msgid "There is really not much to it. Just follow these simple steps:"
 msgstr ""
 
-#: ../views/options-page.help.php:28
+#: ../views/options-page/help.php:32
 msgid ""
-"Install and activate the Plugin. (by the time you're reading this, you've "
+"Install and activate the plugin. (by the time you're reading this, you've "
 "already completed this step)"
 msgstr ""
 
-#: ../views/options-page.help.php:29
+#: ../views/options-page/help.php:33
 msgid ""
 "Head over to the <a href=\"widgets.php\" title=\"Appearance > Widgets"
-"\">Appearance > Widgets</a> Page, and drag a SocialBox Widget from the "
-"&raquo;Available Widgets&laquo; section to your desired Widget Area / "
-"Sidebar."
+"\">Appearance > Widgets</a> Page and drag a SocialBox Widget from the &raquo;"
+"Available Widgets&laquo; section to your desired Widget Area or Sidebar."
 msgstr ""
 
-#: ../views/options-page.help.php:30
+#: ../views/options-page/help.php:34
 msgid ""
 "Enter the Usernames / User IDs for the Social Networks you want to show up."
 msgstr ""
 
-#: ../views/options-page.help.php:31
+#: ../views/options-page/help.php:35
 msgid "And finally, hit &raquo;Save&laquo;. That's it!"
 msgstr ""
 
-#: ../views/options-page.help.php:36 ../views/widget.form.php:19
+#: ../views/options-page/help.php:40 ../views/widget/form.php:23
 msgid "Open Links in new Window/Tab"
 msgstr ""
 
-#: ../views/options-page.help.php:37
+#: ../views/options-page/help.php:41
 msgid ""
 "If checked, the links to the networks profile pages (network icons and "
 "&raquo;Follow&laquo; buttons) will be open in a new window or tab."
 msgstr ""
 
-#: ../views/options-page.help.php:39 ../views/widget.form.php:26
+#: ../views/options-page/help.php:43 ../views/widget/form.php:30
 msgid "Show Buttons"
 msgstr ""
 
-#: ../views/options-page.help.php:40
+#: ../views/options-page/help.php:44
 msgid ""
 "If checked, the Widget will show &raquo;Like&laquo; / &raquo;Follow&laquo; / "
 "&raquo;Subscribe&laquo; buttons for every listed network. These links will "
 "point to the profile pages for the configured User / Channel."
 msgstr ""
 
-#: ../views/options-page.help.php:42 ../views/widget.form.php:51
+#: ../views/options-page/help.php:46 ../views/widget/form.php:55
 msgid "Use Compact Numbers"
 msgstr ""
 
-#: ../views/options-page.help.php:43
+#: ../views/options-page/help.php:47
 msgid ""
 "If checked, the Widget will display the numbers in a compact form. Instead "
 "of showing the complete numbers, it will use a shortened syntax using \"K\" "
@@ -292,262 +268,339 @@ msgid ""
 "will display as 12K."
 msgstr ""
 
-#: ../views/options-page.help.php:48
+#: ../views/options-page/help.php:52
 msgid "Default"
 msgstr ""
 
-#: ../views/options-page.help.php:49
+#: ../views/options-page/help.php:53
 msgid ""
 "This value will be shown if, for some reason, the related API is not "
 "reachable or returns unexpected/funky results. It's allways a good idea to "
 "set these values for each configured network."
 msgstr ""
 
-#: ../views/options-page.help.php:51
+#: ../views/options-page/help.php:55
 msgid "Position"
 msgstr ""
 
-#: ../views/options-page.help.php:52
+#: ../views/options-page/help.php:56
 msgid ""
 "The networks will be sorted by this numbers, from small (top) to large "
 "(bottom), and will be displayed in this order."
 msgstr ""
 
-#: ../views/options-page.help.php:55
+#: ../views/options-page/help.php:59
 msgid "Specific Network Options"
 msgstr ""
 
-#: ../views/options-page.help.php:57 ../views/widget.form.php:64
+#: ../views/options-page/help.php:61
 msgid "Page ID/Name"
 msgstr ""
 
-#: ../views/options-page.help.php:59
+#: ../views/options-page/help.php:63
 msgid ""
 "Please enter your pages \"Shortname\" (the part of the URL after \"facebook."
 "com/\"."
 msgstr ""
 
-#: ../views/options-page.help.php:61
+#: ../views/options-page/help.php:65
 msgid "Note:"
 msgstr ""
 
-#: ../views/options-page.help.php:61
+#: ../views/options-page/help.php:65
 msgid ""
 "SocialBox will only display the \"Like\" number, if access to your page is "
 "not restricted in any way (only certain Countries, etc.)"
 msgstr ""
 
-#: ../views/options-page.help.php:64 ../views/options-page.help.php:89
-#: ../views/options-page.help.php:95 ../views/options-page.help.php:101
-#: ../views/widget.form.php:89 ../views/widget.form.php:192
-#: ../views/widget.form.php:217 ../views/widget.form.php:242
+#: ../views/options-page/help.php:68 ../views/options-page/help.php:95
+#: ../views/options-page/help.php:101 ../views/options-page/help.php:107
+#: ../views/widget/form.php:104 ../views/widget/form.php:203
+#: ../views/widget/form.php:228 ../views/widget/form.php:253
 msgid "Username"
 msgstr ""
 
-#: ../views/options-page.help.php:66
-msgid "Please enter your regular Twitter Username (without the @-symbol)."
+#: ../views/options-page/help.php:70
+msgid ""
+"Please enter your regular Twitter Username (without the @-symbol) as the "
+"username."
 msgstr ""
 
-#: ../views/options-page.help.php:70
-msgid "Google+"
+#: ../views/options-page/help.php:71
+msgid "To maintain your API key and your access token, follow these steps:"
 msgstr ""
 
-#: ../views/options-page.help.php:70
-msgid "User ID"
+#: ../views/options-page/help.php:73
+msgid ""
+"Visit <a href=\"https://dev.twitter.com/\">Twitter Developers</a> and sign "
+"in with your Twitter account."
 msgstr ""
 
-#: ../views/options-page.help.php:77
+#: ../views/options-page/help.php:74
+msgid ""
+"Go to <a href=\"https://apps.twitter.com/\">My Applications</a> and click "
+"\"Create a new Application\"."
+msgstr ""
+
+#: ../views/options-page/help.php:75
+msgid ""
+"Enter any value for \"Name\", \"Description\" and \"Website\", agree to the "
+"\"Developer Rules\" and click \"Create your Twitter application\"."
+msgstr ""
+
+#: ../views/options-page/help.php:76
+msgid ""
+"At the top of the newly created apps overview page click on the \"API Keys\" "
+"tab."
+msgstr ""
+
+#: ../views/options-page/help.php:77
+msgid "At the bottom of the page click \"Create my access token\"."
+msgstr ""
+
+#: ../views/options-page/help.php:78
+msgid ""
+"Copy the \"API Key\", \"API Secret\", \"Access Token\" and \"Access Token "
+"Secret\" and enter them in the respective fields."
+msgstr ""
+
+#: ../views/options-page/help.php:83
 msgid "Youtube"
 msgstr ""
 
-#: ../views/options-page.help.php:77 ../views/options-page.help.php:83
-#: ../views/widget.form.php:142 ../views/widget.form.php:167
+#: ../views/options-page/help.php:83 ../views/options-page/help.php:89
+#: ../views/widget/form.php:153 ../views/widget/form.php:178
 msgid "Channel"
 msgstr ""
 
-#: ../views/options-page.help.php:79
+#: ../views/options-page/help.php:85
 msgid "Please enter your Channels \"Shortname\" (as seen in the URL)."
 msgstr ""
 
-#: ../views/options-page.help.php:85
+#: ../views/options-page/help.php:91
 msgid "Please enter the Channels \"shortname\" (as seen in the URL)."
 msgstr ""
 
-#: ../views/options-page.help.php:91
+#: ../views/options-page/help.php:97
 msgid "To display this number, please enter your Dribbble Username."
 msgstr ""
 
-#: ../views/options-page.help.php:97
+#: ../views/options-page/help.php:103
 msgid ""
 "To display this number, please enter your Username (as seen in the URL)."
 msgstr ""
 
-#: ../views/options-page.help.php:103
+#: ../views/options-page/help.php:109
 msgid "To display this number, please enter your Username."
 msgstr ""
 
-#: ../views/options-page.help.php:111
+#: ../views/options-page/help.php:117
 msgid "Forced Widget Width"
 msgstr ""
 
-#: ../views/options-page.help.php:112
+#: ../views/options-page/help.php:118
 msgid ""
 "If set to somthing other than \"0\", this will force the Widget into the "
 "specified size. Use this, if your Sidebar / Widget Area is too narrow or too "
 "wide."
 msgstr ""
 
-#: ../views/options-page.help.php:114
+#: ../views/options-page/help.php:120
 msgid "Forced Button Width"
 msgstr ""
 
-#: ../views/options-page.help.php:115
+#: ../views/options-page/help.php:121
 msgid ""
 "If set to something other than \"0\", this will force the \"Follow\" buttons "
 "(if enabled) into the specified width. Use this option, if you want to see "
 "consistent buttons (the captions will be centered)."
 msgstr ""
 
-#: ../views/options-page.log.php:21 ../views/options-page.log.php:30
+#: ../views/options-page/log.php:21 ../views/options-page/log.php:28
 msgid "Time"
 msgstr ""
 
-#: ../views/options-page.log.php:22 ../views/options-page.log.php:31
+#: ../views/options-page/log.php:22 ../views/options-page/log.php:29
 msgid "Network"
 msgstr ""
 
-#: ../views/options-page.log.php:23
+#: ../views/options-page/log.php:23
 msgid "Username/ID"
 msgstr ""
 
-#: ../views/options-page.log.php:24 ../views/options-page.log.php:33
-msgid "Status Code"
-msgstr ""
-
-#: ../views/options-page.log.php:25 ../views/options-page.log.php:34
-msgid "Message"
-msgstr ""
-
-#: ../views/options-page.log.php:32
+#: ../views/options-page/log.php:30
 msgid "Userame/ID"
 msgstr ""
 
-#: ../views/options-page.log.php:42
-msgid "The API log is disabled."
+#: ../views/options-page/log.php:38
+msgid "Set up a SocialBox widget first..."
 msgstr ""
 
-#: ../views/options-page.log.php:48
-msgid "Nothing found. Seems as if everything's running smoothly."
-msgstr ""
-
-#: ../views/options-page.log.php:57
+#: ../views/options-page/log.php:47
 msgid "Y/m/d H:i:s"
 msgstr ""
 
-#: ../views/widget.form.php:14
+#: ../views/update.php:14
+#, php-format
+msgid ""
+"<a href=\"%s\">SocialBox %s</a> is available! Please <a href=\"%s\">update "
+"now</a>."
+msgstr ""
+
+#: ../views/widget/form.php:16
 msgid "General Settings"
 msgstr ""
 
-#: ../views/widget.form.php:20
+#: ../views/widget/form.php:24
 msgid "Forces Links to be opened in a new window/tab"
 msgstr ""
 
-#: ../views/widget.form.php:27
+#: ../views/widget/form.php:31
 msgid "Display Follow/Subscribe buttons"
 msgstr ""
 
-#: ../views/widget.form.php:45
+#: ../views/widget/form.php:49
 msgid "Choose the widgets display style"
 msgstr ""
 
-#: ../views/widget.form.php:52
+#: ../views/widget/form.php:56
 msgid "Show 12K instead of 12.300"
 msgstr ""
 
-#: ../views/widget.form.php:64
-msgid "Your Pages ID or Shortname (e.g. nettutsplus)"
+#: ../views/widget/form.php:68
+msgid "Your Pages ID or Shortname (e.g. envato)"
 msgstr ""
 
-#: ../views/widget.form.php:70
+#: ../views/widget/form.php:68
+msgid "Page ID or Shortname"
+msgstr ""
+
+#: ../views/widget/form.php:74
+msgid "What metric shall be displayed"
+msgstr ""
+
+#: ../views/widget/form.php:74
+msgid "Metric"
+msgstr ""
+
+#: ../views/widget/form.php:85
 msgid "Your fallback like count"
 msgstr ""
 
-#: ../views/widget.form.php:70 ../views/widget.form.php:95
-#: ../views/widget.form.php:148 ../views/widget.form.php:173
-#: ../views/widget.form.php:198 ../views/widget.form.php:223
-#: ../views/widget.form.php:248
+#: ../views/widget/form.php:85 ../views/widget/form.php:134
+#: ../views/widget/form.php:159 ../views/widget/form.php:184
+#: ../views/widget/form.php:209 ../views/widget/form.php:234
+#: ../views/widget/form.php:259
 msgid "Default:"
 msgstr ""
 
-#: ../views/widget.form.php:76 ../views/widget.form.php:101
-#: ../views/widget.form.php:154 ../views/widget.form.php:179
-#: ../views/widget.form.php:204 ../views/widget.form.php:229
-#: ../views/widget.form.php:254
+#: ../views/widget/form.php:91 ../views/widget/form.php:140
+#: ../views/widget/form.php:165 ../views/widget/form.php:190
+#: ../views/widget/form.php:215 ../views/widget/form.php:240
+#: ../views/widget/form.php:265
 msgid "Display position within SocialBox"
 msgstr ""
 
-#: ../views/widget.form.php:76 ../views/widget.form.php:101
-#: ../views/widget.form.php:154 ../views/widget.form.php:179
-#: ../views/widget.form.php:204 ../views/widget.form.php:229
-#: ../views/widget.form.php:254
+#: ../views/widget/form.php:91 ../views/widget/form.php:140
+#: ../views/widget/form.php:165 ../views/widget/form.php:190
+#: ../views/widget/form.php:215 ../views/widget/form.php:240
+#: ../views/widget/form.php:265
 msgid "Position:"
 msgstr ""
 
-#: ../views/widget.form.php:89
+#: ../views/widget/form.php:104
 msgid "Your Twitter screenname (e.g. envatowebdev)"
 msgstr ""
 
-#: ../views/widget.form.php:95 ../views/widget.form.php:198
-#: ../views/widget.form.php:223 ../views/widget.form.php:248
+#: ../views/widget/form.php:110
+msgid "Your Twitter application API key"
+msgstr ""
+
+#: ../views/widget/form.php:110
+msgid "API Key"
+msgstr ""
+
+#: ../views/widget/form.php:116
+msgid "Your Twitter application API secret"
+msgstr ""
+
+#: ../views/widget/form.php:116
+msgid "API Secret"
+msgstr ""
+
+#: ../views/widget/form.php:122
+msgid "Your Twitter application access token"
+msgstr ""
+
+#: ../views/widget/form.php:122
+msgid "Access Token"
+msgstr ""
+
+#: ../views/widget/form.php:128
+msgid "Your Twitter application access token secret"
+msgstr ""
+
+#: ../views/widget/form.php:128
+msgid "Access Token Secret"
+msgstr ""
+
+#: ../views/widget/form.php:134 ../views/widget/form.php:209
+#: ../views/widget/form.php:234 ../views/widget/form.php:259
 msgid "Your fallback follower count"
 msgstr ""
 
-#: ../views/widget.form.php:142
+#: ../views/widget/form.php:153
 msgid "Your YouTube Channel (e.g. nettutsplus)"
 msgstr ""
 
-#: ../views/widget.form.php:148 ../views/widget.form.php:173
+#: ../views/widget/form.php:159 ../views/widget/form.php:184
 msgid "Your fallback subscriber count"
 msgstr ""
 
-#: ../views/widget.form.php:167
+#: ../views/widget/form.php:178
 msgid "Your Vimeo Channel"
 msgstr ""
 
-#: ../views/widget.form.php:192
+#: ../views/widget/form.php:203
 msgid "Your Dribbble username (e.g. envato)"
 msgstr ""
 
-#: ../views/widget.form.php:217
+#: ../views/widget/form.php:228
 msgid "Your Forrst username"
 msgstr ""
 
-#: ../views/widget.form.php:242
+#: ../views/widget/form.php:253
 msgid "Your gitHub username"
 msgstr ""
 
-#: ../views/widget.form.php:263
+#: ../views/widget/form.php:272
 msgid "Additional Settings"
 msgstr ""
 
-#: ../views/widget.form.php:267
+#: ../views/widget/form.php:278
 msgid "Forced Widget Width:"
 msgstr ""
 
-#: ../views/widget.form.php:269
+#: ../views/widget/form.php:280
 msgid "Force Widget to have a specific width (0 to disable)"
 msgstr ""
 
-#: ../views/widget.form.php:274
+#: ../views/widget/form.php:285
 msgid "Forced Button Width:"
 msgstr ""
 
-#: ../views/widget.form.php:276
+#: ../views/widget/form.php:287
 msgid "Force Buttons to have a specific width (0 to disable)"
 msgstr ""
 
-#: ../views/widget.form.php:286
-msgid ""
-"Need support? <a href=\"http://support.jonasdoebertin.net/\" title=\"Get "
-"support!\">Get some!</a>"
+#: ../views/widget/form.php:297
+msgid "Need help?"
+msgstr ""
+
+#: ../views/widget/form.php:297
+msgid "Visit the support page!"
+msgstr ""
+
+#: ../views/widget/form.php:297
+msgid "Get some!"
 msgstr ""

@@ -1,0 +1,156 @@
+/*------------------------------------*\
+	$COLORFUL STYLE
+\*------------------------------------*/
+.socialbox-widget.socialbox-style-colorful{
+	color: #3a3a3a;
+	font-size: 11px;
+
+	ul{
+
+		li{
+			border: 1px solid #ffffff;
+			@include simple-border-radius(4px);
+			@include box-shadow(0px 1px 1px rgba(0, 0, 0, 0.3));
+			margin-bottom: 3px;
+			overflow: hidden;
+			padding: 9px;
+			@include simple-linear-gradient(#ffffff, #f4f4f4);
+
+			img{
+				border: none;
+				margin-right: 10px;
+				float: left;
+			}
+
+			p{
+				color: #3a3a3a;
+				cursor: default;
+				display: inline;
+				font-family: Arial, Helvetica, sans-serif;
+				font-size: 12px;
+				line-height: 32px;
+				@include single-transition(color 0.25s ease);
+
+				span{
+					font-weight: bold;
+				}
+			}
+
+			a.socialbox-button{
+				border: 1px solid black;
+				@include simple-border-radius(4px);
+				color: #ffffff;
+				font-size: 12px;
+				font-weight: bold;
+				line-height: 20px;
+				text-decoration: none;
+				text-shadow: 1px 1px rgba(0,0,0,0.5);
+				text-transform: uppercase;
+				float: right;
+				padding: 5px 15px;
+			}
+
+			&.socialbox-network-facebook{
+
+				&:hover p{
+					color: #365897;
+				}
+
+				a.socialbox-button{
+					@include simple-linear-gradient(#617db3, #2a4585);
+					border-color: #374d90;
+					@include box-shadow(inset 0px 1px 0px #789ac5);
+				}
+			}
+
+			&.socialbox-network-twitter{
+
+				&:hover p{
+					color: #32a1d1;
+				}
+
+				a.socialbox-button{
+					@include simple-linear-gradient(#b6edef, #88e1e6);
+					border-color: #47d1d7;
+					border-top-color: #a8eaec;
+					@include box-shadow(inset 0px 1px 0px #dbf7f8);
+				}
+			}
+
+			&.socialbox-network-youtube{
+
+				&:hover p{
+					color: #981a1d;
+				}
+
+				a.socialbox-button{
+					@include simple-linear-gradient(#ed292b, #ce2a2d);
+					border-color: #981a1d;
+					border-top-color: #be302f;
+					@include box-shadow(inset 0px 1px 0px #d66b55);
+					text-shadow: 1px 1px #b92527;
+				}
+			}
+
+			&.socialbox-network-vimeo{
+
+				&:hover p{
+					color: #0c70b7;
+				}
+
+				a.socialbox-button{
+					@include simple-linear-gradient(#47c0df, #19a0d0);
+					border-color: #0c70b7;
+					border-top-color: #4fbdde;
+					@include box-shadow(inset 0px 1px 0px #7fd2e8);
+					text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
+				}
+			}
+
+			&.socialbox-network-dribbble{
+
+				&:hover p{
+					color: #a62f5c;
+				}
+
+				a.socialbox-button{
+					@include simple-linear-gradient(#eb578f, #c8396f);
+					border-color: #a62f5c;
+					border-top-color: #cf4d7e;
+					@include box-shadow(inset 0px 1px 0px #f374b3);
+					text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
+				}
+			}
+
+			&.socialbox-network-forrst{
+
+				&:hover p{
+					color: #163f19;
+				}
+
+				a.socialbox-button{
+					@include simple-linear-gradient(#2a602a, #163f19);
+					border-color: #123515;
+					border-top-color: #255325;
+					@include box-shadow(inset 0px 1px 0px #377c36);
+					text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
+				}
+			}
+
+			&.socialbox-network-github{
+
+				&:hover p{
+					color: #707070;
+				}
+
+				a.socialbox-button{
+					@include simple-linear-gradient(#f8f8f8, #d5d5d5);
+					border-color: #acacac;
+					border-top-color: #e1e1e1;
+					@include box-shadow(inset 0px 1px 0px #ffffff);
+					text-shadow: 1px 1px rgba(255, 255, 255, .75);
+				}
+			}
+		}
+	}
+}

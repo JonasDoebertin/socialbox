@@ -1,0 +1,59 @@
+/*!
+ * SocialBox 1.4.0
+ * Copyright by Jonas Döbertin
+ * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
+ */
+
+
+/*------------------------------------*\
+	$WIDGET FORM
+\*------------------------------------*/
+.socialbox-options{
+	width: 100%;
+
+	h5{
+		background-color: #444444;
+		color: #f5f5f5;
+		font-size: 12px;
+		line-height: 1.5;
+		padding: 10px;
+		margin: 10px 0 0 0;
+	}
+
+	fieldset{
+		background-color: #fafafa;
+		margin: 0 0 20px 0;
+		overflow: hidden;
+		padding: 10px;
+
+		&.socialbox-support{
+			background-color: #444444;
+			color: #f5f5f5;
+
+			a{
+				color: #f5f5f5;
+			}
+
+			p{
+				margin: 0;
+			}
+		}
+
+		p{
+			margin: 0 0 10px 0;
+		}
+		.socialbox-default,
+		.socialbox-position{
+			float: left;
+			margin-right: 10px;
+		}
+
+		.socialbox-default{
+			width: 80px;
+		}
+
+		.socialbox-position{
+			width: 60px;
+		}
+	}
+}

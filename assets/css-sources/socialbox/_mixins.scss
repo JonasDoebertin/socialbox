@@ -1,0 +1,36 @@
+/*------------------------------------*\
+	$MIXINS
+\*------------------------------------*/
+
+
+
+
+
+/*
+ * Simple Linear Gradients
+ */
+@mixin simple-linear-gradient($from, $to) {
+	background-color: mix($from, $to);
+	background-image: -webkit-gradient(linear, left top, left bottom, from($from), to($to));
+	background-image: -webkit-linear-gradient(top, $from, $to);
+	background-image:    -moz-linear-gradient(top, $from, $to);
+	background-image:      -o-linear-gradient(top, $from, $to);
+	background-image:         linear-gradient(to bottom, $from, $to);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#{$from}', EndColorStr='#{$to}');
+}
+
+
+
+
+
+/*
+ * Simple Border Radius
+ */
+@mixin simple-border-radius($radius) {
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	border-radius: $radius;
+	-webkit-background-clip: padding-box;
+	-moz-background-clip: padding;
+	background-clip: padding-box
+}

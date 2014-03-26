@@ -1,0 +1,52 @@
+@charset "UTF-8";
+/*!
+ * SocialBox 1.4.0
+ * Copyright by Jonas Döbertin
+ * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
+ */
+/*------------------------------------*\
+	$OPTIONS PAGE
+\*------------------------------------*/
+/** Tab navigation */
+.nav-tab:first-child { margin-left: 15px; }
+
+/** Log */
+.socialbox-log table { margin: 30px 0; }
+.socialbox-log table .empty-log { font-weight: bold; padding: 10px; text-align: center; }
+.socialbox-log table .success { background-color: #caefc4; }
+.socialbox-log table .success.alternate { background-color: #BDECB6; }
+.socialbox-log table .failed { background-color: #ff9393; }
+.socialbox-log table .failed.alternate { background-color: #FF7878; }
+
+/* Help */
+.socialbox-wrap { font-size: 15px; margin: 30px 0 0 0; max-width: 1050px; min-width: 770px; position: relative; }
+
+.socialbox-help-description { font-size: 20px; line-height: 32px; }
+
+.socialbox-wrap h4 { font-size: 16px; font-weight: bold; margin: 30px 0 20px; }
+
+.socialbox-wrap h4.socialbox-help-divider-top { border-top: 1px solid #dfdfdf; padding-top: 30px; }
+
+.socialbox-wrap ol { color: #333333; list-style-type: decimal; margin: 20px 60px; padding: 0; }
+
+.socialbox-wrap ol.socialbox-help-main-features { border-bottom: 1px solid #dfdfdf; }
+
+.socialbox-wrap ol li { color: #999999; font-size: 14px; font-weight: bold; margin-bottom: 6px; }
+
+.socialbox-wrap ol li p { color: #464646; font-weight: normal; }
+
+.socialbox-wrap ol li ul { list-style: square outside; margin-left: 15px; }
+
+.socialbox-wrap dl { font-size: 12px; }
+
+.socialbox-wrap dl dt { font-weight: bold; }
+
+.socialbox-wrap dl dd { margin: 0 0 10px 60px; }
+
+.socialbox-wrap img { border: 1px solid #e3e3e3; margin: 8px 0 8px 0; padding: 4px; }
+
+.socialbox-help-contents { background: #ffffff; border: 1px solid #dfdfdf; float: right; padding: 20px; }
+
+.socialbox-help-contents h4 { margin: 0 0 10px 0; }
+
+.socialbox-help-contents ol { margin: 0 0 0 21px; }

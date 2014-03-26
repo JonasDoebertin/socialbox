@@ -1,0 +1,32 @@
+/*------------------------------------*\
+	$RESETS
+\*------------------------------------*/
+div.socialbox-widget,
+div.socialbox-widget ul,
+div.socialbox-widget ul li,
+div.socialbox-widget ul li p,
+div.socialbox-widget ul li img,
+div.socialbox-widget ul li p span,
+div.socialbox-widget ul li a{
+	background: none;
+	border: none;
+	font-style: normal;
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+}
+
+div.socialbox-widget ul,
+div.socialbox-widget ul li{
+	list-style: none;
+}
+
+div.socialbox-widget ul li a,
+div.socialbox-widget ul li img{
+	display: inline;
+	width: auto;
+}
+
+div.socialbox-widget ul li a.socialbox-button{
+	text-align: center;
+}

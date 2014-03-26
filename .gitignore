@@ -1,10 +1,12 @@
 #### Project ####
 
 Licensing/
+debug.txt
 
 #### Sublime Text ####
 
 *.sublime-workspace
+*.sublime-project
 
 #### OSX ####
 
