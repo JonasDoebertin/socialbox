@@ -35,7 +35,7 @@ $log = $this->getLog();
 			<?php if( (empty($log) or (count($log) == 0)) ): ?>
 
 				<tr>
-					<td colspan="3" class="empty-log"><?php _e('Set up a SocialBox widget first...', 'socialbox'); ?></td>
+					<td colspan="3" class="empty-log"><?php _e('Set up or resave a SocialBox widget first...', 'socialbox'); ?></td>
 				</tr>
 
 			<?php else: ?>
