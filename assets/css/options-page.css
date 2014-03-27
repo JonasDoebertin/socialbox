@@ -4,6 +4,22 @@
  * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
+@font-face { font-family: 'admin-icons'; src: url("../fonts/admin-icons.eot?-ckwl15"); src: url("../fonts/admin-icons.eot?#iefix-ckwl15") format("embedded-opentype"), url("../fonts/admin-icons.woff?-ckwl15") format("woff"), url("../fonts/admin-icons.ttf?-ckwl15") format("truetype"), url("../fonts/admin-icons.svg?-ckwl15#admin-icons") format("svg"); font-weight: normal; font-style: normal; }
+
+[class^="socialbox-icon-"], [class*=" socialbox-icon-"] { font-family: 'admin-icons'; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; display: inline-block; margin-right: 4px; color: #888888; /* Better Font Rendering =========== */ -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+.socialbox-icon-knowledge:before { content: "\e601"; }
+
+.socialbox-icon-ticket:before { content: "\e602"; }
+
+.socialbox-icon-contents:before { content: "\e603"; }
+
+.socialbox-icon-refresh:before { content: "\e604"; }
+
+.socialbox-icon-clear:before { content: "\e605"; }
+
+.socialbox-icon-tweet:before { content: "\e600"; }
+
 /*------------------------------------*\
 	$OPTIONS PAGE
 \*------------------------------------*/

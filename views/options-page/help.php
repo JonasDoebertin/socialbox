@@ -25,14 +25,19 @@
 			</ol>
 		</div>
 		<div class="socialbox-help-column">
-			<h4>Additional Tools</h4>
+			<h4>Additional Cache Tools</h4>
+			<ul>
+				<li><i class="socialbox-icon-refresh"></i> <a href="#">Update cache</a></li>
+				<li><i class="socialbox-icon-contents"></i> <a href="#">Show contents</a></li>
+				<li><i class="socialbox-icon-clear"></i> <a href="#">Clear cache</a></li>
+			</ul>
 		</div>
 		<div class="socialbox-help-column">
 			<h4>Further Help</h4>
 			<ul>
-				<li>Visit the <a href="#">knowledge base</a></li>
-				<li>Send a <a href="https://twitter.com/intent/tweet?text=@DieserJonas">Tweet</a></li>
-				<li>Open a <a href="http://codecanyon.net/user/jdpowered#contact">support ticket</a></li>
+				<li><i class="socialbox-icon-knowledge"></i> Visit the <a href="#">knowledge base</a></li>
+				<li><i class="socialbox-icon-tweet"></i> Send a <a href="https://twitter.com/intent/tweet?text=@DieserJonas">Tweet</a></li>
+				<li><i class="socialbox-icon-ticket"></i> Open a <a href="http://codecanyon.net/user/jdpowered#contact">support ticket</a></li>
 			</ul>
 		</div>
 	</div>
