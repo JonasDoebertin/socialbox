@@ -2,7 +2,7 @@
 
 
 /*
- * SocialBox 1.4.0
+ * SocialBox 1.4.1
  * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
@@ -12,7 +12,7 @@ class JD_SocialBoxConnector{
 	
 	public static function get($item) {
 		
-		return self::{$item['network']}($item);
+		return call_user_func_array(array('JD_SocialBoxConnector', $item['network']), array($item));
 	}
 	
 	protected static function facebook($item) {
