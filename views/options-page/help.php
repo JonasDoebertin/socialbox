@@ -97,7 +97,7 @@
 	<p>Please enter the username of the account you want to showcase (without the &raquo;@&laquo;). This does not have to be your own account; any public account goes.</p>
 
 	<h4>API Key &amp; Secret, Access Token &amp; Secret</h4>
-	<p>Pulling in the numbers from Twitter is a little more work than for the other social networks. Since Twitter doesn't allow public access to it's API, you have to set up your application with the Twitter API. To do so, just follow these simple steps:</p>
+	<p>Pulling in the numbers from Twitter is a little more work than for the other social networks. Since Twitter doesn't allow public access to it's API, you have to set up your own application to use with the Twitter API. To do so, just follow these simple steps:</p>
 	<ol>
 		<li><p>Visit <a href="https://dev.twitter.com/">Twitter Developers</a> and sign in with your Twitter account.</p></li>
 		<li><p>Go to <a href="https://apps.twitter.com/">My Applications</a> and click &raquo;Create a new Application&laquo;.</p></li>
@@ -111,85 +111,35 @@
 	<h4>Channel</h4>
 	<p>Please enter the name of the channel you want to showcase. If your channels url was like <code>https://www.youtube.com/user/envato</code>, then <code>envato</code>is the name you'd have to enter.</p>
 
-</div>
+	<img class="socialbox-help-image--center" src="<?php echo JD_SOCIALBOX_URL ?>/assets/img/help/vimeo-settings.png" alt="Vimeo Settings" />
+	<h4>Channel</h4>
+	<p>Again, please enter the name of the <strong>channel</strong> you want to showcase. If your channels url was <code>http://vimeo.com/channels/vimeohq/</code>, then please enter <code>vimeohq</code>.</p>
 
+	<img class="socialbox-help-image--center" src="<?php echo JD_SOCIALBOX_URL ?>/assets/img/help/instagram-settings.png" alt="Instagram Settings" />
+	<h4>Username</h4>
+	<p>Please enter the username of the account you want to showcase. This does not have to be your own account; any public account goes.</p>
 
+	<h4>User ID</h4>
+	<p>In order to function correctly, SocialBox needs both your username <strong>and</strong> your user id. You can use this helpful tool, if you don't know your user id yet: <a href="http://jelled.com/instagram/lookup-user-id">Instagram User Id Lookup Tool</a>.</p>
 
-
-
-
-<div class="socialbox-wrap">
-
-	
-
-	
-	<h4 class="socialbox-help-divider-top"><?php _e('Specific Network Options', 'socialbox'); ?></h4>
-	<dl>
-
-		<dt><?php echo __('Vimeo', 'socialbox') . ' ' . __('Channel', 'socialbox'); ?></dt>
-		<dd>
-			<?php _e('Please enter the Channels "shortname" (as seen in the URL).', 'socialbox'); ?><br/>
-			<img src="<?php echo JD_SOCIALBOX_URL . '/assets/img/help/vimeo-id.jpg' ?>" /><br/>
-		</dd>
-
-		<dt><?php echo __('Instagram', 'socialbox'); ?></dt>
-		<dd>
-			<?php _e('Please enter your regular Instagram username as the username.', 'socialbox'); ?><br/>
-			<?php _e('To get your User ID visit: ', 'socialbox') ?><a href="http://jelled.com/instagram/lookup-user-id">Instagram User Id Lookup Tool</a><br/>
-			<?php _e('To maintain your Client ID, follow these steps:', 'socialbox') ?>
-			<ol>
-				<li><p><?php _e('Visit <a href="http://instagram.com/developer/clients/register/">Register new Client ID</a> at Instagram and sign in with your Instagram account.', 'socialbox'); ?></p></li>
-				<li><p><?php _e('Enter a random application name, a brief description and your website (also as OAuth redirect URI). Then click "Register". ', 'socialbox'); ?></p></li>
-				<li><p><?php _e('Copy the "Client ID" and enter it in the respective field.', 'socialbox'); ?></p></li>
-			</ol>
-		</dd>
-
-		<dt><?php echo __('Dribbble', 'socialbox') . ' ' . __('Username', 'socialbox'); ?></dt>
-		<dd>
-			<?php _e('To display this number, please enter your Dribbble Username.', 'socialbox'); ?><br/>
-			<img src="<?php echo JD_SOCIALBOX_URL . '/assets/img/help/dribbble-id.jpg' ?>" /><br/>
-		</dd>
-
-		<dt><?php echo __('Forrst', 'socialbox') . ' ' . __('Username', 'socialbox'); ?></dt>
-		<dd>
-			<?php _e('To display this number, please enter your Username (as seen in the URL).', 'socialbox'); ?><br/>
-			<strong>http://forrst.com/people/&lt;YOUR_USERNAME&gt;</strong>
-		</dd>
-		
-		<dt><?php echo __('GitHub', 'socialbox') . ' ' . __('Username', 'socialbox'); ?></dt>
-		<dd>
-			<?php _e('To display this number, please enter your Username.', 'socialbox'); ?><br/>
-			<strong>https://github.com/&lt;YOUR_USERNAME&gt;</strong>
-		</dd>
-
-	</dl>
-
-	<h4 class="socialbox-help-divider-top">License</h4>
-	<p><strong>This WordPress Plugin is comprised of two parts:</strong></p>
+	<h4>Client ID</h4>
+	<p>Like with Twitter, pulling in the numbers from Instagram is a little more complex. Since Instagram doesn't allow public access to their API, you have to set up your own application to use with the Instagram API. To do so, just follow these simple steps:
 	<ol>
-		<li>
-			<p>The PHP code is licensed under the GPL license as is WordPress itself: <a href="http://wordpress.org/about/gpl/" title="GNU General Public License">http://wordpress.org/about/gpl</a></p>
-		</li>
-		<li>
-			<p>All other parts of the plugin including, but not limited to, the CSS code, images, language files and design are licensed according to the license purchased at CodeCanyon: <a href="http://codecanyon.net/licenses/regular_extended" title="Regular &amp; Extended License | CodeCanyon">http://codecanyon.net/licenses/regular_extended</a></p>
-		</li>
+		<li><p>Visit <a href="http://instagram.com/developer/">Instagram Developer</a> and log in with your Instagram account.</p></li>
+		<li><p>Go to <a href="http://instagram.com/developer/clients/register/">Register new Client ID</a>, enter any value for &raquo;Name&laquo;, &raquo;Description&laquo;, &raquo;Website&laquo; and &raquo;OAuth Redirect URI&laquo; and click &raquo;Register&laquo;.</p></li>
+		<li><p>Copy the &raquo;Client ID&laquo; value and paste it in the respective field within SocialBox.</p></li>
 	</ol>
 
-	<h4 class="socialbox-help-divider-top">Third-Party Components</h4>
+	<img class="socialbox-help-image--center" src="<?php echo JD_SOCIALBOX_URL ?>/assets/img/help/dribbble-settings.png" alt="Dribbble Settings" />
+	<h4>Username</h4>
+	<p>Please enter the username of the account you want to showcase.</p>
 
-	<p><strong>This WordPress plugin makes use of Third-Party work:</strong></p>
-	<ol>
-		<li>
-			<p><strong>Social Media Icons</strong><br/>
-			By <a href="http://komodomedia.com">Rogie King</a>. Licensed under a <a href="http://www.wtfpl.net/">WTFPL License</a>.</p>
-		</li>
-	</ol>
+	<img class="socialbox-help-image--center" src="<?php echo JD_SOCIALBOX_URL ?>/assets/img/help/forrst-settings.png" alt="Forrst Settings" />
+	<h4>Username</h4>
+	<p>Please enter the username of the account you want to showcase.</p>
 
-	<h4 class="socialbox-help-divider-top">Copyright</h4>
-	<p>
-		<strong>SocialBox - Social WordPress Widget</strong><br/>
-		Version 1.4.1<br/>
-		&copy; 2011 - 2014 by <a href="http://codecanyon.net/user/jdpowered?ref=jdpowered" title="jdpowered on CodeCanyon">Jonas Döbertin</a>
-	</p>
+	<img class="socialbox-help-image--center" src="<?php echo JD_SOCIALBOX_URL ?>/assets/img/help/github-settings.png" alt="GitHub Settings" />
+	<h4>Username</h4>
+	<p>Please enter the username of the account you want to showcase.</p>
 
 </div>
