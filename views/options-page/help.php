@@ -92,6 +92,18 @@
 			<img src="<?php echo JD_SOCIALBOX_URL . '/assets/img/help/vimeo-id.jpg' ?>" /><br/>
 		</dd>
 
+		<dt><?php echo __('Instagram', 'socialbox'); ?></dt>
+		<dd>
+			<?php _e('Please enter your regular Instagram username as the username.', 'socialbox'); ?><br/>
+			<?php _e('To get your User ID visit: ', 'socialbox') ?><a href="http://jelled.com/instagram/lookup-user-id">Instagram User Id Lookup Tool</a><br/>
+			<?php _e('To maintain your Client ID, follow these steps:', 'socialbox') ?>
+			<ol>
+				<li><p><?php _e('Visit <a href="http://instagram.com/developer/clients/register/">Register new Client ID</a> at Instagram and sign in with your Instagram account.', 'socialbox'); ?></p></li>
+				<li><p><?php _e('Enter a random application name, a brief description and your website (also as OAuth redirect URI). Then click "Register". ', 'socialbox'); ?></p></li>
+				<li><p><?php _e('Copy the "Client ID" and enter it in the respective field.', 'socialbox'); ?></p></li>
+			</ol>
+		</dd>
+
 		<dt><?php echo __('Dribbble', 'socialbox') . ' ' . __('Username', 'socialbox'); ?></dt>
 		<dd>
 			<?php _e('To display this number, please enter your Dribbble Username.', 'socialbox'); ?><br/>

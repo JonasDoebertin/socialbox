@@ -114,6 +114,31 @@ class JD_SocialBoxConnector{
 		);
 	}
 
+	protected static function instagram($item) {
+
+		/* Fetch data from Graph API */
+		$result = wp_remote_get(sprintf('https://api.instagram.com/v1/users/%s?client_id=%s', $item['user_id'], $item['client_id']), array('sslverify' => false));
+
+		/* Check for common errors */
+		if(self::wasCommonError($result)) {
+			return array('successful' => false);
+		}
+
+		/* Decode response */
+		$data = json_decode(wp_remote_retrieve_body($result), true);
+
+		/* Check for incorrect data */
+		if(!is_array($data) or !isset($data['data']) or !isset($data['data']['counts'][$item['metric']])){
+			return array('successful' => false);
+		}
+
+		/* Return value */
+		return array(
+			'successful' => true,
+			'value'      => $data['data']['counts'][$item['metric']]
+		);
+	}
+
 	protected static function dribbble($item) {
 
 		/* Fetch data from Dribbble API */

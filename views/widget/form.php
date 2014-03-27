@@ -192,6 +192,53 @@
 		</div>
 		
 	</fieldset>
+
+	<!-- Instagram -->
+	<h5><?php _e('Instagram', 'socialbox'); ?></h5>
+
+	<fieldset>
+		
+		<!-- ID -->
+		<p>
+			<label for="<?php echo $this->get_field_id('instagram_id'); ?>" title="<?php _e('Your Dribbble username (e.g. envato)', 'socialbox'); ?>"><?php _e('Username', 'socialbox'); ?>:</label>
+			<input type="text" id="<?php echo $this->get_field_id('instagram_id'); ?>" name="<?php echo $this->get_field_name('instagram_id'); ?>" value="<?php echo $instance['instagram_id']; ?>" class="widefat" />
+		</p>
+
+		<!-- User ID -->
+		<p>
+			<label for="<?php echo $this->get_field_id('instagram_user_id'); ?>" title="<?php _e('Your Instagram user ID', 'socialbox'); ?>"><?php _e('User ID', 'socialbox'); ?>:</label>
+			<input type="text" id="<?php echo $this->get_field_id('instagram_user_id'); ?>" name="<?php echo $this->get_field_name('instagram_user_id'); ?>" value="<?php echo $instance['instagram_user_id']; ?>" class="widefat" />
+		</p>
+
+		<!-- Client ID -->
+		<p>
+			<label for="<?php echo $this->get_field_id('instagram_client_id'); ?>" title="<?php _e('Your Instagram application client ID', 'socialbox'); ?>"><?php _e('Client ID', 'socialbox'); ?>:</label>
+			<input type="text" id="<?php echo $this->get_field_id('instagram_client_id'); ?>" name="<?php echo $this->get_field_name('instagram_client_id'); ?>" value="<?php echo $instance['instagram_client_id']; ?>" class="widefat" />
+		</p>
+
+		<!-- Metric -->
+		<p>
+			<label for="<?php echo $this->get_field_id('instagram_metric'); ?>" title="<?php _e('What metric shall be displayed', 'socialbox'); ?>"><?php _e('Metric', 'socialbox'); ?>:</label>
+			<select id="<?php echo $this->get_field_id('instagram_metric'); ?>" name="<?php echo $this->get_field_name('instagram_metric'); ?>" class="widefat">
+				<option <?php if($instance['instagram_metric'] == 'media' ) echo 'selected="selected"'; ?> value="media">Posts</option>
+				<option <?php if($instance['instagram_metric'] == 'followed_by' ) echo 'selected="selected"'; ?> value="followed_by">Followers</option>
+				<option <?php if($instance['instagram_metric'] == 'follows' ) echo 'selected="selected"'; ?> value="follows">Following</option>
+			</select>
+		</p>
+		
+		<!-- Default -->
+		<div class="socialbox-default">
+			<label for="<?php echo $this->get_field_id('instagram_default'); ?>" title="<?php _e('Your fallback follower count', 'socialbox'); ?>"><?php _e('Default:', 'socialbox'); ?></label>
+			<input type="text" id="<?php echo $this->get_field_id('instagram_default'); ?>" name="<?php echo $this->get_field_name('instagram_default'); ?>" value="<?php echo $instance['instagram_default']; ?>" size="6" class="widefat" />
+		</div>
+		
+		<!-- Position -->
+		<div class="socialbox-position">
+			<label for="<?php echo $this->get_field_id('instagram_position'); ?>" title="<?php _e('Display position within SocialBox', 'socialbox'); ?>"><?php _e('Position:', 'socialbox'); ?></label>
+			<input type="text" id="<?php echo $this->get_field_id('instagram_position'); ?>" name="<?php echo $this->get_field_name('instagram_position'); ?>" value="<?php echo $instance['instagram_position']; ?>" size="2" class="widefat" />
+		</div>
+		
+	</fieldset>
 	
 	<!-- Dribbble -->
 	<h5><?php _e('Dribbble', 'socialbox'); ?></h5>
