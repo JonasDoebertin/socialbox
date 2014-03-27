@@ -13,7 +13,7 @@ class JD_SocialBox{
 	/**
 	 * Complete list of supported networks
 	 */
-	const SUPPORTED_NETWORKS = 'facebook,twitter,youtube,vimeo,dribbble,forrst,github';
+	const SUPPORTED_NETWORKS = 'facebook,twitter,youtube,vimeo,instagram,dribbble,forrst,github';
 
 	/**
 	 * Holds the slug of the settings page, once it has been registered
