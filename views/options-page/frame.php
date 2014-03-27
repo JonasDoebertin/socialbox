@@ -11,7 +11,7 @@
 ?>
 
 <!-- Start SocialBox Options Page -->
-<div class="wrap">
+<div class="wrap socialbox-wrap">
 	
 	<?php screen_icon(); ?>
 	<h2 class="nav-tab-wrapper">

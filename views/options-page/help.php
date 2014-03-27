@@ -10,42 +10,77 @@
 
 ?>
 
-<div class="socialbox-wrap">
-
-	<div class="socialbox-help-contents">
-			<h4><?php _e('Table of Contents', 'socialbox'); ?></h4>
+<div class="socialbox-help-header">
+	<div class="socialbox-help-title">
+		<h3>Welcome to SocialBox!</h3>
+		<p>Here you can find some help to get you started:</p>
+	</div>
+	<div class="socialbox-help-column-container">
+		<div class="socialbox-help-column">
+			<h4>Covered Topics</h4>
 			<ol>
-				<li><p><?php _e('Quick Setup', 'socialbox'); ?></p></li>
-				<li><p><?php _e('General Widget Options', 'socialbox'); ?></p></li>
-				<li><p><?php _e('General Network Options', 'socialbox'); ?></p></li>
-				<li><p><?php _e('Additional Widget Options', 'socialbox'); ?></p></li>
+				<li><a href="#socialbox-quick-setup">Quick Setup</a></li>
+				<li><a href="#socialbox-widget-options">Widget Options</a></li>
+				<li><a href="#">Social Network Setup</a></li>
 			</ol>
 		</div>
+		<div class="socialbox-help-column">
+			<h4>Additional Tools</h4>
+		</div>
+		<div class="socialbox-help-column">
+			<h4>Further Help</h4>
+			<ul>
+				<li>Visit the <a href="#">knowledge base</a></li>
+				<li>Send a <a href="https://twitter.com/intent/tweet?text=@DieserJonas">Tweet</a></li>
+				<li>Open a <a href="http://codecanyon.net/user/jdpowered#contact">support ticket</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
 
-	<p class="socialbox-help-description">
-		<?php _e('For all further questions, please open a ticket at my support site: <a href="http://support.jonasdoebertin.net" title="Get support!">support.jonasdoebertin.net</a>', 'socialbox'); ?>
-	</p>
-
-	<h4 class="socialbox-help-divider-top"><?php _e('Quick Setup', 'socialbox'); ?></h4>
-	<p><?php _e('There is really not much to it. Just follow these simple steps:', 'socialbox'); ?></p>
+<div class="socialbox-help-section--quick" id="socialbox-quick-setup">
+	<h3>Quick Setup</h3>
+	
+	<p>There is really not much to it. Just follow these simple steps:</p>
 	<ol>
-		<li><p><?php _e('Install and activate the plugin. (by the time you\'re reading this, you\'ve already completed this step)', 'socialbox'); ?></p></li>
-		<li><p><?php _e('Head over to the <a href="widgets.php" title="Appearance > Widgets">Appearance > Widgets</a> Page and drag a SocialBox Widget from the &raquo;Available Widgets&laquo; section to your desired Widget Area or Sidebar.', 'socialbox'); ?></p></li>
-		<li><p><?php _e('Enter the Usernames / User IDs for the Social Networks you want to show up.', 'socialbox'); ?></p></li>
-		<li><p><?php _e('And finally, hit &raquo;Save&laquo;. That\'s it!', 'socialbox'); ?></p></li>
+		<li><p>Install and activate the SocialBox plugin (by the time you're reading this, you've already completed this step).</p></li>
+		<li><p>Head over to <a href="widgets.php">Appearance &raquo; Widgets</a> and drag a SocialBox widget from the »Available Widgets« section to your desired widget area or sidebar.</p></li>
+		<li><p>Enter the usernames and credentials for the social networks you want to show up.</p></li>
+		<li><p>Finally, hit »Save«. That's about it!</p></li>
 	</ol>
+</div>
 
-	<h4 class="socialbox-help-divider-top"><?php _e('General Widget Options', 'socialbox'); ?></h4>
-	<dl>
-		<dt><?php _e('Open Links in new Window/Tab', 'socialbox'); ?></dt>
-		<dd><?php _e('If checked, the links to the networks profile pages (network icons and &raquo;Follow&laquo; buttons) will be open in a new window or tab.', 'socialbox'); ?></dd>
+<div class="socialbox-help-section--widget" id="socialbox-widget-options">
+	<h3>Widget Options</h3>
+	
+	<img class="socialbox-help-image--center" src="<?php echo JD_SOCIALBOX_URL ?>/assets/img/help/general-settings.png" alt="General Settings" />
+	
+	<h4>Open Links in new Window/Tab</h4>
+	<p>This option adds <code>target="_blank"</code> to all links within SocialBox. This forces the browser to open them in a new window or tab. This way, a user doesn't have to leave your page when clicking on a &raquo;Follow&laquo; or &raquo;Subscribe&laquo; button.</p>
 
-		<dt><?php _e('Show Buttons', 'socialbox'); ?></dt>
-		<dd><?php _e('If checked, the Widget will show &raquo;Like&laquo; / &raquo;Follow&laquo; / &raquo;Subscribe&laquo; buttons for every listed network. These links will point to the profile pages for the configured User / Channel.', 'socialbox'); ?></dd>
+	<h4>Show Buttons</h4>
+	<p>Choose if you want to display the &raquo;Follow&laquo; or &raquo;Subscribe&laquo; buttons within SocialBox. Please note that some of the styles don't include buttons. In case you selected one of these styles, this option has no effect.</p>
 
-		<dt><?php _e('Use Compact Numbers', 'socialbox'); ?></dt>
-		<dd><?php _e('If checked, the Widget will display the numbers in a compact form. Instead of showing the complete numbers, it will use a shortened syntax using "K" and "M" to indicate "thousands" and "millions". As an example, 12.345 will display as 12K.', 'socialbox'); ?></dd>
-	</dl>
+	<h4>Use Compact Numbers</h4>
+	<p>When this option has been activated, the numbers within SocialBox will be dispay in a compact form. For example, the value <code>35.442</code> will be displayed as <code>35K</code>.</p>
+
+	<img class="socialbox-help-image--center" src="<?php echo JD_SOCIALBOX_URL ?>/assets/img/help/additional-settings.png" alt="Additional Settings" />
+
+	<h4>Forced Widget Width</h4>
+	<p>If you set this something other than <code>0</code>, the SocialBox widget will be forced into the specified size. This is useful if your sidebar or widget area is too narrow or too wide.</p>
+
+	<h4>Forced Button Width</h4>
+	<p>If set to something other than <code>0</code>, all &raquo;Follow&laquo; and &raquo;Subscribe&laquo; buttons will be forced to be of this size. Use this option if you want to see consistent buttons (the captions will be centered).</p>
+</div>
+
+
+
+
+
+
+<div class="socialbox-wrap">
+
+	
 
 	<h4 class="socialbox-help-divider-top"><?php _e('General Network Options', 'socialbox'); ?></h4>
 	<dl>
@@ -122,15 +157,6 @@
 			<strong>https://github.com/&lt;YOUR_USERNAME&gt;</strong>
 		</dd>
 
-	</dl>
-
-	<h4 class="socialbox-help-divider-top"><?php _e('Additional Widget Options', 'socialbox'); ?></h4>
-	<dl>
-		<dt><?php _e('Forced Widget Width', 'socialbox'); ?></dt>
-		<dd><?php _e('If set to somthing other than "0", this will force the Widget into the specified size. Use this, if your Sidebar / Widget Area is too narrow or too wide.', 'socialbox'); ?></dd>
-
-		<dt><?php _e('Forced Button Width', 'socialbox'); ?></dt>
-		<dd><?php _e('If set to something other than "0", this will force the "Follow" buttons (if enabled) into the specified width. Use this option, if you want to see consistent buttons (the captions will be centered).', 'socialbox'); ?></dd>
 	</dl>
 
 	<h4 class="socialbox-help-divider-top">License</h4>
