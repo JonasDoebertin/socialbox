@@ -30,18 +30,20 @@
 .socialbox-help-column-container .socialbox-help-column li { line-height: 16px; font-size: 14px; margin: 0 0 5px 0; }
 .socialbox-help-column-container .socialbox-help-column a { text-decoration: none; display: inline-block; padding-bottom: 8px; font-weight: 400; }
 
-.socialbox-help-section, .socialbox-help-section--quick, .socialbox-help-section--widget { margin: 0; padding: 50px 0 0; font-size: 14px; line-height: 1.6; color: #444444; clear: both; overflow: hidden; }
-.socialbox-help-section h3, .socialbox-help-section--quick h3, .socialbox-help-section--widget h3 { font-size: 36px; font-weight: 300; text-align: center; line-height: 1.3; margin: 0 0 30px; color: #444444; }
-.socialbox-help-section h4, .socialbox-help-section--quick h4, .socialbox-help-section--widget h4 { margin: 20px 0 0; font-size: 16px; font-weight: 600; line-height: 2.1; }
-.socialbox-help-section ol li, .socialbox-help-section--quick ol li, .socialbox-help-section--widget ol li { font-weight: 700; color: #999999; }
-.socialbox-help-section p, .socialbox-help-section--quick p, .socialbox-help-section--widget p { font-size: 14px; line-height: 1.6; color: #444444; font-weight: normal; margin: 10px 0 0; }
-.socialbox-help-section .socialbox-help-image, .socialbox-help-section--quick .socialbox-help-image, .socialbox-help-section--widget .socialbox-help-image, .socialbox-help-section .socialbox-help-image--left, .socialbox-help-section--quick .socialbox-help-image--left, .socialbox-help-section--widget .socialbox-help-image--left, .socialbox-help-section .socialbox-help-image--center, .socialbox-help-section--quick .socialbox-help-image--center, .socialbox-help-section--widget .socialbox-help-image--center { border: 1px solid #e5e5e5; -webkit-box-shadow: 0px 0px 5px 0 1px 1px rgba(0, 0, 0, 0.04); -moz-box-shadow: 0px 0px 5px 0 1px 1px rgba(0, 0, 0, 0.04); box-shadow: 0px 0px 5px 0 1px 1px rgba(0, 0, 0, 0.04); }
-.socialbox-help-section .socialbox-help-image--left, .socialbox-help-section--quick .socialbox-help-image--left, .socialbox-help-section--widget .socialbox-help-image--left { float: left; }
-.socialbox-help-section .socialbox-help-image--center, .socialbox-help-section--quick .socialbox-help-image--center, .socialbox-help-section--widget .socialbox-help-image--center { display: block; margin: 0 auto; }
+.socialbox-help-section, .socialbox-help-section--quick, .socialbox-help-section--widget, .socialbox-help-section--networks { margin: 0; padding: 50px 0 0; font-size: 14px; line-height: 1.6; color: #444444; clear: both; overflow: hidden; }
+.socialbox-help-section h3, .socialbox-help-section--quick h3, .socialbox-help-section--widget h3, .socialbox-help-section--networks h3 { font-size: 36px; font-weight: 300; text-align: center; line-height: 1.3; margin: 0 0 30px; color: #444444; }
+.socialbox-help-section h4, .socialbox-help-section--quick h4, .socialbox-help-section--widget h4, .socialbox-help-section--networks h4 { margin: 20px 0 0; font-size: 16px; font-weight: 600; line-height: 2.1; }
+.socialbox-help-section ol li, .socialbox-help-section--quick ol li, .socialbox-help-section--widget ol li, .socialbox-help-section--networks ol li { font-weight: 700; color: #999999; }
+.socialbox-help-section p, .socialbox-help-section--quick p, .socialbox-help-section--widget p, .socialbox-help-section--networks p { font-size: 14px; line-height: 1.6; color: #444444; font-weight: normal; margin: 10px 0 0; }
+.socialbox-help-section .socialbox-help-image, .socialbox-help-section--quick .socialbox-help-image, .socialbox-help-section--widget .socialbox-help-image, .socialbox-help-section--networks .socialbox-help-image, .socialbox-help-section .socialbox-help-image--left, .socialbox-help-section--quick .socialbox-help-image--left, .socialbox-help-section--widget .socialbox-help-image--left, .socialbox-help-section--networks .socialbox-help-image--left, .socialbox-help-section .socialbox-help-image--center, .socialbox-help-section--quick .socialbox-help-image--center, .socialbox-help-section--widget .socialbox-help-image--center, .socialbox-help-section--networks .socialbox-help-image--center { border: 1px solid #e5e5e5; -webkit-box-shadow: 0px 0px 5px 0 1px 1px rgba(0, 0, 0, 0.04); -moz-box-shadow: 0px 0px 5px 0 1px 1px rgba(0, 0, 0, 0.04); box-shadow: 0px 0px 5px 0 1px 1px rgba(0, 0, 0, 0.04); }
+.socialbox-help-section .socialbox-help-image--left, .socialbox-help-section--quick .socialbox-help-image--left, .socialbox-help-section--widget .socialbox-help-image--left, .socialbox-help-section--networks .socialbox-help-image--left { float: left; }
+.socialbox-help-section .socialbox-help-image--center, .socialbox-help-section--quick .socialbox-help-image--center, .socialbox-help-section--widget .socialbox-help-image--center, .socialbox-help-section--networks .socialbox-help-image--center { display: block; margin: 0 auto; }
 
 .socialbox-help-section--quick { width: 650px; margin: 0 auto; }
 
 .socialbox-help-section--widget { width: 650px; margin: 0 auto; }
+
+.socialbox-help-section--networks { width: 650px; margin: 0 auto; }
 
 /** Log */
 .socialbox-log table { margin: 30px 0; }

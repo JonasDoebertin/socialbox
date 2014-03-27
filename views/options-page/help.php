@@ -12,7 +12,7 @@
 
 <div class="socialbox-help-header">
 	<div class="socialbox-help-title">
-		<h3>Welcome to SocialBox!</h3>
+		<h3>Welcome to SocialBox <?php echo JD_SOCIALBOX_VERSION ?>!</h3>
 		<p>Here you can find some help to get you started:</p>
 	</div>
 	<div class="socialbox-help-column-container">
@@ -21,7 +21,7 @@
 			<ol>
 				<li><a href="#socialbox-quick-setup">Quick Setup</a></li>
 				<li><a href="#socialbox-widget-options">Widget Options</a></li>
-				<li><a href="#">Social Network Setup</a></li>
+				<li><a href="#socialbox-network-options">Social Network Options</a></li>
 			</ol>
 		</div>
 		<div class="socialbox-help-column">
@@ -73,6 +73,46 @@
 	<p>If set to something other than <code>0</code>, all &raquo;Follow&laquo; and &raquo;Subscribe&laquo; buttons will be forced to be of this size. Use this option if you want to see consistent buttons (the captions will be centered).</p>
 </div>
 
+<div class="socialbox-help-section--networks" id="socialbox-network-options">
+	<h3>Social Network Options</h3>
+
+	<img class="socialbox-help-image--center" src="<?php echo JD_SOCIALBOX_URL ?>/assets/img/help/generic-network.png" alt="Generic Network Settings" />
+	<p>For most of the networks available within SocialBox, the plugin only needs the username of the account that shall be showcased. However, some networks connections do require some more bits and pieces. You'll learn about these in the following sections.</p>
+
+	<h4>Default</h4>
+	<p>For each network you have the option to set a default value. If the related API is not reachable temporarely or if SocialBox is unable to pull in the numbers for any other reason, this default value will be displayed. We suggest to always set a reasonable default slightly less than your actual value.</p>
+
+	<h4>Position</h4>
+	<p>Of course you want to be able to change the order of the social networks within the SocialBox widget. Well, this option let's you do so. The social networks will be order by this number from small (top) to large (bottom).</p>
+
+	<img class="socialbox-help-image--center" src="<?php echo JD_SOCIALBOX_URL ?>/assets/img/help/facebook-settings.png" alt="Facebook Settings" />
+	<h4>Page ID or Shortname</h4>
+	<p>In order to pull in Facebook statistics, the only thing you need to enter is your pages shortname or id. If your page has an url like <code>https://www.facebook.com/envato</code>, then <code>envato</code>is the shortname you'd want to enter.</p>
+
+	<h4>Metric</h4>
+	<p>Typically, you'd want to display the number of &raquo;Likes&laquo; your page collected. But, if your page belongs to a place (a restaurant, a retail store, a club, etc.) you can choose to display the number of &raquo;Checkins&laquo; instead.</p>
+
+	<img class="socialbox-help-image--center" src="<?php echo JD_SOCIALBOX_URL ?>/assets/img/help/twitter-settings.png" alt="Twitter Settings" />
+	<h4>Username</h4>
+	<p>Please enter the username of the account you want to showcase (without the &raquo;@&laquo;). This does not have to be your own account; any public account goes.</p>
+
+	<h4>API Key &amp; Secret, Access Token &amp; Secret</h4>
+	<p>Pulling in the numbers from Twitter is a little more work than for the other social networks. Since Twitter doesn't allow public access to it's API, you have to set up your application with the Twitter API. To do so, just follow these simple steps:</p>
+	<ol>
+		<li><p>Visit <a href="https://dev.twitter.com/">Twitter Developers</a> and sign in with your Twitter account.</p></li>
+		<li><p>Go to <a href="https://apps.twitter.com/">My Applications</a> and click &raquo;Create a new Application&laquo;.</p></li>
+		<li><p>Enter any value for &raquo;Name&laquo;, &raquo;Description&laquo; and &raquo;Website&laquo;, agree to the &raquo;Developer Rules&laquo; and click &raquo;Create your Twitter application&laquo;.</p></li>
+		<li><p>At the top of the apps overview page navigate to the &raquo;API Keys&laquo; tab.</p></li>
+		<li><p>At the bottom of the page click &raquo;Create my access token&laquo;.</p></li>
+		<li><p>Copy the &raquo;API Key&laquo;, &raquo;API Secret&laquo;, &raquo;Access Token&laquo; and &raquo;Access Token Secret&laquo; values and enter them in the respective fields within SocialBox.</p></li>
+	</ol>
+
+	<img class="socialbox-help-image--center" src="<?php echo JD_SOCIALBOX_URL ?>/assets/img/help/youtube-settings.png" alt="Youtube Settings" />
+	<h4>Channel</h4>
+	<p>Please enter the name of the channel you want to showcase. If your channels url was like <code>https://www.youtube.com/user/envato</code>, then <code>envato</code>is the name you'd have to enter.</p>
+
+</div>
+
 
 
 
@@ -82,44 +122,9 @@
 
 	
 
-	<h4 class="socialbox-help-divider-top"><?php _e('General Network Options', 'socialbox'); ?></h4>
-	<dl>
-		<dt><?php _e('Default', 'socialbox'); ?></dt>
-		<dd><?php _e('This value will be shown if, for some reason, the related API is not reachable or returns unexpected/funky results. It\'s allways a good idea to set these values for each configured network.', 'socialbox'); ?></dd>
-
-		<dt><?php _e('Position', 'socialbox'); ?></dt>
-		<dd><?php _e('The networks will be sorted by this numbers, from small (top) to large (bottom), and will be displayed in this order.', 'socialbox'); ?></dd>
-	</dl>
-
+	
 	<h4 class="socialbox-help-divider-top"><?php _e('Specific Network Options', 'socialbox'); ?></h4>
 	<dl>
-		<dt><?php echo __('Facebook', 'socialbox') . ' ' . __('Page ID/Name', 'socialbox'); ?></dt>
-		<dd>
-			<?php _e('Please enter your pages "Shortname" (the part of the URL after "facebook.com/".', 'socialbox'); ?><br/>
-			<img src="<?php echo JD_SOCIALBOX_URL . '/assets/img/help/facebook-id.jpg' ?>" /><br/>
-			<strong><?php _e('Note:', 'socialbox'); ?></strong> <?php _e('SocialBox will only display the "Like" number, if access to your page is not restricted in any way (only certain Countries, etc.)', 'socialbox'); ?>
-		</dd>
-
-		<dt><?php echo __('Twitter', 'socialbox') . ' ' . __('Username', 'socialbox'); ?></dt>
-		<dd>
-			<?php _e('Please enter your regular Twitter Username (without the @-symbol) as the username.', 'socialbox'); ?><br/>
-			<?php _e('To maintain your API key and your access token, follow these steps:', 'socialbox') ?>
-			<ol>
-				<li><p><?php _e('Visit <a href="https://dev.twitter.com/">Twitter Developers</a> and sign in with your Twitter account.', 'socialbox'); ?></p></li>
-				<li><p><?php _e('Go to <a href="https://apps.twitter.com/">My Applications</a> and click "Create a new Application".', 'socialbox'); ?></p></li>
-				<li><p><?php _e('Enter any value for "Name", "Description" and "Website", agree to the "Developer Rules" and click "Create your Twitter application".', 'socialbox'); ?></p></li>
-				<li><p><?php _e('At the top of the newly created apps overview page click on the "API Keys" tab.', 'socialbox'); ?></p></li>
-				<li><p><?php _e('At the bottom of the page click "Create my access token".', 'socialbox'); ?></p></li>
-				<li><p><?php _e('Copy the "API Key", "API Secret", "Access Token" and "Access Token Secret" and enter them in the respective fields.', 'socialbox'); ?></p></li>
-			</ol>
-			<img src="<?php echo JD_SOCIALBOX_URL . '/assets/img/help/twitter-id.jpg' ?>" />
-		</dd>
-
-		<dt><?php echo __('Youtube', 'socialbox') . ' ' . __('Channel', 'socialbox'); ?></dt>
-		<dd>
-			<?php _e('Please enter your Channels "Shortname" (as seen in the URL).', 'socialbox'); ?><br/>
-			<img src="<?php echo JD_SOCIALBOX_URL . '/assets/img/help/youtube-id.jpg' ?>" /><br/>
-		</dd>
 
 		<dt><?php echo __('Vimeo', 'socialbox') . ' ' . __('Channel', 'socialbox'); ?></dt>
 		<dd>
