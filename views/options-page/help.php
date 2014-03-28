@@ -35,7 +35,7 @@
 		<div class="socialbox-help-column">
 			<h4>Further Help</h4>
 			<ul>
-				<li><i class="socialbox-icon-knowledge"></i> Visit the <a href="#">knowledge base</a></li>
+				<!--<li><i class="socialbox-icon-knowledge"></i> Visit the <a href="#">knowledge base</a></li>-->
 				<li><i class="socialbox-icon-tweet"></i> Send a <a href="https://twitter.com/intent/tweet?text=@DieserJonas">Tweet</a></li>
 				<li><i class="socialbox-icon-ticket"></i> Open a <a href="http://codecanyon.net/user/jdpowered#contact">support ticket</a></li>
 			</ul>
