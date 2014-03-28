@@ -450,25 +450,4 @@ class JD_SocialBox{
 		
 		return get_option('socialbox_log', array());
 	}
-
-	/**
-	 * Get absolute URL for $path
-	 *
-	 * @param String $path
-	 * @return String
-	 */
-	private function getUrl($path) {
-		
-		return JD_SOCIALBOX_URL . '/' . $path;
-	}
-	
-	/**
-	 * Echo absolute URL for $path
-	 *
-	 * @param String $path
-	 */
-	private function url($path) {
-		
-		echo $this->getUrl($path);
-	}
 }
