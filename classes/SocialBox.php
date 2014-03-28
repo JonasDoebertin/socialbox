@@ -65,6 +65,12 @@ class JD_SocialBox{
 
 			/* Register styles for options page */
 			add_action('admin_print_styles-settings_page_socialbox', array($this, 'registerOptionsPageStyle'));
+			add_action('admin_enqueue_scripts', array($this, 'registerOptionsPageScript'));
+
+			/* Register custum actions for options page */
+			add_action('wp_ajax_socialbox_show_cache', array($this, 'ajaxShowCache'));
+			add_action('wp_ajax_socialbox_clear_cache', array($this, 'ajaxClearCache'));
+			add_action('wp_ajax_socialbox_refresh_cache', array($this, 'ajaxRefreshCache'));
 		
 		/* Fronted only stuff */
 		} else if(is_active_widget(false, false, 'socialbox', true)){
@@ -342,6 +348,38 @@ class JD_SocialBox{
 	}
 
 	/**
+	 * Register & enqueue scripts for the options page
+	 *
+	 * Will be run in "admin_enqueue_scripts-settings_page_socialbox" action
+	 */
+	public function registerOptionsPageScript($hook){
+		
+		/* Only on our own options page */
+		if($hook == 'settings_page_socialbox') {
+			
+			/* Register the script */
+			wp_register_script('socialbox-options', JD_SOCIALBOX_URL . '/assets/js/options-page.js', array('jquery'), JD_SOCIALBOX_VERSION, true);
+
+			/* Add data object */
+			wp_localize_script('socialbox-options', 'Socialbox', array(
+					'action' => array(
+							'show'    => 'socialbox_show_cache',
+							'clear'   => 'socialbox_clear_cache',
+							'refresh' => 'socialbox_refresh_cache',
+						),
+					'nonce'  => array(
+							'show'    => wp_create_nonce('socialbox_show_cache'),
+							'clear'   => wp_create_nonce('socialbox_clear_cache'),
+							'refresh' => wp_create_nonce('socialbox_refresh_cache'),
+						),
+				));
+
+			/* Enqueue script */
+			wp_enqueue_script('socialbox-options');
+		}
+	}
+
+	/**
 	 * Render the options page
 	 *
 	 * This will make sure, that at least the default tab is active
@@ -351,11 +389,67 @@ class JD_SocialBox{
 		$tab = (isset($_GET['tab']) and !empty($_GET['tab'])) ? $_GET['tab'] : 'settings';
 		include JD_SOCIALBOX_PATH . '/views/options-page/frame.php';
 	}
+
+	/**
+	 * Return formatted cache content
+	 *
+	 * Will be run through an AJAX call in "wp_ajax_socialbox_show_cache" action
+	 */
+	public function ajaxShowCache() {
+		
+		/* Security check */
+		if(!wp_verify_nonce($_POST['nonce'], $_POST['action'])) {
+			die(__('Security check failed!', 'socialbox'));
+		}
+
+		/* Return formatted cache content */
+		die(print_r($this->getCache(), true));
+	}
+
+	/**
+	 * Clear cache content
+	 *
+	 * Will be run through an AJAX call in "wp_ajax_socialbox_clear_cache" action
+	 */
+	public function ajaxClearCache() {
+		
+		/* Security check */
+		if(!wp_verify_nonce($_POST['nonce'], $_POST['action'])) {
+			die(__('Security check failed!', 'socialbox'));
+		}
+
+		/* Clear cache */
+		$this->clearCache();
+
+		/* Return message */
+		die(__('Cache cleared!', 'socialbox'));
+	}
+
+	/**
+	 * Refresh cache content
+	 *
+	 * Will be run through an AJAX call in "wp_ajax_socialbox_refresh_cache" action
+	 */
+	public function ajaxRefreshCache() {
+		
+		/* Security check */
+		if(!wp_verify_nonce($_POST['nonce'], $_POST['action'])) {
+			die(__('Security check failed!', 'socialbox'));
+		}
+
+		/* Force cache refresh */
+		$this->updateCache(true);
+
+		/* Return message */
+		die(__('Cache refreshed!', 'socialbox'));
+	}
 	
 	/**
 	 * Refresh the cache
 	 *
 	 * This will be executed as scheduled cron event or when updating a widgets settings
+	 *
+	 * @param boolean $forced Force a complete refresh
 	 */
 	public static function updateCache($forced = false) {
 		
@@ -385,6 +479,10 @@ class JD_SocialBox{
 		}
 	}
 
+	/**
+	 * Update a single cache item
+	 * @param  array $item
+	 */
 	public static function updateCacheItem($item) {
 
 		/* Fetch new value from connector */
@@ -409,6 +507,23 @@ class JD_SocialBox{
 		$cache = get_option('socialbox_cache', array());
 		$cache[$item['network'] . '||' . $item['id']] = $item;
 		update_option('socialbox_cache', $cache);
+	}
+
+	/**
+	 * Return raw cache contents
+	 * @return array
+	 */
+	public function getCache() {
+
+		return get_option('socialbox_cache', array());
+	} 
+
+	/**
+	 * Clear cache
+	 */
+	public function clearCache() {
+
+		update_option('socialbox_cache', array());
 	}
 
 	/**

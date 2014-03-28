@@ -1,3 +1,10 @@
+/*------------------------------------*\
+	$FONTS
+\*------------------------------------*/
+
+/**
+ * Fonts
+ */
 @font-face {
 	font-family: 'admin-icons';
 	src:url('../fonts/admin-icons.eot?-ckwl15');
@@ -9,6 +16,13 @@
 	font-style: normal;
 }
 
+
+
+
+
+/**
+ * General icon styles
+ */
 [class^="socialbox-icon-"], [class*=" socialbox-icon-"] {
 	font-family: 'admin-icons';
 	speak: none;
@@ -26,6 +40,13 @@
 	-moz-osx-font-smoothing: grayscale;
 }
 
+
+
+
+
+/**
+ * Icon symbol declaration
+ */
 .socialbox-icon-knowledge:before {
 	content: "\e601";
 }
@@ -43,4 +64,29 @@
 }
 .socialbox-icon-tweet:before {
 	content: "\e600";
+}
+
+.socialbox-icon-loading{
+	@include vendor(animation, socialbox-rotate 2s linear 0s infinite);
+
+	&:before{
+		content: "\e606" !important;
+	}
+}
+
+
+
+
+
+/**
+ * Rotation animation
+ */
+@include keyframe(socialbox-rotate) {
+	0% {
+		@include rotate(0deg);
+	}
+
+	100% {
+		@include rotate(360deg);
+	}
 }

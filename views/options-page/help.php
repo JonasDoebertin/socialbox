@@ -27,9 +27,9 @@
 		<div class="socialbox-help-column">
 			<h4>Additional Cache Tools</h4>
 			<ul>
-				<li><i class="socialbox-icon-refresh"></i> <a href="#">Update cache</a></li>
-				<li><i class="socialbox-icon-contents"></i> <a href="#">Show contents</a></li>
-				<li><i class="socialbox-icon-clear"></i> <a href="#">Clear cache</a></li>
+				<li><i class="socialbox-icon-refresh"></i> <a href="#" class="js-socialbox-cache-refresh">Update cache</a></li>
+				<li><i class="socialbox-icon-contents"></i> <a href="#" class="js-socialbox-cache-show">Show contents</a></li>
+				<li><i class="socialbox-icon-clear"></i> <a href="#" class="js-socialbox-cache-clear">Clear cache</a></li>
 			</ul>
 		</div>
 		<div class="socialbox-help-column">
