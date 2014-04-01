@@ -19,9 +19,9 @@
 		<div class="socialbox-help-column">
 			<h4>Covered Topics</h4>
 			<ol>
-				<li><a href="#socialbox-quick-setup">Quick Setup</a></li>
-				<li><a href="#socialbox-widget-options">Widget Options</a></li>
-				<li><a href="#socialbox-network-options">Social Network Options</a></li>
+				<li><a href="#socialbox-quick-setup" data-scroll>Quick Setup</a></li>
+				<li><a href="#socialbox-widget-options" data-scroll>Widget Options</a></li>
+				<li><a href="#socialbox-network-options" data-scroll>Social Network Options</a></li>
 			</ol>
 		</div>
 		<div class="socialbox-help-column">
