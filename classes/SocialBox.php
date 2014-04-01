@@ -16,6 +16,11 @@ class JD_SocialBox{
 	const SUPPORTED_NETWORKS = 'facebook,twitter,youtube,vimeo,instagram,dribbble,forrst,github';
 
 	/**
+	 * Max. # of log entries to keep
+	 */
+	const LOG_SIZE = 25;
+
+	/**
 	 * Holds the slug of the settings page, once it has been registered
 	 */
 	protected $settingsPageSlug;
@@ -548,7 +553,7 @@ class JD_SocialBox{
 		);
 
 		/* Trancate log */
-		if(count($log) > 20){
+		if(count($log) > self::LOG_SIZE){
 			array_shift($log);
 		}
 
