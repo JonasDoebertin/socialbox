@@ -96,7 +96,7 @@ class JD_SocialBox{
 		/* Add "Every Ten Minutes" for cache updates */
 		$schedules['everytenminutes'] = array(
 			'interval' => 600,
-			'display' => __('Every Ten Minutes')
+			'display' => __('Every Ten Minutes', 'socialbox')
 		);
 		return $schedules;
 	}
