@@ -108,8 +108,15 @@ class JD_SocialBox{
 	 */
 	public static function updatePlugin() {
 		
+		/* Build query string */
+		$data = array(
+			'slug' => 'socialboxwp',
+			'current_version' => JD_SOCIALBOX_VERSION,
+			'host' => preg_replace('/^www\./','',$_SERVER['SERVER_NAME'])
+		);
+
 		/* Fetch latest version */
-		$result = wp_remote_get('http://updates.jd-powered.net/?slug=socialboxwp');
+		$result = wp_remote_get('http://updates.jd-powered.net/?' . http_build_query($data));
 		
 		/* Check for common errors */
 		if(is_wp_error($result) or (wp_remote_retrieve_response_code($result) != 200)) {
