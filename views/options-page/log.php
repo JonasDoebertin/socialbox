@@ -2,7 +2,7 @@
 
 
 /*
- * SocialBox 1.4.1
+ * SocialBox 1.5.0
  * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
@@ -14,7 +14,7 @@ $log = $this->getLog();
 
 ?>
 
-<div class="socialbox-wrap socialbox-log">
+<div class="socialbox-log">
 	<table class="wp-list-table widefat" cellspacing="0">
 		<thead>
 			<tr>

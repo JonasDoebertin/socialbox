@@ -2,7 +2,7 @@
 
 
 /*
- * SocialBox 1.4.1
+ * SocialBox 1.5.0
  * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
@@ -18,7 +18,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		/* Widget settings */
 		$widgetOpts = array(
 			'classname' => 'socialbox',
-			'description' => __('Adds a super easy SocialBox Widget which displays the current numbers of Facebook Page Likes, Google+, Twitter, Dribbble and Forrst Followers and YouTube and Vimeo Channel Subscriptions.', 'socialbox')
+			'description' => __('Adds a super easy SocialBox Widget which displays the current numbers of Facebook Page Likes, Twitter, Instagram, Dribbble and Forrst Followers and YouTube and Vimeo Channel Subscriptions.', 'socialbox')
 		);
 		
 		/* Widget control settings */
@@ -62,7 +62,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 				);
 
 				/* Set metric */
-				if(in_array($network, array('facebook'))) {
+				if(in_array($network, array('facebook', 'instagram'))) {
 					$new['metric'] = $this->getComplexNetworkMetric($network, $instance[$network . '_metric']);
 				} else {
 					$new['metric'] = $this->getSimpleNetworkMetric($network);
@@ -128,6 +128,9 @@ class JD_SocialBoxWidget extends WP_Widget{
 		$instance['twitter_api_secret'] = $newInstance['twitter_api_secret'];
 		$instance['twitter_access_token'] = $newInstance['twitter_access_token'];
 		$instance['twitter_access_token_secret'] = $newInstance['twitter_access_token_secret'];
+		$instance['instagram_user_id'] = $newInstance['instagram_user_id'];
+		$instance['instagram_client_id'] = $newInstance['instagram_client_id'];
+		$instance['instagram_metric'] = $newInstance['instagram_metric'];
 
 		/* Update cache elements */
 		$cache = get_option('socialbox_cache', array());
@@ -155,6 +158,10 @@ class JD_SocialBoxWidget extends WP_Widget{
 						$cache[$network . '||' . $instance['twitter_id']]['api_secret'] = $instance['twitter_api_secret'];
 						$cache[$network . '||' . $instance['twitter_id']]['access_token'] = $instance['twitter_access_token'];
 						$cache[$network . '||' . $instance['twitter_id']]['access_token_secret'] = $instance['twitter_access_token_secret'];
+					} else if($network == 'instagram') {
+						$cache[$network . '||' . $instance['instagram_id']]['metric'] = $instance['instagram_metric'];
+						$cache[$network . '||' . $instance['instagram_id']]['client_id'] = $instance['instagram_client_id'];
+						$cache[$network . '||' . $instance['instagram_id']]['user_id'] = $instance['instagram_user_id'];
 					}
 
 				/* Update cache element if it exists */
@@ -171,6 +178,10 @@ class JD_SocialBoxWidget extends WP_Widget{
 						$cache[$network . '||' . $instance['twitter_id']]['api_secret'] = $instance['twitter_api_secret'];
 						$cache[$network . '||' . $instance['twitter_id']]['access_token'] = $instance['twitter_access_token'];
 						$cache[$network . '||' . $instance['twitter_id']]['access_token_secret'] = $instance['twitter_access_token_secret'];
+					} else if($network == 'instagram') {
+						$cache[$network . '||' . $instance['instagram_id']]['metric'] = $instance['instagram_metric'];
+						$cache[$network . '||' . $instance['instagram_id']]['client_id'] = $instance['instagram_client_id'];
+						$cache[$network . '||' . $instance['instagram_id']]['user_id'] = $instance['instagram_user_id'];
 					}
 				}
 			}
@@ -214,6 +225,9 @@ class JD_SocialBoxWidget extends WP_Widget{
 		$defaults['twitter_api_secret'] = '';
 		$defaults['twitter_access_token'] = '';
 		$defaults['twitter_access_token_secret'] = '';
+		$defaults['instagram_metric'] = 'followed_by';
+		$defaults['instagram_client_id'] = '';
+		$defaults['instagram_user_id'] = '';
 
 		/* Merge defaults and actual option values */
 		$instance = wp_parse_args((array) $instance, $defaults);
@@ -243,12 +257,12 @@ class JD_SocialBoxWidget extends WP_Widget{
 				return "http://www.facebook.com/" . ((is_numeric($id)) ? "profile.php?id={$id}" : $id);
 			case 'twitter':
 				return "http://twitter.com/{$id}";
-			// case 'googleplus':
-			// 	return "https://plus.google.com/{$id}";
 			case 'youtube':
 				return "http://www.youtube.com/user/{$id}";
 			case 'vimeo':
 				return "http://vimeo.com/channels/{$id}";
+			case 'instagram':
+				return "http://instagram.com/{$id}";
 			case 'dribbble':
 				return "http://dribbble.com/{$id}";
 			case 'forrst':
@@ -271,6 +285,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 				return __('YouTube', 'socialbox');
 			case 'vimeo':
 				return __('Vimeo', 'socialbox');
+			case 'instagram':
+				return __('Instagram', 'socialbox');
 			case 'dribbble':
 				return __('Dribbble', 'socialbox');
 			case 'forrst':
@@ -315,6 +331,18 @@ class JD_SocialBoxWidget extends WP_Widget{
 			}
 		}
 
+		/* Instagram */
+		if($network == 'instagram') {
+			switch($metric) {
+				case 'media':
+					return __('Posts', 'socialbox');
+				case 'followed_by':
+					return __('Followers', 'socialbox');
+				case 'follows':
+					return __('Following', 'socialbox');
+			}
+		}
+
 		/* Default value */
 		return __('Unknown', 'socialbox');
 	}
@@ -330,6 +358,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 				return __('Subscribe', 'socialbox');
 			case 'vimeo':
 				return __('Subscribe', 'socialbox');
+			case 'instagram':
+				return __('Follow', 'socialbox');
 			case 'dribbble':
 				return __('Follow', 'socialbox');
 			case 'forrst':
@@ -350,6 +380,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 				return __('Subscribe to Youtube Channel', 'socialbox');
 			case 'vimeo':
 				return __('Subscribe to Vimeo Channel', 'socialbox');
+			case 'instagram':
+				return __('Follow on Instagram', 'socialbox');
 			case 'dribbble':
 				return __('Follow on Dribbble', 'socialbox');
 			case 'forrst':
@@ -438,26 +470,5 @@ class JD_SocialBoxWidget extends WP_Widget{
 			default:
 				return floor($number / 1000000) . 'M';
 		}
-	}
-	
-	/**
-	 * Get absolute URL for $path
-	 *
-	 * @param String $path
-	 * @return String
-	 */
-	private function getUrl($path) {
-		
-		return JD_SOCIALBOX_URL . '/' . $path;
-	}
-	
-	/**
-	 * Echo absolute URL for $path
-	 *
-	 * @param String $path
-	 */
-	private function url($path) {
-		
-		echo $this->getUrl($path);
 	}
 }

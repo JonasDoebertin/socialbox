@@ -2,7 +2,7 @@
 
 
 /*
- * SocialBox 1.4.1
+ * SocialBox 1.5.0
  * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
@@ -13,7 +13,12 @@ class JD_SocialBox{
 	/**
 	 * Complete list of supported networks
 	 */
-	const SUPPORTED_NETWORKS = 'facebook,twitter,youtube,vimeo,dribbble,forrst,github';
+	const SUPPORTED_NETWORKS = 'facebook,twitter,youtube,vimeo,instagram,dribbble,forrst,github';
+
+	/**
+	 * Max. # of log entries to keep
+	 */
+	const LOG_SIZE = 25;
 
 	/**
 	 * Holds the slug of the settings page, once it has been registered
@@ -65,6 +70,12 @@ class JD_SocialBox{
 
 			/* Register styles for options page */
 			add_action('admin_print_styles-settings_page_socialbox', array($this, 'registerOptionsPageStyle'));
+			add_action('admin_enqueue_scripts', array($this, 'registerOptionsPageScript'));
+
+			/* Register custum actions for options page */
+			add_action('wp_ajax_socialbox_show_cache', array($this, 'ajaxShowCache'));
+			add_action('wp_ajax_socialbox_clear_cache', array($this, 'ajaxClearCache'));
+			add_action('wp_ajax_socialbox_refresh_cache', array($this, 'ajaxRefreshCache'));
 		
 		/* Fronted only stuff */
 		} else if(is_active_widget(false, false, 'socialbox', true)){
@@ -85,7 +96,7 @@ class JD_SocialBox{
 		/* Add "Every Ten Minutes" for cache updates */
 		$schedules['everytenminutes'] = array(
 			'interval' => 600,
-			'display' => __('Every Ten Minutes')
+			'display'  => __('Every Ten Minutes', 'socialbox')
 		);
 		return $schedules;
 	}
@@ -97,8 +108,15 @@ class JD_SocialBox{
 	 */
 	public static function updatePlugin() {
 		
+		/* Build query string */
+		$data = array(
+			'slug'            => 'socialboxwp',
+			'current_version' => JD_SOCIALBOX_VERSION,
+			'host'            => preg_replace('/^www\./','',$_SERVER['SERVER_NAME'])
+		);
+
 		/* Fetch latest version */
-		$result = wp_remote_get('http://updates.jd-powered.net/?slug=socialboxwp');
+		$result = wp_remote_get('http://updates.jd-powered.net/?' . http_build_query($data));
 		
 		/* Check for common errors */
 		if(is_wp_error($result) or (wp_remote_retrieve_response_code($result) != 200)) {
@@ -342,6 +360,38 @@ class JD_SocialBox{
 	}
 
 	/**
+	 * Register & enqueue scripts for the options page
+	 *
+	 * Will be run in "admin_enqueue_scripts-settings_page_socialbox" action
+	 */
+	public function registerOptionsPageScript($hook){
+		
+		/* Only on our own options page */
+		if($hook == 'settings_page_socialbox') {
+			
+			/* Register the script */
+			wp_register_script('socialbox-options', JD_SOCIALBOX_URL . '/assets/js/options-page.js', array('jquery'), JD_SOCIALBOX_VERSION, true);
+
+			/* Add data object */
+			wp_localize_script('socialbox-options', 'Socialbox', array(
+					'action' => array(
+							'show'    => 'socialbox_show_cache',
+							'clear'   => 'socialbox_clear_cache',
+							'refresh' => 'socialbox_refresh_cache',
+						),
+					'nonce'  => array(
+							'show'    => wp_create_nonce('socialbox_show_cache'),
+							'clear'   => wp_create_nonce('socialbox_clear_cache'),
+							'refresh' => wp_create_nonce('socialbox_refresh_cache'),
+						),
+				));
+
+			/* Enqueue script */
+			wp_enqueue_script('socialbox-options');
+		}
+	}
+
+	/**
 	 * Render the options page
 	 *
 	 * This will make sure, that at least the default tab is active
@@ -351,11 +401,67 @@ class JD_SocialBox{
 		$tab = (isset($_GET['tab']) and !empty($_GET['tab'])) ? $_GET['tab'] : 'settings';
 		include JD_SOCIALBOX_PATH . '/views/options-page/frame.php';
 	}
+
+	/**
+	 * Return formatted cache content
+	 *
+	 * Will be run through an AJAX call in "wp_ajax_socialbox_show_cache" action
+	 */
+	public function ajaxShowCache() {
+		
+		/* Security check */
+		if(!wp_verify_nonce($_POST['nonce'], $_POST['action'])) {
+			die(__('Security check failed!', 'socialbox'));
+		}
+
+		/* Return formatted cache content */
+		die(print_r($this->getCache(), true));
+	}
+
+	/**
+	 * Clear cache content
+	 *
+	 * Will be run through an AJAX call in "wp_ajax_socialbox_clear_cache" action
+	 */
+	public function ajaxClearCache() {
+		
+		/* Security check */
+		if(!wp_verify_nonce($_POST['nonce'], $_POST['action'])) {
+			die(__('Security check failed!', 'socialbox'));
+		}
+
+		/* Clear cache */
+		$this->clearCache();
+
+		/* Return message */
+		die(__('Cache cleared!', 'socialbox'));
+	}
+
+	/**
+	 * Refresh cache content
+	 *
+	 * Will be run through an AJAX call in "wp_ajax_socialbox_refresh_cache" action
+	 */
+	public function ajaxRefreshCache() {
+		
+		/* Security check */
+		if(!wp_verify_nonce($_POST['nonce'], $_POST['action'])) {
+			die(__('Security check failed!', 'socialbox'));
+		}
+
+		/* Force cache refresh */
+		$this->updateCache(true);
+
+		/* Return message */
+		die(__('Cache refreshed!', 'socialbox'));
+	}
 	
 	/**
 	 * Refresh the cache
 	 *
 	 * This will be executed as scheduled cron event or when updating a widgets settings
+	 *
+	 * @param boolean $forced Force a complete refresh
 	 */
 	public static function updateCache($forced = false) {
 		
@@ -385,6 +491,10 @@ class JD_SocialBox{
 		}
 	}
 
+	/**
+	 * Update a single cache item
+	 * @param  array $item
+	 */
 	public static function updateCacheItem($item) {
 
 		/* Fetch new value from connector */
@@ -412,6 +522,23 @@ class JD_SocialBox{
 	}
 
 	/**
+	 * Return raw cache contents
+	 * @return array
+	 */
+	public function getCache() {
+
+		return get_option('socialbox_cache', array());
+	} 
+
+	/**
+	 * Clear cache
+	 */
+	public function clearCache() {
+
+		update_option('socialbox_cache', array());
+	}
+
+	/**
 	 * Add an entry to the API Log
 	 *
 	 * @param String $network The slug of the related network
@@ -426,14 +553,14 @@ class JD_SocialBox{
 
 		/* Add new log entry */
 		$log[] = array(
-			'timestamp' => time(),
+			'timestamp'  => time(),
 			'successful' => $successful,
-			'network' => $network,
-			'id' => $id
+			'network'    => $network,
+			'id'         => $id
 		);
 
 		/* Trancate log */
-		if(count($log) > 20){
+		if(count($log) > self::LOG_SIZE){
 			array_shift($log);
 		}
 
@@ -449,26 +576,5 @@ class JD_SocialBox{
 	public static function getLog() {
 		
 		return get_option('socialbox_log', array());
-	}
-
-	/**
-	 * Get absolute URL for $path
-	 *
-	 * @param String $path
-	 * @return String
-	 */
-	private function getUrl($path) {
-		
-		return JD_SOCIALBOX_URL . '/' . $path;
-	}
-	
-	/**
-	 * Echo absolute URL for $path
-	 *
-	 * @param String $path
-	 */
-	private function url($path) {
-		
-		echo $this->getUrl($path);
 	}
 }

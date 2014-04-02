@@ -2,7 +2,7 @@
 
 
 /*
- * SocialBox 1.4.1
+ * SocialBox 1.5.0
  * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
@@ -11,7 +11,7 @@
 ?>
 
 <!-- Start SocialBox Options Page -->
-<div class="wrap">
+<div class="wrap socialbox-wrap">
 	
 	<?php screen_icon(); ?>
 	<h2 class="nav-tab-wrapper">
