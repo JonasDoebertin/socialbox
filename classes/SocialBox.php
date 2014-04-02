@@ -96,7 +96,7 @@ class JD_SocialBox{
 		/* Add "Every Ten Minutes" for cache updates */
 		$schedules['everytenminutes'] = array(
 			'interval' => 600,
-			'display' => __('Every Ten Minutes', 'socialbox')
+			'display'  => __('Every Ten Minutes', 'socialbox')
 		);
 		return $schedules;
 	}
@@ -110,9 +110,9 @@ class JD_SocialBox{
 		
 		/* Build query string */
 		$data = array(
-			'slug' => 'socialboxwp',
+			'slug'            => 'socialboxwp',
 			'current_version' => JD_SOCIALBOX_VERSION,
-			'host' => preg_replace('/^www\./','',$_SERVER['SERVER_NAME'])
+			'host'            => preg_replace('/^www\./','',$_SERVER['SERVER_NAME'])
 		);
 
 		/* Fetch latest version */
@@ -553,10 +553,10 @@ class JD_SocialBox{
 
 		/* Add new log entry */
 		$log[] = array(
-			'timestamp' => time(),
+			'timestamp'  => time(),
 			'successful' => $successful,
-			'network' => $network,
-			'id' => $id
+			'network'    => $network,
+			'id'         => $id
 		);
 
 		/* Trancate log */
