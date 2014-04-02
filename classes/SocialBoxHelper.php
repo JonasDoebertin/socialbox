@@ -2,7 +2,7 @@
 
 
 /*
- * SocialBox 1.4.1
+ * SocialBox 1.5.0
  * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */

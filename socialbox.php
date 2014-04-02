@@ -5,7 +5,7 @@
 Plugin Name: 	SocialBox
 Plugin URI: 	http://codecanyon.net/item/socialbox-social-wordpress-widget/627127?ref=jdpowered
 Description: 	Adds a super easy Social Box Widget which displays the current numbers of Facebook Page Likes, Twitter, Dribbble and Forrst Followers and YouTube and Vimeo Channel Subscriptions.
-Version: 		1.4.1
+Version: 		1.5.0
 Author: 		Jonas Döbertin
 Author URI: 	http://codecanyon.net/user/jdpowered
 */
@@ -25,7 +25,7 @@ if(class_exists('JD_SocialBox') or class_exists('JD_SocialBoxWidget') or class_e
 define('JD_SOCIALBOX_BASENAME', plugin_basename(__FILE__));
 define('JD_SOCIALBOX_PATH', plugin_dir_path(__FILE__));
 define('JD_SOCIALBOX_URL', plugins_url('', __FILE__));
-define('JD_SOCIALBOX_VERSION', '1.4.1');
+define('JD_SOCIALBOX_VERSION', '1.5.0');
 
 /**
  * Load classes
