@@ -13,7 +13,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 	/**
 	 * Create a widget instance and set the base infos
 	 */
-	public function __construct(){
+	public function __construct() {
 
 		/* Widget settings */
 		$widgetOpts = array(
@@ -37,7 +37,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 * @param Array $args
 	 * @param Array $instance
 	 */
-	public function widget($args, $instance){
+	public function widget($args, $instance) {
 
 		extract($args);
 
@@ -46,9 +46,9 @@ class JD_SocialBoxWidget extends WP_Widget{
 
 		/* Build up network data array */
 		$networks = array();
-		foreach(JD_SocialBoxHelper::getSupportedNetworks() as $network){
+		foreach(JD_SocialBoxHelper::getSupportedNetworks() as $network) {
 
-			if( array_key_exists($network . '_id', $instance) and !empty($instance[$network . '_id']) ){
+			if( array_key_exists($network . '_id', $instance) and !empty($instance[$network . '_id']) ) {
 
                 /* Get cache item */
                 $cacheItem = $cache[$network . '||' . $instance[$network . '_id']];
@@ -60,17 +60,11 @@ class JD_SocialBoxWidget extends WP_Widget{
 					'position'   => $instance[$network . '_position'],
 					'count'      => ($cacheItem['value'] !== null) ? $cacheItem['value'] : $instance[$network . '_default'],
 					'link'       => $this->getNetworkLink($cacheItem), //$network, $instance[$network . '_id']),
-					'name'       => $this->getNetworkName($network),
-					'buttonText' => $this->getNetworkButtonText($network),
-					'buttonHint' => $this->getNetworkButtonHint($network)
+					'name'       => $this->getNetworkName($cacheItem),
+					'buttonText' => $this->getNetworkButtonText($cacheItem),
+					'buttonHint' => $this->getNetworkButtonHint($cacheItem),
+                    'metric'     => $this->getNetworkMetric($cacheItem),
 				);
-
-				/* Set metric */
-				if(in_array($network, array('facebook', 'instagram'))) {
-					$new['metric'] = $this->getComplexNetworkMetric($network, $instance[$network . '_metric']);
-				} else {
-					$new['metric'] = $this->getSimpleNetworkMetric($network);
-				}
 
 				/* Add network to list */
 				$networks[] = $new;
@@ -127,16 +121,16 @@ class JD_SocialBoxWidget extends WP_Widget{
 		}
 
 		/* Update values for uncommon/special options */
-		$instance['facebook_metric'] = $newInstance['facebook_metric'];
-		$instance['twitter_api_key'] = $newInstance['twitter_api_key'];
-		$instance['twitter_api_secret'] = $newInstance['twitter_api_secret'];
-		$instance['twitter_access_token'] = $newInstance['twitter_access_token'];
+		$instance['facebook_metric']             = $newInstance['facebook_metric'];
+		$instance['twitter_api_key']             = $newInstance['twitter_api_key'];
+		$instance['twitter_api_secret']          = $newInstance['twitter_api_secret'];
+		$instance['twitter_access_token']        = $newInstance['twitter_access_token'];
 		$instance['twitter_access_token_secret'] = $newInstance['twitter_access_token_secret'];
-		$instance['instagram_user_id'] = $newInstance['instagram_user_id'];
-		$instance['instagram_client_id'] = $newInstance['instagram_client_id'];
-		$instance['instagram_metric'] = $newInstance['instagram_metric'];
-        $instance['mailchimp_api_key'] = $newInstance['mailchimp_api_key'];
-        $instance['mailchimp_form_url'] = $newInstance['mailchimp_form_url'];
+		$instance['instagram_user_id']           = $newInstance['instagram_user_id'];
+		$instance['instagram_client_id']         = $newInstance['instagram_client_id'];
+		$instance['instagram_metric']            = $newInstance['instagram_metric'];
+        $instance['mailchimp_api_key']           = $newInstance['mailchimp_api_key'];
+        $instance['mailchimp_form_url']          = $newInstance['mailchimp_form_url'];
 
 		/* Update cache elements */
 		$cache = get_option('socialbox_cache', array());
@@ -150,27 +144,27 @@ class JD_SocialBoxWidget extends WP_Widget{
 
 					/* Add common attributes */
 					$cache[$network . '||' . $instance[$network . '_id']] = array(
-						'network' =>		$network,
-						'id' =>				$instance[$network . '_id'],
-						'lastUpdated' =>	0,
-						'value' =>			null
+						'network'     => $network,
+						'id'          => $instance[$network . '_id'],
+						'lastUpdated' => 0,
+						'value'       => null
 					);
 
 					/* Add uncommon/special attributes */
 					if($network == 'facebook') {
-						$cache[$network . '||' . $instance['facebook_id']]['metric'] = $instance['facebook_metric'];
+						$cache[$network . '||' . $instance['facebook_id']]['metric']             = $instance['facebook_metric'];
 					} else if($network == 'twitter') {
-						$cache[$network . '||' . $instance['twitter_id']]['api_key'] = $instance['twitter_api_key'];
-						$cache[$network . '||' . $instance['twitter_id']]['api_secret'] = $instance['twitter_api_secret'];
-						$cache[$network . '||' . $instance['twitter_id']]['access_token'] = $instance['twitter_access_token'];
+						$cache[$network . '||' . $instance['twitter_id']]['api_key']             = $instance['twitter_api_key'];
+						$cache[$network . '||' . $instance['twitter_id']]['api_secret']          = $instance['twitter_api_secret'];
+						$cache[$network . '||' . $instance['twitter_id']]['access_token']        = $instance['twitter_access_token'];
 						$cache[$network . '||' . $instance['twitter_id']]['access_token_secret'] = $instance['twitter_access_token_secret'];
 					} else if($network == 'instagram') {
-						$cache[$network . '||' . $instance['instagram_id']]['metric'] = $instance['instagram_metric'];
-						$cache[$network . '||' . $instance['instagram_id']]['client_id'] = $instance['instagram_client_id'];
-						$cache[$network . '||' . $instance['instagram_id']]['user_id'] = $instance['instagram_user_id'];
+						$cache[$network . '||' . $instance['instagram_id']]['metric']            = $instance['instagram_metric'];
+						$cache[$network . '||' . $instance['instagram_id']]['client_id']         = $instance['instagram_client_id'];
+						$cache[$network . '||' . $instance['instagram_id']]['user_id']           = $instance['instagram_user_id'];
 					} else if($network == 'mailchimp') {
-                        $cache[$network . '||' . $instance['mailchimp_id']]['api_key'] = $instance['mailchimp_api_key'];
-                        $cache[$network . '||' . $instance['mailchimp_id']]['form_url'] = $instance['mailchimp_form_url'];
+                        $cache[$network . '||' . $instance['mailchimp_id']]['api_key']           = $instance['mailchimp_api_key'];
+                        $cache[$network . '||' . $instance['mailchimp_id']]['form_url']          = $instance['mailchimp_form_url'];
                     }
 
 				/* Update cache element if it exists */
@@ -181,19 +175,19 @@ class JD_SocialBoxWidget extends WP_Widget{
 
 					/* Update uncommon/special attributes */
 					if($network == 'facebook') {
-						$cache[$network . '||' . $instance['facebook_id']]['metric'] = $instance['facebook_metric'];
+						$cache[$network . '||' . $instance['facebook_id']]['metric']             = $instance['facebook_metric'];
 					} else if($network == 'twitter') {
-						$cache[$network . '||' . $instance['twitter_id']]['api_key'] = $instance['twitter_api_key'];
-						$cache[$network . '||' . $instance['twitter_id']]['api_secret'] = $instance['twitter_api_secret'];
-						$cache[$network . '||' . $instance['twitter_id']]['access_token'] = $instance['twitter_access_token'];
+						$cache[$network . '||' . $instance['twitter_id']]['api_key']             = $instance['twitter_api_key'];
+						$cache[$network . '||' . $instance['twitter_id']]['api_secret']          = $instance['twitter_api_secret'];
+						$cache[$network . '||' . $instance['twitter_id']]['access_token']        = $instance['twitter_access_token'];
 						$cache[$network . '||' . $instance['twitter_id']]['access_token_secret'] = $instance['twitter_access_token_secret'];
 					} else if($network == 'instagram') {
-						$cache[$network . '||' . $instance['instagram_id']]['metric'] = $instance['instagram_metric'];
-						$cache[$network . '||' . $instance['instagram_id']]['client_id'] = $instance['instagram_client_id'];
-						$cache[$network . '||' . $instance['instagram_id']]['user_id'] = $instance['instagram_user_id'];
+						$cache[$network . '||' . $instance['instagram_id']]['metric']            = $instance['instagram_metric'];
+						$cache[$network . '||' . $instance['instagram_id']]['client_id']         = $instance['instagram_client_id'];
+						$cache[$network . '||' . $instance['instagram_id']]['user_id']           = $instance['instagram_user_id'];
 					} else if($network == 'mailchimp') {
-                        $cache[$network . '||' . $instance['mailchimp_id']]['api_key'] = $instance['mailchimp_api_key'];
-                        $cache[$network . '||' . $instance['mailchimp_id']]['form_url'] = $instance['mailchimp_form_url'];
+                        $cache[$network . '||' . $instance['mailchimp_id']]['api_key']           = $instance['mailchimp_api_key'];
+                        $cache[$network . '||' . $instance['mailchimp_id']]['form_url']          = $instance['mailchimp_form_url'];
                     }
 				}
 			}
@@ -211,7 +205,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 *
 	 * @param Array $instance
 	 */
-	public function form($instance){
+	public function form($instance) {
 
 		/* Apply general default values */
 		$defaults = array(
@@ -225,23 +219,23 @@ class JD_SocialBoxWidget extends WP_Widget{
 
 		/* Set default values for common options of each network */
 		$pos = 1;
-		foreach(JD_SocialBoxHelper::getSupportedNetworks() as $network){
-			$defaults[$network . '_id'] = '';
-			$defaults[$network . '_default'] = 0;
+		foreach(JD_SocialBoxHelper::getSupportedNetworks() as $network) {
+			$defaults[$network . '_id']       = '';
+			$defaults[$network . '_default']  = 0;
 			$defaults[$network . '_position'] = $pos++;
 		}
 
 		/* Set default values for uncommon/special options */
-		$defaults['facebook_metric'] = 'likes';
-		$defaults['twitter_api_key'] = '';
-		$defaults['twitter_api_secret'] = '';
-		$defaults['twitter_access_token'] = '';
+		$defaults['facebook_metric']             = 'likes';
+		$defaults['twitter_api_key']             = '';
+		$defaults['twitter_api_secret']          = '';
+		$defaults['twitter_access_token']        = '';
 		$defaults['twitter_access_token_secret'] = '';
-		$defaults['instagram_metric'] = 'followed_by';
-		$defaults['instagram_client_id'] = '';
-		$defaults['instagram_user_id'] = '';
-        $defaults['mailchimp_api_key'] = '';
-        $defaults['mailchimp_form_url'] = '':
+		$defaults['instagram_metric']            = 'followed_by';
+		$defaults['instagram_client_id']         = '';
+		$defaults['instagram_user_id']           = '';
+        $defaults['mailchimp_api_key']           = '';
+        $defaults['mailchimp_form_url']          = '';
 
 		/* Merge defaults and actual option values */
 		$instance = wp_parse_args((array) $instance, $defaults);
@@ -250,7 +244,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		include JD_SOCIALBOX_PATH . '/views/widget/form.php';
 	}
 
-	private function sortByPosition($a, $b){
+	private function sortByPosition($a, $b) {
 
 		return $a['position'] - $b['position'];
 
@@ -263,9 +257,9 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 * @param String $id
 	 * @return String
 	 */
-	private function getNetworkLink($item){
+	private function getNetworkLink($item) {
 
-		switch($item['network']){
+		switch($item['network']) {
 
 			case 'facebook':
 				return "http://www.facebook.com/" . ((is_numeric($item['id'])) ? "profile.php?id={$id}" : $item['id']);
@@ -289,10 +283,9 @@ class JD_SocialBoxWidget extends WP_Widget{
 
 	}
 
-	private function getNetworkName($network){
+	private function getNetworkName($item) {
 
-		switch($network){
-
+		switch($item['network']) {
 			case 'facebook':
 				return __('Facebook', 'socialbox');
 			case 'twitter':
@@ -309,13 +302,14 @@ class JD_SocialBoxWidget extends WP_Widget{
 				return __('Forrst', 'socialbox');
 			case 'github':
 				return __('GitHub', 'socialbox');
+            case 'mailchimp':
+                return __('Newsletter', 'socialbox');
 		}
-
 	}
 
-	private function getSimpleNetworkMetric($network){
+	private function getNetworkMetric($item) {
 
-		switch($network){
+		switch($item['network']) {
 			case 'twitter':
 				return __('Followers', 'socialbox');
 			case 'youtube':
@@ -328,44 +322,36 @@ class JD_SocialBoxWidget extends WP_Widget{
 				return __('Followers', 'socialbox');
 			case 'github':
 				return __('Followers', 'socialbox');
+            case 'mailchimp':
+                return __('Subscribers', 'socialbox');
+            case 'facebook':
+                switch($item['metric']) {
+                    case 'likes':
+                        return __('Likes', 'socialbox');
+                    case 'checkins':
+                        return __('Checkins', 'socialbox');
+                    case 'were_here_count':
+                        return __('Were Here', 'socialbox');
+                    case 'talking_about_count':
+                        return __('Talking About', 'socialbox');
+                }
+                break;
+            case 'instagram':
+                switch($item['metric']) {
+                    case 'media':
+                        return __('Posts', 'socialbox');
+                    case 'followed_by':
+                        return __('Followers', 'socialbox');
+                    case 'follows':
+                        return __('Following', 'socialbox');
+                }
+                break;
 		}
 	}
 
-	private function getComplexNetworkMetric($network, $metric) {
+	private function getNetworkButtonText($item) {
 
-		/* Facebook */
-		if($network == 'facebook') {
-			switch($metric) {
-				case 'likes':
-					return __('Likes', 'socialbox');
-				case 'checkins':
-					return __('Checkins', 'socialbox');
-				case 'were_here_count':
-					return __('Were Here', 'socialbox');
-				case 'talking_about_count':
-					return __('Talking About', 'socialbox');
-			}
-		}
-
-		/* Instagram */
-		if($network == 'instagram') {
-			switch($metric) {
-				case 'media':
-					return __('Posts', 'socialbox');
-				case 'followed_by':
-					return __('Followers', 'socialbox');
-				case 'follows':
-					return __('Following', 'socialbox');
-			}
-		}
-
-		/* Default value */
-		return __('Unknown', 'socialbox');
-	}
-
-	private function getNetworkButtonText($network) {
-
-		switch($network){
+		switch($item['network']) {
 			case 'facebook':
 				return __('Like', 'socialbox');
 			case 'twitter':
@@ -382,12 +368,14 @@ class JD_SocialBoxWidget extends WP_Widget{
 				return __('Follow', 'socialbox');
 			case 'github':
 				return __('Follow', 'socialbox');
+            case 'mailchimp':
+                return __('Subscribe', 'socialbox');
 		}
 	}
 
-	private function getNetworkButtonHint($network) {
+	private function getNetworkButtonHint($item) {
 
-		switch($network){
+		switch($item['network']) {
 			case 'facebook':
 				return __('Like on Facebook', 'socialbox');
 			case 'twitter':
@@ -404,6 +392,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 				return __('Follow on Forrst', 'socialbox');
 			case 'github':
 				return __('Follow on GitHub', 'socialbox');
+            case 'mailchimp':
+                return __('Subscribe to newsletter', 'socialbox');
 		}
 	}
 
@@ -415,10 +405,9 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 */
 	private function getAllowButtons($style = 'classic') {
 
-		switch($style){
+		switch($style) {
 			case 'modern':
 				return false;
-
 			case 'classic':
 			case 'tutsflavor':
 			case 'dark':
@@ -436,15 +425,14 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 * @param String $style
 	 * @return Bool
 	 */
-	private function getIconSize($style = 'classic'){
+	private function getIconSize($style = 'classic') {
 
-		switch($style){
+		switch($style) {
 			case 'modern':
 			case 'tutsflavor':
 			case 'colorful':
 			case 'plainlarge':
 				return '32';
-
 			case 'classic':
 			case 'plainsmall':
 			case 'dark':
@@ -455,7 +443,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 
 	private function formatNumber($number, $useCompactNumbers) {
 
-		if($useCompactNumbers){
+		if($useCompactNumbers) {
 			return $this->getCompactNumber($number);
 		} else {
 			return number_format($number);
@@ -470,7 +458,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 */
 	private function getCompactNumber($number) {
 
-		switch(true){
+		switch(true) {
 			case $number < 1000:
 				return $number;
 
