@@ -9,12 +9,12 @@
 
 
 class JD_SocialBoxConnector{
-	
+
 	public static function get($item) {
-		
+
 		return call_user_func_array(array('JD_SocialBoxConnector', $item['network']), array($item));
 	}
-	
+
 	protected static function facebook($item) {
 
 		/* Fetch data from Graph API */

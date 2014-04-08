@@ -14,23 +14,23 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 * Create a widget instance and set the base infos
 	 */
 	public function __construct(){
-		
+
 		/* Widget settings */
 		$widgetOpts = array(
 			'classname' => 'socialbox',
 			'description' => __('Adds a super easy SocialBox Widget which displays the current numbers of Facebook Page Likes, Twitter, Instagram, Dribbble and Forrst Followers and YouTube and Vimeo Channel Subscriptions.', 'socialbox')
 		);
-		
+
 		/* Widget control settings */
 		$controlOpts = array(
 			'id_base' => 'socialbox'
 		);
-		
+
 		/* Create the widget */
 		parent::__construct('socialbox', 'SocialBox', $widgetOpts, $controlOpts);
-		
+
 	}
-	
+
 	/**
 	 * Display the actual widget
 	 *
@@ -38,16 +38,16 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 * @param Array $instance
 	 */
 	public function widget($args, $instance){
-		
+
 		extract($args);
-		
+
 		/* Get cache */
 		$cache = get_option('socialbox_cache', array());
-		
+
 		/* Build up network data array */
 		$networks = array();
 		foreach(JD_SocialBoxHelper::getSupportedNetworks() as $network){
-			
+
 			if( array_key_exists($network . '_id', $instance) and !empty($instance[$network . '_id']) ){
 
                 /* Get cache item */
@@ -76,10 +76,10 @@ class JD_SocialBoxWidget extends WP_Widget{
 				$networks[] = $new;
 
 			}
-			
+
 		}
 		usort($networks, array($this, 'sortByPosition'));
-		
+
 		/* Get additional options */
 		$style             = $instance['style'];
 		$newWindow         = $instance['new_window'];
@@ -89,18 +89,18 @@ class JD_SocialBoxWidget extends WP_Widget{
 		$forcedButtonWidth = ($instance['forced_button_width'] > 0) ? $instance['forced_button_width'] : false;
 		$allowButtons      = $this->getAllowButtons($style);
 		$iconSize          = $this->getIconSize($style);
-		
+
 		/* Before Widget HTML */
 		echo $before_widget;
-			
+
 		/* Social Box */
 		include JD_SOCIALBOX_PATH . '/views/widget/widget.php';
-		
+
 		/* After Widget HTML */
 		echo $after_widget;
-		
+
 	}
-	
+
 	/**
 	 * Update Widget settings and refresh data for this Widget
 	 *
@@ -109,7 +109,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 * @return Array
 	 */
 	public function update($newInstance, $oldInstance) {
-		
+
 		/* Update general widget options */
 		$instance = $oldInstance;
 		$instance['new_window']          = $newInstance['new_window'];
@@ -118,7 +118,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		$instance['compact_numbers']     = $newInstance['compact_numbers'];
 		$instance['forced_widget_width'] = ((is_numeric($newInstance['forced_widget_width'])) ? trim($newInstance['forced_widget_width']) : 0);
 		$instance['forced_button_width'] = ((is_numeric($newInstance['forced_button_width'])) ? trim($newInstance['forced_button_width']) : 0);
-		
+
 		/* Update values for common options for each network */
 		foreach(JD_SocialBoxHelper::getSupportedNetworks() as $network) {
 			$instance[$network . '_id']       = trim(strip_tags($newInstance[$network . '_id']));
@@ -141,7 +141,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		/* Update cache elements */
 		$cache = get_option('socialbox_cache', array());
 		foreach(JD_SocialBoxHelper::getSupportedNetworks() as $network) {
-			
+
 			/* Only if the ID is not blank */
 			if(!empty($instance[$network . '_id'])) {
 
@@ -199,20 +199,20 @@ class JD_SocialBoxWidget extends WP_Widget{
 			}
 		}
 		update_option('socialbox_cache', $cache);
-		
+
 		/* Force cache refresh */
 		JD_SocialBox::updateCache(true);
-		
+
 		return $instance;
 	}
-	
+
 	/**
 	 * Show the Widgets settings form
 	 *
 	 * @param Array $instance
 	 */
 	public function form($instance){
-		
+
 		/* Apply general default values */
 		$defaults = array(
 			'new_window'          => true,
@@ -245,17 +245,17 @@ class JD_SocialBoxWidget extends WP_Widget{
 
 		/* Merge defaults and actual option values */
 		$instance = wp_parse_args((array) $instance, $defaults);
-		
+
 		/* Include corresponding view */
 		include JD_SOCIALBOX_PATH . '/views/widget/form.php';
 	}
-	
+
 	private function sortByPosition($a, $b){
-	
+
 		return $a['position'] - $b['position'];
-	
+
 	}
-	
+
 	/**
 	 * Helper - Returns a link to the network specific user account
 	 *
@@ -286,13 +286,13 @@ class JD_SocialBoxWidget extends WP_Widget{
             case 'mailchimp':
                 return $item['form_url'];
 		}
-		
+
 	}
 
 	private function getNetworkName($network){
-		
+
 		switch($network){
-			
+
 			case 'facebook':
 				return __('Facebook', 'socialbox');
 			case 'twitter':
@@ -314,7 +314,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 	}
 
 	private function getSimpleNetworkMetric($network){
-		
+
 		switch($network){
 			case 'twitter':
 				return __('Followers', 'socialbox');
@@ -327,12 +327,12 @@ class JD_SocialBoxWidget extends WP_Widget{
 			case 'forrst':
 				return __('Followers', 'socialbox');
 			case 'github':
-				return __('Followers', 'socialbox');		
+				return __('Followers', 'socialbox');
 		}
 	}
 
 	private function getComplexNetworkMetric($network, $metric) {
-		
+
 		/* Facebook */
 		if($network == 'facebook') {
 			switch($metric) {
@@ -362,9 +362,9 @@ class JD_SocialBoxWidget extends WP_Widget{
 		/* Default value */
 		return __('Unknown', 'socialbox');
 	}
-	
+
 	private function getNetworkButtonText($network) {
-		
+
 		switch($network){
 			case 'facebook':
 				return __('Like', 'socialbox');
@@ -386,7 +386,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 	}
 
 	private function getNetworkButtonHint($network) {
-		
+
 		switch($network){
 			case 'facebook':
 				return __('Like on Facebook', 'socialbox');
@@ -414,7 +414,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 * @return Bool
 	 */
 	private function getAllowButtons($style = 'classic') {
-		
+
 		switch($style){
 			case 'modern':
 				return false;
@@ -437,14 +437,14 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 * @return Bool
 	 */
 	private function getIconSize($style = 'classic'){
-		
+
 		switch($style){
 			case 'modern':
 			case 'tutsflavor':
 			case 'colorful':
 			case 'plainlarge':
 				return '32';
-			
+
 			case 'classic':
 			case 'plainsmall':
 			case 'dark':
@@ -454,7 +454,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 	}
 
 	private function formatNumber($number, $useCompactNumbers) {
-		
+
 		if($useCompactNumbers){
 			return $this->getCompactNumber($number);
 		} else {

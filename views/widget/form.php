@@ -16,14 +16,14 @@
 	<h5><?php _e('General Settings', 'socialbox'); ?></h5>
 
 	<fieldset class="socialbox-general">
-		
+
 		<p>
 			<!-- Open New Window -->
 			<input type="checkbox" id="<?php echo $this->get_field_id('new_window'); ?>" name="<?php echo $this->get_field_name('new_window'); ?>" <?php if ($instance['new_window']) echo 'checked="checked"'; ?> class="checkbox" />
 			<label for="<?php echo $this->get_field_id('new_window'); ?>"><?php _e('Open Links in new Window/Tab', 'socialbox'); ?></label>
 			<br /><small><?php _e('Forces Links to be opened in a new window/tab', 'socialbox'); ?></small>
 		</p>
-		
+
 		<p>
 			<!-- Show Buttons -->
 			<input type="checkbox" id="<?php echo $this->get_field_id('show_buttons'); ?>" name="<?php echo $this->get_field_name('show_buttons'); ?>" <?php if ($instance['show_buttons']) echo 'checked="checked"'; ?> class="checkbox" />
@@ -55,9 +55,9 @@
 			<label for="<?php echo $this->get_field_id('compact_numbers'); ?>"><?php _e('Use Compact Numbers', 'socialbox'); ?></label>
 			<br /><small><?php _e('Show 12K instead of 12.300', 'socialbox'); ?></small>
 		</p>
-		
+
 	</fieldset>
-	
+
 	<!-- Facebook -->
 	<h5><?php _e('Facebook', 'socialbox'); ?></h5>
 
@@ -79,26 +79,26 @@
 				<option <?php if($instance['facebook_metric'] == 'were_here_count' ) echo 'selected="selected"'; ?> value="were_here_count">Were Here</option>
 			</select>
 		</p>
-		
+
 		<!-- Default -->
 		<div class="socialbox-default">
 			<label for="<?php echo $this->get_field_id('facebook_default'); ?>" title="<?php _e('Your fallback like count', 'socialbox'); ?>"><?php _e('Default:', 'socialbox'); ?></label>
 			<input type="text" id="<?php echo $this->get_field_id('facebook_default'); ?>" name="<?php echo $this->get_field_name('facebook_default'); ?>" value="<?php echo $instance['facebook_default']; ?>" size="6" class="widefat" />
 		</div>
-		
+
 		<!-- Position -->
 		<div class="socialbox-position">
 			<label for="<?php echo $this->get_field_id('facebook_position'); ?>" title="<?php _e('Display position within SocialBox', 'socialbox'); ?>"><?php _e('Position:', 'socialbox'); ?></label>
 			<input type="text" id="<?php echo $this->get_field_id('facebook_position'); ?>" name="<?php echo $this->get_field_name('facebook_position'); ?>" value="<?php echo $instance['facebook_position']; ?>" size="2" class="widefat" />
 		</div>
-		
+
 	</fieldset>
-	
+
 	<!-- Twitter -->
 	<h5><?php _e('Twitter', 'socialbox'); ?></h5>
 
 	<fieldset>
-		
+
 		<!-- Username -->
 		<p>
 			<label for="<?php echo $this->get_field_id('twitter_id'); ?>" title="<?php _e('Your Twitter screenname (e.g. envatowebdev)', 'socialbox'); ?>"><?php _e('Username', 'socialbox'); ?>:</label>
@@ -128,46 +128,46 @@
 			<label for="<?php echo $this->get_field_id('twitter_access_token_secret'); ?>" title="<?php _e('Your Twitter application access token secret', 'socialbox'); ?>"><?php _e('Access Token Secret', 'socialbox'); ?>:</label>
 			<input type="text" id="<?php echo $this->get_field_id('twitter_access_token_secret'); ?>" name="<?php echo $this->get_field_name('twitter_access_token_secret'); ?>" value="<?php echo $instance['twitter_access_token_secret']; ?>" class="widefat" />
 		</p>
-		
+
 		<!-- Default -->
 		<div class="socialbox-default">
 			<label for="<?php echo $this->get_field_id('twitter_default'); ?>" title="<?php _e('Your fallback follower count', 'socialbox'); ?>"><?php _e('Default:', 'socialbox'); ?></label>
 			<input type="text" id="<?php echo $this->get_field_id('twitter_default'); ?>" name="<?php echo $this->get_field_name('twitter_default'); ?>" value="<?php echo $instance['twitter_default']; ?>" size="6" class="widefat" />
 		</div>
-		
+
 		<!-- Position -->
 		<div class="socialbox-position">
 			<label for="<?php echo $this->get_field_id('twitter_position'); ?>" title="<?php _e('Display position within SocialBox', 'socialbox'); ?>"><?php _e('Position:', 'socialbox'); ?></label>
 			<input type="text" id="<?php echo $this->get_field_id('twitter_position'); ?>" name="<?php echo $this->get_field_name('twitter_position'); ?>" value="<?php echo $instance['twitter_position']; ?>" size="2" class="widefat" />
 		</div>
-		
+
 	</fieldset>
-	
+
 	<!-- YouTube -->
 	<h5><?php _e('YouTube', 'socialbox'); ?></h5>
 
 	<fieldset>
-		
+
 		<!-- ID -->
 		<p>
 			<label for="<?php echo $this->get_field_id('youtube_id'); ?>" title="<?php _e('Your YouTube Channel (e.g. nettutsplus)', 'socialbox'); ?>"><?php _e('Channel', 'socialbox'); ?>:</label>
 			<input type="text" id="<?php echo $this->get_field_id('youtube_id'); ?>" name="<?php echo $this->get_field_name('youtube_id'); ?>" value="<?php echo $instance['youtube_id']; ?>" class="widefat" />
 		</p>
-		
+
 		<!-- Default -->
 		<div class="socialbox-default">
 			<label for="<?php echo $this->get_field_id('youtube_default'); ?>" title="<?php _e('Your fallback subscriber count', 'socialbox'); ?>"><?php _e('Default:', 'socialbox'); ?></label>
 			<input type="text" id="<?php echo $this->get_field_id('youtube_default'); ?>" name="<?php echo $this->get_field_name('youtube_default'); ?>" value="<?php echo $instance['youtube_default']; ?>" size="6" class="widefat" />
 		</div>
-		
+
 		<!-- Position -->
 		<div class="socialbox-position">
 			<label for="<?php echo $this->get_field_id('youtube_position'); ?>" title="<?php _e('Display position within SocialBox', 'socialbox'); ?>"><?php _e('Position:', 'socialbox'); ?></label>
 			<input type="text" id="<?php echo $this->get_field_id('youtube_position'); ?>" name="<?php echo $this->get_field_name('youtube_position'); ?>" value="<?php echo $instance['youtube_position']; ?>" size="2" class="widefat" />
 		</div>
-		
+
 	</fieldset>
-	
+
 	<!-- Vimeo -->
 	<h5><?php _e('Vimeo', 'socialbox'); ?></h5>
 
@@ -178,26 +178,26 @@
 			<label for="<?php echo $this->get_field_id('vimeo_id'); ?>" title="<?php _e('Your Vimeo Channel', 'socialbox'); ?>"><?php _e('Channel', 'socialbox'); ?>:</label>
 			<input type="text" id="<?php echo $this->get_field_id('vimeo_id'); ?>" name="<?php echo $this->get_field_name('vimeo_id'); ?>" value="<?php echo $instance['vimeo_id']; ?>" class="widefat" />
 		</p>
-		
+
 		<!-- Default -->
 		<div class="socialbox-default">
 			<label for="<?php echo $this->get_field_id('vimeo_default'); ?>" title="<?php _e('Your fallback subscriber count', 'socialbox'); ?>"><?php _e('Default:', 'socialbox'); ?></label>
 			<input type="text" id="<?php echo $this->get_field_id('vimeo_default'); ?>" name="<?php echo $this->get_field_name('vimeo_default'); ?>" value="<?php echo $instance['vimeo_default']; ?>" size="6" class="widefat" />
 		</div>
-		
+
 		<!-- Position -->
 		<div class="socialbox-position">
 			<label for="<?php echo $this->get_field_id('vimeo_position'); ?>" title="<?php _e('Display position within SocialBox', 'socialbox'); ?>"><?php _e('Position:', 'socialbox'); ?></label>
 			<input type="text" id="<?php echo $this->get_field_id('vimeo_position'); ?>" name="<?php echo $this->get_field_name('vimeo_position'); ?>" value="<?php echo $instance['vimeo_position']; ?>" size="2" class="widefat" />
 		</div>
-		
+
 	</fieldset>
 
 	<!-- Instagram -->
 	<h5><?php _e('Instagram', 'socialbox'); ?></h5>
 
 	<fieldset>
-		
+
 		<!-- ID -->
 		<p>
 			<label for="<?php echo $this->get_field_id('instagram_id'); ?>" title="<?php _e('Your Dribbble username (e.g. envato)', 'socialbox'); ?>"><?php _e('Username', 'socialbox'); ?>:</label>
@@ -225,46 +225,46 @@
 				<option <?php if($instance['instagram_metric'] == 'follows' ) echo 'selected="selected"'; ?> value="follows">Following</option>
 			</select>
 		</p>
-		
+
 		<!-- Default -->
 		<div class="socialbox-default">
 			<label for="<?php echo $this->get_field_id('instagram_default'); ?>" title="<?php _e('Your fallback follower count', 'socialbox'); ?>"><?php _e('Default:', 'socialbox'); ?></label>
 			<input type="text" id="<?php echo $this->get_field_id('instagram_default'); ?>" name="<?php echo $this->get_field_name('instagram_default'); ?>" value="<?php echo $instance['instagram_default']; ?>" size="6" class="widefat" />
 		</div>
-		
+
 		<!-- Position -->
 		<div class="socialbox-position">
 			<label for="<?php echo $this->get_field_id('instagram_position'); ?>" title="<?php _e('Display position within SocialBox', 'socialbox'); ?>"><?php _e('Position:', 'socialbox'); ?></label>
 			<input type="text" id="<?php echo $this->get_field_id('instagram_position'); ?>" name="<?php echo $this->get_field_name('instagram_position'); ?>" value="<?php echo $instance['instagram_position']; ?>" size="2" class="widefat" />
 		</div>
-		
+
 	</fieldset>
-	
+
 	<!-- Dribbble -->
 	<h5><?php _e('Dribbble', 'socialbox'); ?></h5>
 
 	<fieldset>
-		
+
 		<!-- ID -->
 		<p>
 			<label for="<?php echo $this->get_field_id('dribbble_id'); ?>" title="<?php _e('Your Dribbble username (e.g. envato)', 'socialbox'); ?>"><?php _e('Username', 'socialbox'); ?>:</label>
 			<input type="text" id="<?php echo $this->get_field_id('dribbble_id'); ?>" name="<?php echo $this->get_field_name('dribbble_id'); ?>" value="<?php echo $instance['dribbble_id']; ?>" class="widefat" />
 		</p>
-		
+
 		<!-- Default -->
 		<div class="socialbox-default">
 			<label for="<?php echo $this->get_field_id('dribbble_default'); ?>" title="<?php _e('Your fallback follower count', 'socialbox'); ?>"><?php _e('Default:', 'socialbox'); ?></label>
 			<input type="text" id="<?php echo $this->get_field_id('dribbble_default'); ?>" name="<?php echo $this->get_field_name('dribbble_default'); ?>" value="<?php echo $instance['dribbble_default']; ?>" size="6" class="widefat" />
 		</div>
-		
+
 		<!-- Position -->
 		<div class="socialbox-position">
 			<label for="<?php echo $this->get_field_id('dribbble_position'); ?>" title="<?php _e('Display position within SocialBox', 'socialbox'); ?>"><?php _e('Position:', 'socialbox'); ?></label>
 			<input type="text" id="<?php echo $this->get_field_id('dribbble_position'); ?>" name="<?php echo $this->get_field_name('dribbble_position'); ?>" value="<?php echo $instance['dribbble_position']; ?>" size="2" class="widefat" />
 		</div>
-		
+
 	</fieldset>
-	
+
 	<!-- Forrst -->
 	<h5><?php _e('Forrst', 'socialbox'); ?></h5>
 
@@ -275,19 +275,19 @@
 			<label for="<?php echo $this->get_field_id('forrst_id'); ?>" title="<?php _e('Your Forrst username', 'socialbox'); ?>"><?php _e('Username', 'socialbox'); ?>:</label>
 			<input type="text" id="<?php echo $this->get_field_id('forrst_id'); ?>" name="<?php echo $this->get_field_name('forrst_id'); ?>" value="<?php echo $instance['forrst_id']; ?>" class="widefat" />
 		</p>
-		
+
 		<!-- Default -->
 		<div class="socialbox-default">
 			<label for="<?php echo $this->get_field_id('forrst_default'); ?>" title="<?php _e('Your fallback follower count', 'socialbox'); ?>"><?php _e('Default:', 'socialbox'); ?></label>
 			<input type="text" id="<?php echo $this->get_field_id('forrst_default'); ?>" name="<?php echo $this->get_field_name('forrst_default'); ?>" value="<?php echo $instance['forrst_default']; ?>" size="6" class="widefat" />
 		</div>
-		
+
 		<!-- Position -->
 		<div class="socialbox-position">
 			<label for="<?php echo $this->get_field_id('forrst_position'); ?>" title="<?php _e('Display position within SocialBox', 'socialbox'); ?>"><?php _e('Position:', 'socialbox'); ?></label>
 			<input type="text" id="<?php echo $this->get_field_id('forrst_position'); ?>" name="<?php echo $this->get_field_name('forrst_position'); ?>" value="<?php echo $instance['forrst_position']; ?>" size="2" class="widefat" />
 		</div>
-		
+
 	</fieldset>
 
 	<!-- GitHub -->
@@ -300,19 +300,19 @@
 			<label for="<?php echo $this->get_field_id('github_id'); ?>" title="<?php _e('Your gitHub username', 'socialbox'); ?>"><?php _e('Username', 'socialbox'); ?>:</label>
 			<input type="text" id="<?php echo $this->get_field_id('github_id'); ?>" name="<?php echo $this->get_field_name('github_id'); ?>" value="<?php echo $instance['github_id']; ?>" class="widefat"  />
 		</p>
-		
+
 		<!-- Default -->
 		<div class="socialbox-default">
 			<label for="<?php echo $this->get_field_id('github_default'); ?>" title="<?php _e('Your fallback follower count', 'socialbox'); ?>"><?php _e('Default:', 'socialbox'); ?></label>
 			<input type="text" id="<?php echo $this->get_field_id('github_default'); ?>" name="<?php echo $this->get_field_name('github_default'); ?>" value="<?php echo $instance['github_default']; ?>" size="6" class="widefat" />
 		</div>
-		
+
 		<!-- Position -->
 		<div class="socialbox-position">
 			<label for="<?php echo $this->get_field_id('github_position'); ?>" title="<?php _e('Display position within SocialBox', 'socialbox'); ?>"><?php _e('Position:', 'socialbox'); ?></label>
 			<input type="text" id="<?php echo $this->get_field_id('github_position'); ?>" name="<?php echo $this->get_field_name('github_position'); ?>" value="<?php echo $instance['github_position']; ?>" size="2" class="widefat" />
 		</div>
-		
+
 	</fieldset>
 
     <!-- MailChimp -->
@@ -375,7 +375,7 @@
 
 	<!-- Support Note -->
 	<fieldset class="socialbox-support">
-		
+
 		<p>
 			<small>
 				<?php _e('Need help?', 'socialbox') ?> <a href="http://support.jonasdoebertin.net/" title="<?php _e('Visit the support page!', 'socialbox') ?>"><?php _e('Get some!', 'socialbox'); ?></a>
