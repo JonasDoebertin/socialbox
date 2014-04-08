@@ -49,16 +49,20 @@ class JD_SocialBoxWidget extends WP_Widget{
 		foreach(JD_SocialBoxHelper::getSupportedNetworks() as $network){
 			
 			if( array_key_exists($network . '_id', $instance) and !empty($instance[$network . '_id']) ){
-				
-				$new = array(
-					'type' 				=> $network,
-					'id' 				=> $instance[$network . '_id'],
-					'position' 			=> $instance[$network . '_position'],
-					'count' 			=> ( $cache[$network . '||' . $instance[$network . '_id']]['value'] !== null )? $cache[$network . '||' . $instance[$network . '_id']]['value'] : $instance[$network . '_default'],
-					'link' 				=> $this->getNetworkLink($network, $instance[$network . '_id']),
-					'name' 				=> $this->getNetworkName($network),
-					'buttonText' 		=> $this->getNetworkButtonText($network),
-					'buttonHint' 		=> $this->getNetworkButtonHint($network)
+
+                /* Get cache item */
+                $cacheItem = $cache[$network . '||' . $instance[$network . '_id']];
+
+                /* Build data object */
+                $new = array(
+					'type'       => $network,
+					'id'         => $instance[$network . '_id'],
+					'position'   => $instance[$network . '_position'],
+					'count'      => ($cacheItem['value'] !== null) ? $cacheItem['value'] : $instance[$network . '_default'],
+					'link'       => $this->getNetworkLink($cacheItem), //$network, $instance[$network . '_id']),
+					'name'       => $this->getNetworkName($network),
+					'buttonText' => $this->getNetworkButtonText($network),
+					'buttonHint' => $this->getNetworkButtonHint($network)
 				);
 
 				/* Set metric */
@@ -131,6 +135,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 		$instance['instagram_user_id'] = $newInstance['instagram_user_id'];
 		$instance['instagram_client_id'] = $newInstance['instagram_client_id'];
 		$instance['instagram_metric'] = $newInstance['instagram_metric'];
+        $instance['mailchimp_api_key'] = $newInstance['mailchimp_api_key'];
+        $instance['mailchimp_form_url'] = $newInstance['mailchimp_form_url'];
 
 		/* Update cache elements */
 		$cache = get_option('socialbox_cache', array());
@@ -162,7 +168,10 @@ class JD_SocialBoxWidget extends WP_Widget{
 						$cache[$network . '||' . $instance['instagram_id']]['metric'] = $instance['instagram_metric'];
 						$cache[$network . '||' . $instance['instagram_id']]['client_id'] = $instance['instagram_client_id'];
 						$cache[$network . '||' . $instance['instagram_id']]['user_id'] = $instance['instagram_user_id'];
-					}
+					} else if($network == 'mailchimp') {
+                        $cache[$network . '||' . $instance['mailchimp_id']]['api_key'] = $instance['mailchimp_api_key'];
+                        $cache[$network . '||' . $instance['mailchimp_id']]['form_url'] = $instance['mailchimp_form_url'];
+                    }
 
 				/* Update cache element if it exists */
 				} else {
@@ -182,7 +191,10 @@ class JD_SocialBoxWidget extends WP_Widget{
 						$cache[$network . '||' . $instance['instagram_id']]['metric'] = $instance['instagram_metric'];
 						$cache[$network . '||' . $instance['instagram_id']]['client_id'] = $instance['instagram_client_id'];
 						$cache[$network . '||' . $instance['instagram_id']]['user_id'] = $instance['instagram_user_id'];
-					}
+					} else if($network == 'mailchimp') {
+                        $cache[$network . '||' . $instance['mailchimp_id']]['api_key'] = $instance['mailchimp_api_key'];
+                        $cache[$network . '||' . $instance['mailchimp_id']]['form_url'] = $instance['mailchimp_form_url'];
+                    }
 				}
 			}
 		}
@@ -228,6 +240,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 		$defaults['instagram_metric'] = 'followed_by';
 		$defaults['instagram_client_id'] = '';
 		$defaults['instagram_user_id'] = '';
+        $defaults['mailchimp_api_key'] = '';
+        $defaults['mailchimp_form_url'] = '':
 
 		/* Merge defaults and actual option values */
 		$instance = wp_parse_args((array) $instance, $defaults);
@@ -249,26 +263,28 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 * @param String $id
 	 * @return String
 	 */
-	private function getNetworkLink($network, $id){
-		
-		switch($network){
-			
+	private function getNetworkLink($item){
+
+		switch($item['network']){
+
 			case 'facebook':
-				return "http://www.facebook.com/" . ((is_numeric($id)) ? "profile.php?id={$id}" : $id);
+				return "http://www.facebook.com/" . ((is_numeric($item['id'])) ? "profile.php?id={$id}" : $item['id']);
 			case 'twitter':
-				return "http://twitter.com/{$id}";
+				return "http://twitter.com/{$item['id']}";
 			case 'youtube':
-				return "http://www.youtube.com/user/{$id}";
+				return "http://www.youtube.com/user/{$item['id']}";
 			case 'vimeo':
-				return "http://vimeo.com/channels/{$id}";
+				return "http://vimeo.com/channels/{$item['id']}";
 			case 'instagram':
-				return "http://instagram.com/{$id}";
+				return "http://instagram.com/{$item['id']}";
 			case 'dribbble':
-				return "http://dribbble.com/{$id}";
+				return "http://dribbble.com/{$item['id']}";
 			case 'forrst':
-				return "http://forrst.com/people/{$id}";
+				return "http://forrst.com/people/{$item['id']}";
 			case 'github':
-				return "https://github.com/{$id}";	
+				return "https://github.com/{$item['id']}";
+            case 'mailchimp':
+                return $item['form_url'];
 		}
 		
 	}

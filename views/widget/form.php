@@ -315,6 +315,43 @@
 		
 	</fieldset>
 
+    <!-- MailChimp -->
+    <h5><?php _e('MailChimp', 'socialbox'); ?></h5>
+
+    <fieldset>
+
+        <!-- ID -->
+        <p>
+            <label for="<?php echo $this->get_field_id('mailchimp_id'); ?>" title="<?php _e('Your MailChimp List ID', 'socialbox'); ?>"><?php _e('List ID', 'socialbox'); ?>:</label>
+            <input type="text" id="<?php echo $this->get_field_id('mailchimp_id'); ?>" name="<?php echo $this->get_field_name('mailchimp_id'); ?>" value="<?php echo $instance['mailchimp_id']; ?>" class="widefat" />
+        </p>
+
+        <!-- API Key -->
+        <p>
+            <label for="<?php echo $this->get_field_id('mailchimp_api_key'); ?>" title="<?php _e('Your MailChimp API Key', 'socialbox'); ?>"><?php _e('API Key', 'socialbox'); ?>:</label>
+            <input type="text" id="<?php echo $this->get_field_id('mailchimp_api_key'); ?>" name="<?php echo $this->get_field_name('mailchimp_api_key'); ?>" value="<?php echo $instance['mailchimp_api_key']; ?>" class="widefat" />
+        </p>
+
+        <!-- Subscription Form Url -->
+        <p>
+            <label for="<?php echo $this->get_field_id('mailchimp_form_url'); ?>" title="<?php _e('Your Subscribtion form URL', 'socialbox'); ?>"><?php _e('Subscription Form URL', 'socialbox'); ?>:</label>
+            <input type="text" id="<?php echo $this->get_field_id('mailchimp_form_url'); ?>" name="<?php echo $this->get_field_name('mailchimp_form_url'); ?>" value="<?php echo $instance['mailchimp_form_url']; ?>" class="widefat" />
+        </p>
+
+        <!-- Default -->
+        <div class="socialbox-default">
+            <label for="<?php echo $this->get_field_id('mailchimp_default'); ?>" title="<?php _e('Your fallback subscribers count', 'socialbox'); ?>"><?php _e('Default:', 'socialbox'); ?></label>
+            <input type="text" id="<?php echo $this->get_field_id('mailchimp_default'); ?>" name="<?php echo $this->get_field_name('mailchimp_default'); ?>" value="<?php echo $instance['mailchimp_default']; ?>" size="6" class="widefat" />
+        </div>
+
+        <!-- Position -->
+        <div class="socialbox-position">
+            <label for="<?php echo $this->get_field_id('mailchimp_position'); ?>" title="<?php _e('Display position within SocialBox', 'socialbox'); ?>"><?php _e('Position:', 'socialbox'); ?></label>
+            <input type="text" id="<?php echo $this->get_field_id('mailchimp_position'); ?>" name="<?php echo $this->get_field_name('mailchimp_position'); ?>" value="<?php echo $instance['mailchimp_position']; ?>" size="2" class="widefat" />
+        </div>
+
+    </fieldset>
+
 	<!-- Additional Settings -->
 	<h5><?php _e('Additional Settings', 'socialbox'); ?></h5>
 

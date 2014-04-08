@@ -214,6 +214,12 @@ class JD_SocialBoxConnector{
 		);
 	}
 
+    protected static function mailchimp($item) {
+
+        
+
+    }
+
 	/**
 	 * Checks for unseccessful WP Remote requests
 	 * @param  Mixed $result
