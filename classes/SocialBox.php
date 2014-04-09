@@ -465,7 +465,10 @@ class JD_SocialBox{
 	 */
 	public static function updateCache($forced = false) {
 
-		/* Abort if no widget has been set up */
+		/* Rebuild cache structure */
+        self::rebuildCache();
+
+        /* Abort if no widget has been set up */
 		$cache = get_option('socialbox_cache', null);
 		if( !is_array($cache) ){
 			return;
@@ -520,6 +523,44 @@ class JD_SocialBox{
 		$cache[$item['network'] . '||' . $item['id']] = $item;
 		update_option('socialbox_cache', $cache);
 	}
+
+    /**
+     * Removes all unused items from the cache
+     *
+     * Will be called right before updating the cache
+     */
+    public static function rebuildCache() {
+
+        /* Get all SocialBox widget instances */
+        $widgets = get_option('widget_socialbox', array());
+        if(!is_array($widgets))
+            $widgets = array();
+
+        /* Make a list of all used networks */
+        $items = array();
+        foreach($widgets as $widget) {
+
+            /* Skip configuration values */
+            if(!is_array($widget) or !array_key_exists('new_window', $widget)) {
+                continue;
+            }
+
+            foreach(JD_SocialBoxHelper::getSupportedNetworks() as $network) {
+                if(!empty($widget[$network . '_id'])) {
+                    $items[] = $network . '||' . $widget[$network . '_id'];
+                }
+            }
+        }
+
+        /* Remove all cache items that are not on the list */
+        $cache = get_option('socialbox_cache', array());
+        foreach($cache as $key => $value) {
+            if(!in_array($key, $items)) {
+                unset($cache[$key]);
+            }
+        }
+        update_option('socialbox_cache', $cache);
+    }
 
 	/**
 	 * Return raw cache contents
