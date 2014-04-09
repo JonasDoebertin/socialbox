@@ -45,7 +45,7 @@
 
 <div class="socialbox-help-section--quick" id="socialbox-quick-setup">
 	<h3><?php _e('Quick Setup', 'socialbox'); ?></h3>
-	
+
 	<p><?php _e('There is really not much to it. Just follow these simple steps:', 'socialbox'); ?></p>
 	<ol>
 		<li><p><?php _e('Install and activate the SocialBox plugin (by the time you\'re reading this, you\'ve already completed this step).', 'socialbox'); ?></p></li>
@@ -57,9 +57,9 @@
 
 <div class="socialbox-help-section--widget" id="socialbox-widget-options">
 	<h3><?php _e('Widget Options', 'socialbox'); ?></h3>
-	
+
 	<img class="socialbox-help-image--center" src="<?php echo JD_SOCIALBOX_URL ?>/assets/img/help/general-settings.png" alt="General Settings" />
-	
+
 	<h4><?php _e('Open Links in new Window/Tab', 'socialbox'); ?></h4>
 	<p><?php _e('This option adds <code>target="_blank"</code> to all links within SocialBox. This forces the browser to open them in a new window or tab. This way, a user doesn\'t have to leave your page when clicking on a &raquo;Follow&laquo; or &raquo;Subscribe&laquo; button.', 'socialbox'); ?></p>
 
@@ -146,5 +146,19 @@
 	<img class="socialbox-help-image--center" src="<?php echo JD_SOCIALBOX_URL ?>/assets/img/help/github-settings.png" alt="GitHub Settings" />
 	<h4><?php _e('Username', 'socialbox'); ?></h4>
 	<p><?php _e('Please enter the username of the account you want to showcase.', 'socialbox'); ?></p>
+
+    <img class="socialbox-help-image--center" src="<?php echo JD_SOCIALBOX_URL ?>/assets/img/help/mailchimp-settings.png" alt="MailChimp Settings" />
+    <h4><?php _e('List ID', 'socialbox'); ?></h4>
+    <p><?php _e('Please enter the ID of the list you want to showcase. You can find the List ID on the this page: Lists &raquo; <strong>Your List</strong> &raquo; Settings &raquo; List name & defaults&laquo;', 'socialbox'); ?></p>
+
+    <h4><?php _e('API Key', 'socialbox'); ?></h4>
+    <p><?php _e('Pulling in the numbers from MailChimp needs some more steps than simply entering your List ID. Since MailChimp doesn\'t allow public access to it\'s lists, you need to set up an API Key first.', 'socialbox'); ?></p>
+    <ol>
+        <li><p><?php printf(__('Visit %s MailChimp %s and log in with your account credentials.', 'socialbox'), '<a href="https://admin.mailchimp.com.com/">', '</a>'); ?></p></li>
+        <li><p><?php printf(__('Go to %s Your Account &raquo; Extras &raquo; API keys %s and click &raquo;Create A Key&laquo;. A new API Key will be generated and added to the list.', 'socialbox'), '<a href="https://admin.mailchimp.com/account/api/">', '</a>'); ?></p></li>
+    </ol>
+
+    <h4><?php _e('Subscription Form URL', 'socialbox'); ?></h4>
+    <p><?php _e('Enter the URL of your subscription form or any other website. The email icon and the &raquo;Subscribe&laquo; button will link here.', 'socialbox'); ?></p>
 
 </div>
