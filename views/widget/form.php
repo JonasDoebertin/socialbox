@@ -399,7 +399,7 @@
 
 		<p>
 			<small>
-				<?php _e('Need help?', 'socialbox') ?> <a href="http://support.jonasdoebertin.net/" title="<?php _e('Visit the support page!', 'socialbox') ?>"><?php _e('Get some!', 'socialbox'); ?></a>
+				<?php _e('Need help configuring this widget?', 'socialbox') ?> <a href="http://codecanyon.net/user/jdpowered#contact" title="<?php _e('Send a message!', 'socialbox') ?>"><?php _e('Get some!', 'socialbox'); ?></a>
 			</small>
 		</p>
 
