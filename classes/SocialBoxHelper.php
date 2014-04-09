@@ -29,10 +29,10 @@ class JD_SocialBoxHelper{
 
 		/* Set up default values */
 		$defaults = array(
-			'update_interval' =>	180,
-			'disable_ssl' =>		0,
-			'enable_log' =>			0,
-			'log_entries' =>		20
+			'update_interval' => 180,
+			'disable_ssl'     => 0,
+			'enable_log'      => 0,
+			'log_entries'     => 20
 		);
 
 		/* Load existing values */
@@ -43,7 +43,5 @@ class JD_SocialBoxHelper{
 
 		/* Return requested option value */
 		return $options[$key];
-
 	}
-
 }
