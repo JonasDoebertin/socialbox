@@ -130,6 +130,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		$instance['instagram_user_id']           = $newInstance['instagram_user_id'];
 		$instance['instagram_client_id']         = $newInstance['instagram_client_id'];
 		$instance['instagram_metric']            = $newInstance['instagram_metric'];
+        $instance['dribbble_metric']             = $newInstance['dribbble_metric'];
         $instance['mailchimp_api_key']           = $newInstance['mailchimp_api_key'];
         $instance['mailchimp_form_url']          = $newInstance['mailchimp_form_url'];
 
@@ -165,6 +166,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 						$cache[$network . '||' . $instance['instagram_id']]['metric']            = $instance['instagram_metric'];
 						$cache[$network . '||' . $instance['instagram_id']]['client_id']         = $instance['instagram_client_id'];
 						$cache[$network . '||' . $instance['instagram_id']]['user_id']           = $instance['instagram_user_id'];
+                    } else if($network == 'dribbble') {
+                        $cache[$network . '||' . $instance['dribbble_id']]['metric']             = $instance['dribbble_metric'];
 					} else if($network == 'mailchimp') {
                         $cache[$network . '||' . $instance['mailchimp_id']]['api_key']           = $instance['mailchimp_api_key'];
                         $cache[$network . '||' . $instance['mailchimp_id']]['form_url']          = $instance['mailchimp_form_url'];
@@ -190,6 +193,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 						$cache[$network . '||' . $instance['instagram_id']]['metric']            = $instance['instagram_metric'];
 						$cache[$network . '||' . $instance['instagram_id']]['client_id']         = $instance['instagram_client_id'];
 						$cache[$network . '||' . $instance['instagram_id']]['user_id']           = $instance['instagram_user_id'];
+                    } else if($network == 'dribbble') {
+                        $cache[$network . '||' . $instance['dribbble_id']]['metric']             = $instance['dribbble_metric'];
 					} else if($network == 'mailchimp') {
                         $cache[$network . '||' . $instance['mailchimp_id']]['api_key']           = $instance['mailchimp_api_key'];
                         $cache[$network . '||' . $instance['mailchimp_id']]['form_url']          = $instance['mailchimp_form_url'];
@@ -240,6 +245,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		$defaults['instagram_metric']            = 'followed_by';
 		$defaults['instagram_client_id']         = '';
 		$defaults['instagram_user_id']           = '';
+        $defaults['dribbble_metric']             = 'followers_count';
         $defaults['mailchimp_api_key']           = '';
         $defaults['mailchimp_form_url']          = '';
 
@@ -320,8 +326,6 @@ class JD_SocialBoxWidget extends WP_Widget{
 				return __('Followers', 'socialbox');
 			case 'youtube':
 				return __('Subscribers', 'socialbox');
-			case 'dribbble':
-				return __('Followers', 'socialbox');
 			case 'forrst':
 				return __('Followers', 'socialbox');
 			case 'github':
@@ -356,6 +360,20 @@ class JD_SocialBoxWidget extends WP_Widget{
                         return __('Subscribers', 'socialbox');
                     case 'total_videos':
                         return __('Videos', 'socialbox');
+                }
+                break;
+            case 'dribbble':
+                switch($item['metric']) {
+                    case 'followers_count':
+                        return __('Followers', 'socialbox');
+                    case 'likes_received_count':
+                        return __('Likes', 'socialbox');
+                    case 'comments_received_count':
+                        return __('Comments', 'socialbox');
+                    case 'rebounds_received_count':
+                        return __('Rebounds', 'socialbox');
+                    case 'shots_count':
+                        return __('Shots', 'socialbox');
                 }
                 break;
 		}

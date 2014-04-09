@@ -260,6 +260,18 @@
 			<input type="text" id="<?php echo $this->get_field_id('dribbble_id'); ?>" name="<?php echo $this->get_field_name('dribbble_id'); ?>" value="<?php echo $instance['dribbble_id']; ?>" class="widefat" />
 		</p>
 
+        <!-- Metric -->
+        <p>
+            <label for="<?php echo $this->get_field_id('dribbble_metric'); ?>" title="<?php _e('What metric shall be displayed', 'socialbox'); ?>"><?php _e('Metric', 'socialbox'); ?>:</label>
+            <select id="<?php echo $this->get_field_id('dribbble_metric'); ?>" name="<?php echo $this->get_field_name('dribbble_metric'); ?>" class="widefat">
+                <option <?php if($instance['dribbble_metric'] == 'followers_count' ) echo 'selected="selected"'; ?> value="followers_count">Followers</option>
+                <option <?php if($instance['dribbble_metric'] == 'shots_count' ) echo 'selected="selected"'; ?> value="shots_count">Shots</option>
+                <option <?php if($instance['dribbble_metric'] == 'likes_received_count' ) echo 'selected="selected"'; ?> value="likes_received_count">Likes Received</option>
+                <option <?php if($instance['dribbble_metric'] == 'comments_received_count' ) echo 'selected="selected"'; ?> value="comments_received_count">Comments Received</option>
+                <option <?php if($instance['dribbble_metric'] == 'rebounds_received_count' ) echo 'selected="selected"'; ?> value="rebounds_received_count">Rebounds Received</option>
+            </select>
+        </p>
+
 		<!-- Default -->
 		<div class="socialbox-default">
 			<label for="<?php echo $this->get_field_id('dribbble_default'); ?>" title="<?php _e('Your fallback follower count', 'socialbox'); ?>"><?php _e('Default:', 'socialbox'); ?></label>

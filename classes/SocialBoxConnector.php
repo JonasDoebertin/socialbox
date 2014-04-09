@@ -158,14 +158,14 @@ class JD_SocialBoxConnector{
 		$data = json_decode(wp_remote_retrieve_body($result), true);
 
 		/* Check for incorrect data */
-		if(!is_array($data) or !isset($data['followers_count'])){
+		if(!is_array($data) or !isset($data[$item['metric']])){
 			return array('successful' => false);
 		}
 
 		/* Return value */
 		return array(
 			'successful' => true,
-			'value'      => $data['followers_count']
+			'value'      => $data[$item['metric']]
 		);
 	}
 
