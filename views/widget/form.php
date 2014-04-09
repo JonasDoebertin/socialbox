@@ -179,6 +179,15 @@
 			<input type="text" id="<?php echo $this->get_field_id('vimeo_id'); ?>" name="<?php echo $this->get_field_name('vimeo_id'); ?>" value="<?php echo $instance['vimeo_id']; ?>" class="widefat" />
 		</p>
 
+        <!-- Metric -->
+        <p>
+            <label for="<?php echo $this->get_field_id('vimeo_metric'); ?>" title="<?php _e('What metric shall be displayed', 'socialbox'); ?>"><?php _e('Metric', 'socialbox'); ?>:</label>
+            <select id="<?php echo $this->get_field_id('vimeo_metric'); ?>" name="<?php echo $this->get_field_name('vimeo_metric'); ?>" class="widefat">
+                <option <?php if($instance['vimeo_metric'] == 'total_subscribers' ) echo 'selected="selected"'; ?> value="total_subscribers">Subscribers</option>
+                <option <?php if($instance['vimeo_metric'] == 'total_videos' ) echo 'selected="selected"'; ?> value="total_videos">Videos</option>
+            </select>
+        </p>
+
 		<!-- Default -->
 		<div class="socialbox-default">
 			<label for="<?php echo $this->get_field_id('vimeo_default'); ?>" title="<?php _e('Your fallback subscriber count', 'socialbox'); ?>"><?php _e('Default:', 'socialbox'); ?></label>
