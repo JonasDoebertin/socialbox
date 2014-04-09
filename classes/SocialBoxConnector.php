@@ -23,7 +23,7 @@ class JD_SocialBoxConnector{
 	protected static function facebook($item) {
 
 		/* Fetch data from Graph API */
-		$result = wp_remote_get('https://graph.facebook.com/' . $item['id'], array('sslverify' => false));
+		$result = self::remoteGet('https://graph.facebook.com/' . $item['id']);
 
 		/* Check for common errors */
 		if(self::wasCommonError($result)) {
@@ -73,7 +73,7 @@ class JD_SocialBoxConnector{
 
 	protected static function youtube($item) {
 		/* Fetch data from Youtube API */
-		$result = wp_remote_get('http://gdata.youtube.com/feeds/api/users/' . $item['id']);
+		$result = self::remoteGet('http://gdata.youtube.com/feeds/api/users/' . $item['id']);
 
 		/* Check for common errors */
 		if(self::wasCommonError($result)) {
@@ -97,7 +97,7 @@ class JD_SocialBoxConnector{
 
 	protected static function vimeo($item) {
 		/* Fetch data from Vimeo API */
-		$result = wp_remote_get(sprintf('http://vimeo.com/api/v2/channel/%s/info.json', $item['id']));
+		$result = self::remoteGet(sprintf('http://vimeo.com/api/v2/channel/%s/info.json', $item['id']));
 
 		/* Check for common errors */
 		if(self::wasCommonError($result)) {
@@ -122,7 +122,7 @@ class JD_SocialBoxConnector{
 	protected static function instagram($item) {
 
 		/* Fetch data from Graph API */
-		$result = wp_remote_get(sprintf('https://api.instagram.com/v1/users/%s?client_id=%s', $item['user_id'], $item['client_id']), array('sslverify' => false));
+		$result = self::remoteGet(sprintf('https://api.instagram.com/v1/users/%s?client_id=%s', $item['user_id'], $item['client_id']));
 
 		/* Check for common errors */
 		if(self::wasCommonError($result)) {
@@ -147,7 +147,7 @@ class JD_SocialBoxConnector{
 	protected static function dribbble($item) {
 
 		/* Fetch data from Dribbble API */
-		$result = wp_remote_get('http://api.dribbble.com/players/' . $item['id']);
+		$result = self::remoteGet('http://api.dribbble.com/players/' . $item['id']);
 
 		/* Check for common errors */
 		if(self::wasCommonError($result)) {
@@ -172,7 +172,7 @@ class JD_SocialBoxConnector{
 	protected static function forrst($item) {
 
 		/* Fetch data from Forrst API */
-		$result = wp_remote_get('https://forrst.com/api/v2/users/info?username=' . $item['id'], array('sslverify' => false));
+		$result = self::remoteGet('https://forrst.com/api/v2/users/info?username=' . $item['id']);
 
 		/* Check for common errors */
 		if(self::wasCommonError($result)) {
@@ -197,7 +197,7 @@ class JD_SocialBoxConnector{
 	protected static function github($item) {
 
 		/* Fetch data from GitHub API */
-		$result = wp_remote_get('https://api.github.com/users/' . $item['id'], array('sslverify' => false));
+		$result = self::remoteGet('https://api.github.com/users/' . $item['id']);
 
 		/* Check for common errors */
 		if(self::wasCommonError($result)) {
@@ -238,7 +238,7 @@ class JD_SocialBoxConnector{
         );
 
         /* Fetch data from MailChimp API v2.0 */
-        $result = wp_remote_post(sprintf('https://%s.api.mailchimp.com/2.0/lists/list.json', $datacenter), array('sslverify' => false, 'body' => $data));
+        $result = self::remotePost(sprintf('https://%s.api.mailchimp.com/2.0/lists/list.json', $datacenter), $data);
 
         /* Check for common errors */
         if(self::wasCommonError($result)) {
@@ -268,4 +268,27 @@ class JD_SocialBoxConnector{
 	protected static function wasCommonError($result) {
 		return is_wp_error($result) or (wp_remote_retrieve_response_code($result) != 200);
 	}
+
+    /**
+     * Builds an argument array for use with the wp_remote_* functions
+     *
+     * @param  mixed $body
+     * @return array
+     */
+    protected static function getRequestArgs($body = null) {
+
+        return array(
+            'sslverify'  => !JD_SocialBoxHelper::getOption('disable_ssl'),
+            'user-agent' => sprintf('WordPress/%s; SocialBox/%s; %s', get_bloginfo('version'), JD_SOCIALBOX_VERSION, get_bloginfo('url')),
+            'body'       => $body,
+        );
+    }
+
+    protected static function remoteGet($url) {
+        return wp_remote_get($url, self::getRequestArgs());
+    }
+
+    protected static function remotePost($url, $body) {
+        return wp_remote_post($url, self::getRequestArgs($body));
+    }
 }
