@@ -166,6 +166,21 @@
 					text-shadow: 1px 1px rgba(255, 255, 255, .75);
 				}
 			}
+
+			&.socialbox-network-mailchimp{
+
+				&:hover p{
+					color: #999999;
+				}
+
+				a.socialbox-button{
+					@include simple-linear-gradient(tint(#999999, 40%), shade(#999999, 5%));
+					border-color: shade(#999999, 5%);
+					border-top-color: shade(#999999, 5%);
+					@include box-shadow(inset 0px 1px 0px tint(#999999, 50%));
+					text-shadow: 1px 1px rgba(0, 0, 0, .5);
+				}
+			}
 		}
 	}
 }
