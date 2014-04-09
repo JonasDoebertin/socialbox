@@ -12,6 +12,11 @@ class JD_SocialBoxConnector{
 
 	public static function get($item) {
 
+        /* Abort if the network is unknown */
+        if(!method_exists('JD_SocialBoxConnector', $item['network'])) {
+            return array('successful' => false);
+        }
+
 		return call_user_func_array(array('JD_SocialBoxConnector', $item['network']), array($item));
 	}
 
