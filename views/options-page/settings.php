@@ -12,7 +12,7 @@
 
 <div class="socialbox-settings">
 
-	<?php settings_errors(); ?>  
+	<?php settings_errors(); ?>
 
 	<form method="post" action="options.php">
 		<?php
@@ -22,4 +22,4 @@
 		?>
 	</form>
 
-</div> 
+</div>

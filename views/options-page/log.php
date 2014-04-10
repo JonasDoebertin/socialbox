@@ -42,7 +42,7 @@ $log = $this->getLog();
 
 				<?php $alternate = true; ?>
 				<?php foreach($log as $entry): ?>
-					
+
 					<tr class="<?php echo ($entry['successful']) ? 'success' : 'failed'; if($alternate) echo ' alternate'; ?>" >
 						<td><?php echo date(__('Y/m/d H:i:s', 'socialbox'), $entry['timestamp']); ?></td>
 						<td><?php echo $entry['network']; ?></td>

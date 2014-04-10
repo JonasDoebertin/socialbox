@@ -12,7 +12,7 @@ This WordPress plugin is comprised of two parts:
 	(1) The PHP code is licensed under the GPL license as is WordPress itself:
 		http://codex.wordpress.org/GPL
 
-	(2) All other parts of the plugin including, but not limited to, the CSS code, images, language files and design are licensed according to the license purchased at CodeCanyon. 
+	(2) All other parts of the plugin including, but not limited to, the CSS code, images, language files and design are licensed according to the license purchased at CodeCanyon.
 		http://codecanyon.net/legal/licences
 
 
