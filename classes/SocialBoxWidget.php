@@ -50,27 +50,30 @@ class JD_SocialBoxWidget extends WP_Widget{
 
 			if( array_key_exists($network . '_id', $instance) and !empty($instance[$network . '_id']) ) {
 
-                /* Get cache item */
-                $cacheItem = $cache[$network . '||' . $instance[$network . '_id']];
+               /* Skip if cache item doesn't exist */
+               if(!isset($cache[$network . '||' . $instance[$network . '_id']])) {
+                   continue;
+               }
 
-                /* Build data object */
-                $new = array(
-					'type'       => $network,
-					'id'         => $instance[$network . '_id'],
-					'position'   => $instance[$network . '_position'],
-					'count'      => ($cacheItem['value'] !== null) ? $cacheItem['value'] : $instance[$network . '_default'],
-					'link'       => $this->getNetworkLink($cacheItem), //$network, $instance[$network . '_id']),
-					'name'       => $this->getNetworkName($cacheItem),
-					'buttonText' => $this->getNetworkButtonText($cacheItem),
-					'buttonHint' => $this->getNetworkButtonHint($cacheItem),
-                    'metric'     => $this->getNetworkMetric($cacheItem),
-				);
+               /* Get cache item */
+               $cacheItem = $cache[$network . '||' . $instance[$network . '_id']];
 
-				/* Add network to list */
-				$networks[] = $new;
+               /* Build data object */
+               $new = array(
+                   'type'       => $network,
+                   'id'         => $instance[$network . '_id'],
+                   'position'   => $instance[$network . '_position'],
+                   'count'      => ($cacheItem['value'] !== null) ? $cacheItem['value'] : $instance[$network . '_default'],
+                   'link'       => $this->getNetworkLink($cacheItem),
+                   'name'       => $this->getNetworkName($cacheItem),
+                   'buttonText' => $this->getNetworkButtonText($cacheItem),
+                   'buttonHint' => $this->getNetworkButtonHint($cacheItem),
+                   'metric'     => $this->getNetworkMetric($cacheItem),
+               );
 
-			}
-
+               /* Add network to list */
+               $networks[] = $new;
+           }
 		}
 		usort($networks, array($this, 'sortByPosition'));
 
