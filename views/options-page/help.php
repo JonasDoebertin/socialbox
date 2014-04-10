@@ -137,11 +137,18 @@
 		<li><p><?php _e('Copy the &raquo;Client ID&laquo; value and paste it in the respective field within SocialBox.', 'socialbox'); ?></p></li>
 	</ol>
 
+    <img class="socialbox-help-image--center" src="<?php echo JD_SOCIALBOX_URL ?>/assets/img/help/pinterest-settings.png" alt="Pinterest Settings" />
+    <h4><?php _e('Username', 'socialbox'); ?></h4>
+    <p><?php _e('Please enter the username of the account you want to showcase.', 'socialbox'); ?></p>
+
+    <h4><?php _e('Metric', 'socialbox'); ?></h4>
+    <p><?php _e('You can choose to display your number of followers, pins or boards.', 'socialbox'); ?></p>
+
 	<img class="socialbox-help-image--center" src="<?php echo JD_SOCIALBOX_URL ?>/assets/img/help/dribbble-settings.png" alt="Dribbble Settings" />
 	<h4><?php _e('Username', 'socialbox'); ?></h4>
 	<p><?php _e('Please enter the username of the account you want to showcase.', 'socialbox'); ?></p>
 
-    <h4><?php _e('Channel', 'socialbox'); ?></h4>
+    <h4><?php _e('Metric', 'socialbox'); ?></h4>
     <p><?php _e('Not only can you display the number of followers you have. You can also choose to display the number of Shots you posted or how many Likes, Comments & Rebounds you received.', 'socialbox'); ?></p>
 
 	<img class="socialbox-help-image--center" src="<?php echo JD_SOCIALBOX_URL ?>/assets/img/help/forrst-settings.png" alt="Forrst Settings" />

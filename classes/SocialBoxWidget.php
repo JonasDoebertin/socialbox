@@ -133,6 +133,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		$instance['instagram_user_id']           = $newInstance['instagram_user_id'];
 		$instance['instagram_client_id']         = $newInstance['instagram_client_id'];
 		$instance['instagram_metric']            = $newInstance['instagram_metric'];
+        $instance['pinterest_metric']            = $newInstance['pinterest_metric'];
         $instance['dribbble_metric']             = $newInstance['dribbble_metric'];
         $instance['mailchimp_api_key']           = $newInstance['mailchimp_api_key'];
         $instance['mailchimp_form_url']          = $newInstance['mailchimp_form_url'];
@@ -155,54 +156,42 @@ class JD_SocialBoxWidget extends WP_Widget{
 						'value'       => null
 					);
 
-					/* Add uncommon/special attributes */
-					if($network == 'facebook') {
-						$cache[$network . '||' . $instance['facebook_id']]['metric']             = $instance['facebook_metric'];
-					} else if($network == 'twitter') {
-						$cache[$network . '||' . $instance['twitter_id']]['api_key']             = $instance['twitter_api_key'];
-						$cache[$network . '||' . $instance['twitter_id']]['api_secret']          = $instance['twitter_api_secret'];
-						$cache[$network . '||' . $instance['twitter_id']]['access_token']        = $instance['twitter_access_token'];
-						$cache[$network . '||' . $instance['twitter_id']]['access_token_secret'] = $instance['twitter_access_token_secret'];
-                    } else if($network == 'vimeo') {
+                /* Update cache element if it exists */
+                } else {
+
+                    /* Update common attributes */
+                    $cache[$network . '||' . $instance[$network . '_id']]['lastUpdated'] = null;
+                }
+
+                /* Save/update uncommon/special attributes */
+                switch($network) {
+                    case 'facebook':
+                        $cache[$network . '||' . $instance['facebook_id']]['metric']             = $instance['facebook_metric'];
+                        break;
+                    case 'twitter':
+                        $cache[$network . '||' . $instance['twitter_id']]['api_key']             = $instance['twitter_api_key'];
+                        $cache[$network . '||' . $instance['twitter_id']]['api_secret']          = $instance['twitter_api_secret'];
+                        $cache[$network . '||' . $instance['twitter_id']]['access_token']        = $instance['twitter_access_token'];
+                        $cache[$network . '||' . $instance['twitter_id']]['access_token_secret'] = $instance['twitter_access_token_secret'];
+                        break;
+                    case 'vimeo':
                         $cache[$network . '||' . $instance['vimeo_id']]['metric']                = $instance['vimeo_metric'];
-					} else if($network == 'instagram') {
-						$cache[$network . '||' . $instance['instagram_id']]['metric']            = $instance['instagram_metric'];
-						$cache[$network . '||' . $instance['instagram_id']]['client_id']         = $instance['instagram_client_id'];
-						$cache[$network . '||' . $instance['instagram_id']]['user_id']           = $instance['instagram_user_id'];
-                    } else if($network == 'dribbble') {
+                        break;
+                    case 'instagram':
+                        $cache[$network . '||' . $instance['instagram_id']]['metric']            = $instance['instagram_metric'];
+                        $cache[$network . '||' . $instance['instagram_id']]['client_id']         = $instance['instagram_client_id'];
+                        $cache[$network . '||' . $instance['instagram_id']]['user_id']           = $instance['instagram_user_id'];
+                        break;
+                    case 'pinterest':
+                        $cache[$network . '||' . $instance['pinterest_id']]['metric']            = $instance['pinterest_metric'];
+                    case 'dribbble':
                         $cache[$network . '||' . $instance['dribbble_id']]['metric']             = $instance['dribbble_metric'];
-					} else if($network == 'mailchimp') {
+                        break;
+                    case 'mailchimp':
                         $cache[$network . '||' . $instance['mailchimp_id']]['api_key']           = $instance['mailchimp_api_key'];
                         $cache[$network . '||' . $instance['mailchimp_id']]['form_url']          = $instance['mailchimp_form_url'];
-                    }
-
-				/* Update cache element if it exists */
-				} else {
-
-					/* Update common attributes */
-					$cache[$network . '||' . $instance[$network . '_id']]['lastUpdated'] = null;
-
-					/* Update uncommon/special attributes */
-					if($network == 'facebook') {
-						$cache[$network . '||' . $instance['facebook_id']]['metric']             = $instance['facebook_metric'];
-					} else if($network == 'twitter') {
-						$cache[$network . '||' . $instance['twitter_id']]['api_key']             = $instance['twitter_api_key'];
-						$cache[$network . '||' . $instance['twitter_id']]['api_secret']          = $instance['twitter_api_secret'];
-						$cache[$network . '||' . $instance['twitter_id']]['access_token']        = $instance['twitter_access_token'];
-						$cache[$network . '||' . $instance['twitter_id']]['access_token_secret'] = $instance['twitter_access_token_secret'];
-                    } else if($network == 'vimeo') {
-                        $cache[$network . '||' . $instance['vimeo_id']]['metric']                = $instance['vimeo_metric'];
-					} else if($network == 'instagram') {
-						$cache[$network . '||' . $instance['instagram_id']]['metric']            = $instance['instagram_metric'];
-						$cache[$network . '||' . $instance['instagram_id']]['client_id']         = $instance['instagram_client_id'];
-						$cache[$network . '||' . $instance['instagram_id']]['user_id']           = $instance['instagram_user_id'];
-                    } else if($network == 'dribbble') {
-                        $cache[$network . '||' . $instance['dribbble_id']]['metric']             = $instance['dribbble_metric'];
-					} else if($network == 'mailchimp') {
-                        $cache[$network . '||' . $instance['mailchimp_id']]['api_key']           = $instance['mailchimp_api_key'];
-                        $cache[$network . '||' . $instance['mailchimp_id']]['form_url']          = $instance['mailchimp_form_url'];
-                    }
-				}
+                        break;
+                }
 			}
 		}
 		update_option('socialbox_cache', $cache);
@@ -248,7 +237,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 		$defaults['instagram_metric']            = 'followed_by';
 		$defaults['instagram_client_id']         = '';
 		$defaults['instagram_user_id']           = '';
-        $defaults['dribbble_metric']             = 'followers_count';
+        $defaults['instagram_user_id']           = '';
+        $defaults['pinterest_metric']            = 'followers';
         $defaults['mailchimp_api_key']           = '';
         $defaults['mailchimp_form_url']          = '';
 
@@ -286,6 +276,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 				return "http://vimeo.com/channels/{$item['id']}";
 			case 'instagram':
 				return "http://instagram.com/{$item['id']}";
+            case 'pinterest':
+                return "http://pinterest.com/{$item['id']}";
 			case 'dribbble':
 				return "http://dribbble.com/{$item['id']}";
 			case 'forrst':
@@ -311,6 +303,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 				return __('Vimeo', 'socialbox');
 			case 'instagram':
 				return __('Instagram', 'socialbox');
+            case 'pinterest':
+                return __('Pinterest', 'socialbox');
 			case 'dribbble':
 				return __('Dribbble', 'socialbox');
 			case 'forrst':
@@ -379,6 +373,16 @@ class JD_SocialBoxWidget extends WP_Widget{
                         return __('Shots', 'socialbox');
                 }
                 break;
+            case 'pinterest':
+                switch($item['metric']) {
+                    case 'followers':
+                        return __('Followers', 'socialbox');
+                    case 'pins':
+                        return __('Pins', 'socialbox');
+                    case 'boards':
+                        return __('Boards', 'socialbox');
+                }
+                break;
 		}
 	}
 
@@ -395,6 +399,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 				return __('Subscribe', 'socialbox');
 			case 'instagram':
 				return __('Follow', 'socialbox');
+            case 'pinterest':
+                return __('Follow', 'socialbox');
 			case 'dribbble':
 				return __('Follow', 'socialbox');
 			case 'forrst':
@@ -419,6 +425,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 				return __('Subscribe to Vimeo Channel', 'socialbox');
 			case 'instagram':
 				return __('Follow on Instagram', 'socialbox');
+            case 'pinterest':
+                return __('Follow on Pinterest', 'socialbox');
 			case 'dribbble':
 				return __('Follow on Dribbble', 'socialbox');
 			case 'forrst':

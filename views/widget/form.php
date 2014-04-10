@@ -249,6 +249,41 @@
 
 	</fieldset>
 
+    <!-- Pinterest -->
+    <h5><?php _e('Pinterest', 'socialbox'); ?></h5>
+
+    <fieldset>
+
+        <!-- ID -->
+        <p>
+            <label for="<?php echo $this->get_field_id('pinterest_id'); ?>" title="<?php _e('Your Pinterest username (e.g. envato)', 'socialbox'); ?>"><?php _e('Username', 'socialbox'); ?>:</label>
+            <input type="text" id="<?php echo $this->get_field_id('pinterest_id'); ?>" name="<?php echo $this->get_field_name('pinterest_id'); ?>" value="<?php echo $instance['pinterest_id']; ?>" class="widefat" />
+        </p>
+
+        <!-- Metric -->
+        <p>
+            <label for="<?php echo $this->get_field_id('pinterest_metric'); ?>" title="<?php _e('What metric shall be displayed', 'socialbox'); ?>"><?php _e('Metric', 'socialbox'); ?>:</label>
+            <select id="<?php echo $this->get_field_id('pinterest_metric'); ?>" name="<?php echo $this->get_field_name('pinterest_metric'); ?>" class="widefat">
+                <option <?php if($instance['pinterest_metric'] == 'followers' ) echo 'selected="selected"'; ?> value="followers">Followers</option>
+                <option <?php if($instance['pinterest_metric'] == 'pins' ) echo 'selected="selected"'; ?> value="pins">Pins</option>
+                <option <?php if($instance['pinterest_metric'] == 'boards' ) echo 'selected="selected"'; ?> value="boards">Boards</option>
+            </select>
+        </p>
+
+        <!-- Default -->
+        <div class="socialbox-default">
+            <label for="<?php echo $this->get_field_id('pinterest_default'); ?>" title="<?php _e('Your fallback follower count', 'socialbox'); ?>"><?php _e('Default:', 'socialbox'); ?></label>
+            <input type="text" id="<?php echo $this->get_field_id('pinterest_default'); ?>" name="<?php echo $this->get_field_name('pinterest_default'); ?>" value="<?php echo $instance['pinterest_default']; ?>" size="6" class="widefat" />
+        </div>
+
+        <!-- Position -->
+        <div class="socialbox-position">
+            <label for="<?php echo $this->get_field_id('pinterest_position'); ?>" title="<?php _e('Display position within SocialBox', 'socialbox'); ?>"><?php _e('Position:', 'socialbox'); ?></label>
+            <input type="text" id="<?php echo $this->get_field_id('pinterest_position'); ?>" name="<?php echo $this->get_field_name('pinterest_position'); ?>" value="<?php echo $instance['pinterest_position']; ?>" size="2" class="widefat" />
+        </div>
+
+    </fieldset>
+
 	<!-- Dribbble -->
 	<h5><?php _e('Dribbble', 'socialbox'); ?></h5>
 

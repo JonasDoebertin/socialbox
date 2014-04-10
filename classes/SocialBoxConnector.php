@@ -144,6 +144,32 @@ class JD_SocialBoxConnector{
 		);
 	}
 
+    protected static function pinterest($item) {
+
+        /* Fetch profile page */
+        $result = self::remoteGet('https://pinterest.com/' . $item['id']);
+
+        /* Check for common errors */
+        if(self::wasCommonError($result)) {
+            return array('successful' => false);
+        }
+
+        /* Prepare regular expression and result body */
+        $regex = '/<meta[^>]*?property="pinterestapp:' . $item['metric'] . '"[^>]*?content="(\d+)"/i';
+        $html  = wp_remote_retrieve_body($result);
+
+        /* Check for incorrect data */
+        if(preg_match($regex, $html, $matches) !== 1) {
+            return array('successful' => false);
+        }
+
+        /* Return value */
+        return array(
+            'successful' => true,
+            'value'      => intval($matches[1])
+        );
+    }
+
 	protected static function dribbble($item) {
 
 		/* Fetch data from Dribbble API */
