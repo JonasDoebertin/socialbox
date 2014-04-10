@@ -13,7 +13,7 @@ class JD_SocialBox{
 	/**
 	 * Complete list of supported networks
 	 */
-	const SUPPORTED_NETWORKS = 'facebook,twitter,youtube,vimeo,instagram,dribbble,forrst,github,mailchimp';
+	const SUPPORTED_NETWORKS = 'facebook,twitter,youtube,vimeo,instagram,pinterest,dribbble,forrst,github,mailchimp';
 
 	/**
 	 * Max. # of log entries to keep
