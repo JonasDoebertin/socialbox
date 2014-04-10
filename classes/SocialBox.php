@@ -449,6 +449,9 @@ class JD_SocialBox{
 			die(__('Security check failed!', 'socialbox'));
 		}
 
+        /* Rebuild cache structure */
+        self::rebuildCache();
+
 		/* Force cache refresh */
 		$this->updateCache(true);
 
@@ -466,7 +469,9 @@ class JD_SocialBox{
 	public static function updateCache($forced = false) {
 
 		/* Rebuild cache structure */
-        self::rebuildCache();
+        if(!$forced) {
+            self::rebuildCache();
+        }
 
         /* Abort if no widget has been set up */
 		$cache = get_option('socialbox_cache', null);
