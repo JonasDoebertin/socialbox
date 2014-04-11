@@ -2,7 +2,7 @@
 
 
 /*
- * SocialBox 1.5.0
+ * SocialBox 1.6.0
  * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
@@ -18,7 +18,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		/* Widget settings */
 		$widgetOpts = array(
 			'classname' => 'socialbox',
-			'description' => __('Adds a super easy SocialBox Widget which displays the current numbers of Facebook Page Likes, Twitter, Instagram, Dribbble and Forrst Followers and YouTube and Vimeo Channel Subscriptions.', 'socialbox')
+			'description' => __('Adds a super easy SocialBox widget which displays various statistics from Facebook, Twitter, Youtube, Vimeo, Instagram, Pinterest, GitHub and MailChimp.', 'socialbox')
 		);
 
 		/* Widget control settings */
