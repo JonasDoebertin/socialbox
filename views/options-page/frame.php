@@ -2,7 +2,7 @@
 
 
 /*
- * SocialBox 1.5.0
+ * SocialBox 1.6.0
  * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
@@ -12,7 +12,7 @@
 
 <!-- Start SocialBox Options Page -->
 <div class="wrap socialbox-wrap">
-	
+
 	<?php screen_icon(); ?>
 	<h2 class="nav-tab-wrapper">
 		<?php _e('SocialBox', 'socialbox'); ?>
@@ -21,7 +21,7 @@
 		<a class="nav-tab <?php if($tab == 'log') echo 'nav-tab-active'; ?>" href="?page=socialbox&amp;tab=log"><?php _e('Log', 'socialbox'); ?></a>
 	</h2>
 
-	<?php 
+	<?php
 		switch($tab){
 			case 'settings':
 				include JD_SOCIALBOX_PATH . '/views/options-page/settings.php';

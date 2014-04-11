@@ -2,7 +2,7 @@
 
 
 /*
- * SocialBox 1.5.0
+ * SocialBox 1.6.0
  * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
@@ -42,7 +42,7 @@ $log = $this->getLog();
 
 				<?php $alternate = true; ?>
 				<?php foreach($log as $entry): ?>
-					
+
 					<tr class="<?php echo ($entry['successful']) ? 'success' : 'failed'; if($alternate) echo ' alternate'; ?>" >
 						<td><?php echo date(__('Y/m/d H:i:s', 'socialbox'), $entry['timestamp']); ?></td>
 						<td><?php echo $entry['network']; ?></td>

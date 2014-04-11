@@ -2,7 +2,7 @@
 
 
 /*
- * SocialBox 1.5.0
+ * SocialBox 1.6.0
  * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
@@ -12,7 +12,7 @@
 
 <div class="socialbox-settings">
 
-	<?php settings_errors(); ?>  
+	<?php settings_errors(); ?>
 
 	<form method="post" action="options.php">
 		<?php
@@ -22,4 +22,4 @@
 		?>
 	</form>
 
-</div> 
+</div>

@@ -2,23 +2,28 @@
 
 
 /*
- * SocialBox 1.5.0
+ * SocialBox 1.6.0
  * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
 
 
 class JD_SocialBoxConnector{
-	
+
 	public static function get($item) {
-		
+
+        /* Abort if the network is unknown */
+        if(!method_exists('JD_SocialBoxConnector', $item['network'])) {
+            return array('successful' => false);
+        }
+
 		return call_user_func_array(array('JD_SocialBoxConnector', $item['network']), array($item));
 	}
-	
+
 	protected static function facebook($item) {
 
 		/* Fetch data from Graph API */
-		$result = wp_remote_get('https://graph.facebook.com/' . $item['id'], array('sslverify' => false));
+		$result = self::remoteGet('https://graph.facebook.com/' . $item['id']);
 
 		/* Check for common errors */
 		if(self::wasCommonError($result)) {
@@ -68,7 +73,7 @@ class JD_SocialBoxConnector{
 
 	protected static function youtube($item) {
 		/* Fetch data from Youtube API */
-		$result = wp_remote_get('http://gdata.youtube.com/feeds/api/users/' . $item['id']);
+		$result = self::remoteGet('http://gdata.youtube.com/feeds/api/users/' . $item['id']);
 
 		/* Check for common errors */
 		if(self::wasCommonError($result)) {
@@ -92,7 +97,7 @@ class JD_SocialBoxConnector{
 
 	protected static function vimeo($item) {
 		/* Fetch data from Vimeo API */
-		$result = wp_remote_get(sprintf('http://vimeo.com/api/v2/channel/%s/info.json', $item['id']));
+		$result = self::remoteGet(sprintf('http://vimeo.com/api/v2/channel/%s/info.json', $item['id']));
 
 		/* Check for common errors */
 		if(self::wasCommonError($result)) {
@@ -103,21 +108,21 @@ class JD_SocialBoxConnector{
 		$data = json_decode(wp_remote_retrieve_body($result), true);
 
 		/* Check for incorrect data */
-		if(!is_array($data) or !isset($data['total_subscribers'])){
+		if(!is_array($data) or !isset($data[$item['metric']])){
 			return array('successful' => false);
 		}
 
 		/* Return value */
 		return array(
 			'successful' => true,
-			'value'      => $data['total_subscribers']
+			'value'      => $data[$item['metric']]
 		);
 	}
 
 	protected static function instagram($item) {
 
 		/* Fetch data from Graph API */
-		$result = wp_remote_get(sprintf('https://api.instagram.com/v1/users/%s?client_id=%s', $item['user_id'], $item['client_id']), array('sslverify' => false));
+		$result = self::remoteGet(sprintf('https://api.instagram.com/v1/users/%s?client_id=%s', $item['user_id'], $item['client_id']));
 
 		/* Check for common errors */
 		if(self::wasCommonError($result)) {
@@ -139,10 +144,36 @@ class JD_SocialBoxConnector{
 		);
 	}
 
+    protected static function pinterest($item) {
+
+        /* Fetch profile page */
+        $result = self::remoteGet('https://pinterest.com/' . $item['id']);
+
+        /* Check for common errors */
+        if(self::wasCommonError($result)) {
+            return array('successful' => false);
+        }
+
+        /* Prepare regular expression and result body */
+        $regex = '/<meta[^>]*?property="pinterestapp:' . $item['metric'] . '"[^>]*?content="(\d+)"/i';
+        $html  = wp_remote_retrieve_body($result);
+
+        /* Check for incorrect data */
+        if(preg_match($regex, $html, $matches) !== 1) {
+            return array('successful' => false);
+        }
+
+        /* Return value */
+        return array(
+            'successful' => true,
+            'value'      => intval($matches[1])
+        );
+    }
+
 	protected static function dribbble($item) {
 
 		/* Fetch data from Dribbble API */
-		$result = wp_remote_get('http://api.dribbble.com/players/' . $item['id']);
+		$result = self::remoteGet('http://api.dribbble.com/players/' . $item['id']);
 
 		/* Check for common errors */
 		if(self::wasCommonError($result)) {
@@ -153,21 +184,21 @@ class JD_SocialBoxConnector{
 		$data = json_decode(wp_remote_retrieve_body($result), true);
 
 		/* Check for incorrect data */
-		if(!is_array($data) or !isset($data['followers_count'])){
+		if(!is_array($data) or !isset($data[$item['metric']])){
 			return array('successful' => false);
 		}
 
 		/* Return value */
 		return array(
 			'successful' => true,
-			'value'      => $data['followers_count']
+			'value'      => $data[$item['metric']]
 		);
 	}
 
 	protected static function forrst($item) {
 
 		/* Fetch data from Forrst API */
-		$result = wp_remote_get('https://forrst.com/api/v2/users/info?username=' . $item['id'], array('sslverify' => false));
+		$result = self::remoteGet('https://forrst.com/api/v2/users/info?username=' . $item['id']);
 
 		/* Check for common errors */
 		if(self::wasCommonError($result)) {
@@ -192,7 +223,7 @@ class JD_SocialBoxConnector{
 	protected static function github($item) {
 
 		/* Fetch data from GitHub API */
-		$result = wp_remote_get('https://api.github.com/users/' . $item['id'], array('sslverify' => false));
+		$result = self::remoteGet('https://api.github.com/users/' . $item['id']);
 
 		/* Check for common errors */
 		if(self::wasCommonError($result)) {
@@ -214,6 +245,47 @@ class JD_SocialBoxConnector{
 		);
 	}
 
+    protected static function mailchimp($item) {
+
+        /* Extract data center from api key */
+        $datacenter = 'us1';
+        if(strstr($item['api_key'], '-')) {
+            list($key, $datacenter) = explode('-', $item['api_key'], 2);
+            if(!$datacenter) $datacenter = 'us1';
+        }
+
+        /* Build data object */
+        $data = array(
+            'apikey' => $item['api_key'],
+            'filters' => array(
+                'list_id' => $item['id'],
+            ),
+            'limit' => 1,
+        );
+
+        /* Fetch data from MailChimp API v2.0 */
+        $result = self::remotePost(sprintf('https://%s.api.mailchimp.com/2.0/lists/list.json', $datacenter), $data);
+
+        /* Check for common errors */
+        if(self::wasCommonError($result)) {
+            return array('successful' => false);
+        }
+
+        /* Decode response */
+        $data = json_decode(wp_remote_retrieve_body($result), true);
+
+        /* Check for incorrect data */
+        if(!is_array($data) or !isset($data['data'][0]['stats']['member_count'])){
+            return array('successful' => false);
+        }
+
+        /* Return value */
+        return array(
+            'successful' => true,
+            'value'      => $data['data'][0]['stats']['member_count'],
+        );
+    }
+
 	/**
 	 * Checks for unseccessful WP Remote requests
 	 * @param  Mixed $result
@@ -222,4 +294,27 @@ class JD_SocialBoxConnector{
 	protected static function wasCommonError($result) {
 		return is_wp_error($result) or (wp_remote_retrieve_response_code($result) != 200);
 	}
+
+    /**
+     * Builds an argument array for use with the wp_remote_* functions
+     *
+     * @param  mixed $body
+     * @return array
+     */
+    protected static function getRequestArgs($body = null) {
+
+        return array(
+            'sslverify'  => !JD_SocialBoxHelper::getOption('disable_ssl'),
+            'user-agent' => sprintf('WordPress/%s; SocialBox/%s; %s', get_bloginfo('version'), JD_SOCIALBOX_VERSION, get_bloginfo('url')),
+            'body'       => $body,
+        );
+    }
+
+    protected static function remoteGet($url) {
+        return wp_remote_get($url, self::getRequestArgs());
+    }
+
+    protected static function remotePost($url, $body) {
+        return wp_remote_post($url, self::getRequestArgs($body));
+    }
 }
