@@ -2,7 +2,7 @@
 
 
 /*
- * SocialBox 1.6.0
+ * SocialBox 1.6.1
  * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
@@ -160,36 +160,37 @@ class JD_SocialBoxWidget extends WP_Widget{
                 } else {
 
                     /* Update common attributes */
-                    $cache[$network . '||' . $instance[$network . '_id']]['lastUpdated'] = null;
+                    $cache[$network . '||' . $instance[$network . '_id']]['lastUpdated'] = 0;
                 }
 
                 /* Save/update uncommon/special attributes */
                 switch($network) {
                     case 'facebook':
-                        $cache[$network . '||' . $instance['facebook_id']]['metric']             = $instance['facebook_metric'];
+                        $cache['facebook||' . $instance['facebook_id']]['metric']            = $instance['facebook_metric'];
                         break;
                     case 'twitter':
-                        $cache[$network . '||' . $instance['twitter_id']]['api_key']             = $instance['twitter_api_key'];
-                        $cache[$network . '||' . $instance['twitter_id']]['api_secret']          = $instance['twitter_api_secret'];
-                        $cache[$network . '||' . $instance['twitter_id']]['access_token']        = $instance['twitter_access_token'];
-                        $cache[$network . '||' . $instance['twitter_id']]['access_token_secret'] = $instance['twitter_access_token_secret'];
+                        $cache['twitter||' . $instance['twitter_id']]['api_key']             = $instance['twitter_api_key'];
+                        $cache['twitter||' . $instance['twitter_id']]['api_secret']          = $instance['twitter_api_secret'];
+                        $cache['twitter||' . $instance['twitter_id']]['access_token']        = $instance['twitter_access_token'];
+                        $cache['twitter||' . $instance['twitter_id']]['access_token_secret'] = $instance['twitter_access_token_secret'];
                         break;
                     case 'vimeo':
-                        $cache[$network . '||' . $instance['vimeo_id']]['metric']                = $instance['vimeo_metric'];
+                        $cache['vimeo||' . $instance['vimeo_id']]['metric']                  = $instance['vimeo_metric'];
                         break;
                     case 'instagram':
-                        $cache[$network . '||' . $instance['instagram_id']]['metric']            = $instance['instagram_metric'];
-                        $cache[$network . '||' . $instance['instagram_id']]['client_id']         = $instance['instagram_client_id'];
-                        $cache[$network . '||' . $instance['instagram_id']]['user_id']           = $instance['instagram_user_id'];
+                        $cache['instagram||' . $instance['instagram_id']]['metric']          = $instance['instagram_metric'];
+                        $cache['instagram||' . $instance['instagram_id']]['client_id']       = $instance['instagram_client_id'];
+                        $cache['instagram||' . $instance['instagram_id']]['user_id']         = $instance['instagram_user_id'];
                         break;
                     case 'pinterest':
-                        $cache[$network . '||' . $instance['pinterest_id']]['metric']            = $instance['pinterest_metric'];
+                        $cache['pinterest||' . $instance['pinterest_id']]['metric']          = $instance['pinterest_metric'];
+                        break;
                     case 'dribbble':
-                        $cache[$network . '||' . $instance['dribbble_id']]['metric']             = $instance['dribbble_metric'];
+                        $cache['dribbble||' . $instance['dribbble_id']]['metric']            = $instance['dribbble_metric'];
                         break;
                     case 'mailchimp':
-                        $cache[$network . '||' . $instance['mailchimp_id']]['api_key']           = $instance['mailchimp_api_key'];
-                        $cache[$network . '||' . $instance['mailchimp_id']]['form_url']          = $instance['mailchimp_form_url'];
+                        $cache['mailchimp||' . $instance['mailchimp_id']]['api_key']         = $instance['mailchimp_api_key'];
+                        $cache['mailchimp||' . $instance['mailchimp_id']]['form_url']        = $instance['mailchimp_form_url'];
                         break;
                 }
 			}
@@ -239,6 +240,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		$defaults['instagram_user_id']           = '';
         $defaults['instagram_user_id']           = '';
         $defaults['pinterest_metric']            = 'followers';
+        $defaults['dribbble_metric']             = 'followers_count';
         $defaults['mailchimp_api_key']           = '';
         $defaults['mailchimp_form_url']          = '';
 
