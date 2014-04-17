@@ -85,6 +85,14 @@ class JD_SocialBox{
 		}
 	}
 
+
+
+
+
+    /**************************************************************************\
+    *                             PLUGIN INTERNALS                             *
+    \**************************************************************************/
+
 	/**
 	 * Inject a custom cron schedule timeframe
 	 *
@@ -225,16 +233,6 @@ class JD_SocialBox{
 		include JD_SOCIALBOX_PATH . '/views/update.php';
 	}
 
-	/**
-	 * Register the Widget
-	 *
-	 * Will be run within "widgets_init" action
-	 */
-	public function registerWidget(){
-
-		register_widget('JD_SocialBoxWidget');
-	}
-
 	public function addPluginActionLink($actionLinks){
 
 		$html = '<a href="options-general.php?page=socialbox&tab=settings" title="' . __('SocialBox Settings', 'socialbox') . '">' . __('Settings', 'socialbox') . '</a>';
@@ -243,19 +241,23 @@ class JD_SocialBox{
 		return $actionLinks;
 	}
 
-	/**
-	 * Register the widgets admin stylesheet
-	 *
-	 * Will be run in "admin_print_styles-widgets.php" action and only on widgets admin page
-	 */
-	public function registerWidgetsPageStyle(){
 
-		/* register Style */
-		wp_register_style('socialbox-widgets-page', JD_SOCIALBOX_URL . '/assets/css/widgets-page.css', array(), JD_SOCIALBOX_VERSION, 'screen');
 
-		/* Enqueue Style */
-		wp_enqueue_style('socialbox-widgets-page');
-	}
+
+
+    /**************************************************************************\
+    *                                  WIDGET                                  *
+    \**************************************************************************/
+
+    /**
+     * Register the Widget
+     *
+     * Will be run within "widgets_init" action
+     */
+    public function registerWidget(){
+
+        register_widget('JD_SocialBoxWidget');
+    }
 
 	/**
 	 * Register & enqueue the widgets stylesheet
@@ -271,21 +273,27 @@ class JD_SocialBox{
 		wp_enqueue_style('socialbox');
 	}
 
-	/**
-	 * Add the options page
-	 *
-	 * Will be run in "admin_menu" action
-	 */
-	public function registerOptionsPage(){
+    /**
+     * Register the widgets admin stylesheet
+     *
+     * Will be run in "admin_print_styles-widgets.php" action and only on widgets admin page
+     */
+    public function registerWidgetsPageStyle(){
 
-		$this->settingsPageSlug = add_options_page(
-			__('SocialBox', 'socialbox'),
-			__('SocialBox', 'socialbox'),
-			'manage_options',
-			'socialbox',
-			array($this, 'renderOptionsPage')
-		);
-	}
+        /* register Style */
+        wp_register_style('socialbox-widgets-page', JD_SOCIALBOX_URL . '/assets/css/widgets-page.css', array(), JD_SOCIALBOX_VERSION, 'screen');
+
+        /* Enqueue Style */
+        wp_enqueue_style('socialbox-widgets-page');
+    }
+
+
+
+
+
+    /**************************************************************************\
+    *                                 SETTINGS                                 *
+    \**************************************************************************/
 
 	/**
 	 * Register all setting sections and fields
@@ -348,6 +356,30 @@ class JD_SocialBox{
 	    echo $html;
 	}
 
+
+
+
+
+    /**************************************************************************\
+    *                               OPTIONS PAGE                               *
+    \**************************************************************************/
+
+    /**
+     * Add the options page
+     *
+     * Will be run in "admin_menu" action
+     */
+    public function registerOptionsPage(){
+
+        $this->settingsPageSlug = add_options_page(
+            __('SocialBox', 'socialbox'),
+            __('SocialBox', 'socialbox'),
+            'manage_options',
+            'socialbox',
+            array($this, 'renderOptionsPage')
+        );
+    }
+
 	/**
 	 * Register & enqueue styles for the options page
 	 *
@@ -401,6 +433,14 @@ class JD_SocialBox{
 		$tab = (isset($_GET['tab']) and !empty($_GET['tab'])) ? $_GET['tab'] : 'settings';
 		include JD_SOCIALBOX_PATH . '/views/options-page/frame.php';
 	}
+
+
+
+
+
+    /**************************************************************************\
+    *                                   AJAX                                   *
+    \**************************************************************************/
 
 	/**
 	 * Return formatted cache content
@@ -458,6 +498,14 @@ class JD_SocialBox{
 		/* Return message */
 		die(__('Cache refreshed!', 'socialbox'));
 	}
+
+
+
+
+
+    /**************************************************************************\
+    *                                  CACHE                                   *
+    \**************************************************************************/
 
 	/**
 	 * Refresh the cache
@@ -583,6 +631,14 @@ class JD_SocialBox{
 
 		update_option('socialbox_cache', array());
 	}
+
+
+
+
+
+    /**************************************************************************\
+    *                                   LOG                                    *
+    \**************************************************************************/
 
 	/**
 	 * Add an entry to the API Log
