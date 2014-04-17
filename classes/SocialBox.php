@@ -292,6 +292,108 @@ class JD_SocialBox{
 
 
     /**************************************************************************\
+    *                                  THEMES                                  *
+    \**************************************************************************/
+
+    public function getThemes() {
+        $themes = array(
+            'core'   => self::getCoreThemes(),
+            'plain'  => self::getPlainThemes(),
+            'addon' => self::getAddonThemes(),
+        );
+
+        return $themes;
+    }
+
+    protected function getCoreThemes() {
+
+        return array(
+            'classic' => array(
+                'slug'         => 'classic',
+                'name'         => __('Classic (default)', 'socialbox'),
+                'iconSize'     => 16,
+                'allowButtons' => true,
+                'template'     => JD_SOCIALBOX_PATH . '/views/widget/widget.php',
+            ),
+            'modern' => array(
+                'slug'         => 'modern',
+                'name'         => __('Modern', 'socialbox'),
+                'iconSize'     => 32,
+                'allowButtons' => false,
+                'template'     => JD_SOCIALBOX_PATH . '/views/widget/widget.php',
+            ),
+            'tutsflavor' => array(
+                'slug'         => 'tutsflavor',
+                'name'         => __('Tuts+ Flavor', 'socialbox'),
+                'iconSize'     => 32,
+                'allowButtons' => true,
+                'template'     => JD_SOCIALBOX_PATH . '/views/widget/widget.php',
+            ),
+            'dark' => array(
+                'slug'         => 'dark',
+                'name'         => __('Dark', 'socialbox'),
+                'iconSize'     => 16,
+                'allowButtons' => true,
+                'template'     => JD_SOCIALBOX_PATH . '/views/widget/widget.php',
+            ),
+            'colorful' => array(
+                'slug'         => 'colorful',
+                'name'         => __('Colorful', 'socialbox'),
+                'iconSize'     => 32,
+                'allowButtons' => true,
+                'template'     => JD_SOCIALBOX_PATH . '/views/widget/widget.php',
+            ),
+        );
+    }
+
+    protected function getPlainThemes() {
+
+        return array(
+            'plainsmall' => array(
+                'slug'         => 'plainsmall',
+                'name'         => __('Plain (small icons)', 'socialbox'),
+                'iconSize'     => 16,
+                'allowButtons' => true,
+                'template'     => JD_SOCIALBOX_PATH . '/views/widget/widget.php',
+            ),
+            'plainlarge' => array(
+                'slug'         => 'plainlarge',
+                'name'         => __('Plain (large icons)', 'socialbox'),
+                'iconSize'     => 32,
+                'allowButtons' => true,
+                'template'     => JD_SOCIALBOX_PATH . '/views/widget/widget.php',
+            ),
+        );
+    }
+
+    protected function getAddonThemes() {
+
+        $themes = array();
+        return apply_filters('socialbox_addon_themes', $themes);
+    }
+
+    public function getThemeBySlug($slug) {
+
+        /* Walk through all theme categories */
+        foreach($this->getThemes() as $themes) {
+
+            /* Walk through each theme */
+            foreach($themes as $key => $theme) {
+
+                /* Return theme info if array key and slug match */
+                if($key == $slug)
+                    return $theme;
+            }
+        }
+
+        return false;
+    }
+
+
+
+
+
+    /**************************************************************************\
     *                                 SETTINGS                                 *
     \**************************************************************************/
 

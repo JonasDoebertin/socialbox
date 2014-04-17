@@ -39,6 +39,9 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 */
 	public function widget($args, $instance) {
 
+        /* Import plugin instance */
+        global $JD_SocialBox;
+
 		extract($args);
 
 		/* Get cache */
@@ -78,20 +81,18 @@ class JD_SocialBoxWidget extends WP_Widget{
 		usort($networks, array($this, 'sortByPosition'));
 
 		/* Get additional options */
-		$style             = $instance['style'];
+		$theme             = $JD_SocialBox->getThemeBySlug($instance['style']);
 		$newWindow         = $instance['new_window'];
 		$showButtons       = $instance['show_buttons'];
 		$compactNumbers    = $instance['compact_numbers'];
 		$forcedWidgetWidth = ($instance['forced_widget_width'] > 0) ? $instance['forced_widget_width'] : false;
 		$forcedButtonWidth = ($instance['forced_button_width'] > 0) ? $instance['forced_button_width'] : false;
-		$allowButtons      = $this->getAllowButtons($style);
-		$iconSize          = $this->getIconSize($style);
 
 		/* Before Widget HTML */
 		echo $before_widget;
 
 		/* Social Box */
-		include JD_SOCIALBOX_PATH . '/views/widget/widget.php';
+		include $theme['template'];
 
 		/* After Widget HTML */
 		echo $after_widget;
@@ -210,6 +211,9 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 */
 	public function form($instance) {
 
+        /* Import plugin instance */
+        global $JD_SocialBox;
+
 		/* Apply general default values */
 		$defaults = array(
 			'new_window'          => true,
@@ -246,6 +250,9 @@ class JD_SocialBoxWidget extends WP_Widget{
 
 		/* Merge defaults and actual option values */
 		$instance = wp_parse_args((array) $instance, $defaults);
+
+        /* Get available themes */
+        $themes = $JD_SocialBox->getThemes();
 
 		/* Include corresponding view */
 		include JD_SOCIALBOX_PATH . '/views/widget/form.php';
@@ -459,28 +466,6 @@ class JD_SocialBoxWidget extends WP_Widget{
 			case 'plainsmall':
 			default:
 				return true;
-		}
-	}
-
-	/**
-	 * Returns the required icon size for a specific style
-	 *
-	 * @param String $style
-	 * @return Bool
-	 */
-	private function getIconSize($style = 'classic') {
-
-		switch($style) {
-			case 'modern':
-			case 'tutsflavor':
-			case 'colorful':
-			case 'plainlarge':
-				return '32';
-			case 'classic':
-			case 'plainsmall':
-			case 'dark':
-			default:
-				return '16';
 		}
 	}
 
