@@ -73,6 +73,24 @@
 
 	</fieldset>
 
+    <?php if(count($activeThemeTexts) >= 1): ?>
+
+        <h5><?php echo $activeTheme['name'] ?> <?php _e('Style Settings', 'socialbox'); ?></h5>
+
+        <fieldset>
+            <?php foreach($activeThemeTexts as $text): ?>
+
+                <p>
+                    <label for="<?php echo $this->get_field_id($activeTheme['slug'] . '_' . $text['slug']) ?>" title="<?php echo $text['description'] ?>"><?php echo $text['title'] ?>:</label><br/>
+                    <input type="text" id="<?php echo $this->get_field_id($activeTheme['slug'] . '_' . $text['slug']); ?>" name="<?php echo $this->get_field_name($activeTheme['slug'] . '_' . $text['slug']) ?>" value="<?php echo $instance[$activeTheme['slug'] . '_' . $text['slug']] ?>" class="widefat" />
+                    <br /><small><?php echo $text['description'] ?></small>
+                </p>
+
+            <?php endforeach ?>
+        </fieldset>
+
+    <?php endif ?>
+
 	<!-- Facebook -->
 	<h5><?php _e('Facebook', 'socialbox'); ?></h5>
 

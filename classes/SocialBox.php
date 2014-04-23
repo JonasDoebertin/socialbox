@@ -295,14 +295,17 @@ class JD_SocialBox{
     *                                  THEMES                                  *
     \**************************************************************************/
 
-    public function getThemes() {
-        $themes = array(
-            'core'   => self::getCoreThemes(),
-            'plain'  => self::getPlainThemes(),
-            'addon' => self::getAddonThemes(),
-        );
+    public function getThemes($mode = 'grouped') {
 
-        return $themes;
+        if($mode === 'grouped') {
+            return array(
+                'core'   => self::getCoreThemes(),
+                'plain'  => self::getPlainThemes(),
+                'addon' => self::getAddonThemes(),
+            );
+        }
+
+        return array_merge($this->getCoreThemes(), $this->getPlainThemes(), $this->getAddonThemes());
     }
 
     protected function getCoreThemes() {
@@ -387,6 +390,19 @@ class JD_SocialBox{
         }
 
         return false;
+    }
+
+    public function getThemeTexts($slug) {
+
+        /* Get theme by slug */
+        $theme = $this->getThemeBySlug($slug);
+
+        /* Return texts if available */
+        if(isset($theme['texts']) and is_array($theme['texts']))
+            return $theme['texts'];
+
+        /* Return fallback */
+        return array();
     }
 
 
