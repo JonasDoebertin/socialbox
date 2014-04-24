@@ -2,7 +2,7 @@
 
 
 /*
- * SocialBox 1.6.1
+ * SocialBox 1.6.2
  * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
@@ -34,19 +34,34 @@
 		<p>
 			<!-- Select Style -->
 			<select id="<?php echo $this->get_field_id('style'); ?>" name="<?php echo $this->get_field_name('style'); ?>">
-				<optgroup label="Regular Styles">
-					<option <?php if($instance['style'] == 'classic' ) echo 'selected="selected"'; ?> value="classic">Classic (default)</option>
-					<option <?php if($instance['style'] == 'modern' ) echo 'selected="selected"'; ?> value="modern">Modern</option>
-					<option <?php if($instance['style'] == 'tutsflavor' ) echo 'selected="selected"'; ?> value="tutsflavor">Tuts+ Flavor</option>
-					<option <?php if($instance['style'] == 'dark' ) echo 'selected="selected"'; ?> value="dark">Dark</option>
-					<option <?php if($instance['style'] == 'colorful' ) echo 'selected="selected"'; ?> value="colorful">Colorful</option>
+
+                <optgroup label="<?php _e('Regular Styles', 'socialbox') ?>">
+                    <?php foreach($themes['core'] as $theme): ?>
+                        <option value="<?php echo $theme['slug'] ?>" <?php if($instance['style'] == $theme['slug']) echo 'selected="selected"' ?>>
+                            <?php echo $theme['name'] ?>
+                        </option>
+                    <?php endforeach; ?>
 				</optgroup>
-				<optgroup label="Plain Styles">
-					<option <?php if($instance['style'] == 'plainsmall' ) echo 'selected="selected"'; ?> value="plainsmall">Plain (small icons)</option>
-					<option <?php if($instance['style'] == 'plainlarge' ) echo 'selected="selected"'; ?> value="plainlarge">Plain (large icons)</option>
+
+                <?php if(count($themes['addon']) > 0): ?>
+                    <optgroup label="<?php _e('Addon Styles', 'socialbox') ?>">
+                        <?php foreach($themes['addon'] as $theme): ?>
+                            <option value="<?php echo $theme['slug'] ?>" <?php if($instance['style'] == $theme['slug']) echo 'selected="selected"' ?>>
+                                <?php echo $theme['name'] ?>
+                            </option>
+                        <?php endforeach; ?>
+                    </optgroup>
+                <?php endif ?>
+
+				<optgroup label="<?php _e('Plain Styles', 'socialbox') ?>">
+					<?php foreach($themes['plain'] as $theme): ?>
+                         <option value="<?php echo $theme['slug'] ?>" <?php if($instance['style'] == $theme['slug']) echo 'selected="selected"' ?>>
+                             <?php echo $theme['name'] ?>
+                         </option>
+                     <?php endforeach; ?>
 				</optgroup>
 			</select>
-			<br /><small><?php _e('Choose the widgets display style', 'socialbox'); ?></small>
+			<br /><small><?php _e('Choose the widgets display theme', 'socialbox'); ?></small>
 		</p>
 
 		<p>
@@ -57,6 +72,24 @@
 		</p>
 
 	</fieldset>
+
+    <?php if(count($activeThemeTexts) >= 1): ?>
+
+        <h5><?php echo $activeTheme['name'] ?> <?php _e('Style Settings', 'socialbox'); ?></h5>
+
+        <fieldset>
+            <?php foreach($activeThemeTexts as $text): ?>
+
+                <p>
+                    <label for="<?php echo $this->get_field_id($activeTheme['slug'] . '_' . $text['slug']) ?>" title="<?php echo $text['description'] ?>"><?php echo $text['title'] ?>:</label><br/>
+                    <input type="text" id="<?php echo $this->get_field_id($activeTheme['slug'] . '_' . $text['slug']); ?>" name="<?php echo $this->get_field_name($activeTheme['slug'] . '_' . $text['slug']) ?>" value="<?php echo $instance[$activeTheme['slug'] . '_' . $text['slug']] ?>" class="widefat" />
+                    <br /><small><?php echo $text['description'] ?></small>
+                </p>
+
+            <?php endforeach ?>
+        </fieldset>
+
+    <?php endif ?>
 
 	<!-- Facebook -->
 	<h5><?php _e('Facebook', 'socialbox'); ?></h5>
