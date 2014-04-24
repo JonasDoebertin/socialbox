@@ -1,14 +1,25 @@
 <p><a href="http://twitter.com/DieserJonas" title="Follow me on Twitter"><img src="http://jd-daten.de/envato/button-left-twitter.png" alt="Follow me on Twitter - News, Updates & more"/></a><a href="http://themeforest.net/user/jdpowered/follow" title="Follow me on the Envato Marketplaces - New Themes and Plugins"><img src="http://jd-daten.de/envato/button-right-envato.png" alt="Follow me on the Envato Marketplaces"/></a></p>
 
-<p>With SocialBox you get an absolutely easy to use WordPress Plugin which enables you to add a sleek social widget to your WordPress site or blog. It supports several social networks and displays a variety of statistics from several social networks including, but not limited to, the current number of Facebook Page Likes, Twitter, Dribbble, Forrst &amp; GitHub Followers and YouTube and Vimeo Channel Subscriptions. You can enter sensible default values which will be shown as a fallback if the related APIs are not reachable.</p>
+<p><img src="http://jd-daten.de/envato/item-socialbox-header.png" alt=""/></p>
+
+<p>With SocialBox you get an absolutely easy to use WordPress Plugin which enables you to add a sleek social widget to your WordPress site or blog. It supports several social networks and displays a variety of statistics from several social networks including, but not limited to, the current number of Facebook Page Likes & Checkins, Twitter, Instagram, Pinterest, Dribbble, Forrst &amp; GitHub Followers, YouTube and Vimeo Channel Subscriptions and MailChimp List Subscribers. You can enter sensible default values which will be shown as a fallback if the related APIs are not reachable.</p>
+
+<p><img src="http://jd-daten.de/envato/item-socialbox-features.png" alt=""/></p>
 
 <h3>Features</h3>
 <ul>
 	<li>Displays the number of:
 		<ul>
-			<li>Facebook Page Likes, Checkins &amp; Talking About</li>
-			<li>Twitter, Dribbble, Forrst &amp; GitHub Followers</li>
-			<li>YouTube and Vimeo Channel Subscribers</li>
+            <li>Facebook Page Likes, Checkins &amp; Talking About</li>
+            <li>Twitter Followers</li>
+            <li>Youtube Channel Subscribers</li>
+            <li>Vimeo Channel Subscribers &amp; Total Videos</li>
+            <li><strong>New:</strong> Instagram Posts &amp; Followers</li>
+            <li><strong>New:</strong> Pinterest Followers, Boards &amp; Pins</li>
+            <li>Dribbble Followers, Likes/Comments/Rebounds Received</li>
+            <li>Forrst Followers</li>
+            <li>GitHub Followers</li>
+            <li><strong>New:</strong> MailChimp List Subscribers</li>
 		</ul>
 	</li>
 	<li>Rearrange and disable any of these networks to perfectly fit your needs</li>
@@ -24,8 +35,8 @@
 
 <h4>Requirements</h4>
 <ul>
-	<li>WordPress 3.0+</li>
-	<li>PHP 5.2+</li>
+	<li>WordPress 3.6+</li>
+	<li>PHP 5.3+</li>
 	<li>PHP Extensions: cURL &amp; SimpleXML (these are enabled by default on common hosting services)</li>
 </ul>
 
@@ -34,11 +45,40 @@
 	"I picked the plugin up a few days ago and was immediately impressed with its quality. While the task it performs is relatively simple, and there are numerous free plugins that can do more or less the same, SocialBox definitely stands above the crowd with it’s high quality. The widget works perfectly, is clear and easy to use, and provides a nice addition to any WordPress site. [...] If you’re looking for a new social widget, I highly recommend this one." - <a href="http://codecanyon.net/user/mordauk">Pippin Williamson (mordauk)</a> <strong>(Read the <a href="http://pippinsplugins.com/review-socialbox-social-widget-for-wordpress/">full review</a>)</strong>
 </blockquote>
 <blockquote>
-	"It was a love at first sight with me and this plugin [...]. One thing i love most is it’s speed, it loads quickly than any other these type of plugins (that i have seen). It’s a plugin that worth buying, and it only costs 4$ [...]." - <a href="http://wpbox.in/">Saeed Salam</a> <strong>(Read the <a href="http://wpbox.in/socialbox-plugin-social-widget-for-wordpress/">full review</a>)</strong>
-</blockquote>
+	"It was a love at first sight with me and this plugin [...]. One thing i love most is it’s speed, it loads quickly than any other these type of plugins (that i have seen). It’s a plugin that worth buying, and it only costs 4$ [...]." - Saeed Salam</blockquote>
+
+<h3>What's next?</h3>
+<p>Let me know if you have anything else in mind that you'd like to see in the next update!</p>
 
 <h3>Updates</h3>
-<strong>Version 1.4.0</strong> <em>Pending</em><br/>
+
+<strong>Version 1.6.2</strong> <em>Awaiting review</em><br/>
+<ul>
+	<li>Added support for theme addons</li>
+</ul>
+<strong>Version 1.6.1</strong><br/>
+<ul>
+	<li>Fixed a bug that caused problems fetching Pinterest and Dribbble numbers in some cases</li>
+</ul>
+<strong>Version 1.6.0</strong><br/>
+<ul>
+	<li>Added support for <strong>Pinterest</strong> and <strong>MailChimp</strong></li>
+	<li>Added additional metrics for Vimeo and Dribbble</li>
+	<li>Fixed option to disable SSL Verification</li>
+	<li>Optimized cache implementation (less disk space & faster updates)</li>
+</ul>
+<strong>Version 1.5.0</strong><br/>
+<ul>
+	<li>Added support for <strong>Instagram</strong></li>
+	<li>Completely revamped help section</li>
+	<li>Added advanced cache debugging options</li>
+</ul>
+<strong>Version 1.4.1</strong><br/>
+<ul>
+	<li>Restore compatibility with PHP 5.3</li>
+</ul>
+
+<strong>Version 1.4.0</strong><br/>
 <strong>Important:</strong> After updating the plugin please re-setup all your SocialBox widgets!<br/>
 <ul>
 	<li>Added an option to choose from Facebook Page Likes, Checkins &amp; Talking About</li>
@@ -107,3 +147,5 @@
 	<li>Added support for YouTube Channels</li>
 	<li>Updated localization files</li>
 </ul>
+
+<img src="http://analytics.jd-powered.net/piwik.php?idsite=2&amp;rec=1" />
