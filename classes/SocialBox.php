@@ -2,7 +2,7 @@
 
 
 /*
- * SocialBox 1.6.1
+ * SocialBox 1.6.2
  * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
@@ -84,6 +84,14 @@ class JD_SocialBox{
 			add_action('wp_enqueue_scripts', array($this, 'registerStyle'));
 		}
 	}
+
+
+
+
+
+    /**************************************************************************\
+    *                             PLUGIN INTERNALS                             *
+    \**************************************************************************/
 
 	/**
 	 * Inject a custom cron schedule timeframe
@@ -225,16 +233,6 @@ class JD_SocialBox{
 		include JD_SOCIALBOX_PATH . '/views/update.php';
 	}
 
-	/**
-	 * Register the Widget
-	 *
-	 * Will be run within "widgets_init" action
-	 */
-	public function registerWidget(){
-
-		register_widget('JD_SocialBoxWidget');
-	}
-
 	public function addPluginActionLink($actionLinks){
 
 		$html = '<a href="options-general.php?page=socialbox&tab=settings" title="' . __('SocialBox Settings', 'socialbox') . '">' . __('Settings', 'socialbox') . '</a>';
@@ -243,19 +241,23 @@ class JD_SocialBox{
 		return $actionLinks;
 	}
 
-	/**
-	 * Register the widgets admin stylesheet
-	 *
-	 * Will be run in "admin_print_styles-widgets.php" action and only on widgets admin page
-	 */
-	public function registerWidgetsPageStyle(){
 
-		/* register Style */
-		wp_register_style('socialbox-widgets-page', JD_SOCIALBOX_URL . '/assets/css/widgets-page.css', array(), JD_SOCIALBOX_VERSION, 'screen');
 
-		/* Enqueue Style */
-		wp_enqueue_style('socialbox-widgets-page');
-	}
+
+
+    /**************************************************************************\
+    *                                  WIDGET                                  *
+    \**************************************************************************/
+
+    /**
+     * Register the Widget
+     *
+     * Will be run within "widgets_init" action
+     */
+    public function registerWidget(){
+
+        register_widget('JD_SocialBoxWidget');
+    }
 
 	/**
 	 * Register & enqueue the widgets stylesheet
@@ -271,21 +273,145 @@ class JD_SocialBox{
 		wp_enqueue_style('socialbox');
 	}
 
-	/**
-	 * Add the options page
-	 *
-	 * Will be run in "admin_menu" action
-	 */
-	public function registerOptionsPage(){
+    /**
+     * Register the widgets admin stylesheet
+     *
+     * Will be run in "admin_print_styles-widgets.php" action and only on widgets admin page
+     */
+    public function registerWidgetsPageStyle(){
 
-		$this->settingsPageSlug = add_options_page(
-			__('SocialBox', 'socialbox'),
-			__('SocialBox', 'socialbox'),
-			'manage_options',
-			'socialbox',
-			array($this, 'renderOptionsPage')
-		);
-	}
+        /* register Style */
+        wp_register_style('socialbox-widgets-page', JD_SOCIALBOX_URL . '/assets/css/widgets-page.css', array(), JD_SOCIALBOX_VERSION, 'screen');
+
+        /* Enqueue Style */
+        wp_enqueue_style('socialbox-widgets-page');
+    }
+
+
+
+
+
+    /**************************************************************************\
+    *                                  THEMES                                  *
+    \**************************************************************************/
+
+    public function getThemes($mode = 'grouped') {
+
+        if($mode === 'grouped') {
+            return array(
+                'core'   => self::getCoreThemes(),
+                'plain'  => self::getPlainThemes(),
+                'addon' => self::getAddonThemes(),
+            );
+        }
+
+        return array_merge($this->getCoreThemes(), $this->getPlainThemes(), $this->getAddonThemes());
+    }
+
+    protected function getCoreThemes() {
+
+        return array(
+            'classic' => array(
+                'slug'         => 'classic',
+                'name'         => __('Classic (default)', 'socialbox'),
+                'iconSize'     => 16,
+                'allowButtons' => true,
+                'template'     => JD_SOCIALBOX_PATH . '/views/widget/widget.php',
+            ),
+            'modern' => array(
+                'slug'         => 'modern',
+                'name'         => __('Modern', 'socialbox'),
+                'iconSize'     => 32,
+                'allowButtons' => false,
+                'template'     => JD_SOCIALBOX_PATH . '/views/widget/widget.php',
+            ),
+            'tutsflavor' => array(
+                'slug'         => 'tutsflavor',
+                'name'         => __('Tuts+ Flavor', 'socialbox'),
+                'iconSize'     => 32,
+                'allowButtons' => true,
+                'template'     => JD_SOCIALBOX_PATH . '/views/widget/widget.php',
+            ),
+            'dark' => array(
+                'slug'         => 'dark',
+                'name'         => __('Dark', 'socialbox'),
+                'iconSize'     => 16,
+                'allowButtons' => true,
+                'template'     => JD_SOCIALBOX_PATH . '/views/widget/widget.php',
+            ),
+            'colorful' => array(
+                'slug'         => 'colorful',
+                'name'         => __('Colorful', 'socialbox'),
+                'iconSize'     => 32,
+                'allowButtons' => true,
+                'template'     => JD_SOCIALBOX_PATH . '/views/widget/widget.php',
+            ),
+        );
+    }
+
+    protected function getPlainThemes() {
+
+        return array(
+            'plainsmall' => array(
+                'slug'         => 'plainsmall',
+                'name'         => __('Plain (small icons)', 'socialbox'),
+                'iconSize'     => 16,
+                'allowButtons' => true,
+                'template'     => JD_SOCIALBOX_PATH . '/views/widget/widget.php',
+            ),
+            'plainlarge' => array(
+                'slug'         => 'plainlarge',
+                'name'         => __('Plain (large icons)', 'socialbox'),
+                'iconSize'     => 32,
+                'allowButtons' => true,
+                'template'     => JD_SOCIALBOX_PATH . '/views/widget/widget.php',
+            ),
+        );
+    }
+
+    protected function getAddonThemes() {
+
+        $themes = array();
+        return apply_filters('socialbox_addon_themes', $themes);
+    }
+
+    public function getThemeBySlug($slug) {
+
+        /* Walk through all theme categories */
+        foreach($this->getThemes() as $themes) {
+
+            /* Walk through each theme */
+            foreach($themes as $key => $theme) {
+
+                /* Return theme info if array key and slug match */
+                if($key == $slug)
+                    return $theme;
+            }
+        }
+
+        return false;
+    }
+
+    public function getThemeTexts($slug) {
+
+        /* Get theme by slug */
+        $theme = $this->getThemeBySlug($slug);
+
+        /* Return texts if available */
+        if(isset($theme['texts']) and is_array($theme['texts']))
+            return $theme['texts'];
+
+        /* Return fallback */
+        return array();
+    }
+
+
+
+
+
+    /**************************************************************************\
+    *                                 SETTINGS                                 *
+    \**************************************************************************/
 
 	/**
 	 * Register all setting sections and fields
@@ -348,6 +474,30 @@ class JD_SocialBox{
 	    echo $html;
 	}
 
+
+
+
+
+    /**************************************************************************\
+    *                               OPTIONS PAGE                               *
+    \**************************************************************************/
+
+    /**
+     * Add the options page
+     *
+     * Will be run in "admin_menu" action
+     */
+    public function registerOptionsPage(){
+
+        $this->settingsPageSlug = add_options_page(
+            __('SocialBox', 'socialbox'),
+            __('SocialBox', 'socialbox'),
+            'manage_options',
+            'socialbox',
+            array($this, 'renderOptionsPage')
+        );
+    }
+
 	/**
 	 * Register & enqueue styles for the options page
 	 *
@@ -401,6 +551,14 @@ class JD_SocialBox{
 		$tab = (isset($_GET['tab']) and !empty($_GET['tab'])) ? $_GET['tab'] : 'settings';
 		include JD_SOCIALBOX_PATH . '/views/options-page/frame.php';
 	}
+
+
+
+
+
+    /**************************************************************************\
+    *                                   AJAX                                   *
+    \**************************************************************************/
 
 	/**
 	 * Return formatted cache content
@@ -458,6 +616,14 @@ class JD_SocialBox{
 		/* Return message */
 		die(__('Cache refreshed!', 'socialbox'));
 	}
+
+
+
+
+
+    /**************************************************************************\
+    *                                  CACHE                                   *
+    \**************************************************************************/
 
 	/**
 	 * Refresh the cache
@@ -583,6 +749,14 @@ class JD_SocialBox{
 
 		update_option('socialbox_cache', array());
 	}
+
+
+
+
+
+    /**************************************************************************\
+    *                                   LOG                                    *
+    \**************************************************************************/
 
 	/**
 	 * Add an entry to the API Log

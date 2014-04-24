@@ -2,7 +2,7 @@
 
 
 /*
- * SocialBox 1.6.1
+ * SocialBox 1.6.2
  * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
@@ -38,6 +38,9 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 * @param Array $instance
 	 */
 	public function widget($args, $instance) {
+
+        /* Import plugin instance */
+        global $JD_SocialBox;
 
 		extract($args);
 
@@ -78,20 +81,19 @@ class JD_SocialBoxWidget extends WP_Widget{
 		usort($networks, array($this, 'sortByPosition'));
 
 		/* Get additional options */
-		$style             = $instance['style'];
+		$theme             = $JD_SocialBox->getThemeBySlug($instance['style']);
+        $texts             = $this->getTexts($instance, $theme);
 		$newWindow         = $instance['new_window'];
 		$showButtons       = $instance['show_buttons'];
 		$compactNumbers    = $instance['compact_numbers'];
 		$forcedWidgetWidth = ($instance['forced_widget_width'] > 0) ? $instance['forced_widget_width'] : false;
 		$forcedButtonWidth = ($instance['forced_button_width'] > 0) ? $instance['forced_button_width'] : false;
-		$allowButtons      = $this->getAllowButtons($style);
-		$iconSize          = $this->getIconSize($style);
 
 		/* Before Widget HTML */
 		echo $before_widget;
 
 		/* Social Box */
-		include JD_SOCIALBOX_PATH . '/views/widget/widget.php';
+		include $theme['template'];
 
 		/* After Widget HTML */
 		echo $after_widget;
@@ -106,6 +108,9 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 * @return Array
 	 */
 	public function update($newInstance, $oldInstance) {
+
+        /* Import plugin instance */
+        global $JD_SocialBox;
 
 		/* Update general widget options */
 		$instance = $oldInstance;
@@ -137,6 +142,18 @@ class JD_SocialBoxWidget extends WP_Widget{
         $instance['dribbble_metric']             = $newInstance['dribbble_metric'];
         $instance['mailchimp_api_key']           = $newInstance['mailchimp_api_key'];
         $instance['mailchimp_form_url']          = $newInstance['mailchimp_form_url'];
+
+        /* Update values for theme specific options */
+        foreach($JD_SocialBox->getThemes('ungrouped') as $theme) {
+            foreach($JD_SocialBox->getThemeTexts($theme['slug']) as $text) {
+
+                /* Update value only if it is set */
+                if(isset($newInstance[$instance['style'] . '_' . $text['slug']])) {
+
+                    $instance[$instance['style'] . '_' . $text['slug']] = $newInstance[$instance['style'] . '_' . $text['slug']];
+                }
+            }
+        }
 
 		/* Update cache elements */
 		$cache = get_option('socialbox_cache', array());
@@ -210,6 +227,12 @@ class JD_SocialBoxWidget extends WP_Widget{
 	 */
 	public function form($instance) {
 
+        /* Import plugin instance */
+        global $JD_SocialBox;
+
+        /* Get available themes */
+        $themes = $JD_SocialBox->getThemes();
+
 		/* Apply general default values */
 		$defaults = array(
 			'new_window'          => true,
@@ -244,8 +267,19 @@ class JD_SocialBoxWidget extends WP_Widget{
         $defaults['mailchimp_api_key']           = '';
         $defaults['mailchimp_form_url']          = '';
 
+        /* Set default values for theme specific options */
+        foreach($JD_SocialBox->getThemes('ungrouped') as $theme) {
+            foreach($JD_SocialBox->getThemeTexts($theme['slug']) as $text) {
+                $defaults[$theme['slug'] . '_' . $text['slug']] = $text['default'];
+            }
+        }
+
 		/* Merge defaults and actual option values */
 		$instance = wp_parse_args((array) $instance, $defaults);
+
+        /* Get theme info and options */
+        $activeTheme  = $JD_SocialBox->getThemeBySlug($instance['style']);
+        $activeThemeTexts  = $JD_SocialBox->getThemeTexts($instance['style']);
 
 		/* Include corresponding view */
 		include JD_SOCIALBOX_PATH . '/views/widget/form.php';
@@ -256,6 +290,33 @@ class JD_SocialBoxWidget extends WP_Widget{
 		return $a['position'] - $b['position'];
 
 	}
+
+    private function getTexts($instance, $theme) {
+
+        /* Import global plugin instance */
+        global $JD_SocialBox;
+
+        /* Get all available text for the current theme */
+        $availableTexts = $JD_SocialBox->getThemeTexts($instance['style']);
+
+        /* Loop through texts and get value or default value */
+        $texts = array();
+        foreach($availableTexts as $text) {
+
+            /* Check if text is set in widget instance */
+            if(isset($instance[$instance['style'] . '_' . $text['slug']])) {
+
+                /* Set text value to value from widget instance */
+                $texts[$text['slug']] = $instance[$instance['style'] . '_' . $text['slug']];
+            } else {
+
+                /* Set text value to default value */
+                $texts[$text['slug']] = $text['default'];
+            }
+        }
+
+        return $texts;
+    }
 
 	/**
 	 * Helper - Returns a link to the network specific user account
@@ -459,28 +520,6 @@ class JD_SocialBoxWidget extends WP_Widget{
 			case 'plainsmall':
 			default:
 				return true;
-		}
-	}
-
-	/**
-	 * Returns the required icon size for a specific style
-	 *
-	 * @param String $style
-	 * @return Bool
-	 */
-	private function getIconSize($style = 'classic') {
-
-		switch($style) {
-			case 'modern':
-			case 'tutsflavor':
-			case 'colorful':
-			case 'plainlarge':
-				return '32';
-			case 'classic':
-			case 'plainsmall':
-			case 'dark':
-			default:
-				return '16';
 		}
 	}
 
