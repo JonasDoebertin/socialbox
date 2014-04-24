@@ -1,5 +1,5 @@
 
-SocialBox 1.6.1
+SocialBox 1.6.2
 Copyright by Jonas Döbertin
 Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
 
@@ -9,14 +9,14 @@ Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpr
 
 To install SocialBox, simply follow these steps:
 
-	(1)	Login to your WordPress site and navigate to the admin page "Plugins > Add new".
+	(1) Login to your WordPress site and navigate to the admin page "Plugins > Add new".
 
 	(2) Select "Upload" from the available options (click it).
 
 	(3) Select the zip file "socialbox-plugin.zip" and click "Install now".
 		WordPress will upload and install the plugin for you.
 
-	(4)	After the installation has finished, click "Activate Plugin" to enable SocialBox.
+	(4) After the installation has finished, click "Activate Plugin" to enable SocialBox.
 
 	(5) That's it!
 

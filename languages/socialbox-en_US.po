@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SocialBox\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-04-11 09:15+0100\n"
-"PO-Revision-Date: 2014-04-11 09:15+0100\n"
+"POT-Creation-Date: 2014-04-24 17:18+0100\n"
+"PO-Revision-Date: 2014-04-24 17:18+0100\n"
 "Last-Translator: Jonas Döbertin <hallo@jonasdoebertin.net>\n"
 "Language-Team: Jonas Döbertin <support@jd-powered.net>\n"
 "Language: en_US\n"
@@ -16,63 +16,91 @@ msgstr ""
 "X-Generator: Poedit 1.6.4\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../classes/SocialBox.php:99
+#: ../classes/SocialBox.php:107
 msgid "Every Ten Minutes"
 msgstr ""
 
-#: ../classes/SocialBox.php:240
+#: ../classes/SocialBox.php:238
 msgid "SocialBox Settings"
 msgstr ""
 
-#: ../classes/SocialBox.php:240 ../views/options-page/frame.php:19
+#: ../classes/SocialBox.php:238 ../views/options-page/frame.php:19
 msgid "Settings"
 msgstr ""
 
-#: ../classes/SocialBox.php:282 ../classes/SocialBox.php:283
-#: ../views/options-page/frame.php:18
-msgid "SocialBox"
+#: ../classes/SocialBox.php:316
+msgid "Classic (default)"
 msgstr ""
 
-#: ../classes/SocialBox.php:305
-msgid "Advanced Settings"
+#: ../classes/SocialBox.php:323
+msgid "Modern"
 msgstr ""
 
-#: ../classes/SocialBox.php:312
-msgid "Update Interval"
-msgstr ""
-
-#: ../classes/SocialBox.php:321
-msgid "SSL-Verification"
-msgstr ""
-
-#: ../classes/SocialBox.php:331
-msgid "Some advanced options to tweak SocialBox's internals"
+#: ../classes/SocialBox.php:330
+msgid "Tuts+ Flavor"
 msgstr ""
 
 #: ../classes/SocialBox.php:337
+msgid "Dark"
+msgstr ""
+
+#: ../classes/SocialBox.php:344
+msgid "Colorful"
+msgstr ""
+
+#: ../classes/SocialBox.php:357
+msgid "Plain (small icons)"
+msgstr ""
+
+#: ../classes/SocialBox.php:364
+msgid "Plain (large icons)"
+msgstr ""
+
+#: ../classes/SocialBox.php:431
+msgid "Advanced Settings"
+msgstr ""
+
+#: ../classes/SocialBox.php:438
+msgid "Update Interval"
+msgstr ""
+
+#: ../classes/SocialBox.php:447
+msgid "SSL-Verification"
+msgstr ""
+
+#: ../classes/SocialBox.php:457
+msgid "Some advanced options to tweak SocialBox's internals"
+msgstr ""
+
+#: ../classes/SocialBox.php:463
 msgid ""
 "The time (in minutes) that SocialBox waits before refreshing it's data. "
 "(Default: 180 = 3 hours)"
 msgstr ""
 
-#: ../classes/SocialBox.php:345
+#: ../classes/SocialBox.php:471
 msgid "Disable SSL-Verification on API requests."
 msgstr ""
 
-#: ../classes/SocialBox.php:346
+#: ../classes/SocialBox.php:472
 msgid "This can be useful on most \"local servers\" like MAMP or XAMPP."
 msgstr ""
 
-#: ../classes/SocialBox.php:414 ../classes/SocialBox.php:430
-#: ../classes/SocialBox.php:449
+#: ../classes/SocialBox.php:493 ../classes/SocialBox.php:494
+#: ../views/options-page/frame.php:18
+msgid "SocialBox"
+msgstr ""
+
+#: ../classes/SocialBox.php:572 ../classes/SocialBox.php:588
+#: ../classes/SocialBox.php:607
 msgid "Security check failed!"
 msgstr ""
 
-#: ../classes/SocialBox.php:437
+#: ../classes/SocialBox.php:595
 msgid "Cache cleared!"
 msgstr ""
 
-#: ../classes/SocialBox.php:459
+#: ../classes/SocialBox.php:617
 msgid "Cache refreshed!"
 msgstr ""
 
@@ -83,157 +111,157 @@ msgid ""
 "MailChimp."
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:297 ../views/widget/form.php:62
+#: ../classes/SocialBoxWidget.php:360 ../views/widget/form.php:95
 msgid "Facebook"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:299 ../views/widget/form.php:98
+#: ../classes/SocialBoxWidget.php:362 ../views/widget/form.php:131
 msgid "Twitter"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:301 ../views/widget/form.php:147
+#: ../classes/SocialBoxWidget.php:364 ../views/widget/form.php:180
 msgid "YouTube"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:303 ../views/widget/form.php:172
+#: ../classes/SocialBoxWidget.php:366 ../views/widget/form.php:205
 msgid "Vimeo"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:305 ../views/widget/form.php:206
+#: ../classes/SocialBoxWidget.php:368 ../views/widget/form.php:239
 msgid "Instagram"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:307 ../views/widget/form.php:253
+#: ../classes/SocialBoxWidget.php:370 ../views/widget/form.php:286
 msgid "Pinterest"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:309 ../views/widget/form.php:288
+#: ../classes/SocialBoxWidget.php:372 ../views/widget/form.php:321
 msgid "Dribbble"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:311 ../views/widget/form.php:325
+#: ../classes/SocialBoxWidget.php:374 ../views/widget/form.php:358
 msgid "Forrst"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:313 ../views/widget/form.php:350
+#: ../classes/SocialBoxWidget.php:376 ../views/widget/form.php:383
 msgid "GitHub"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:315
+#: ../classes/SocialBoxWidget.php:378
 msgid "Newsletter"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:323 ../classes/SocialBoxWidget.php:327
-#: ../classes/SocialBoxWidget.php:329 ../classes/SocialBoxWidget.php:349
-#: ../classes/SocialBoxWidget.php:365 ../classes/SocialBoxWidget.php:379
+#: ../classes/SocialBoxWidget.php:386 ../classes/SocialBoxWidget.php:390
+#: ../classes/SocialBoxWidget.php:392 ../classes/SocialBoxWidget.php:412
+#: ../classes/SocialBoxWidget.php:428 ../classes/SocialBoxWidget.php:442
 msgid "Followers"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:325 ../classes/SocialBoxWidget.php:331
-#: ../classes/SocialBoxWidget.php:357
+#: ../classes/SocialBoxWidget.php:388 ../classes/SocialBoxWidget.php:394
+#: ../classes/SocialBoxWidget.php:420
 msgid "Subscribers"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:335 ../classes/SocialBoxWidget.php:367
+#: ../classes/SocialBoxWidget.php:398 ../classes/SocialBoxWidget.php:430
 msgid "Likes"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:337
+#: ../classes/SocialBoxWidget.php:400
 msgid "Checkins"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:339
+#: ../classes/SocialBoxWidget.php:402
 msgid "Were Here"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:341
+#: ../classes/SocialBoxWidget.php:404
 msgid "Talking About"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:347
+#: ../classes/SocialBoxWidget.php:410
 msgid "Posts"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:351
+#: ../classes/SocialBoxWidget.php:414
 msgid "Following"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:359
+#: ../classes/SocialBoxWidget.php:422
 msgid "Videos"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:369
+#: ../classes/SocialBoxWidget.php:432
 msgid "Comments"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:371
+#: ../classes/SocialBoxWidget.php:434
 msgid "Rebounds"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:373
+#: ../classes/SocialBoxWidget.php:436
 msgid "Shots"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:381
+#: ../classes/SocialBoxWidget.php:444
 msgid "Pins"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:383
+#: ../classes/SocialBoxWidget.php:446
 msgid "Boards"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:393
+#: ../classes/SocialBoxWidget.php:456
 msgid "Like"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:395 ../classes/SocialBoxWidget.php:401
-#: ../classes/SocialBoxWidget.php:403 ../classes/SocialBoxWidget.php:405
-#: ../classes/SocialBoxWidget.php:407 ../classes/SocialBoxWidget.php:409
+#: ../classes/SocialBoxWidget.php:458 ../classes/SocialBoxWidget.php:464
+#: ../classes/SocialBoxWidget.php:466 ../classes/SocialBoxWidget.php:468
+#: ../classes/SocialBoxWidget.php:470 ../classes/SocialBoxWidget.php:472
 msgid "Follow"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:397 ../classes/SocialBoxWidget.php:399
-#: ../classes/SocialBoxWidget.php:411
+#: ../classes/SocialBoxWidget.php:460 ../classes/SocialBoxWidget.php:462
+#: ../classes/SocialBoxWidget.php:474
 msgid "Subscribe"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:419
+#: ../classes/SocialBoxWidget.php:482
 msgid "Like on Facebook"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:421
+#: ../classes/SocialBoxWidget.php:484
 msgid "Follow on Twitter"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:423
+#: ../classes/SocialBoxWidget.php:486
 msgid "Subscribe to Youtube Channel"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:425
+#: ../classes/SocialBoxWidget.php:488
 msgid "Subscribe to Vimeo Channel"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:427
+#: ../classes/SocialBoxWidget.php:490
 msgid "Follow on Instagram"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:429
+#: ../classes/SocialBoxWidget.php:492
 msgid "Follow on Pinterest"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:431
+#: ../classes/SocialBoxWidget.php:494
 msgid "Follow on Dribbble"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:433
+#: ../classes/SocialBoxWidget.php:496
 msgid "Follow on Forrst"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:435
+#: ../classes/SocialBoxWidget.php:498
 msgid "Follow on GitHub"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:437
+#: ../classes/SocialBoxWidget.php:500
 msgid "Subscribe to newsletter"
 msgstr ""
 
@@ -351,7 +379,7 @@ msgid ""
 "option has no effect."
 msgstr ""
 
-#: ../views/options-page/help.php:69 ../views/widget/form.php:55
+#: ../views/options-page/help.php:69 ../views/widget/form.php:70
 msgid "Use Compact Numbers"
 msgstr ""
 
@@ -416,7 +444,7 @@ msgid ""
 "networks will be order by this number from small (top) to large (bottom)."
 msgstr ""
 
-#: ../views/options-page/help.php:94 ../views/widget/form.php:68
+#: ../views/options-page/help.php:94 ../views/widget/form.php:101
 msgid "Page ID or Shortname"
 msgstr ""
 
@@ -430,9 +458,9 @@ msgstr ""
 
 #: ../views/options-page/help.php:97 ../views/options-page/help.php:122
 #: ../views/options-page/help.php:144 ../views/options-page/help.php:151
-#: ../views/widget/form.php:74 ../views/widget/form.php:184
-#: ../views/widget/form.php:230 ../views/widget/form.php:265
-#: ../views/widget/form.php:300
+#: ../views/widget/form.php:107 ../views/widget/form.php:217
+#: ../views/widget/form.php:263 ../views/widget/form.php:298
+#: ../views/widget/form.php:333
 msgid "Metric"
 msgstr ""
 
@@ -447,9 +475,9 @@ msgstr ""
 #: ../views/options-page/help.php:101 ../views/options-page/help.php:126
 #: ../views/options-page/help.php:141 ../views/options-page/help.php:148
 #: ../views/options-page/help.php:155 ../views/options-page/help.php:159
-#: ../views/widget/form.php:104 ../views/widget/form.php:212
-#: ../views/widget/form.php:259 ../views/widget/form.php:294
-#: ../views/widget/form.php:331 ../views/widget/form.php:356
+#: ../views/widget/form.php:137 ../views/widget/form.php:245
+#: ../views/widget/form.php:292 ../views/widget/form.php:327
+#: ../views/widget/form.php:364 ../views/widget/form.php:389
 msgid "Username"
 msgstr ""
 
@@ -508,7 +536,7 @@ msgid ""
 msgstr ""
 
 #: ../views/options-page/help.php:116 ../views/options-page/help.php:120
-#: ../views/widget/form.php:153 ../views/widget/form.php:178
+#: ../views/widget/form.php:186 ../views/widget/form.php:211
 msgid "Channel"
 msgstr ""
 
@@ -538,7 +566,7 @@ msgid ""
 "have to be your own account; any public account goes."
 msgstr ""
 
-#: ../views/options-page/help.php:129 ../views/widget/form.php:218
+#: ../views/options-page/help.php:129 ../views/widget/form.php:251
 msgid "User ID"
 msgstr ""
 
@@ -550,7 +578,7 @@ msgid ""
 "don't know your user id yet: %s Instagram User Id Lookup Tool %s."
 msgstr ""
 
-#: ../views/options-page/help.php:132 ../views/widget/form.php:224
+#: ../views/options-page/help.php:132 ../views/widget/form.php:257
 msgid "Client ID"
 msgstr ""
 
@@ -597,7 +625,7 @@ msgid ""
 "& Rebounds you received."
 msgstr ""
 
-#: ../views/options-page/help.php:163 ../views/widget/form.php:381
+#: ../views/options-page/help.php:163 ../views/widget/form.php:414
 msgid "List ID"
 msgstr ""
 
@@ -608,8 +636,8 @@ msgid ""
 "Settings &raquo; List name & defaults&laquo;"
 msgstr ""
 
-#: ../views/options-page/help.php:166 ../views/widget/form.php:110
-#: ../views/widget/form.php:387
+#: ../views/options-page/help.php:166 ../views/widget/form.php:143
+#: ../views/widget/form.php:420
 msgid "API Key"
 msgstr ""
 
@@ -632,7 +660,7 @@ msgid ""
 "Create A Key&laquo;. A new API Key will be generated and added to the list."
 msgstr ""
 
-#: ../views/options-page/help.php:173 ../views/widget/form.php:393
+#: ../views/options-page/help.php:173 ../views/widget/form.php:426
 msgid "Subscription Form URL"
 msgstr ""
 
@@ -685,174 +713,190 @@ msgstr ""
 msgid "Display Follow/Subscribe buttons"
 msgstr ""
 
-#: ../views/widget/form.php:49
-msgid "Choose the widgets display style"
+#: ../views/widget/form.php:38
+msgid "Regular Styles"
+msgstr ""
+
+#: ../views/widget/form.php:47
+msgid "Addon Styles"
 msgstr ""
 
 #: ../views/widget/form.php:56
+msgid "Plain Styles"
+msgstr ""
+
+#: ../views/widget/form.php:64
+msgid "Choose the widgets display theme"
+msgstr ""
+
+#: ../views/widget/form.php:71
 msgid "Show 12K instead of 12.300"
 msgstr ""
 
-#: ../views/widget/form.php:68
+#: ../views/widget/form.php:78
+msgid "Style Settings"
+msgstr ""
+
+#: ../views/widget/form.php:101
 msgid "Your Pages ID or Shortname (e.g. envato)"
 msgstr ""
 
-#: ../views/widget/form.php:74 ../views/widget/form.php:184
-#: ../views/widget/form.php:230 ../views/widget/form.php:265
-#: ../views/widget/form.php:300
+#: ../views/widget/form.php:107 ../views/widget/form.php:217
+#: ../views/widget/form.php:263 ../views/widget/form.php:298
+#: ../views/widget/form.php:333
 msgid "What metric shall be displayed"
 msgstr ""
 
-#: ../views/widget/form.php:85
+#: ../views/widget/form.php:118
 msgid "Your fallback like count"
 msgstr ""
 
-#: ../views/widget/form.php:85 ../views/widget/form.php:134
-#: ../views/widget/form.php:159 ../views/widget/form.php:193
-#: ../views/widget/form.php:240 ../views/widget/form.php:275
-#: ../views/widget/form.php:312 ../views/widget/form.php:337
-#: ../views/widget/form.php:362 ../views/widget/form.php:399
+#: ../views/widget/form.php:118 ../views/widget/form.php:167
+#: ../views/widget/form.php:192 ../views/widget/form.php:226
+#: ../views/widget/form.php:273 ../views/widget/form.php:308
+#: ../views/widget/form.php:345 ../views/widget/form.php:370
+#: ../views/widget/form.php:395 ../views/widget/form.php:432
 msgid "Default:"
 msgstr ""
 
-#: ../views/widget/form.php:91 ../views/widget/form.php:140
-#: ../views/widget/form.php:165 ../views/widget/form.php:199
-#: ../views/widget/form.php:246 ../views/widget/form.php:281
-#: ../views/widget/form.php:318 ../views/widget/form.php:343
-#: ../views/widget/form.php:368 ../views/widget/form.php:405
+#: ../views/widget/form.php:124 ../views/widget/form.php:173
+#: ../views/widget/form.php:198 ../views/widget/form.php:232
+#: ../views/widget/form.php:279 ../views/widget/form.php:314
+#: ../views/widget/form.php:351 ../views/widget/form.php:376
+#: ../views/widget/form.php:401 ../views/widget/form.php:438
 msgid "Display position within SocialBox"
 msgstr ""
 
-#: ../views/widget/form.php:91 ../views/widget/form.php:140
-#: ../views/widget/form.php:165 ../views/widget/form.php:199
-#: ../views/widget/form.php:246 ../views/widget/form.php:281
-#: ../views/widget/form.php:318 ../views/widget/form.php:343
-#: ../views/widget/form.php:368 ../views/widget/form.php:405
+#: ../views/widget/form.php:124 ../views/widget/form.php:173
+#: ../views/widget/form.php:198 ../views/widget/form.php:232
+#: ../views/widget/form.php:279 ../views/widget/form.php:314
+#: ../views/widget/form.php:351 ../views/widget/form.php:376
+#: ../views/widget/form.php:401 ../views/widget/form.php:438
 msgid "Position:"
 msgstr ""
 
-#: ../views/widget/form.php:104
+#: ../views/widget/form.php:137
 msgid "Your Twitter screenname (e.g. envatowebdev)"
 msgstr ""
 
-#: ../views/widget/form.php:110
+#: ../views/widget/form.php:143
 msgid "Your Twitter application API key"
 msgstr ""
 
-#: ../views/widget/form.php:116
+#: ../views/widget/form.php:149
 msgid "Your Twitter application API secret"
 msgstr ""
 
-#: ../views/widget/form.php:116
+#: ../views/widget/form.php:149
 msgid "API Secret"
 msgstr ""
 
-#: ../views/widget/form.php:122
+#: ../views/widget/form.php:155
 msgid "Your Twitter application access token"
 msgstr ""
 
-#: ../views/widget/form.php:122
+#: ../views/widget/form.php:155
 msgid "Access Token"
 msgstr ""
 
-#: ../views/widget/form.php:128
+#: ../views/widget/form.php:161
 msgid "Your Twitter application access token secret"
 msgstr ""
 
-#: ../views/widget/form.php:128
+#: ../views/widget/form.php:161
 msgid "Access Token Secret"
 msgstr ""
 
-#: ../views/widget/form.php:134 ../views/widget/form.php:240
-#: ../views/widget/form.php:275 ../views/widget/form.php:312
-#: ../views/widget/form.php:337 ../views/widget/form.php:362
+#: ../views/widget/form.php:167 ../views/widget/form.php:273
+#: ../views/widget/form.php:308 ../views/widget/form.php:345
+#: ../views/widget/form.php:370 ../views/widget/form.php:395
 msgid "Your fallback follower count"
 msgstr ""
 
-#: ../views/widget/form.php:153
+#: ../views/widget/form.php:186
 msgid "Your YouTube Channel (e.g. nettutsplus)"
 msgstr ""
 
-#: ../views/widget/form.php:159 ../views/widget/form.php:193
+#: ../views/widget/form.php:192 ../views/widget/form.php:226
 msgid "Your fallback subscriber count"
 msgstr ""
 
-#: ../views/widget/form.php:178
+#: ../views/widget/form.php:211
 msgid "Your Vimeo Channel"
 msgstr ""
 
-#: ../views/widget/form.php:212 ../views/widget/form.php:294
+#: ../views/widget/form.php:245 ../views/widget/form.php:327
 msgid "Your Dribbble username (e.g. envato)"
 msgstr ""
 
-#: ../views/widget/form.php:218
+#: ../views/widget/form.php:251
 msgid "Your Instagram user ID"
 msgstr ""
 
-#: ../views/widget/form.php:224
+#: ../views/widget/form.php:257
 msgid "Your Instagram application client ID"
 msgstr ""
 
-#: ../views/widget/form.php:259
+#: ../views/widget/form.php:292
 msgid "Your Pinterest username (e.g. envato)"
 msgstr ""
 
-#: ../views/widget/form.php:331
+#: ../views/widget/form.php:364
 msgid "Your Forrst username"
 msgstr ""
 
-#: ../views/widget/form.php:356
+#: ../views/widget/form.php:389
 msgid "Your gitHub username"
 msgstr ""
 
-#: ../views/widget/form.php:375
+#: ../views/widget/form.php:408
 msgid "MailChimp"
 msgstr ""
 
-#: ../views/widget/form.php:381
+#: ../views/widget/form.php:414
 msgid "Your MailChimp List ID"
 msgstr ""
 
-#: ../views/widget/form.php:387
+#: ../views/widget/form.php:420
 msgid "Your MailChimp API Key"
 msgstr ""
 
-#: ../views/widget/form.php:393
+#: ../views/widget/form.php:426
 msgid "Your Subscribtion form URL"
 msgstr ""
 
-#: ../views/widget/form.php:399
+#: ../views/widget/form.php:432
 msgid "Your fallback subscribers count"
 msgstr ""
 
-#: ../views/widget/form.php:412
+#: ../views/widget/form.php:445
 msgid "Additional Settings"
 msgstr ""
 
-#: ../views/widget/form.php:418
+#: ../views/widget/form.php:451
 msgid "Forced Widget Width:"
 msgstr ""
 
-#: ../views/widget/form.php:420
+#: ../views/widget/form.php:453
 msgid "Force Widget to have a specific width (0 to disable)"
 msgstr ""
 
-#: ../views/widget/form.php:425
+#: ../views/widget/form.php:458
 msgid "Forced Button Width:"
 msgstr ""
 
-#: ../views/widget/form.php:427
+#: ../views/widget/form.php:460
 msgid "Force Buttons to have a specific width (0 to disable)"
 msgstr ""
 
-#: ../views/widget/form.php:437
+#: ../views/widget/form.php:470
 msgid "Need help configuring this widget?"
 msgstr ""
 
-#: ../views/widget/form.php:437
+#: ../views/widget/form.php:470
 msgid "Send a message!"
 msgstr ""
 
-#: ../views/widget/form.php:437
+#: ../views/widget/form.php:470
 msgid "Get some!"
 msgstr ""
