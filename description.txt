@@ -52,7 +52,11 @@
 
 <h3>Updates</h3>
 
-<strong>Version 1.6.2</strong> <em>Awaiting review</em><br/>
+<strong>Version 1.6.3</strong> <em>Awaiting Review</em><br/>
+<ul>
+	<li>Fixed a bug that caused links to Facebook pages to break when a numeric id was used</li>
+</ul>
+<strong>Version 1.6.2</strong><br/>
 <ul>
 	<li>Added support for theme addons</li>
 </ul>
