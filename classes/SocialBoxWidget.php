@@ -330,7 +330,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		switch($item['network']) {
 
 			case 'facebook':
-				return "http://www.facebook.com/" . ((is_numeric($item['id'])) ? "profile.php?id={$id}" : $item['id']);
+				return "http://www.facebook.com/" . ((is_numeric($item['id'])) ? "profile.php?id=" . $item['id'] : $item['id']);
 			case 'twitter':
 				return "http://twitter.com/{$item['id']}";
 			case 'youtube':
