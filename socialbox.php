@@ -4,7 +4,7 @@
 /*
 Plugin Name:   SocialBox
 Plugin URI:    http://codecanyon.net/item/socialbox-social-wordpress-widget/627127?ref=jdpowered
-Description:   Adds a super easy SocialBox widget which displays various statistics from Facebook, Twitter, Youtube, Vimeo, Instagram, Pinterest, GitHub and MailChimp.
+Description:   Adds a super easy SocialBox widget which displays various statistics from Facebook, Twitter, Google+, Youtube, Vimeo, Instagram, Pinterest, GitHub and MailChimp.
 Version:       1.6.3
 Author:        Jonas Döbertin
 Author URI:    http://codecanyon.net/user/jdpowered?ref=jdpowered
