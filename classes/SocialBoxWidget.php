@@ -18,7 +18,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		/* Widget settings */
 		$widgetOpts = array(
 			'classname' => 'socialbox',
-			'description' => __('Adds a super easy SocialBox widget which displays various statistics from Facebook, Twitter, Youtube, Vimeo, Instagram, Pinterest, GitHub and MailChimp.', 'socialbox')
+			'description' => __('A super easy widget which displays various statistics from Facebook, Twitter, Google+, Youtube, Vimeo, Instagram, Pinterest, GitHub and MailChimp.', 'socialbox')
 		);
 
 		/* Widget control settings */
