@@ -112,6 +112,23 @@
 		<li><p><?php _e('Copy the &raquo;API Key&laquo;, &raquo;API Secret&laquo;, &raquo;Access Token&laquo; and &raquo;Access Token Secret&laquo; values and enter them in the respective fields within SocialBox.', 'socialbox'); ?></p></li>
 	</ol>
 
+    <img class="socialbox-help-image--center" src="<?php echo JD_SOCIALBOX_URL ?>/assets/img/help/googleplus-settings.png" alt="Google+ Settings" />
+    <h4><?php _e('Please Note', 'socialbox'); ?></h4>
+    <p><?php _e('Please be aware that the Google+ API only exposes the number of followers you have if you made your followers publicly visible on your profile page.', 'socialbox'); ?></p>
+    <h4><?php _e('User ID', 'socialbox'); ?></h4>
+    <p><?php printf(__('Please enter your numeric User ID. If you have no idea what your User ID looks like, try visiting your own Google+ profile page. The url of that page should look something like %s where %s is your unique User ID.', 'socialbox'), '<code>https://plus.google.com/u/0/114611069920768813331/posts</code>', '<code>114611069920768813331</code>'); ?></p>
+
+    <h4><?php _e('API Key', 'socialbox'); ?></h4>
+    <p><?php _e('Pulling in the numbers from Google+ is, like for Twitter, a little more work than for the other social networks. Google doesn\'t allow public access to it\'s Google+ API, so you have to have to get an API Key first. To do so, just follow these simple steps:', 'socialbox'); ?></p>
+    <ol>
+        <li><p><?php printf(__('Visit %s Google Developers Console %s and sign in with your Google account.', 'socialbox'), '<a href="https://code.google.com/apis/console?hl=en#access">', '</a>'); ?></p></li>
+        <li><p><?php _e('If you haven\'t used any of Google API until now, you\'ll be prompted to create a project. In this case, click "Create project" . You\'ll be forwarded to the API console.', 'socialbox')    ; ?></p></li>
+        <li><p><?php _e('From the menu on the left, under &raquo;APIs & auth&laquo; choose &raquo;APIs&laquo;. You\'ll see a long list of all available APIs. Find &raquo;Google+ API&laquo; and click the &raquo;Off&laquo; button to enable it.', 'socialbox'); ?></p></li>
+        <li><p><?php _e('From the menu on the left, again under &raquo;APIs & auth&laquo; choose &raquo;Credentials&laquo;. Click &raquo;CREATE NEW KEY&laquo; within the &raquo;Public API Access&laquo; section.', 'socialbox'); ?></p></li>
+        <li><p><?php _e('Choose &raquo;Server key&laquo;, leave the &raquo;IP addresses&laquo; field blank and click &raquo;Create&laquo;.', 'socialbox'); ?></p></li>
+        <li><p><?php _e('Copy the &raquo;API key&laquo; value and enter them in the respective field within SocialBox.', 'socialbox'); ?></p></li>
+    </ol>
+
 	<img class="socialbox-help-image--center" src="<?php echo JD_SOCIALBOX_URL ?>/assets/img/help/youtube-settings.png" alt="Youtube Settings" />
 	<h4><?php _e('Channel', 'socialbox'); ?></h4>
 	<p><?php _e('Please enter the name of the channel you want to showcase. If your channels url was like <code>https://www.youtube.com/user/envato</code>, then <code>envato</code>is the name you\'d have to enter.', 'socialbox'); ?></p>
