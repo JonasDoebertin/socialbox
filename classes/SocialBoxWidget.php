@@ -18,7 +18,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		/* Widget settings */
 		$widgetOpts = array(
 			'classname' => 'socialbox',
-			'description' => __('Adds a super easy SocialBox widget which displays various statistics from Facebook, Twitter, Youtube, Vimeo, Instagram, Pinterest, GitHub and MailChimp.', 'socialbox')
+			'description' => __('A super easy widget which displays various statistics from Facebook, Twitter, Google+, Youtube, Vimeo, Instagram, Pinterest, GitHub and MailChimp.', 'socialbox')
 		);
 
 		/* Widget control settings */
@@ -134,6 +134,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		$instance['twitter_api_secret']          = $newInstance['twitter_api_secret'];
 		$instance['twitter_access_token']        = $newInstance['twitter_access_token'];
 		$instance['twitter_access_token_secret'] = $newInstance['twitter_access_token_secret'];
+        $instance['googleplus_api_key']          = $newInstance['googleplus_api_key'];
         $instance['vimeo_metric']                = $newInstance['vimeo_metric'];
 		$instance['instagram_user_id']           = $newInstance['instagram_user_id'];
 		$instance['instagram_client_id']         = $newInstance['instagram_client_id'];
@@ -190,6 +191,9 @@ class JD_SocialBoxWidget extends WP_Widget{
                         $cache['twitter||' . $instance['twitter_id']]['api_secret']          = $instance['twitter_api_secret'];
                         $cache['twitter||' . $instance['twitter_id']]['access_token']        = $instance['twitter_access_token'];
                         $cache['twitter||' . $instance['twitter_id']]['access_token_secret'] = $instance['twitter_access_token_secret'];
+                        break;
+                    case 'googleplus':
+                        $cache['googleplus||' . $instance['googleplus_id']]['api_key']       = $instance['googleplus_api_key'];
                         break;
                     case 'vimeo':
                         $cache['vimeo||' . $instance['vimeo_id']]['metric']                  = $instance['vimeo_metric'];
@@ -257,6 +261,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		$defaults['twitter_api_secret']          = '';
 		$defaults['twitter_access_token']        = '';
 		$defaults['twitter_access_token_secret'] = '';
+        $defaults['googleplus_api_key']          = '';
         $defaults['vimeo_metric']                = 'total_subscribers';
 		$defaults['instagram_metric']            = 'followed_by';
 		$defaults['instagram_client_id']         = '';
@@ -333,6 +338,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 				return "http://www.facebook.com/" . ((is_numeric($item['id'])) ? "profile.php?id=" . $item['id'] : $item['id']);
 			case 'twitter':
 				return "http://twitter.com/{$item['id']}";
+            case 'googleplus':
+                return "https://plus.google.com/{$item['id']}";
 			case 'youtube':
 				return "http://www.youtube.com/user/{$item['id']}";
 			case 'vimeo':
@@ -360,6 +367,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 				return __('Facebook', 'socialbox');
 			case 'twitter':
 				return __('Twitter', 'socialbox');
+            case 'googleplus':
+                return __('Google+', 'socialbox');
 			case 'youtube':
 				return __('YouTube', 'socialbox');
 			case 'vimeo':
@@ -384,6 +393,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 		switch($item['network']) {
 			case 'twitter':
 				return __('Followers', 'socialbox');
+            case 'googleplus':
+                return __('Followers', 'socialbox');
 			case 'youtube':
 				return __('Subscribers', 'socialbox');
 			case 'forrst':
@@ -456,6 +467,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 				return __('Like', 'socialbox');
 			case 'twitter':
 				return __('Follow', 'socialbox');
+            case 'googleplus':
+                return __('Follow', 'socialbox');
 			case 'youtube':
 				return __('Subscribe', 'socialbox');
 			case 'vimeo':
@@ -482,6 +495,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 				return __('Like on Facebook', 'socialbox');
 			case 'twitter':
 				return __('Follow on Twitter', 'socialbox');
+            case 'googleplus':
+                return __('Follow on Google+', 'socialbox');
 			case 'youtube':
 				return __('Subscribe to Youtube Channel', 'socialbox');
 			case 'vimeo':
