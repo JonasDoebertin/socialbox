@@ -71,33 +71,6 @@ class JD_SocialBoxConnector{
 
 	}
 
-    protected static function googleplus($item) {
-
-        /* Fetch data from Google+ API */
-        $result = self::remoteGet(sprintf('https://www.googleapis.com/plus/v1/people/%s?key=%s', $item['id'], $item['api_key']));
-
-        /* Check for common errors */
-        if(self::wasCommonError($result)) {
-            return array('successful' => false);
-        }
-
-        /* Decode response */
-        $data = json_decode(wp_remote_retrieve_body($result));
-
-        /* Check for incorrect data */
-        if(is_null($data) or isset($data->error) or !isset($data->circledByCount)){
-            return array('successful' => false);
-        }
-
-        /**/ file_put_contents(JD_SOCIALBOX_PATH . 'debug.txt', print_r($data, true));
-
-        /* Return value */
-        return array(
-            'successful' => true,
-            'value'      => $data->circledByCount,
-        );
-    }
-
 	protected static function youtube($item) {
 		/* Fetch data from Youtube API */
 		$result = self::remoteGet('http://gdata.youtube.com/feeds/api/users/' . $item['id']);

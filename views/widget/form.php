@@ -176,37 +176,6 @@
 
 	</fieldset>
 
-    <!-- Google+ -->
-    <h5><?php _e('Google+', 'socialbox'); ?></h5>
-
-    <fieldset>
-
-        <!-- ID -->
-        <p>
-            <label for="<?php echo $this->get_field_id('googleplus_id'); ?>" title="<?php _e('Your numeric Google+ User ID (eg. 117923080797643373311)', 'socialbox'); ?>"><?php _e('User ID', 'socialbox'); ?>:</label>
-            <input type="text" id="<?php echo $this->get_field_id('googleplus_id'); ?>" name="<?php echo $this->get_field_name('googleplus_id'); ?>" value="<?php echo $instance['googleplus_id']; ?>" class="widefat" />
-        </p>
-
-        <!-- API Key -->
-        <p>
-            <label for="<?php echo $this->get_field_id('googleplus_api_key'); ?>" title="<?php _e('Your Google+ API Key', 'socialbox'); ?>"><?php _e('API Key', 'socialbox'); ?>:</label>
-            <input type="text" id="<?php echo $this->get_field_id('googleplus_api_key'); ?>" name="<?php echo $this->get_field_name('googleplus_api_key'); ?>" value="<?php echo $instance['googleplus_api_key']; ?>" class="widefat" />
-        </p>
-
-        <!-- Default -->
-        <div class="socialbox-default">
-            <label for="<?php echo $this->get_field_id('googleplus_default'); ?>" title="<?php _e('Your fallback "In Others Circles" count', 'socialbox'); ?>"><?php _e('Default:', 'socialbox'); ?></label>
-            <input type="text" id="<?php echo $this->get_field_id('googleplus_default'); ?>" name="<?php echo $this->get_field_name('googleplus_default'); ?>" value="<?php echo $instance['googleplus_default']; ?>" size="6" class="widefat" />
-        </div>
-
-        <!-- Position -->
-        <div class="socialbox-position">
-            <label for="<?php echo $this->get_field_id('googleplus_position'); ?>" title="<?php _e('Display position within SocialBox', 'socialbox'); ?>"><?php _e('Position:', 'socialbox'); ?></label>
-            <input type="text" id="<?php echo $this->get_field_id('googleplus_position'); ?>" name="<?php echo $this->get_field_name('googleplus_position'); ?>" value="<?php echo $instance['googleplus_position']; ?>" size="2" class="widefat" />
-        </div>
-
-    </fieldset>
-
 	<!-- YouTube -->
 	<h5><?php _e('YouTube', 'socialbox'); ?></h5>
 
