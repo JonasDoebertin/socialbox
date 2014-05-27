@@ -13,6 +13,45 @@
 /*------------------------------------*\
 	$OPTIONS PAGE
 \*------------------------------------*/
+/**
+ * WordPress Markup Tweaks
+ */
+.settings_page_socialbox{
+
+    /* normal state */
+    #wpcontent{
+        margin-left: 160px;
+    }
+
+    /* folded manually */
+    .folded #wpcontent {
+        margin-left: 36px;
+    }
+
+    /* auto-folded at 900px */
+    @media (max-width: 900px){
+        #wpcontent{
+            margin-left: 36px;
+            padding-left: 0;
+        }
+    }
+
+    /* hidden menu at 782px */
+    @media (max-width: 782px){
+        #wpcontent{
+            margin-left: 0;
+        }
+    }
+
+    #wpbody-content{
+        padding-bottom: 0;
+    }
+
+    #wpfooter {
+        display: none;
+    }
+
+}
 
 
 
@@ -21,8 +60,21 @@
 /**
  * Main Wrap
  */
-.socialbox-wrap{
-	max-width: 1050px;
+.socialbox-content{
+    background-color: #ffffff;
+	margin: 0;
+    height: auto;
+    min-height: 100%;
+    width: 100%;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    z-index: 1;
+
+    *,
+    *:before,
+    *:after{
+        @include box-sizing(border-box);
+    }
 }
 
 
@@ -30,17 +82,113 @@
 
 
 /**
- * Tab navigation
+ * Header + Navigation
  */
-.nav-tab{
+.socialbox-header{
+    background: #1891c8;
+    left: 0;
+    right: 0;
+    position: relative;
+    z-index: 2;
+    overflow: hidden;
+}
 
-	&:first-child{
-		margin-left: 15px;
-	}
+    .socialbox-nav{
+        margin: 0;
+        padding: 0;
+        float: left;
+        overflow: hidden;
+    }
 
-	&.nav-tab-active{
+        .socialbox-nav-item{
+            float: left;
+            color: #ffffff;
+            position: relative;
+            margin: 0;
+        }
 
-	}
+        .socialbox-logo{
+            font: normal 400 24px/46px 'Open Sans', Helvetica, sans-serif;
+            @include text-shadow(0 1px 1px rgba(0, 0, 0, .2));
+            height: 46px;
+            padding: 0 0.5em 0 2em;
+        }
+
+        .socialbox-nav-item a{
+            display: inline-block;
+            color: #ffffff;
+            font: normal 400 14px/46px 'Open Sans', Helvetica, sans-serif;
+            padding: 0 1.5em;
+            text-decoration: none;
+            outline: none;
+
+            &:hover,
+            &:focus,
+            &.current{
+                background-color: #2eb0d4;
+            }
+        }
+
+
+
+
+
+/**
+ * Intro Section
+ */
+.socialbox-intro{
+    background-color: #2eb0d4;
+    overflow: hidden;
+    text-align: center;
+    padding: 100px 0 0;
+    z-index: 1;
+    position: relative;
+    overflow: hidden;
+
+    &::after{
+        background-color: #f9f9f9;
+        display: block;
+        height: 100px;
+        width: 120%;
+        position: relative;
+        left: -10%;
+        bottom: -50px;
+        content: '';
+        @include transform(rotate(3deg));
+    }
+}
+
+    .socialbox-intro-large{
+        padding: 0;
+
+        h1{
+            font: 300 4em/1.4em 'Open Sans', Helvetica, sans-serif;
+            color: #ffffff;
+            margin: 2em 0 0.25em;
+        }
+
+        h2{
+            font: 300 2.5em/1.4em 'Open Sans', Helvetica, sans-serif;
+            color: #ffffff;
+            margin: 0.4em 0 3.2em;
+        }
+
+        &::after{
+            @include transform(rotate(-3deg));
+        }
+
+    }
+
+    .socialbox-intro-nosub{
+        &::after{
+            background-color: #ffffff;
+        }
+    }
+
+.socialbox-sub-intro{
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #d6d6d6;
+    padding-bottom: 80px;
 }
 
 
@@ -51,11 +199,7 @@
  * Help Page
  */
 .socialbox-help-header{
-	background: #ffffff;
-	border: 1px solid #e5e5e5;
-	@include single-box-shadow(0 1px 1px rgba(0,0,0,.04));
-	margin: 16px 0;
-	padding: 23px 10px 10px;
+
 }
 
 	.socialbox-help-title{

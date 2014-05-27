@@ -11,28 +11,43 @@
 ?>
 
 <!-- Start SocialBox Options Page -->
-<div class="wrap socialbox-wrap">
+<div class="socialbox-content">
 
-	<?php screen_icon(); ?>
-	<h2 class="nav-tab-wrapper">
-		<?php _e('SocialBox', 'socialbox'); ?>
-		<a class="nav-tab <?php if($tab == 'settings') echo 'nav-tab-active'; ?>" href="?page=socialbox&amp;tab=settings"><?php _e('Settings', 'socialbox'); ?></a>
-		<a class="nav-tab <?php if($tab == 'help') echo 'nav-tab-active'; ?>" href="?page=socialbox&amp;tab=help"><?php _e('Help', 'socialbox'); ?></a>
-		<a class="nav-tab <?php if($tab == 'log') echo 'nav-tab-active'; ?>" href="?page=socialbox&amp;tab=log"><?php _e('Log', 'socialbox'); ?></a>
-	</h2>
+    <div class="socialbox-header">
+        <nav role="navigation" class="socialbox-nav-wrap">
+            <ul class="socialbox-nav">
+                <li class="socialbox-nav-item  socialbox-logo"><?php _e('SocialBox', 'socialbox') ?></li>
+                <li class="socialbox-nav-item  socialbox-page">
+                    <a href="?page=socialbox&amp;tab=home"<? if($tab == 'home') echo ' class="current"' ?>><?php _e('Home', 'socialbox') ?></a>
+                </li>
+                <li class="socialbox-nav-item  socialbox-page">
+                    <a href="?page=socialbox&amp;tab=settings"<? if($tab == 'settings') echo ' class="current"' ?>><?php _e('Settings', 'socialbox') ?></a>
+                </li>
+                <li class="socialbox-nav-item  socialbox-page">
+                    <a href="?page=socialbox&amp;tab=help"<? if($tab == 'help') echo ' class="current"' ?>><?php _e('Help', 'socialbox') ?></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 
 	<?php
-		switch($tab){
+		switch($tab)
+        {
 			case 'settings':
 				include JD_SOCIALBOX_PATH . '/views/options-page/settings.php';
 				break;
-			case 'log':
-				include JD_SOCIALBOX_PATH . '/views/options-page/log.php';
+
+			case 'debug':
+				include JD_SOCIALBOX_PATH . '/views/options-page/debug.php';
 				break;
+
 			case 'help':
-			default:
 				include JD_SOCIALBOX_PATH . '/views/options-page/help.php';
 				break;
+                
+            default:
+                include JD_SOCIALBOX_PATH . '/views/options-page/home.php';
+                break;
 		}
 	?>
 

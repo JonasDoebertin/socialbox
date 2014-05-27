@@ -10,38 +10,44 @@
 
 ?>
 
-<div class="socialbox-help-header">
-	<div class="socialbox-help-title">
-		<h3><?php _e('Welcome to SocialBox', 'socialbox'); ?> <?php echo JD_SOCIALBOX_VERSION ?>!</h3>
-		<p><?php _e('Here you can find some help to get you started:', 'socialbox'); ?></p>
-	</div>
-	<div class="socialbox-help-column-container">
-		<div class="socialbox-help-column">
-			<h4><?php _e('Covered Topics', 'socialbox'); ?></h4>
-			<ol>
-				<li><a href="#socialbox-quick-setup" data-scroll><?php _e('Quick Setup', 'socialbox'); ?></a></li>
-				<li><a href="#socialbox-widget-options" data-scroll><?php _e('Widget Options', 'socialbox'); ?></a></li>
-				<li><a href="#socialbox-network-options" data-scroll><?php _e('Social Network Options', 'socialbox'); ?></a></li>
-			</ol>
-		</div>
-		<div class="socialbox-help-column">
-			<h4><?php _e('Additional Cache Tools', 'socialbox'); ?></h4>
-			<ul>
-				<li><i class="socialbox-icon-refresh"></i> <a href="#" class="js-socialbox-cache-refresh"><?php _e('Update cache', 'socialbox'); ?></a></li>
-				<li><i class="socialbox-icon-contents"></i> <a href="#" class="js-socialbox-cache-show"><?php _e('Show contents', 'socialbox'); ?></a></li>
-				<li><i class="socialbox-icon-clear"></i> <a href="#" class="js-socialbox-cache-clear"><?php _e('Clear cache', 'socialbox'); ?></a></li>
-			</ul>
-		</div>
-		<div class="socialbox-help-column">
-			<h4><?php _e('Further Help', 'socialbox'); ?></h4>
-			<ul>
-				<!--<li><i class="socialbox-icon-knowledge"></i> Visit the <a href="#">knowledge base</a></li>-->
-				<li><i class="socialbox-icon-tweet"></i> <?php printf(__('Send a %s tweet %s', 'socialbox'), '<a href="https://twitter.com/intent/tweet?text=@DieserJonas">', '</a>'); ?></li>
-				<li><i class="socialbox-icon-ticket"></i> <?php printf(__('Open a %s support ticket %s', 'socialbox'), '<a href="http://codecanyon.net/user/jdpowered#contact">', '</a>'); ?></li>
-			</ul>
-		</div>
-	</div>
+<div class="socialbox-intro"></div>
+
+<div class="socialbox-sub-intro">
+    <div class="socialbox-help-header">
+        <div class="socialbox-help-title">
+            <h3><?php _e('Welcome to SocialBox', 'socialbox'); ?> <?php echo JD_SOCIALBOX_VERSION ?>!</h3>
+            <p><?php _e('Here you can find some help to get you started:', 'socialbox'); ?></p>
+        </div>
+        <div class="socialbox-help-column-container">
+            <div class="socialbox-help-column">
+                <h4><?php _e('Covered Topics', 'socialbox'); ?></h4>
+                <ol>
+                    <li><a href="#socialbox-quick-setup" data-scroll><?php _e('Quick Setup', 'socialbox'); ?></a></li>
+                    <li><a href="#socialbox-widget-options" data-scroll><?php _e('Widget Options', 'socialbox'); ?></a></li>
+                    <li><a href="#socialbox-network-options" data-scroll><?php _e('Social Network Options', 'socialbox'); ?></a></li>
+                </ol>
+            </div>
+            <div class="socialbox-help-column">
+                <h4><?php _e('Additional Cache Tools', 'socialbox'); ?></h4>
+                <ul>
+                    <li><i class="socialbox-icon-refresh"></i> <a href="#" class="js-socialbox-cache-refresh"><?php _e('Update cache', 'socialbox'); ?></a></li>
+                    <li><i class="socialbox-icon-contents"></i> <a href="#" class="js-socialbox-cache-show"><?php _e('Show contents', 'socialbox'); ?></a></li>
+                    <li><i class="socialbox-icon-clear"></i> <a href="#" class="js-socialbox-cache-clear"><?php _e('Clear cache', 'socialbox'); ?></a></li>
+                </ul>
+            </div>
+            <div class="socialbox-help-column">
+                <h4><?php _e('Further Help', 'socialbox'); ?></h4>
+                <ul>
+                    <li><i class="socialbox-icon-knowledge"></i> Visit the <a href="http://support.jd-powered.net/">knowledge base</a></li>
+                    <li><i class="socialbox-icon-tweet"></i> <?php printf(__('Send a %s tweet %s', 'socialbox'), '<a href="https://twitter.com/intent/tweet?text=@DieserJonas">', '</a>'); ?></li>
+                    <li><i class="socialbox-icon-ticket"></i> <?php printf(__('Open a %s support ticket %s', 'socialbox'), '<a href="http://codecanyon.net/user/jdpowered#contact">', '</a>'); ?></li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
+
+
 
 <div class="socialbox-help-section--quick" id="socialbox-quick-setup">
 	<h3><?php _e('Quick Setup', 'socialbox'); ?></h3>

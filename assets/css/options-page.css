@@ -53,15 +53,45 @@
 /*------------------------------------*\
 	$OPTIONS PAGE
 \*------------------------------------*/
-/** Main Wrap */
-.socialbox-wrap { max-width: 1050px; }
+/** WordPress Markup Tweaks */
+.settings_page_socialbox { /* normal state */ /* folded manually */ /* auto-folded at 900px */ /* hidden menu at 782px */ }
+.settings_page_socialbox #wpcontent { margin-left: 160px; }
+.settings_page_socialbox .folded #wpcontent { margin-left: 36px; }
+@media (max-width: 900px) { .settings_page_socialbox #wpcontent { margin-left: 36px; padding-left: 0; } }
+@media (max-width: 782px) { .settings_page_socialbox #wpcontent { margin-left: 0; } }
+.settings_page_socialbox #wpbody-content { padding-bottom: 0; }
+.settings_page_socialbox #wpfooter { display: none; }
 
-/** Tab navigation */
-.nav-tab:first-child { margin-left: 15px; }
+/** Main Wrap */
+.socialbox-content { background-color: #ffffff; margin: 0; height: auto; min-height: 100%; width: 100%; position: relative; -webkit-font-smoothing: antialiased; z-index: 1; }
+.socialbox-content *, .socialbox-content *:before, .socialbox-content *:after { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+
+/** Header + Navigation */
+.socialbox-header { background: #1891c8; left: 0; right: 0; position: relative; z-index: 2; overflow: hidden; }
+
+.socialbox-nav { margin: 0; padding: 0; float: left; overflow: hidden; }
+
+.socialbox-nav-item { float: left; color: #ffffff; position: relative; margin: 0; }
+
+.socialbox-logo { font: normal 400 24px/46px 'Open Sans', Helvetica, sans-serif; text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2); height: 46px; padding: 0 0.5em 0 2em; }
+
+.socialbox-nav-item a { display: inline-block; color: #ffffff; font: normal 400 14px/46px 'Open Sans', Helvetica, sans-serif; padding: 0 1.5em; text-decoration: none; outline: none; }
+.socialbox-nav-item a:hover, .socialbox-nav-item a:focus, .socialbox-nav-item a.current { background-color: #2eb0d4; }
+
+/** Intro Section */
+.socialbox-intro { background-color: #2eb0d4; overflow: hidden; text-align: center; padding: 100px 0 0; z-index: 1; position: relative; overflow: hidden; }
+.socialbox-intro::after { background-color: #f9f9f9; display: block; height: 100px; width: 120%; position: relative; left: -10%; bottom: -50px; content: ''; -webkit-transform: rotate(3deg); -moz-transform: rotate(3deg); -ms-transform: rotate(3deg); -o-transform: rotate(3deg); transform: rotate(3deg); }
+
+.socialbox-intro-large { padding: 0; }
+.socialbox-intro-large h1 { font: 300 4em/1.4em 'Open Sans', Helvetica, sans-serif; color: #ffffff; margin: 2em 0 0.25em; }
+.socialbox-intro-large h2 { font: 300 2.5em/1.4em 'Open Sans', Helvetica, sans-serif; color: #ffffff; margin: 0.4em 0 3.2em; }
+.socialbox-intro-large::after { -webkit-transform: rotate(-3deg); -moz-transform: rotate(-3deg); -ms-transform: rotate(-3deg); -o-transform: rotate(-3deg); transform: rotate(-3deg); }
+
+.socialbox-intro-nosub::after { background-color: #ffffff; }
+
+.socialbox-sub-intro { background-color: #f9f9f9; border-bottom: 1px solid #d6d6d6; padding-bottom: 80px; }
 
 /** Help Page */
-.socialbox-help-header { background: #ffffff; border: 1px solid #e5e5e5; -webkit-box-shadow: 0px 0px 5px 0 1px 1px rgba(0, 0, 0, 0.04); -moz-box-shadow: 0px 0px 5px 0 1px 1px rgba(0, 0, 0, 0.04); box-shadow: 0px 0px 5px 0 1px 1px rgba(0, 0, 0, 0.04); margin: 16px 0; padding: 23px 10px 10px; }
-
 .socialbox-help-title { margin: 0 13px; }
 .socialbox-help-title h3 { margin: 0; font-size: 21px; font-weight: 400; line-height: 1.2; color: #222222; }
 .socialbox-help-title p { font-size: 16px; margin: 0; color: #777777; line-height: 1.5; }

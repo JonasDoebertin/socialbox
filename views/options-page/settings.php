@@ -10,6 +10,8 @@
 
 ?>
 
+<div class="socialbox-intro  socialbox-intro-nosub"></div>
+
 <div class="socialbox-settings">
 
 	<?php settings_errors(); ?>
