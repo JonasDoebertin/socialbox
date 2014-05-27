@@ -48,13 +48,24 @@ class JD_SocialBox{
 		/* Backend only stuff */
 		if(is_admin()){
 
-			/* Display update notice */
-			if(in_array($pagenow, array('index.php', 'plugins.php'))) {
-				$info = get_option('socialbox_update', array());
-				if(isset($info['update_available']) and $info['update_available']) {
-					add_action('admin_notices', array($this, 'addAdminNotice'));
-				}
-			}
+			// /* Display update notice */
+			// if(in_array($pagenow, array('index.php', 'plugins.php'))) {
+			// 	$info = get_option('socialbox_update', array());
+			// 	if(isset($info['update_available']) and $info['update_available']) {
+			// 		add_action('admin_notices', array($this, 'addAdminNotice'));
+			// 	}
+			// }
+
+            /*
+                Add an update admin notice (only on index.php and plugins.php).
+            */
+            add_action('admin_notices', array($this, 'addUpdateAdminNotice'));
+
+            /*
+                Remove all registered admin notices.
+                Will only fire on our own options page.
+            */
+            add_action('current_screen', array($this, 'removeAdminNotices'));
 
 			/* Add custom "Settings" link to plugin actions */
 			add_action('plugin_action_links_' . JD_SOCIALBOX_BASENAME, array($this, 'addPluginActionLink'));
@@ -227,11 +238,40 @@ class JD_SocialBox{
 	 *
 	 * Will be run within "admin_notices" action
 	 */
-	public function addAdminNotice(){
+	public function addUpdateAdminNotice()
+    {
+        global $pagenow;
 
-		$info = get_option('socialbox_update', array());
-		include JD_SOCIALBOX_PATH . '/views/update.php';
+        /*
+            If on index.php or plugins.php and there is an update available
+            then display the update admin notice.
+        */
+        if(in_array($pagenow, array('index.php', 'plugins.php')))
+        {
+        	$info = get_option('socialbox_update', array());
+        	if(isset($info['update_available']) and $info['update_available']) {
+        		include JD_SOCIALBOX_PATH . '/views/update.php';
+        	}
+        }
 	}
+
+    /**
+     * Remove all admin notices
+     *
+     * This will remove all admin notices that have been queued up in the
+     * "admin_notices" and "network_admin_notices" actions but only on our
+     * own plugins options page.
+     *
+     * @param {WP_Screen} $screen A representation of the current screen
+     */
+    public function removeAdminNotices($screen)
+    {
+        if($screen->id == 'settings_page_socialbox')
+        {
+            remove_all_actions('admin_notices');
+            remove_all_actions('network_admin_notices');
+        }
+    }
 
 	public function addPluginActionLink($actionLinks){
 
