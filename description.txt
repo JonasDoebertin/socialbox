@@ -55,7 +55,25 @@
 
 <h3>Updates</h3>
 
-<strong>Version 1.6.3</strong> <em>Awaiting Review</em><br/>
+<strong>Version 1.7.0</strong><br/>
+<ul>
+	<li>
+		<strong>Enhancements</strong>
+		<ul>
+			<li>Added support for <strong>Google+</strong> and <strong>SoundCloud</strong>. Also, the help section got updated to reflect these additions.</li>
+			<li>Added support for some additional metrics: <strong>Youtube Total Video Views</strong>. You can find them within their respective dropdown fields.
+			<li>Switched to a more robust implementation of the TwitterOAuth and OAuth classes.</li>
+		</ul>
+	</li>
+	<li>
+		<strong>Bugfixes</strong>
+		<ul>
+			<li>Updated language file template.</li>
+		</ul>
+	</li>
+</ul>
+
+<strong>Version 1.6.3</strong><br/>
 <ul>
 	<li>Fixed a bug that caused links to Facebook pages to break when a numeric id was used</li>
 </ul>
