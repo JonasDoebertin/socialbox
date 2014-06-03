@@ -12,7 +12,7 @@
 	<li>Displays the number of:
 		<ul>
             <li>Facebook Page Likes, Checkins &amp; Talking About</li>
-            <li>Twitter Followers</li>
+            <li>Twitter Followers, Following, Tweets, Favorites &amp; Listed</li>
             <li>Youtube Channel Subscribers &amp; Total Video Views</li>
 			<li><strong>New:</strong> Google+ Followers</li>
             <li>Vimeo Channel Subscribers &amp; Total Videos</li>
@@ -63,7 +63,7 @@
 		<strong>Enhancements</strong>
 		<ul>
 			<li>Added support for <strong>Google+</strong> and <strong>SoundCloud</strong>. Also, the help section got updated to reflect these additions.</li>
-			<li>Added support for some additional metrics: <strong>Youtube Total Video Views</strong>. You can find them within their respective dropdown fields.
+			<li>Added support for some additional metrics: <strong>Youtube Total Video Views</strong>, <strong>Twitter Following, Tweets, Favorites &amp; Listed</strong>. You can find them within their respective dropdown fields.
 			<li>Switched to a more robust implementation of the TwitterOAuth and OAuth classes.</li>
 		</ul>
 	</li>
