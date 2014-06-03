@@ -18,7 +18,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		/* Widget settings */
 		$widgetOpts = array(
 			'classname' => 'socialbox',
-			'description' => __('A super easy widget which displays various statistics from Facebook, Twitter, Google+, Youtube, Vimeo, Instagram, Pinterest, GitHub and MailChimp.', 'socialbox')
+			'description' => __('A super easy widget which displays various statistics from Facebook, Twitter, Google+, Youtube, Vimeo, Instagram, Pinterest, SoundCloud, Dribbble, Forrst, GitHub and MailChimp.', 'socialbox')
 		);
 
 		/* Widget control settings */
@@ -140,6 +140,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 		$instance['instagram_client_id']         = $newInstance['instagram_client_id'];
 		$instance['instagram_metric']            = $newInstance['instagram_metric'];
         $instance['pinterest_metric']            = $newInstance['pinterest_metric'];
+		$instance['soundcloud_client_id']        = $newInstance['soundcloud_client_id'];
+		$instance['soundcloud_metric']           = $newInstance['soundcloud_metric'];
         $instance['dribbble_metric']             = $newInstance['dribbble_metric'];
         $instance['mailchimp_api_key']           = $newInstance['mailchimp_api_key'];
         $instance['mailchimp_form_url']          = $newInstance['mailchimp_form_url'];
@@ -206,6 +208,10 @@ class JD_SocialBoxWidget extends WP_Widget{
                     case 'pinterest':
                         $cache['pinterest||' . $instance['pinterest_id']]['metric']          = $instance['pinterest_metric'];
                         break;
+					case 'soundcloud':
+						$cache['soundcloud||' . $instance['soundcloud_id']]['client_id']     = $instance['soundcloud_client_id'];
+						$cache['soundcloud||' . $instance['soundcloud_id']]['metric']        = $instance['soundcloud_metric'];
+						break;
                     case 'dribbble':
                         $cache['dribbble||' . $instance['dribbble_id']]['metric']            = $instance['dribbble_metric'];
                         break;
@@ -268,6 +274,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 		$defaults['instagram_user_id']           = '';
         $defaults['instagram_user_id']           = '';
         $defaults['pinterest_metric']            = 'followers';
+		$defaults['soundcloud_client_id']        = '';
+		$defaults['soundcloud_metric']           = 'followers_count';
         $defaults['dribbble_metric']             = 'followers_count';
         $defaults['mailchimp_api_key']           = '';
         $defaults['mailchimp_form_url']          = '';
@@ -348,6 +356,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 				return "http://instagram.com/{$item['id']}";
             case 'pinterest':
                 return "http://pinterest.com/{$item['id']}";
+			case 'soundcloud':
+				return "https://soundcloud.com/{$item['id']}";
 			case 'dribbble':
 				return "http://dribbble.com/{$item['id']}";
 			case 'forrst':
@@ -377,6 +387,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 				return __('Instagram', 'socialbox');
             case 'pinterest':
                 return __('Pinterest', 'socialbox');
+			case 'soundcloud':
+				return __('SoundCloud', 'socialbox');
 			case 'dribbble':
 				return __('Dribbble', 'socialbox');
 			case 'forrst':
@@ -457,6 +469,21 @@ class JD_SocialBoxWidget extends WP_Widget{
                         return __('Boards', 'socialbox');
                 }
                 break;
+			case 'soundcloud':
+				switch($item['metric'])
+				{
+					case 'followers_count':
+						return __('Followers', 'socialbox');
+					case 'followings_count':
+						return __('Followings', 'socialbox');
+					case 'public_favorites_count':
+						return __('Favorites', 'socialbox');
+					case 'playlist_count':
+						return __('Playlists', 'socialbox');
+					case 'track_count':
+						return __('Tracks', 'socialbox');
+				}
+				break;
 		}
 	}
 
@@ -478,6 +505,8 @@ class JD_SocialBoxWidget extends WP_Widget{
             case 'pinterest':
                 return __('Follow', 'socialbox');
 			case 'dribbble':
+				return __('Follow', 'socialbox');
+			case 'soundcloud':
 				return __('Follow', 'socialbox');
 			case 'forrst':
 				return __('Follow', 'socialbox');
@@ -507,6 +536,8 @@ class JD_SocialBoxWidget extends WP_Widget{
                 return __('Follow on Pinterest', 'socialbox');
 			case 'dribbble':
 				return __('Follow on Dribbble', 'socialbox');
+			case 'soundcloud':
+				return __('Follow on SoundCloud', 'socialbox');
 			case 'forrst':
 				return __('Follow on Forrst', 'socialbox');
 			case 'github':

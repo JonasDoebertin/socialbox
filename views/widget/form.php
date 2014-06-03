@@ -348,6 +348,49 @@
 
     </fieldset>
 
+	<!-- SoundCloud -->
+	<h5><?php _e('SoundCloud', 'socialbox'); ?></h5>
+
+	<fieldset>
+
+		<!-- ID -->
+		<p>
+			<label for="<?php echo $this->get_field_id('soundcloud_id'); ?>" title="<?php _e('Your SoundCloud permalink (e.g. your-name)', 'socialbox'); ?>"><?php _e('Permalink', 'socialbox'); ?>:</label>
+			<input type="text" id="<?php echo $this->get_field_id('soundcloud_id'); ?>" name="<?php echo $this->get_field_name('soundcloud_id'); ?>" value="<?php echo $instance['soundcloud_id']; ?>" class="widefat" />
+		</p>
+
+		<!-- Client ID -->
+		<p>
+			<label for="<?php echo $this->get_field_id('soundcloud_client_id'); ?>" title="<?php _e('Your SoundCloud application client id.', 'socialbox'); ?>"><?php _e('Client ID', 'socialbox'); ?>:</label>
+			<input type="text" id="<?php echo $this->get_field_id('soundcloud_client_id'); ?>" name="<?php echo $this->get_field_name('soundcloud_client_id'); ?>" value="<?php echo $instance['soundcloud_client_id']; ?>" class="widefat" />
+		</p>
+
+		<!-- Metric -->
+		<p>
+			<label for="<?php echo $this->get_field_id('soundcloud_metric'); ?>" title="<?php _e('What metric shall be displayed', 'socialbox'); ?>"><?php _e('Metric', 'socialbox'); ?>:</label>
+			<select id="<?php echo $this->get_field_id('soundcloud_metric'); ?>" name="<?php echo $this->get_field_name('soundcloud_metric'); ?>" class="widefat">
+				<option <?php if($instance['soundcloud_metric'] == 'followers_count' ) echo 'selected="selected"'; ?> value="followers_count">Followers</option>
+				<option <?php if($instance['soundcloud_metric'] == 'followings_count' ) echo 'selected="selected"'; ?> value="followings_count">Following</option>
+				<option <?php if($instance['soundcloud_metric'] == 'public_favorites_count' ) echo 'selected="selected"'; ?> value="public_favorites_count">Favorites</option>
+				<option <?php if($instance['soundcloud_metric'] == 'playlist_count' ) echo 'selected="selected"'; ?> value="playlist_count">Playlists</option>
+				<option <?php if($instance['soundcloud_metric'] == 'track_count' ) echo 'selected="selected"'; ?> value="track_count">Tracks</option>
+			</select>
+		</p>
+
+		<!-- Default -->
+		<div class="socialbox-default">
+			<label for="<?php echo $this->get_field_id('soundcloud_default'); ?>" title="<?php _e('Your fallback follower count', 'socialbox'); ?>"><?php _e('Default:', 'socialbox'); ?></label>
+			<input type="text" id="<?php echo $this->get_field_id('soundcloud_default'); ?>" name="<?php echo $this->get_field_name('soundcloud_default'); ?>" value="<?php echo $instance['soundcloud_default']; ?>" size="6" class="widefat" />
+		</div>
+
+		<!-- Position -->
+		<div class="socialbox-position">
+			<label for="<?php echo $this->get_field_id('soundcloud_position'); ?>" title="<?php _e('Display position within SocialBox', 'socialbox'); ?>"><?php _e('Position:', 'socialbox'); ?></label>
+			<input type="text" id="<?php echo $this->get_field_id('soundcloud_position'); ?>" name="<?php echo $this->get_field_name('soundcloud_position'); ?>" value="<?php echo $instance['soundcloud_position']; ?>" size="2" class="widefat" />
+		</div>
+
+	</fieldset>
+
 	<!-- Dribbble -->
 	<h5><?php _e('Dribbble', 'socialbox'); ?></h5>
 
