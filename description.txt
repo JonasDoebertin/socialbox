@@ -13,7 +13,7 @@
 		<ul>
             <li>Facebook Page Likes, Checkins &amp; Talking About</li>
             <li>Twitter Followers</li>
-            <li>Youtube Channel Subscribers</li>
+            <li>Youtube Channel Subscribers &amp; Total Video Views</li>
             <li>Vimeo Channel Subscribers &amp; Total Videos</li>
             <li><strong>New:</strong> Instagram Posts &amp; Followers</li>
             <li><strong>New:</strong> Pinterest Followers, Boards &amp; Pins</li>
