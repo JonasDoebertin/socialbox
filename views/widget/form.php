@@ -162,6 +162,18 @@
 			<input type="text" id="<?php echo $this->get_field_id('twitter_access_token_secret'); ?>" name="<?php echo $this->get_field_name('twitter_access_token_secret'); ?>" value="<?php echo $instance['twitter_access_token_secret']; ?>" class="widefat" />
 		</p>
 
+		<!-- Metric -->
+		<p>
+			<label for="<?php echo $this->get_field_id('twitter_metric'); ?>" title="<?php _e('What metric shall be displayed', 'socialbox'); ?>"><?php _e('Metric', 'socialbox'); ?>:</label>
+			<select id="<?php echo $this->get_field_id('twitter_metric'); ?>" name="<?php echo $this->get_field_name('twitter_metric'); ?>" class="widefat">
+				<option <?php if($instance['twitter_metric'] == 'followers_count' ) echo 'selected="selected"'; ?> value="followers_count">Followers</option>
+				<option <?php if($instance['twitter_metric'] == 'friends_count' ) echo 'selected="selected"'; ?> value="friends_count">Following</option>
+				<option <?php if($instance['twitter_metric'] == 'statuses_count' ) echo 'selected="selected"'; ?> value="statuses_count">Tweets</option>
+				<option <?php if($instance['twitter_metric'] == 'favourites_count' ) echo 'selected="selected"'; ?> value="favourites_count">Favorites</option>
+				<option <?php if($instance['twitter_metric'] == 'listed_count' ) echo 'selected="selected"'; ?> value="listed_count">Listed</option>
+			</select>
+		</p>
+
 		<!-- Default -->
 		<div class="socialbox-default">
 			<label for="<?php echo $this->get_field_id('twitter_default'); ?>" title="<?php _e('Your fallback follower count', 'socialbox'); ?>"><?php _e('Default:', 'socialbox'); ?></label>

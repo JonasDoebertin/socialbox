@@ -134,6 +134,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		$instance['twitter_api_secret']          = $newInstance['twitter_api_secret'];
 		$instance['twitter_access_token']        = $newInstance['twitter_access_token'];
 		$instance['twitter_access_token_secret'] = $newInstance['twitter_access_token_secret'];
+		$instance['twitter_metric']              = $newInstance['twitter_metric'];
         $instance['googleplus_api_key']          = $newInstance['googleplus_api_key'];
 		$instance['youtube_metric']              = $newInstance['youtube_metric'];
         $instance['vimeo_metric']                = $newInstance['vimeo_metric'];
@@ -194,6 +195,7 @@ class JD_SocialBoxWidget extends WP_Widget{
                         $cache['twitter||' . $instance['twitter_id']]['api_secret']          = $instance['twitter_api_secret'];
                         $cache['twitter||' . $instance['twitter_id']]['access_token']        = $instance['twitter_access_token'];
                         $cache['twitter||' . $instance['twitter_id']]['access_token_secret'] = $instance['twitter_access_token_secret'];
+						$cache['twitter||' . $instance['twitter_id']]['metric']              = $instance['twitter_metric'];
                         break;
                     case 'googleplus':
                         $cache['googleplus||' . $instance['googleplus_id']]['api_key']       = $instance['googleplus_api_key'];
@@ -271,6 +273,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		$defaults['twitter_api_secret']          = '';
 		$defaults['twitter_access_token']        = '';
 		$defaults['twitter_access_token_secret'] = '';
+		$defaults['twitter_metric']              = 'followers_count';
         $defaults['googleplus_api_key']          = '';
 		$defaults['youtube_metric']              = 'subscriberCount';
         $defaults['vimeo_metric']                = 'total_subscribers';
@@ -409,7 +412,19 @@ class JD_SocialBoxWidget extends WP_Widget{
 
 		switch($item['network']) {
 			case 'twitter':
-				return __('Followers', 'socialbox');
+				switch($item['metric']) {
+					case 'followers_count':
+						return __('Followers', 'socialbox');
+					case 'friends_count':
+						return __('Following', 'socialbox');
+					case 'statuses_count':
+						return __('Tweets', 'socialbox');
+					case 'favourites_count':
+						return __('Favorites', 'socisalbox');
+					case 'listed_count':
+						return __('Listed', 'socialbox');
+				}
+				break;
             case 'googleplus':
                 return __('Followers', 'socialbox');
 			case 'youtube':
