@@ -94,6 +94,9 @@
 	<h4><?php _e('Page ID or Shortname', 'socialbox'); ?></h4>
 	<p><?php _e('In order to pull in Facebook statistics, the only thing you need to enter is your pages shortname or id. If your page has an url like <code>https://www.facebook.com/envato</code>, then <code>envato</code>is the shortname you\'d want to enter.', 'socialbox'); ?></p>
 
+	<h4><?php _e('Please Note', 'socialbox'); ?></h4>
+	<p><?php _e('Please keep in mind that the Facebook Graph API does not expose your pages statistics if you limited access to your page to certain countries or ages from your pages settings. Thus SocialBox won\'t be able to show the number of &raquo;Likes&laquo; your page has in this case.', 'socialbox'); ?></p>
+
 	<h4><?php _e('Metric', 'socialbox'); ?></h4>
 	<p><?php _e('Typically, you\'d want to display the number of &raquo;Likes&laquo; your page collected. But, if your page belongs to a place (a restaurant, a retail store, a club, etc.) you can choose to display the number of &raquo;Checkins&laquo; instead.', 'socialbox'); ?></p>
 
