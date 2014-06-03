@@ -4,7 +4,8 @@
 
 <p>With SocialBox you get an absolutely easy to use WordPress Plugin which enables you to add a sleek social widget to your WordPress site or blog. It supports several social networks and displays a variety of statistics from several social networks including, but not limited to, the current number of Facebook Page Likes & Checkins, Twitter, Instagram, Pinterest, Dribbble, Forrst &amp; GitHub Followers, YouTube and Vimeo Channel Subscriptions and MailChimp List Subscribers. You can enter sensible default values which will be shown as a fallback if the related APIs are not reachable.</p>
 
-<p><img src="http://jd-daten.de/envato/item-socialbox-features.png" alt=""/></p>
+<p><img src="http://jd-daten.de/envato/item-socialbox-addons.png" alt=""/></p>
+<p><a href="http://codecanyon.net/item/flat-styles-addon-for-socialbox/7585389" title="Flat Styles Addon for SocialBox"><img src="http://jd-daten.de/envato/item-socialbox-flatstyles-addon.png" alt="Flat Styles Addon for SocialBox"/></a></p>
 
 <h3>Features</h3>
 <ul>
@@ -33,6 +34,8 @@
 	<li>Free future updates, to support even more networks and additional styles and features</li>
 </ul>
 
+<p><img src="http://jd-daten.de/envato/item-socialbox-features.png" alt=""/></p>
+
 <h4>Requirements</h4>
 <ul>
 	<li>WordPress 3.6+</li>
@@ -58,7 +61,7 @@
 </ul>
 <strong>Version 1.6.2</strong><br/>
 <ul>
-	<li>Added support for theme addons</li>
+	<li>Added support for theme addons (stay tuned!)</li>
 </ul>
 <strong>Version 1.6.1</strong><br/>
 <ul>
