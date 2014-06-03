@@ -348,8 +348,8 @@
 
     </fieldset>
 
-	<!-- SouncCloud -->
-	<h5><?php _e('SouncCloud', 'socialbox'); ?></h5>
+	<!-- SoundCloud -->
+	<h5><?php _e('SoundCloud', 'socialbox'); ?></h5>
 
 	<fieldset>
 
