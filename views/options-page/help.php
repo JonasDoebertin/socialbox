@@ -161,6 +161,21 @@
     <h4><?php _e('Metric', 'socialbox'); ?></h4>
     <p><?php _e('You can choose to display your number of followers, pins or boards.', 'socialbox'); ?></p>
 
+	<img class="socialbox-help-image--center" src="<?php echo JD_SOCIALBOX_URL ?>/assets/img/help/soundcloud-settings.png" alt="SoundCloud Settings" />
+	<h4><?php _e('Permalink', 'socialbox'); ?></h4>
+	<p><?php _e('Please enter the permalink of the user you want to showcase. If the users profile page is located at <code>https://soundcloud.com/your-username</code> then <code>your-username</code> is that users permalink.', 'socialbox'); ?></p>
+
+	<h4><?php _e('Client ID', 'socialbox'); ?></h4>
+	<p><?php _e('Like with Twitter and Instagram, setting up SoundCloud requires a small extra step. Since SoundCloud doesn\'t allow public access to their API, you have to set up your own application to use with the SoundCloud API. To do so, just follow these simple steps:', 'socialbox'); ?></p>
+	<ol>
+		<li><p><?php printf(__('Visit %s Register your app %s and log in with your SoundCloud account.', 'socialbox'), '<a href="http://soundcloud.com/you/apps/new">', '</a>') ?></p></li>
+		<li><p><?php _e('Enter a name for your app (this can be anything you want) and click &raquo;Register&laquo;.', 'socialbox') ?></p></li>
+		<li><p><?php _e('Copy the &raquo;Client ID&laquo; value and paste it in the respective field within SocialBox.', 'socialbox') ?></p></li>
+	</ol>
+
+	<h4><?php _e('Metric', 'socialbox'); ?></h4>
+	<p><?php _e('Not only can you display the number of followers a user has. You may also choose to display the number of people the user is following and how many tracks, playlists or favorites the user has.', 'socialbox'); ?></p>
+
 	<img class="socialbox-help-image--center" src="<?php echo JD_SOCIALBOX_URL ?>/assets/img/help/dribbble-settings.png" alt="Dribbble Settings" />
 	<h4><?php _e('Username', 'socialbox'); ?></h4>
 	<p><?php _e('Please enter the username of the account you want to showcase.', 'socialbox'); ?></p>
