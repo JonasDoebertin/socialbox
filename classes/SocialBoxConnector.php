@@ -109,14 +109,14 @@ class JD_SocialBoxConnector{
 		$data = simplexml_load_string(wp_remote_retrieve_body($result));
 
 		/* Check for incorrect data */
-		if(!$data or isset($data->err) or !isset($data->children('http://gdata.youtube.com/schemas/2007')->statistics->attributes()->subscriberCount)){
+		if(!$data or isset($data->err) or !isset($data->children('http://gdata.youtube.com/schemas/2007')->statistics->attributes()->{$item['metric']})){
 			return array('successful' => false);
 		}
 
 		/* Return value */
 		return array(
 			'successful' => true,
-			'value'      => (int) $data->children('http://gdata.youtube.com/schemas/2007')->statistics->attributes()->subscriberCount
+			'value'      => (int) $data->children('http://gdata.youtube.com/schemas/2007')->statistics->attributes()->{$item['metric']},
 		);
 	}
 

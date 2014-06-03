@@ -218,6 +218,15 @@
 			<input type="text" id="<?php echo $this->get_field_id('youtube_id'); ?>" name="<?php echo $this->get_field_name('youtube_id'); ?>" value="<?php echo $instance['youtube_id']; ?>" class="widefat" />
 		</p>
 
+		<!-- Metric -->
+		<p>
+			<label for="<?php echo $this->get_field_id('youtube_metric'); ?>" title="<?php _e('What metric shall be displayed', 'socialbox'); ?>"><?php _e('Metric', 'socialbox'); ?>:</label>
+			<select id="<?php echo $this->get_field_id('youtube_metric'); ?>" name="<?php echo $this->get_field_name('youtube_metric'); ?>" class="widefat">
+				<option <?php if($instance['youtube_metric'] == 'subscriberCount' ) echo 'selected="selected"'; ?> value="subscriberCount">Subscribers</option>
+				<option <?php if($instance['youtube_metric'] == 'totalUploadViews' ) echo 'selected="selected"'; ?> value="totalUploadViews">Total Video Views</option>
+			</select>
+		</p>
+
 		<!-- Default -->
 		<div class="socialbox-default">
 			<label for="<?php echo $this->get_field_id('youtube_default'); ?>" title="<?php _e('Your fallback subscriber count', 'socialbox'); ?>"><?php _e('Default:', 'socialbox'); ?></label>

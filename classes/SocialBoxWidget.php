@@ -135,6 +135,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		$instance['twitter_access_token']        = $newInstance['twitter_access_token'];
 		$instance['twitter_access_token_secret'] = $newInstance['twitter_access_token_secret'];
         $instance['googleplus_api_key']          = $newInstance['googleplus_api_key'];
+		$instance['youtube_metric']              = $newInstance['youtube_metric'];
         $instance['vimeo_metric']                = $newInstance['vimeo_metric'];
 		$instance['instagram_user_id']           = $newInstance['instagram_user_id'];
 		$instance['instagram_client_id']         = $newInstance['instagram_client_id'];
@@ -197,6 +198,9 @@ class JD_SocialBoxWidget extends WP_Widget{
                     case 'googleplus':
                         $cache['googleplus||' . $instance['googleplus_id']]['api_key']       = $instance['googleplus_api_key'];
                         break;
+					case 'youtube':
+						$cache['youtube||' . $instance['youtube_id']]['metric']              = $instance['youtube_metric'];
+						break;
                     case 'vimeo':
                         $cache['vimeo||' . $instance['vimeo_id']]['metric']                  = $instance['vimeo_metric'];
                         break;
@@ -268,6 +272,7 @@ class JD_SocialBoxWidget extends WP_Widget{
 		$defaults['twitter_access_token']        = '';
 		$defaults['twitter_access_token_secret'] = '';
         $defaults['googleplus_api_key']          = '';
+		$defaults['youtube_metric']              = 'subscriberCount';
         $defaults['vimeo_metric']                = 'total_subscribers';
 		$defaults['instagram_metric']            = 'followed_by';
 		$defaults['instagram_client_id']         = '';
@@ -408,7 +413,13 @@ class JD_SocialBoxWidget extends WP_Widget{
             case 'googleplus':
                 return __('Followers', 'socialbox');
 			case 'youtube':
-				return __('Subscribers', 'socialbox');
+				switch($item['metric']) {
+					case 'subscriberCount':
+						return __('Subscribers', 'socialbox');
+					case 'totalUploadViews':
+						return __('Video Views', 'socialbox');
+				}
+				break;
 			case 'forrst':
 				return __('Followers', 'socialbox');
 			case 'github':
