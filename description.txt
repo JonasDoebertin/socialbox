@@ -14,13 +14,15 @@
             <li>Facebook Page Likes, Checkins &amp; Talking About</li>
             <li>Twitter Followers</li>
             <li>Youtube Channel Subscribers &amp; Total Video Views</li>
+			<li><strong>New:</strong> Google+ Followers</li>
             <li>Vimeo Channel Subscribers &amp; Total Videos</li>
-            <li><strong>New:</strong> Instagram Posts &amp; Followers</li>
-            <li><strong>New:</strong> Pinterest Followers, Boards &amp; Pins</li>
+            <li>Instagram Posts &amp; Followers</li>
+            <li>Pinterest Followers, Boards &amp; Pins</li>
+			<li><strong>New:</strong> SoundCloud Followers, Following, Favorites, Playlists &amp; Tracks</li>
             <li>Dribbble Followers, Likes/Comments/Rebounds Received</li>
             <li>Forrst Followers</li>
             <li>GitHub Followers</li>
-            <li><strong>New:</strong> MailChimp List Subscribers</li>
+            <li>MailChimp List Subscribers</li>
 		</ul>
 	</li>
 	<li>Rearrange and disable any of these networks to perfectly fit your needs</li>
@@ -31,7 +33,7 @@
 	<li>Automatic update notifications</li>
 	<li>Full support for all major browsers</li>
 	<li>Localization ready (.pot file included)</li>
-	<li>Free future updates, to support even more networks and additional styles and features</li>
+	<li>Free future updates, to support even more networks and additional features</li>
 </ul>
 
 <p><img src="http://jd-daten.de/envato/item-socialbox-features.png" alt=""/></p>
