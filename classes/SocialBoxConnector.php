@@ -89,8 +89,6 @@ class JD_SocialBoxConnector{
             return array('successful' => false);
         }
 
-        /**/ file_put_contents(JD_SOCIALBOX_PATH . 'debug.txt', print_r($data, true));
-
         /* Return value */
         return array(
             'successful' => true,
@@ -196,6 +194,35 @@ class JD_SocialBoxConnector{
             'value'      => intval($matches[1])
         );
     }
+
+	protected static function soundcloud($item)
+	{
+
+		/* Fetch data from Dribbble API */
+		$result = self::remoteGet(sprintf('http://api.soundcloud.com/users/%s.json?client_id=%s', $item['id'], $item['client_id']));
+
+		/* Check for common errors */
+		if(self::wasCommonError($result))
+		{
+			return array('successful' => false);
+		}
+
+		/* Decode response */
+		$data = json_decode(wp_remote_retrieve_body($result));
+
+		/* Check for incorrect data */
+		if(is_null($data) or isset($data->errors) or ! isset($data->{$item['metric']}))
+		{
+			return array('successful' => false);
+		}
+
+		/* Return value */
+		return array(
+			'successful' => true,
+			'value'      => $data->{$item['metric']}
+		);
+
+	}
 
 	protected static function dribbble($item) {
 
