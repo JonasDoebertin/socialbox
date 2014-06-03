@@ -77,6 +77,21 @@
 				}
 			}
 
+			&.socialbox-network-googleplus{
+
+				&:hover p{
+					color: #dc422b;
+				}
+
+				a.socialbox-button{
+					@include simple-linear-gradient(#f54b31, #dc422b);
+					border-color: #b53824;
+					//border-top-color: shade(#b53824, 10%);
+					@include box-shadow(inset 1px 0 0 rgba(255,255,255,0.05), inset -1px 0 0 rgba(255,255,255,0.05), inset 0 1px 0 rgba(255, 255, 255, 0.2));
+					text-shadow: 1px 1px #b53824;
+				}
+			}
+
 			&.socialbox-network-youtube{
 
 				&:hover p{
