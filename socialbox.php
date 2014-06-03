@@ -14,7 +14,8 @@ Author URI:    http://codecanyon.net/user/jdpowered?ref=jdpowered
 /**
  * Check for incompatible plugins
  */
-if(class_exists('JD_SocialBox') or class_exists('JD_SocialBoxWidget') or class_exists('JD_SocialBoxConnector') or class_exists('JD_SocialBoxHelper')) {
+if(class_exists('JD_SocialBox') or class_exists('JD_SocialBoxWidget') or class_exists('JD_SocialBoxConnector') or class_exists('JD_SocialBoxHelper'))
+{
 	wp_die('Plugin incompatibility detected.');
 }
 
@@ -40,8 +41,9 @@ require_once JD_SOCIALBOX_PATH . '/classes/SocialBoxHelper.php';
 /**
  * Load vendor classes
  */
-require_once JD_SOCIALBOX_PATH . '/vendor/abraham/twitteroauth/OAuth.php';
-require_once JD_SOCIALBOX_PATH . '/vendor/abraham/twitteroauth/TwitterOAuth.php';
+// require_once JD_SOCIALBOX_PATH . '/vendor/abraham/twitteroauth/OAuth.php';
+// require_once JD_SOCIALBOX_PATH . '/vendor/abraham/twitteroauth/TwitterOAuth.php';
+require JD_SOCIALBOX_PATH . 'vendor/jdpowered/twitteroauth/loader.php';
 
 
 /**

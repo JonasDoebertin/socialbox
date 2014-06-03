@@ -54,7 +54,7 @@ class JD_SocialBoxConnector{
 		$result = $Twitter->get('users/show', array('screen_name' => $item['id'], 'include_entities' => false));
 
 		/* Check for http errors */
-		if($Twitter->lastStatusCode() != 200) {
+		if($Twitter->getLastStatusCode() != 200) {
 			return array('successful' => false);
 		}
 
