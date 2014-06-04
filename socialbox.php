@@ -36,6 +36,7 @@ require_once JD_SOCIALBOX_PATH . '/classes/SocialBox.php';
 require_once JD_SOCIALBOX_PATH . '/classes/SocialBoxWidget.php';
 require_once JD_SOCIALBOX_PATH . '/classes/SocialBoxConnector.php';
 require_once JD_SOCIALBOX_PATH . '/classes/SocialBoxHelper.php';
+require_once JD_SOCIALBOX_PATH . '/classes/SocialBoxTranslator.php';
 
 
 /**

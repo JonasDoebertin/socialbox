@@ -186,6 +186,15 @@ class JD_SocialBox{
 			delete_option('socialbox_cache');
 		}
 
+		/*
+			Pre 1.4:
+				- Remove old crons
+				- Remove old options
+
+			Pre 1.7:
+				- Inject default metrics
+		 */
+
 		/* Add options */
 		add_option('socialbox_update', array());
 		add_option('socialbox_options', array());

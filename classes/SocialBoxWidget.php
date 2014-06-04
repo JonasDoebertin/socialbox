@@ -11,9 +11,17 @@
 class JD_SocialBoxWidget extends WP_Widget{
 
 	/**
+	 * @var
+	 */
+	private $translator;
+
+	/**
 	 * Create a widget instance and set the base infos
 	 */
 	public function __construct() {
+
+		/* Initialize Translator */
+		$this->translator = new JD_SocialBoxTranslator;
 
 		/* Widget settings */
 		$widgetOpts = array(
@@ -71,7 +79,8 @@ class JD_SocialBoxWidget extends WP_Widget{
                    'name'       => $this->getNetworkName($cacheItem),
                    'buttonText' => $this->getNetworkButtonText($cacheItem),
                    'buttonHint' => $this->getNetworkButtonHint($cacheItem),
-                   'metric'     => $this->getNetworkMetric($cacheItem),
+                   'metric'     => $this->translator->metric($cacheItem),
+
                );
 
                /* Add network to list */
@@ -405,111 +414,6 @@ class JD_SocialBoxWidget extends WP_Widget{
 				return __('GitHub', 'socialbox');
             case 'mailchimp':
                 return __('Newsletter', 'socialbox');
-		}
-	}
-
-	private function getNetworkMetric($item) {
-
-		switch($item['network']) {
-			case 'twitter':
-				switch($item['metric']) {
-					case 'followers_count':
-						return __('Followers', 'socialbox');
-					case 'friends_count':
-						return __('Following', 'socialbox');
-					case 'statuses_count':
-						return __('Tweets', 'socialbox');
-					case 'favourites_count':
-						return __('Favorites', 'socisalbox');
-					case 'listed_count':
-						return __('Listed', 'socialbox');
-				}
-				break;
-            case 'googleplus':
-                return __('Followers', 'socialbox');
-			case 'youtube':
-				switch($item['metric']) {
-					case 'subscriberCount':
-						return __('Subscribers', 'socialbox');
-					case 'totalUploadViews':
-						return __('Video Views', 'socialbox');
-				}
-				break;
-			case 'forrst':
-				return __('Followers', 'socialbox');
-			case 'github':
-				return __('Followers', 'socialbox');
-            case 'mailchimp':
-                return __('Subscribers', 'socialbox');
-            case 'facebook':
-                switch($item['metric']) {
-                    case 'likes':
-                        return __('Likes', 'socialbox');
-                    case 'checkins':
-                        return __('Checkins', 'socialbox');
-                    case 'were_here_count':
-                        return __('Were Here', 'socialbox');
-                    case 'talking_about_count':
-                        return __('Talking About', 'socialbox');
-                }
-                break;
-            case 'instagram':
-                switch($item['metric']) {
-                    case 'media':
-                        return __('Posts', 'socialbox');
-                    case 'followed_by':
-                        return __('Followers', 'socialbox');
-                    case 'follows':
-                        return __('Following', 'socialbox');
-                }
-                break;
-            case 'vimeo':
-                switch($item['metric']) {
-                    case 'total_subscribers':
-                        return __('Subscribers', 'socialbox');
-                    case 'total_videos':
-                        return __('Videos', 'socialbox');
-                }
-                break;
-            case 'dribbble':
-                switch($item['metric']) {
-                    case 'followers_count':
-                        return __('Followers', 'socialbox');
-                    case 'likes_received_count':
-                        return __('Likes', 'socialbox');
-                    case 'comments_received_count':
-                        return __('Comments', 'socialbox');
-                    case 'rebounds_received_count':
-                        return __('Rebounds', 'socialbox');
-                    case 'shots_count':
-                        return __('Shots', 'socialbox');
-                }
-                break;
-            case 'pinterest':
-                switch($item['metric']) {
-                    case 'followers':
-                        return __('Followers', 'socialbox');
-                    case 'pins':
-                        return __('Pins', 'socialbox');
-                    case 'boards':
-                        return __('Boards', 'socialbox');
-                }
-                break;
-			case 'soundcloud':
-				switch($item['metric'])
-				{
-					case 'followers_count':
-						return __('Followers', 'socialbox');
-					case 'followings_count':
-						return __('Followings', 'socialbox');
-					case 'public_favorites_count':
-						return __('Favorites', 'socialbox');
-					case 'playlist_count':
-						return __('Playlists', 'socialbox');
-					case 'track_count':
-						return __('Tracks', 'socialbox');
-				}
-				break;
 		}
 	}
 
