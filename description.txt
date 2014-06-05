@@ -70,7 +70,7 @@
 	<li>
 		<strong>Bugfixes</strong>
 		<ul>
-			<li>Made sure every metric is fully translatable.</li>
+			<li>Made sure every network name and every metric are always fully translatable.</li>
 			<li>Updated language file template.</li>
 		</ul>
 	</li>

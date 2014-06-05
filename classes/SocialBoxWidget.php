@@ -76,7 +76,7 @@ class JD_SocialBoxWidget extends WP_Widget{
                    'position'   => $instance[$network . '_position'],
                    'count'      => ($cacheItem['value'] !== null) ? $cacheItem['value'] : $instance[$network . '_default'],
                    'link'       => $this->getNetworkLink($cacheItem),
-                   'name'       => $this->getNetworkName($cacheItem),
+                   'name'       => $this->translator->getNetwork($cacheItem),
                    'buttonText' => $this->getNetworkButtonText($cacheItem),
                    'buttonHint' => $this->getNetworkButtonHint($cacheItem),
                    'metric'     => $this->translator->getMetric($cacheItem),
@@ -385,36 +385,6 @@ class JD_SocialBoxWidget extends WP_Widget{
                 return $item['form_url'];
 		}
 
-	}
-
-	private function getNetworkName($item) {
-
-		switch($item['network']) {
-			case 'facebook':
-				return __('Facebook', 'socialbox');
-			case 'twitter':
-				return __('Twitter', 'socialbox');
-            case 'googleplus':
-                return __('Google+', 'socialbox');
-			case 'youtube':
-				return __('YouTube', 'socialbox');
-			case 'vimeo':
-				return __('Vimeo', 'socialbox');
-			case 'instagram':
-				return __('Instagram', 'socialbox');
-            case 'pinterest':
-                return __('Pinterest', 'socialbox');
-			case 'soundcloud':
-				return __('SoundCloud', 'socialbox');
-			case 'dribbble':
-				return __('Dribbble', 'socialbox');
-			case 'forrst':
-				return __('Forrst', 'socialbox');
-			case 'github':
-				return __('GitHub', 'socialbox');
-            case 'mailchimp':
-                return __('Newsletter', 'socialbox');
-		}
 	}
 
 	private function getNetworkButtonText($item) {

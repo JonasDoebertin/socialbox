@@ -10,11 +10,22 @@
 
 class JD_SocialBoxTranslator{
 
+    /**************************************************************************\
+    *                                  METRIC                                  *
+    \**************************************************************************/
+
+    /**
+     * Echo the translatable metric
+     *
+     * Echo the translatable metric name by providing either an item object
+     * or a network and a metric.
+     */
     public function metric()
     {
         $args = func_get_args();
         echo call_user_func_array(array($this, 'getMetric'), $args);
     }
+
 
     /**
      * Return the translatable metric
@@ -51,6 +62,7 @@ class JD_SocialBoxTranslator{
             );
         }
     }
+
 
     /**
      * Get the translatable name of a metric
@@ -239,4 +251,108 @@ class JD_SocialBoxTranslator{
         }
     }
 
+
+
+
+
+    /**************************************************************************\
+    *                               NETWORK NAME                               *
+    \**************************************************************************/
+
+    /**
+     * Echo the translatable network name
+     *
+     * Echo the translatable network name by providing either an item object
+     * or a network.
+     */
+    public function network()
+    {
+        $args = func_get_args();
+        echo call_user_func_array(array($this, 'getNetwork'), $args);
+    }
+
+
+    /**
+     * Return the translatable network name
+     *
+     * Get the translatable network name by providing either an item object
+     * or a network.
+     *
+     * @return string
+     */
+    public function getNetwork()
+    {
+        /*
+            Interpret argument as an item object if
+                - we have only one argument
+                - and this argument is an array.
+         */
+        if((func_num_args() == 1) and is_array($item = func_get_arg(0)))
+        {
+            return $this->translateNetwork($item);
+        }
+
+        /*
+            Interpret arguments as network if
+                - we have one argument
+                - and this argument is a string.
+         */
+        if((func_num_args() == 1) and is_string($network = func_get_arg(0)))
+        {
+            return $this->translateNetwork(
+                array(
+                    'network' => $network
+                )
+            );
+        }
+    }
+
+
+    /**
+     * Get the translatable name of a network
+     *
+     * @param Array $item
+     * @return string
+     */
+    protected function translateNetwork($item)
+    {
+        switch($item['network'])
+        {
+            case 'facebook':
+                return __('Facebook', 'socialbox');
+
+            case 'twitter':
+                return __('Twitter', 'socialbox');
+
+            case 'googleplus':
+                return __('Google+', 'socialbox');
+
+            case 'youtube':
+                return __('YouTube', 'socialbox');
+
+            case 'vimeo':
+                return __('Vimeo', 'socialbox');
+
+            case 'instagram':
+                return __('Instagram', 'socialbox');
+
+            case 'pinterest':
+                return __('Pinterest', 'socialbox');
+
+            case 'soundcloud':
+                return __('SoundCloud', 'socialbox');
+
+            case 'dribbble':
+                return __('Dribbble', 'socialbox');
+
+            case 'forrst':
+                return __('Forrst', 'socialbox');
+
+            case 'github':
+                return __('GitHub', 'socialbox');
+
+            case 'mailchimp':
+                return __('Newsletter', 'socialbox');
+        }
+    }
 }

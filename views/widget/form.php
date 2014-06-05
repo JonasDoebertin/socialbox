@@ -92,7 +92,7 @@
     <?php endif ?>
 
 	<!-- Facebook -->
-	<h5><?php _e('Facebook', 'socialbox'); ?></h5>
+	<h5><?php $this->translator->network('facebook') ?></h5>
 
 	<fieldset>
 
@@ -136,7 +136,7 @@
 	</fieldset>
 
 	<!-- Twitter -->
-	<h5><?php _e('Twitter', 'socialbox'); ?></h5>
+	<h5><?php $this->translator->network('twitter') ?></h5>
 
 	<fieldset>
 
@@ -207,7 +207,7 @@
 	</fieldset>
 
     <!-- Google+ -->
-    <h5><?php _e('Google+', 'socialbox'); ?></h5>
+    <h5><?php $this->translator->network('googleplus') ?></h5>
 
     <fieldset>
 
@@ -238,7 +238,7 @@
     </fieldset>
 
 	<!-- YouTube -->
-	<h5><?php _e('YouTube', 'socialbox'); ?></h5>
+	<h5><?php $this->translator->network('youtube') ?></h5>
 
 	<fieldset>
 
@@ -276,7 +276,7 @@
 	</fieldset>
 
 	<!-- Vimeo -->
-	<h5><?php _e('Vimeo', 'socialbox'); ?></h5>
+	<h5><?php $this->translator->network('vimeo') ?></h5>
 
 	<fieldset>
 
@@ -314,7 +314,7 @@
 	</fieldset>
 
 	<!-- Instagram -->
-	<h5><?php _e('Instagram', 'socialbox'); ?></h5>
+	<h5><?php $this->translator->network('instagram') ?></h5>
 
 	<fieldset>
 
@@ -367,7 +367,7 @@
 	</fieldset>
 
     <!-- Pinterest -->
-    <h5><?php _e('Pinterest', 'socialbox'); ?></h5>
+    <h5><?php $this->translator->network('pinterest') ?></h5>
 
     <fieldset>
 
@@ -408,7 +408,7 @@
     </fieldset>
 
 	<!-- SoundCloud -->
-	<h5><?php _e('SoundCloud', 'socialbox'); ?></h5>
+	<h5><?php $this->translator->network('soundcloud') ?></h5>
 
 	<fieldset>
 
@@ -461,7 +461,7 @@
 	</fieldset>
 
 	<!-- Dribbble -->
-	<h5><?php _e('Dribbble', 'socialbox'); ?></h5>
+	<h5><?php $this->translator->network('dribbble') ?></h5>
 
 	<fieldset>
 
@@ -508,7 +508,7 @@
 	</fieldset>
 
 	<!-- Forrst -->
-	<h5><?php _e('Forrst', 'socialbox'); ?></h5>
+	<h5><?php $this->translator->network('forrst') ?></h5>
 
 	<fieldset>
 
@@ -533,7 +533,7 @@
 	</fieldset>
 
 	<!-- GitHub -->
-	<h5><?php _e('GitHub', 'socialbox'); ?></h5>
+	<h5><?php $this->translator->network('github') ?></h5>
 
 	<fieldset>
 
