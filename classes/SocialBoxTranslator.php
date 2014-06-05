@@ -10,13 +10,55 @@
 
 class JD_SocialBoxTranslator{
 
+    public function metric()
+    {
+        $args = func_get_args();
+        echo call_user_func_array(array($this, 'getMetric'), $args);
+    }
+
+    /**
+     * Return the translatable metric
+     *
+     * Get the translatable metric name by providing either an item object
+     * or a network and a metric.
+     *
+     * @return string
+     */
+    public function getMetric()
+    {
+        /*
+            Interpret argument as an item object if
+                - we have only one argument
+                - and this argument is an array.
+         */
+        if((func_num_args() == 1) and is_array($item = func_get_arg(0)))
+        {
+            return $this->translateMetric($item);
+        }
+
+        /*
+            Interpret arguments as network and metric if
+                - we have two arguments
+                - and these two arguments are string.
+         */
+        if((func_num_args() == 2) and is_string($network = func_get_arg(0)) and is_string($metric = func_get_arg(1)))
+        {
+            return $this->translateMetric(
+                array(
+                    'network' => $network,
+                    'metric' => $metric
+                )
+            );
+        }
+    }
+
     /**
      * Get the translatable name of a metric
      *
      * @param Array $item
      * @return string
      */
-    public function translateMetric($item)
+    protected function translateMetric($item)
     {
         switch($item['network'])
         {
@@ -27,16 +69,16 @@ class JD_SocialBoxTranslator{
                 switch($item['metric'])
                 {
                     case 'likes':
-                        return __('Likes', 'socialbox');
+                        return _x('Likes', 'Facebook Likes', 'socialbox');
 
                     case 'checkins':
-                        return __('Checkins', 'socialbox');
+                        return _x('Checkins', 'Facebook Checkins', 'socialbox');
 
                     case 'were_here_count':
-                        return __('Were Here', 'socialbox');
+                        return _x('Were Here', 'Facebook Were Here', 'socialbox');
 
                     case 'talking_about_count':
-                        return __('Talking About', 'socialbox');
+                        return _x('Talking About', 'Facebook Talking About', 'socialbox');
                 }
                 break;
 
@@ -47,19 +89,19 @@ class JD_SocialBoxTranslator{
                 switch($item['metric'])
                 {
                     case 'followers_count':
-                        return __('Followers', 'socialbox');
+                        return _x('Followers', 'Twitter Followers', 'socialbox');
 
                     case 'friends_count':
-                        return __('Following', 'socialbox');
+                        return _x('Following', 'Twitter Following', 'socialbox');
 
                     case 'statuses_count':
-                        return __('Tweets', 'socialbox');
+                        return _x('Tweets', 'Twitter Tweets', 'socialbox');
 
                     case 'favourites_count':
-                        return __('Favorites', 'socisalbox');
+                        return _x('Favorites', 'Twitter Favorites', 'socisalbox');
 
                     case 'listed_count':
-                        return __('Listed', 'socialbox');
+                        return _x('Listed', 'Twitter Listed', 'socialbox');
                 }
                 break;
 
@@ -67,7 +109,7 @@ class JD_SocialBoxTranslator{
                 Google+
              */
             case 'googleplus':
-                return __('Followers', 'socialbox');
+                return _x('Followers', 'Google+ Followers', 'socialbox');
 
             /*
                 Youtube
@@ -76,10 +118,10 @@ class JD_SocialBoxTranslator{
                 switch($item['metric'])
                 {
                     case 'subscriberCount':
-                        return __('Subscribers', 'socialbox');
+                        return _x('Subscribers', 'Youtube Subscribers', 'socialbox');
 
                     case 'totalUploadViews':
-                        return __('Video Views', 'socialbox');
+                        return _x('Video Views', 'Youtube Video Views', 'socialbox');
                 }
                 break;
 
@@ -90,10 +132,10 @@ class JD_SocialBoxTranslator{
                 switch($item['metric'])
                 {
                     case 'total_subscribers':
-                        return __('Subscribers', 'socialbox');
+                        return _x('Subscribers', 'Vimeo Subscribers', 'socialbox');
 
                     case 'total_videos':
-                        return __('Videos', 'socialbox');
+                        return _x('Videos', 'Vimeo Video Views', 'socialbox');
                 }
                 break;
 
@@ -104,13 +146,13 @@ class JD_SocialBoxTranslator{
                 switch($item['metric'])
                 {
                     case 'media':
-                        return __('Posts', 'socialbox');
+                        return _x('Posts', 'Instagram Posts', 'socialbox');
 
                     case 'followed_by':
-                        return __('Followers', 'socialbox');
+                        return _x('Followers', 'Instagram Followers', 'socialbox');
 
                     case 'follows':
-                        return __('Following', 'socialbox');
+                        return _x('Following', 'Instagram Follows', 'socialbox');
                 }
                 break;
 
@@ -121,13 +163,13 @@ class JD_SocialBoxTranslator{
                 switch($item['metric'])
                 {
                     case 'followers':
-                        return __('Followers', 'socialbox');
+                        return _x('Followers', 'Pinterest Followers', 'socialbox');
 
                     case 'pins':
-                        return __('Pins', 'socialbox');
+                        return _x('Pins', 'Pinterest Pins', 'socialbox');
 
                     case 'boards':
-                        return __('Boards', 'socialbox');
+                        return _x('Boards', 'Pinterest Boards', 'socialbox');
                 }
                 break;
 
@@ -138,19 +180,19 @@ class JD_SocialBoxTranslator{
                 switch($item['metric'])
                 {
                     case 'followers_count':
-                        return __('Followers', 'socialbox');
+                        return _x('Followers', 'SoundCloud Followers', 'socialbox');
 
                     case 'followings_count':
-                        return __('Followings', 'socialbox');
+                        return _x('Following', 'SoundCloud Following', 'socialbox');
 
                     case 'public_favorites_count':
-                        return __('Favorites', 'socialbox');
+                        return _x('Favorites', 'SoundCloud Public Favorites', 'socialbox');
 
                     case 'playlist_count':
-                        return __('Playlists', 'socialbox');
+                        return _x('Playlists', 'SoundCloud Playlists', 'socialbox');
 
                     case 'track_count':
-                        return __('Tracks', 'socialbox');
+                        return _x('Tracks', 'SoundCloud Track Count', 'socialbox');
                 }
                 break;
 
@@ -161,19 +203,19 @@ class JD_SocialBoxTranslator{
                 switch($item['metric'])
                 {
                     case 'followers_count':
-                        return __('Followers', 'socialbox');
+                        return _x('Followers', 'Dribbble Followers', 'socialbox');
 
                     case 'likes_received_count':
-                        return __('Likes', 'socialbox');
+                        return _x('Likes', 'Dribbble Likes', 'socialbox');
 
                     case 'comments_received_count':
-                        return __('Comments', 'socialbox');
+                        return _x('Comments', 'Dribbble Comments', 'socialbox');
 
                     case 'rebounds_received_count':
-                        return __('Rebounds', 'socialbox');
+                        return _x('Rebounds', 'Dribbble Rebounds', 'socialbox');
 
                     case 'shots_count':
-                        return __('Shots', 'socialbox');
+                        return _x('Shots', 'Dribbble Shots', 'socialbox');
                 }
                 break;
 
@@ -181,19 +223,19 @@ class JD_SocialBoxTranslator{
                 Forrst
              */
             case 'forrst':
-                return __('Followers', 'socialbox');
+                return _x('Followers', 'Forrst Followers', 'socialbox');
 
             /*
                 GitHub
              */
             case 'github':
-                return __('Followers', 'socialbox');
+                return _x('Followers', 'GitHub Followers', 'socialbox');
 
             /*
                 MailChimp
              */
             case 'mailchimp':
-                return __('Subscribers', 'socialbox');
+                return _x('Subscribers', 'MailChimp Subscribers', 'socialbox');
         }
     }
 

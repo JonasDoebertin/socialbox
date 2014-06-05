@@ -106,10 +106,18 @@
 		<p>
 			<label for="<?php echo $this->get_field_id('facebook_metric'); ?>" title="<?php _e('What metric shall be displayed', 'socialbox'); ?>"><?php _e('Metric', 'socialbox'); ?>:</label>
 			<select id="<?php echo $this->get_field_id('facebook_metric'); ?>" name="<?php echo $this->get_field_name('facebook_metric'); ?>" class="widefat">
-				<option <?php if($instance['facebook_metric'] == 'likes' ) echo 'selected="selected"'; ?> value="likes">Likes</option>
-				<option <?php if($instance['facebook_metric'] == 'checkins' ) echo 'selected="selected"'; ?> value="checkins">Checkins</option>
-				<option <?php if($instance['facebook_metric'] == 'talking_about_count' ) echo 'selected="selected"'; ?> value="talking_about_count">Talking About</option>
-				<option <?php if($instance['facebook_metric'] == 'were_here_count' ) echo 'selected="selected"'; ?> value="were_here_count">Were Here</option>
+				<option <?php if($instance['facebook_metric'] == 'likes' ) echo 'selected="selected"'; ?> value="likes">
+					<?php $this->translator->metric('facebook', 'likes') ?>
+				</option>
+				<option <?php if($instance['facebook_metric'] == 'checkins' ) echo 'selected="selected"'; ?> value="checkins">
+					<?php $this->translator->metric('facebook', 'checkins') ?>
+				</option>
+				<option <?php if($instance['facebook_metric'] == 'talking_about_count' ) echo 'selected="selected"'; ?> value="talking_about_count">
+					<?php $this->translator->metric('facebook', 'talking_about_count') ?>
+				</option>
+				<option <?php if($instance['facebook_metric'] == 'were_here_count' ) echo 'selected="selected"'; ?> value="were_here_count">
+					<?php $this->translator->metric('facebook', 'were_here_count') ?>
+				</option>
 			</select>
 		</p>
 
@@ -166,11 +174,21 @@
 		<p>
 			<label for="<?php echo $this->get_field_id('twitter_metric'); ?>" title="<?php _e('What metric shall be displayed', 'socialbox'); ?>"><?php _e('Metric', 'socialbox'); ?>:</label>
 			<select id="<?php echo $this->get_field_id('twitter_metric'); ?>" name="<?php echo $this->get_field_name('twitter_metric'); ?>" class="widefat">
-				<option <?php if($instance['twitter_metric'] == 'followers_count' ) echo 'selected="selected"'; ?> value="followers_count">Followers</option>
-				<option <?php if($instance['twitter_metric'] == 'friends_count' ) echo 'selected="selected"'; ?> value="friends_count">Following</option>
-				<option <?php if($instance['twitter_metric'] == 'statuses_count' ) echo 'selected="selected"'; ?> value="statuses_count">Tweets</option>
-				<option <?php if($instance['twitter_metric'] == 'favourites_count' ) echo 'selected="selected"'; ?> value="favourites_count">Favorites</option>
-				<option <?php if($instance['twitter_metric'] == 'listed_count' ) echo 'selected="selected"'; ?> value="listed_count">Listed</option>
+				<option <?php if($instance['twitter_metric'] == 'followers_count' ) echo 'selected="selected"'; ?> value="followers_count">
+					<?php $this->translator->metric('twitter', 'followers_count') ?>
+				</option>
+				<option <?php if($instance['twitter_metric'] == 'friends_count' ) echo 'selected="selected"'; ?> value="friends_count">
+					<?php $this->translator->metric('twitter', 'friends_count') ?>
+				</option>
+				<option <?php if($instance['twitter_metric'] == 'statuses_count' ) echo 'selected="selected"'; ?> value="statuses_count">
+					<?php $this->translator->metric('twitter', 'statuses_count') ?>
+				</option>
+				<option <?php if($instance['twitter_metric'] == 'favourites_count' ) echo 'selected="selected"'; ?> value="favourites_count">
+					<?php $this->translator->metric('twitter', 'favourites_count') ?>
+				</option>
+				<option <?php if($instance['twitter_metric'] == 'listed_count' ) echo 'selected="selected"'; ?> value="listed_count">
+					<?php $this->translator->metric('twitter', 'listed_count') ?>
+				</option>
 			</select>
 		</p>
 
@@ -234,8 +252,12 @@
 		<p>
 			<label for="<?php echo $this->get_field_id('youtube_metric'); ?>" title="<?php _e('What metric shall be displayed', 'socialbox'); ?>"><?php _e('Metric', 'socialbox'); ?>:</label>
 			<select id="<?php echo $this->get_field_id('youtube_metric'); ?>" name="<?php echo $this->get_field_name('youtube_metric'); ?>" class="widefat">
-				<option <?php if($instance['youtube_metric'] == 'subscriberCount' ) echo 'selected="selected"'; ?> value="subscriberCount">Subscribers</option>
-				<option <?php if($instance['youtube_metric'] == 'totalUploadViews' ) echo 'selected="selected"'; ?> value="totalUploadViews">Total Video Views</option>
+				<option <?php if($instance['youtube_metric'] == 'subscriberCount' ) echo 'selected="selected"'; ?> value="subscriberCount">
+					<?php $this->translator->metric('youtube', 'subscriberCount') ?>
+				</option>
+				<option <?php if($instance['youtube_metric'] == 'totalUploadViews' ) echo 'selected="selected"'; ?> value="totalUploadViews">
+					<?php $this->translator->metric('youtube', 'totalUploadViews') ?>
+				</option>
 			</select>
 		</p>
 
@@ -268,8 +290,12 @@
         <p>
             <label for="<?php echo $this->get_field_id('vimeo_metric'); ?>" title="<?php _e('What metric shall be displayed', 'socialbox'); ?>"><?php _e('Metric', 'socialbox'); ?>:</label>
             <select id="<?php echo $this->get_field_id('vimeo_metric'); ?>" name="<?php echo $this->get_field_name('vimeo_metric'); ?>" class="widefat">
-                <option <?php if($instance['vimeo_metric'] == 'total_subscribers' ) echo 'selected="selected"'; ?> value="total_subscribers">Subscribers</option>
-                <option <?php if($instance['vimeo_metric'] == 'total_videos' ) echo 'selected="selected"'; ?> value="total_videos">Videos</option>
+                <option <?php if($instance['vimeo_metric'] == 'total_subscribers' ) echo 'selected="selected"'; ?> value="total_subscribers">
+					<?php $this->translator->metric('vimeo', 'total_subscribers') ?>
+				</option>
+                <option <?php if($instance['vimeo_metric'] == 'total_videos' ) echo 'selected="selected"'; ?> value="total_videos">
+					<?php $this->translator->metric('vimeo', 'total_videos') ?>
+				</option>
             </select>
         </p>
 
@@ -314,9 +340,15 @@
 		<p>
 			<label for="<?php echo $this->get_field_id('instagram_metric'); ?>" title="<?php _e('What metric shall be displayed', 'socialbox'); ?>"><?php _e('Metric', 'socialbox'); ?>:</label>
 			<select id="<?php echo $this->get_field_id('instagram_metric'); ?>" name="<?php echo $this->get_field_name('instagram_metric'); ?>" class="widefat">
-				<option <?php if($instance['instagram_metric'] == 'media' ) echo 'selected="selected"'; ?> value="media">Posts</option>
-				<option <?php if($instance['instagram_metric'] == 'followed_by' ) echo 'selected="selected"'; ?> value="followed_by">Followers</option>
-				<option <?php if($instance['instagram_metric'] == 'follows' ) echo 'selected="selected"'; ?> value="follows">Following</option>
+				<option <?php if($instance['instagram_metric'] == 'media' ) echo 'selected="selected"'; ?> value="media">
+					<?php $this->translator->metric('instagram', 'media') ?>
+				</option>
+				<option <?php if($instance['instagram_metric'] == 'followed_by' ) echo 'selected="selected"'; ?> value="followed_by">
+					<?php $this->translator->metric('instagram', 'followed_by') ?>
+				</option>
+				<option <?php if($instance['instagram_metric'] == 'follows' ) echo 'selected="selected"'; ?> value="follows">
+					<?php $this->translator->metric('instagram', 'follows') ?>
+				</option>
 			</select>
 		</p>
 
@@ -349,9 +381,15 @@
         <p>
             <label for="<?php echo $this->get_field_id('pinterest_metric'); ?>" title="<?php _e('What metric shall be displayed', 'socialbox'); ?>"><?php _e('Metric', 'socialbox'); ?>:</label>
             <select id="<?php echo $this->get_field_id('pinterest_metric'); ?>" name="<?php echo $this->get_field_name('pinterest_metric'); ?>" class="widefat">
-                <option <?php if($instance['pinterest_metric'] == 'followers' ) echo 'selected="selected"'; ?> value="followers">Followers</option>
-                <option <?php if($instance['pinterest_metric'] == 'pins' ) echo 'selected="selected"'; ?> value="pins">Pins</option>
-                <option <?php if($instance['pinterest_metric'] == 'boards' ) echo 'selected="selected"'; ?> value="boards">Boards</option>
+                <option <?php if($instance['pinterest_metric'] == 'followers' ) echo 'selected="selected"'; ?> value="followers">
+					<?php $this->translator->metric('pinterest', 'followers') ?>
+				</option>
+                <option <?php if($instance['pinterest_metric'] == 'pins' ) echo 'selected="selected"'; ?> value="pins">
+					<?php $this->translator->metric('pinterest', 'pins') ?>
+				</option>
+                <option <?php if($instance['pinterest_metric'] == 'boards' ) echo 'selected="selected"'; ?> value="boards">
+					<?php $this->translator->metric('pinterest', 'boards') ?>
+				</option>
             </select>
         </p>
 
@@ -390,11 +428,21 @@
 		<p>
 			<label for="<?php echo $this->get_field_id('soundcloud_metric'); ?>" title="<?php _e('What metric shall be displayed', 'socialbox'); ?>"><?php _e('Metric', 'socialbox'); ?>:</label>
 			<select id="<?php echo $this->get_field_id('soundcloud_metric'); ?>" name="<?php echo $this->get_field_name('soundcloud_metric'); ?>" class="widefat">
-				<option <?php if($instance['soundcloud_metric'] == 'followers_count' ) echo 'selected="selected"'; ?> value="followers_count">Followers</option>
-				<option <?php if($instance['soundcloud_metric'] == 'followings_count' ) echo 'selected="selected"'; ?> value="followings_count">Following</option>
-				<option <?php if($instance['soundcloud_metric'] == 'public_favorites_count' ) echo 'selected="selected"'; ?> value="public_favorites_count">Favorites</option>
-				<option <?php if($instance['soundcloud_metric'] == 'playlist_count' ) echo 'selected="selected"'; ?> value="playlist_count">Playlists</option>
-				<option <?php if($instance['soundcloud_metric'] == 'track_count' ) echo 'selected="selected"'; ?> value="track_count">Tracks</option>
+				<option <?php if($instance['soundcloud_metric'] == 'followers_count' ) echo 'selected="selected"'; ?> value="followers_count">
+					<?php $this->translator->metric('soundcloud', 'followers_count') ?>
+				</option>
+				<option <?php if($instance['soundcloud_metric'] == 'followings_count' ) echo 'selected="selected"'; ?> value="followings_count">
+					<?php $this->translator->metric('soundcloud', 'followings_count') ?>
+				</option>
+				<option <?php if($instance['soundcloud_metric'] == 'public_favorites_count' ) echo 'selected="selected"'; ?> value="public_favorites_count">
+					<?php $this->translator->metric('soundcloud', 'public_favorites_count') ?>
+				</option>
+				<option <?php if($instance['soundcloud_metric'] == 'playlist_count' ) echo 'selected="selected"'; ?> value="playlist_count">
+					<?php $this->translator->metric('soundcloud', 'playlist_count') ?>
+				</option>
+				<option <?php if($instance['soundcloud_metric'] == 'track_count' ) echo 'selected="selected"'; ?> value="track_count">
+					<?php $this->translator->metric('soundcloud', 'track_count') ?>
+				</option>
 			</select>
 		</p>
 
@@ -427,11 +475,21 @@
         <p>
             <label for="<?php echo $this->get_field_id('dribbble_metric'); ?>" title="<?php _e('What metric shall be displayed', 'socialbox'); ?>"><?php _e('Metric', 'socialbox'); ?>:</label>
             <select id="<?php echo $this->get_field_id('dribbble_metric'); ?>" name="<?php echo $this->get_field_name('dribbble_metric'); ?>" class="widefat">
-                <option <?php if($instance['dribbble_metric'] == 'followers_count' ) echo 'selected="selected"'; ?> value="followers_count">Followers</option>
-                <option <?php if($instance['dribbble_metric'] == 'shots_count' ) echo 'selected="selected"'; ?> value="shots_count">Shots</option>
-                <option <?php if($instance['dribbble_metric'] == 'likes_received_count' ) echo 'selected="selected"'; ?> value="likes_received_count">Likes Received</option>
-                <option <?php if($instance['dribbble_metric'] == 'comments_received_count' ) echo 'selected="selected"'; ?> value="comments_received_count">Comments Received</option>
-                <option <?php if($instance['dribbble_metric'] == 'rebounds_received_count' ) echo 'selected="selected"'; ?> value="rebounds_received_count">Rebounds Received</option>
+                <option <?php if($instance['dribbble_metric'] == 'followers_count' ) echo 'selected="selected"'; ?> value="followers_count">
+					<?php $this->translator->metric('dribbble', 'followers_count') ?>
+				</option>
+                <option <?php if($instance['dribbble_metric'] == 'shots_count' ) echo 'selected="selected"'; ?> value="shots_count">
+					<?php $this->translator->metric('dribbble', 'shots_count') ?>
+				</option>
+                <option <?php if($instance['dribbble_metric'] == 'likes_received_count' ) echo 'selected="selected"'; ?> value="likes_received_count">
+					<?php $this->translator->metric('dribbble', 'likes_received_count') ?>
+				</option>
+                <option <?php if($instance['dribbble_metric'] == 'comments_received_count' ) echo 'selected="selected"'; ?> value="comments_received_count">
+					<?php $this->translator->metric('dribbble', 'comments_received_count') ?>
+				</option>
+                <option <?php if($instance['dribbble_metric'] == 'rebounds_received_count' ) echo 'selected="selected"'; ?> value="rebounds_received_count">
+					<?php $this->translator->metric('dribbble', 'rebounds_received_count') ?>
+				</option>
             </select>
         </p>
 

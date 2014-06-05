@@ -79,7 +79,7 @@ class JD_SocialBoxWidget extends WP_Widget{
                    'name'       => $this->getNetworkName($cacheItem),
                    'buttonText' => $this->getNetworkButtonText($cacheItem),
                    'buttonHint' => $this->getNetworkButtonHint($cacheItem),
-                   'metric'     => $this->translator->metric($cacheItem),
+                   'metric'     => $this->translator->getMetric($cacheItem),
 
                );
 
