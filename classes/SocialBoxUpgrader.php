@@ -59,7 +59,7 @@ class JD_SocialBoxUpgrader{
         if($this->lastVersionLowerThan('1.4.0'))
         {
             $this->do140Cleanup();
-            $this->do140Upgrade();
+            // $this->do140Upgrade();
         }
 
         /*
@@ -113,6 +113,7 @@ class JD_SocialBoxUpgrader{
             First step:
             Remove all old options.
          */
+        delete_option('widget_socialbox');
         delete_option('socialbox_cache');
         delete_option('socialbox_update');
         delete_option('socialbox_options');
@@ -126,19 +127,19 @@ class JD_SocialBoxUpgrader{
 		wp_clear_scheduled_hook('socialbox_check_for_update');
     }
 
-    /**
-     * [do140Upgrade description]
-     */
-    protected function do140Upgrade()
-    {
-        /*
-            Only step:
-            Set the default Facebook metric for all widgets and cache items.
-         */
-        $this->setDefaultMetrics(array(
-            'facebook' => 'likes'
-        ));
-    }
+    // /**
+    //  * [do140Upgrade description]
+    //  */
+    // protected function do140Upgrade()
+    // {
+    //     /*
+    //         Only step:
+    //         Set the default Facebook metric for all widgets and cache items.
+    //      */
+    //     $this->setDefaultMetrics(array(
+    //         'facebook' => 'likes'
+    //     ));
+    // }
 
     /**
      * [do160Upgrade description]
