@@ -1,0 +1,7 @@
+div.updated.socialbox-update-available { border: none; background: #32aad2; color: #ffffff; padding: 20px 20px; overflow: hidden; }
+div.updated.socialbox-update-available .socialbox-logo { float: left; overflow: hidden; }
+div.updated.socialbox-update-available .socialbox-logo .socialbox-icon { width: 25px; height: 25px; display: block; float: left; background: transparent url("../img/socialbox-25.png") no-repeat top left; }
+div.updated.socialbox-update-available .socialbox-logo .socialbox-title { font-size: 20px; line-height: 25px; height: 25px; padding: 0; margin: 0 0 0 10px; float: left; }
+div.updated.socialbox-update-available .socialbox-message { float: left; font-size: 14px; padding: 0; margin: 4px 0 0 20px; }
+div.updated.socialbox-update-available .socialbox-message a { color: #ffffff; font-weight: bold; }
+div.updated.socialbox-update-available .socialbox-message a:focus, div.updated.socialbox-update-available .socialbox-message a:hover { text-decoration: underline; }

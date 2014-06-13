@@ -53,6 +53,7 @@ class JD_SocialBox{
 				$info = get_option('socialbox_update', array());
 				if(isset($info['update_available']) and $info['update_available']) {
 					add_action('admin_notices', array($this, 'addAdminNotice'));
+					add_action('admin_enqueue_scripts', array($this, 'registerUpdateNagStyle'));
 				}
 			}
 
@@ -175,20 +176,11 @@ class JD_SocialBox{
 	 *
 	 * Will be run through register_activation_hook()
 	 */
-	public static function activatePlugin(){
-
+	public static function activatePlugin()
+	{
 		/* Prepare for updated version */
 		$upgrader = new JD_SocialBoxUpgrader();
 		$upgrader->run();
-
-		/*
-			Pre 1.4:
-				- Remove old crons
-				- Remove old options
-
-			Pre 1.7:
-				- Inject default metrics
-		 */
 
 		/* Add options */
 		add_option('socialbox_update', array());
@@ -200,7 +192,7 @@ class JD_SocialBox{
 		wp_schedule_event(time(), 'everytenminutes', 'socialbox_update_cache');
 		wp_schedule_event(time(), 'daily', 'socialbox_update_plugin');
 
-		/* Trigger update check */
+		/* Trigger initial update check */
 		self::updatePlugin();
 	}
 
@@ -283,6 +275,22 @@ class JD_SocialBox{
         /* Enqueue Style */
         wp_enqueue_style('socialbox-widgets-page');
     }
+
+	/**
+	* Register the stylesheet for the "Update available" nag
+	*
+	* Will be run in "admin_enqueue_scripts" action and only if an update is
+	* in fact available.
+	*/
+	public function registerUpdateNagStyle()
+	{
+
+		/* register Style */
+		wp_register_style('socialbox-update-nag', JD_SOCIALBOX_URL . '/assets/css/update-nag.css', array(), JD_SOCIALBOX_VERSION, 'screen');
+
+		/* Enqueue Style */
+		wp_enqueue_style('socialbox-update-nag');
+	}
 
 
 

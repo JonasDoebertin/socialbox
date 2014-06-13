@@ -41,6 +41,10 @@ class JD_SocialBoxUpgrader{
         $this->currentVersion = JD_SOCIALBOX_VERSION;
     }
 
+
+
+
+
     /**************************************************************************\
     *                               MAIN RUNNER                                *
     \**************************************************************************/
@@ -66,9 +70,9 @@ class JD_SocialBoxUpgrader{
             Upgradeing to 1.6.0
             Inject the default values for the newly added metrics.
          */
-        if($this->lastVersionLowerThan('1.7.0'))
+        if($this->lastVersionLowerThan('1.6.0'))
         {
-            $this->do170Upgrade();
+            $this->do160Upgrade();
         }
 
         /*
@@ -126,20 +130,6 @@ class JD_SocialBoxUpgrader{
         wp_clear_scheduled_hook('socialbox_update_cache');
 		wp_clear_scheduled_hook('socialbox_check_for_update');
     }
-
-    // /**
-    //  * [do140Upgrade description]
-    //  */
-    // protected function do140Upgrade()
-    // {
-    //     /*
-    //         Only step:
-    //         Set the default Facebook metric for all widgets and cache items.
-    //      */
-    //     $this->setDefaultMetrics(array(
-    //         'facebook' => 'likes'
-    //     ));
-    // }
 
     /**
      * [do160Upgrade description]
@@ -240,6 +230,11 @@ class JD_SocialBoxUpgrader{
         update_option('widget_socialbox', $widgets);
     }
 
+    /**
+     * [setDefaultCacheMetrics description]
+     *
+     * @param array $metrics
+     */
     protected function setDefaultCacheMetrics($metrics)
     {
         /* Get cache from database */
@@ -302,5 +297,4 @@ class JD_SocialBoxUpgrader{
     {
         update_option('socialbox_last_version', $version);
     }
-
 }
