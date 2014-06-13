@@ -10,7 +10,14 @@
 
 class JD_SocialBoxUpgrader{
 
+    /**
+     * @var
+     */
     protected $lastVersion;
+
+
+
+
 
     /**************************************************************************\
     *                               CONSTRUCTOR                                *
@@ -18,6 +25,8 @@ class JD_SocialBoxUpgrader{
 
     /**
      * [__construct description]
+     *
+     * @return JD_SocialBoxUpgrader
      */
     public function __construct()
     {
@@ -117,6 +126,9 @@ class JD_SocialBoxUpgrader{
 		wp_clear_scheduled_hook('socialbox_check_for_update');
     }
 
+    /**
+     * [do140Upgrade description]
+     */
     protected function do140Upgrade()
     {
         /*
@@ -128,6 +140,9 @@ class JD_SocialBoxUpgrader{
         ));
     }
 
+    /**
+     * [do160Upgrade description]
+     */
     protected function do160Upgrade()
     {
         /*
@@ -141,6 +156,9 @@ class JD_SocialBoxUpgrader{
         ));
     }
 
+    /**
+     * [do170Upgrade description]
+     */
     protected function do170Upgrade()
     {
         /*
