@@ -75,6 +75,12 @@
 			<li>Updated language file template.</li>
 		</ul>
 	</li>
+	<li>
+		<strong>Additional Notes</strong>
+		<ul>
+			<li><strong>This will be the last regular version to support PHP 5.2.</strong> PHP 5.2 was released back in November 2006 and was maintained and updated until January 2011. This means that it's now considered an old release that's no longer supported. Should a new vulnerability be discovered in PHP 5.2, it will remain unfixed.</li>
+		</ul>
+	</li>
 </ul>
 
 <strong>Version 1.6.3</strong><br/>
