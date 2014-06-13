@@ -178,13 +178,8 @@ class JD_SocialBox{
 	public static function activatePlugin(){
 
 		/* Prepare for updated version */
-		$lastVersion = get_option('socialbox_last_version', false);
-		if(!$lastVersion or (version_compare('1.4.0', $lastVersion) == 1)) {
-			/* Remove all data from pre-1.4.0 versions */
-			delete_option('socialbox_update');
-			delete_option('socialbox_options');
-			delete_option('socialbox_cache');
-		}
+		$upgrader = new JD_SocialBoxUpgrader();
+		$upgrader->run();
 
 		/*
 			Pre 1.4:
@@ -199,18 +194,11 @@ class JD_SocialBox{
 		add_option('socialbox_update', array());
 		add_option('socialbox_options', array());
 		add_option('socialbox_cache', array());
+		add_option('socialbox_log', array());
 
 		/* Register cron events */
 		wp_schedule_event(time(), 'everytenminutes', 'socialbox_update_cache');
 		wp_schedule_event(time(), 'daily', 'socialbox_update_plugin');
-
-		/*
-			Save last version used.
-			By doing this, we can perform upgrade routines
-			based on the previously installed versions
-			in the future.
-		 */
-		update_option('socialbox_last_version', JD_SOCIALBOX_VERSION);
 
 		/* Trigger update check */
 		self::updatePlugin();

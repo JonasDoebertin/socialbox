@@ -18,3 +18,4 @@ if(!defined('WP_UNINSTALL_PLUGIN')) {
 delete_option('socialbox_update');
 delete_option('socialbox_options');
 delete_option('socialbox_cache');
+delete_option('socialbox_log');
