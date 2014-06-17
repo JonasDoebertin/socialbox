@@ -3,11 +3,11 @@
   "cfgVersion": 1,
   "name": "socialbox",
   "files": {
-    "55f4e6da": {
-      "id": "55f4e6da",
+    "81319ad4": {
+      "id": "81319ad4",
       "pid": "c5b93016",
       "name": "options-page.scss",
-      "input": "assets/css-sources/options-page.scss",
+      "input": "_src/scss/options-page.scss",
       "customOutput": "assets/css/options-page.css",
       "type": "Scss",
       "config": {
@@ -22,11 +22,11 @@
         "autoprefixer": false
       }
     },
-    "e01c0511": {
-      "id": "e01c0511",
+    "3c07002c": {
+      "id": "3c07002c",
       "pid": "c5b93016",
       "name": "socialbox.scss",
-      "input": "assets/css-sources/socialbox.scss",
+      "input": "_src/scss/socialbox.scss",
       "customOutput": "assets/css/socialbox.css",
       "type": "Scss",
       "config": {
@@ -41,11 +41,11 @@
         "autoprefixer": false
       }
     },
-    "67d29af0": {
-      "id": "67d29af0",
+    "2d8e5268": {
+      "id": "2d8e5268",
       "pid": "c5b93016",
       "name": "update-nag.scss",
-      "input": "assets/css-sources/update-nag.scss",
+      "input": "_src/scss/update-nag.scss",
       "customOutput": "assets/css/update-nag.css",
       "type": "Scss",
       "config": {
@@ -60,11 +60,11 @@
         "autoprefixer": false
       }
     },
-    "49224dc0": {
-      "id": "49224dc0",
+    "c19372e2": {
+      "id": "c19372e2",
       "pid": "c5b93016",
       "name": "widgets-page.scss",
-      "input": "assets/css-sources/widgets-page.scss",
+      "input": "_src/scss/widgets-page.scss",
       "customOutput": "assets/css/widgets-page.css",
       "type": "Scss",
       "config": {
@@ -79,11 +79,11 @@
         "autoprefixer": false
       }
     },
-    "89e4a21f": {
-      "id": "89e4a21f",
+    "29a05baa": {
+      "id": "29a05baa",
       "pid": "c5b93016",
       "name": "options-page.js",
-      "input": "assets/js-sources/options-page.js",
+      "input": "_src/js/options-page.js",
       "customOutput": "assets/js/options-page.js",
       "type": "Js",
       "config": {
@@ -95,92 +95,92 @@
     }
   },
   "imports": {
-    "d209fa63": {
-      "id": "d209fa63",
+    "de325528": {
+      "id": "de325528",
       "pid": "c5b93016",
-      "path": "assets/css-sources/options-page/_mixins.scss",
+      "path": "_src/scss/options-page/_mixins.scss",
       "parents": [
-        "55f4e6da"
+        "81319ad4"
       ]
     },
-    "bd97ed6b": {
-      "id": "bd97ed6b",
+    "aa5ae4ad": {
+      "id": "aa5ae4ad",
       "pid": "c5b93016",
-      "path": "assets/css-sources/options-page/_icons.scss",
+      "path": "_src/scss/options-page/_icons.scss",
       "parents": [
-        "55f4e6da"
+        "81319ad4"
       ]
     },
-    "73edc0cc": {
-      "id": "73edc0cc",
+    "462dd638": {
+      "id": "462dd638",
       "pid": "c5b93016",
-      "path": "assets/js-sources/options-page/smooth-scroll-4.5.js",
+      "path": "_src/js/options-page/smooth-scroll-4.5.js",
       "parents": [
-        "89e4a21f"
+        "29a05baa"
       ]
     },
-    "163212be": {
-      "id": "163212be",
+    "ad7da7a1": {
+      "id": "ad7da7a1",
       "pid": "c5b93016",
-      "path": "assets/css-sources/socialbox/_mixins.scss",
+      "path": "_src/scss/socialbox/_mixins.scss",
       "parents": [
-        "e01c0511"
+        "3c07002c"
       ]
     },
-    "cd938340": {
-      "id": "cd938340",
+    "c4c9a2ed": {
+      "id": "c4c9a2ed",
       "pid": "c5b93016",
-      "path": "assets/css-sources/socialbox/_reset.scss",
+      "path": "_src/scss/socialbox/_reset.scss",
       "parents": [
-        "e01c0511"
+        "3c07002c"
       ]
     },
-    "32c43d6a": {
-      "id": "32c43d6a",
+    "49b3201a": {
+      "id": "49b3201a",
       "pid": "c5b93016",
-      "path": "assets/css-sources/socialbox/_classic-style.scss",
+      "path": "_src/scss/socialbox/_classic-style.scss",
       "parents": [
-        "e01c0511"
+        "3c07002c"
       ]
     },
-    "a4e34e20": {
-      "id": "a4e34e20",
+    "21d4a483": {
+      "id": "21d4a483",
       "pid": "c5b93016",
-      "path": "assets/css-sources/socialbox/_modern-style.scss",
+      "path": "_src/scss/socialbox/_modern-style.scss",
       "parents": [
-        "e01c0511"
+        "3c07002c"
       ]
     },
-    "4376dcde": {
-      "id": "4376dcde",
+    "fa09b0d5": {
+      "id": "fa09b0d5",
       "pid": "c5b93016",
-      "path": "assets/css-sources/socialbox/_tutsflavor-style.scss",
+      "path": "_src/scss/socialbox/_tutsflavor-style.scss",
       "parents": [
-        "e01c0511"
+        "3c07002c"
       ]
     },
-    "c887c649": {
-      "id": "c887c649",
+    "2d6a556b": {
+      "id": "2d6a556b",
       "pid": "c5b93016",
-      "path": "assets/css-sources/socialbox/_dark-style.scss",
+      "path": "_src/scss/socialbox/_dark-style.scss",
       "parents": [
-        "e01c0511"
+        "3c07002c"
       ]
     },
-    "a0f7dfe0": {
-      "id": "a0f7dfe0",
+    "d7324819": {
+      "id": "d7324819",
       "pid": "c5b93016",
-      "path": "assets/css-sources/socialbox/_colorful-style.scss",
+      "path": "_src/scss/socialbox/_colorful-style.scss",
       "parents": [
-        "e01c0511"
+        "3c07002c"
       ]
     },
-    "fce27916": {
-      "id": "fce27916",
+    "3f768424": {
+      "id": "3f768424",
       "pid": "c5b93016",
-      "path": "assets/css-sources/socialbox/_fonts.scss",
+      "path": "_src/scss/socialbox/_fonts.scss",
       "parents": [
-        "e01c0511"
+        "3c07002c"
       ]
     }
   },
@@ -273,16 +273,6 @@
       "name": "github-settings.png",
       "type": "Png",
       "initialSize": 5226,
-      "status": "NOT_OPTIMIZED"
-    },
-    "cbd9cdc3": {
-      "id": "cbd9cdc3",
-      "pid": "c5b93016",
-      "path": "assets/img/help/googleplus-settings.png",
-      "size": 9457,
-      "name": "googleplus-settings.png",
-      "type": "Png",
-      "initialSize": 9457,
       "status": "NOT_OPTIMIZED"
     },
     "f8902aae": {
@@ -395,16 +385,6 @@
       "initialSize": 422,
       "status": "NOT_OPTIMIZED"
     },
-    "e756dcfb": {
-      "id": "e756dcfb",
-      "pid": "c5b93016",
-      "path": "assets/img/icons/32/googleplus.png",
-      "size": 345,
-      "name": "googleplus.png",
-      "type": "Png",
-      "initialSize": 345,
-      "status": "NOT_OPTIMIZED"
-    },
     "fbea1dd0": {
       "id": "fbea1dd0",
       "pid": "c5b93016",
@@ -513,16 +493,6 @@
       "name": "github.png",
       "type": "Png",
       "initialSize": 658,
-      "status": "NOT_OPTIMIZED"
-    },
-    "b802a53c": {
-      "id": "b802a53c",
-      "pid": "c5b93016",
-      "path": "assets/img/icons/64/googleplus.png",
-      "size": 537,
-      "name": "googleplus.png",
-      "type": "Png",
-      "initialSize": 537,
       "status": "NOT_OPTIMIZED"
     },
     "8e8ad331": {
