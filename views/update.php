@@ -2,7 +2,7 @@
 
 
 /*
- * SocialBox 1.6.3
+ * SocialBox 1.7.0
  * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
@@ -10,6 +10,12 @@
 
 ?>
 
-<div class="update-nag">
-	<?php printf(__('<a href="%s">SocialBox %s</a> is available! Please <a href="%s">update now</a>.', 'socialbox'), $info['product_url'], $info['latest_version'], $info['download_url']); ?>
+<div class="updated socialbox-update-available">
+	<div class="socialbox-logo">
+		<i class="socialbox-icon"></i>
+		<p class="socialbox-title"><?php _e('SocialBox') ?>
+	</div>
+	<p class="socialbox-message">
+		<?php printf(__('An new version of SocialBox (%s) is available. <a href="%s">Get it now!</a>', 'socialbox'), $info['latest_version'], $info['download_url']) ?>
+	</p>
 </div>

@@ -2,7 +2,7 @@
 
 
 /*
- * SocialBox 1.6.3
+ * SocialBox 1.7.0
  * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
@@ -11,14 +11,22 @@
 class JD_SocialBoxWidget extends WP_Widget{
 
 	/**
+	 * @var
+	 */
+	private $translator;
+
+	/**
 	 * Create a widget instance and set the base infos
 	 */
 	public function __construct() {
 
+		/* Initialize Translator */
+		$this->translator = new JD_SocialBoxTranslator;
+
 		/* Widget settings */
 		$widgetOpts = array(
 			'classname' => 'socialbox',
-			'description' => __('Adds a super easy SocialBox widget which displays various statistics from Facebook, Twitter, Youtube, Vimeo, Instagram, Pinterest, GitHub and MailChimp.', 'socialbox')
+			'description' => __('A super easy widget which displays various statistics from Facebook, Twitter, Google+, Youtube, Vimeo, Instagram, Pinterest, SoundCloud, Dribbble, Forrst, GitHub and MailChimp.', 'socialbox')
 		);
 
 		/* Widget control settings */
@@ -68,10 +76,11 @@ class JD_SocialBoxWidget extends WP_Widget{
                    'position'   => $instance[$network . '_position'],
                    'count'      => ($cacheItem['value'] !== null) ? $cacheItem['value'] : $instance[$network . '_default'],
                    'link'       => $this->getNetworkLink($cacheItem),
-                   'name'       => $this->getNetworkName($cacheItem),
+                   'name'       => $this->translator->getNetwork($cacheItem),
                    'buttonText' => $this->getNetworkButtonText($cacheItem),
                    'buttonHint' => $this->getNetworkButtonHint($cacheItem),
-                   'metric'     => $this->getNetworkMetric($cacheItem),
+                   'metric'     => $this->translator->getMetric($cacheItem),
+
                );
 
                /* Add network to list */
@@ -134,11 +143,16 @@ class JD_SocialBoxWidget extends WP_Widget{
 		$instance['twitter_api_secret']          = $newInstance['twitter_api_secret'];
 		$instance['twitter_access_token']        = $newInstance['twitter_access_token'];
 		$instance['twitter_access_token_secret'] = $newInstance['twitter_access_token_secret'];
+		$instance['twitter_metric']              = $newInstance['twitter_metric'];
+        $instance['googleplus_api_key']          = $newInstance['googleplus_api_key'];
+		$instance['youtube_metric']              = $newInstance['youtube_metric'];
         $instance['vimeo_metric']                = $newInstance['vimeo_metric'];
 		$instance['instagram_user_id']           = $newInstance['instagram_user_id'];
 		$instance['instagram_client_id']         = $newInstance['instagram_client_id'];
 		$instance['instagram_metric']            = $newInstance['instagram_metric'];
         $instance['pinterest_metric']            = $newInstance['pinterest_metric'];
+		$instance['soundcloud_client_id']        = $newInstance['soundcloud_client_id'];
+		$instance['soundcloud_metric']           = $newInstance['soundcloud_metric'];
         $instance['dribbble_metric']             = $newInstance['dribbble_metric'];
         $instance['mailchimp_api_key']           = $newInstance['mailchimp_api_key'];
         $instance['mailchimp_form_url']          = $newInstance['mailchimp_form_url'];
@@ -190,7 +204,14 @@ class JD_SocialBoxWidget extends WP_Widget{
                         $cache['twitter||' . $instance['twitter_id']]['api_secret']          = $instance['twitter_api_secret'];
                         $cache['twitter||' . $instance['twitter_id']]['access_token']        = $instance['twitter_access_token'];
                         $cache['twitter||' . $instance['twitter_id']]['access_token_secret'] = $instance['twitter_access_token_secret'];
+						$cache['twitter||' . $instance['twitter_id']]['metric']              = $instance['twitter_metric'];
                         break;
+                    case 'googleplus':
+                        $cache['googleplus||' . $instance['googleplus_id']]['api_key']       = $instance['googleplus_api_key'];
+                        break;
+					case 'youtube':
+						$cache['youtube||' . $instance['youtube_id']]['metric']              = $instance['youtube_metric'];
+						break;
                     case 'vimeo':
                         $cache['vimeo||' . $instance['vimeo_id']]['metric']                  = $instance['vimeo_metric'];
                         break;
@@ -202,6 +223,10 @@ class JD_SocialBoxWidget extends WP_Widget{
                     case 'pinterest':
                         $cache['pinterest||' . $instance['pinterest_id']]['metric']          = $instance['pinterest_metric'];
                         break;
+					case 'soundcloud':
+						$cache['soundcloud||' . $instance['soundcloud_id']]['client_id']     = $instance['soundcloud_client_id'];
+						$cache['soundcloud||' . $instance['soundcloud_id']]['metric']        = $instance['soundcloud_metric'];
+						break;
                     case 'dribbble':
                         $cache['dribbble||' . $instance['dribbble_id']]['metric']            = $instance['dribbble_metric'];
                         break;
@@ -257,12 +282,17 @@ class JD_SocialBoxWidget extends WP_Widget{
 		$defaults['twitter_api_secret']          = '';
 		$defaults['twitter_access_token']        = '';
 		$defaults['twitter_access_token_secret'] = '';
+		$defaults['twitter_metric']              = 'followers_count';
+        $defaults['googleplus_api_key']          = '';
+		$defaults['youtube_metric']              = 'subscriberCount';
         $defaults['vimeo_metric']                = 'total_subscribers';
 		$defaults['instagram_metric']            = 'followed_by';
 		$defaults['instagram_client_id']         = '';
 		$defaults['instagram_user_id']           = '';
         $defaults['instagram_user_id']           = '';
         $defaults['pinterest_metric']            = 'followers';
+		$defaults['soundcloud_client_id']        = '';
+		$defaults['soundcloud_metric']           = 'followers_count';
         $defaults['dribbble_metric']             = 'followers_count';
         $defaults['mailchimp_api_key']           = '';
         $defaults['mailchimp_form_url']          = '';
@@ -341,6 +371,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 				return "http://instagram.com/{$item['id']}";
             case 'pinterest':
                 return "http://pinterest.com/{$item['id']}";
+			case 'soundcloud':
+				return "https://soundcloud.com/{$item['id']}";
 			case 'dribbble':
 				return "http://dribbble.com/{$item['id']}";
 			case 'forrst':
@@ -351,102 +383,6 @@ class JD_SocialBoxWidget extends WP_Widget{
                 return $item['form_url'];
 		}
 
-	}
-
-	private function getNetworkName($item) {
-
-		switch($item['network']) {
-			case 'facebook':
-				return __('Facebook', 'socialbox');
-			case 'twitter':
-				return __('Twitter', 'socialbox');
-			case 'youtube':
-				return __('YouTube', 'socialbox');
-			case 'vimeo':
-				return __('Vimeo', 'socialbox');
-			case 'instagram':
-				return __('Instagram', 'socialbox');
-            case 'pinterest':
-                return __('Pinterest', 'socialbox');
-			case 'dribbble':
-				return __('Dribbble', 'socialbox');
-			case 'forrst':
-				return __('Forrst', 'socialbox');
-			case 'github':
-				return __('GitHub', 'socialbox');
-            case 'mailchimp':
-                return __('Newsletter', 'socialbox');
-		}
-	}
-
-	private function getNetworkMetric($item) {
-
-		switch($item['network']) {
-			case 'twitter':
-				return __('Followers', 'socialbox');
-			case 'youtube':
-				return __('Subscribers', 'socialbox');
-			case 'forrst':
-				return __('Followers', 'socialbox');
-			case 'github':
-				return __('Followers', 'socialbox');
-            case 'mailchimp':
-                return __('Subscribers', 'socialbox');
-            case 'facebook':
-                switch($item['metric']) {
-                    case 'likes':
-                        return __('Likes', 'socialbox');
-                    case 'checkins':
-                        return __('Checkins', 'socialbox');
-                    case 'were_here_count':
-                        return __('Were Here', 'socialbox');
-                    case 'talking_about_count':
-                        return __('Talking About', 'socialbox');
-                }
-                break;
-            case 'instagram':
-                switch($item['metric']) {
-                    case 'media':
-                        return __('Posts', 'socialbox');
-                    case 'followed_by':
-                        return __('Followers', 'socialbox');
-                    case 'follows':
-                        return __('Following', 'socialbox');
-                }
-                break;
-            case 'vimeo':
-                switch($item['metric']) {
-                    case 'total_subscribers':
-                        return __('Subscribers', 'socialbox');
-                    case 'total_videos':
-                        return __('Videos', 'socialbox');
-                }
-                break;
-            case 'dribbble':
-                switch($item['metric']) {
-                    case 'followers_count':
-                        return __('Followers', 'socialbox');
-                    case 'likes_received_count':
-                        return __('Likes', 'socialbox');
-                    case 'comments_received_count':
-                        return __('Comments', 'socialbox');
-                    case 'rebounds_received_count':
-                        return __('Rebounds', 'socialbox');
-                    case 'shots_count':
-                        return __('Shots', 'socialbox');
-                }
-                break;
-            case 'pinterest':
-                switch($item['metric']) {
-                    case 'followers':
-                        return __('Followers', 'socialbox');
-                    case 'pins':
-                        return __('Pins', 'socialbox');
-                    case 'boards':
-                        return __('Boards', 'socialbox');
-                }
-                break;
-		}
 	}
 
 	private function getNetworkButtonText($item) {
@@ -465,6 +401,8 @@ class JD_SocialBoxWidget extends WP_Widget{
             case 'pinterest':
                 return __('Follow', 'socialbox');
 			case 'dribbble':
+				return __('Follow', 'socialbox');
+			case 'soundcloud':
 				return __('Follow', 'socialbox');
 			case 'forrst':
 				return __('Follow', 'socialbox');
@@ -492,6 +430,8 @@ class JD_SocialBoxWidget extends WP_Widget{
                 return __('Follow on Pinterest', 'socialbox');
 			case 'dribbble':
 				return __('Follow on Dribbble', 'socialbox');
+			case 'soundcloud':
+				return __('Follow on SoundCloud', 'socialbox');
 			case 'forrst':
 				return __('Follow on Forrst', 'socialbox');
 			case 'github':

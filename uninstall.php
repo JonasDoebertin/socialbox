@@ -2,7 +2,7 @@
 
 
 /*
- * SocialBox 1.6.3
+ * SocialBox 1.7.0
  * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
@@ -18,3 +18,4 @@ if(!defined('WP_UNINSTALL_PLUGIN')) {
 delete_option('socialbox_update');
 delete_option('socialbox_options');
 delete_option('socialbox_cache');
+delete_option('socialbox_log');

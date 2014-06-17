@@ -1,0 +1,8 @@
+SoundCloud
+==========
+
+  Schema: http://api.soundcloud.com/users/<username>.json?client_id=<client_id>
+  
+  Demo Request: http://api.soundcloud.com/users/tv-jones-1.json?client_id=0f4cacda51fce6c2512bf643056c8011
+  
+  Create new Client ID: https://soundcloud.com/you/apps/new

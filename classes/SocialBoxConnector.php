@@ -2,7 +2,7 @@
 
 
 /*
- * SocialBox 1.6.3
+ * SocialBox 1.7.0
  * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
@@ -54,7 +54,7 @@ class JD_SocialBoxConnector{
 		$result = $Twitter->get('users/show', array('screen_name' => $item['id'], 'include_entities' => false));
 
 		/* Check for http errors */
-		if($Twitter->lastStatusCode() != 200) {
+		if($Twitter->getLastStatusCode() != 200) {
 			return array('successful' => false);
 		}
 
@@ -71,6 +71,31 @@ class JD_SocialBoxConnector{
 
 	}
 
+    protected static function googleplus($item) {
+
+        /* Fetch data from Google+ API */
+        $result = self::remoteGet(sprintf('https://www.googleapis.com/plus/v1/people/%s?key=%s', $item['id'], $item['api_key']));
+
+        /* Check for common errors */
+        if(self::wasCommonError($result)) {
+            return array('successful' => false);
+        }
+
+        /* Decode response */
+        $data = json_decode(wp_remote_retrieve_body($result));
+
+        /* Check for incorrect data */
+        if(is_null($data) or isset($data->error) or !isset($data->circledByCount)){
+            return array('successful' => false);
+        }
+
+        /* Return value */
+        return array(
+            'successful' => true,
+            'value'      => $data->circledByCount,
+        );
+    }
+
 	protected static function youtube($item) {
 		/* Fetch data from Youtube API */
 		$result = self::remoteGet('http://gdata.youtube.com/feeds/api/users/' . $item['id']);
@@ -84,14 +109,14 @@ class JD_SocialBoxConnector{
 		$data = simplexml_load_string(wp_remote_retrieve_body($result));
 
 		/* Check for incorrect data */
-		if(!$data or isset($data->err) or !isset($data->children('http://gdata.youtube.com/schemas/2007')->statistics->attributes()->subscriberCount)){
+		if(!$data or isset($data->err) or !isset($data->children('http://gdata.youtube.com/schemas/2007')->statistics->attributes()->{$item['metric']})){
 			return array('successful' => false);
 		}
 
 		/* Return value */
 		return array(
 			'successful' => true,
-			'value'      => (int) $data->children('http://gdata.youtube.com/schemas/2007')->statistics->attributes()->subscriberCount
+			'value'      => (int) $data->children('http://gdata.youtube.com/schemas/2007')->statistics->attributes()->{$item['metric']},
 		);
 	}
 
@@ -169,6 +194,35 @@ class JD_SocialBoxConnector{
             'value'      => intval($matches[1])
         );
     }
+
+	protected static function soundcloud($item)
+	{
+
+		/* Fetch data from Dribbble API */
+		$result = self::remoteGet(sprintf('http://api.soundcloud.com/users/%s.json?client_id=%s', $item['id'], $item['client_id']));
+
+		/* Check for common errors */
+		if(self::wasCommonError($result))
+		{
+			return array('successful' => false);
+		}
+
+		/* Decode response */
+		$data = json_decode(wp_remote_retrieve_body($result));
+
+		/* Check for incorrect data */
+		if(is_null($data) or isset($data->errors) or ! isset($data->{$item['metric']}))
+		{
+			return array('successful' => false);
+		}
+
+		/* Return value */
+		return array(
+			'successful' => true,
+			'value'      => $data->{$item['metric']}
+		);
+
+	}
 
 	protected static function dribbble($item) {
 

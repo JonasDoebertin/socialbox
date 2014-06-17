@@ -1,0 +1,662 @@
+{
+  "id": "c5b93016",
+  "cfgVersion": 1,
+  "name": "socialbox",
+  "files": {
+    "55f4e6da": {
+      "id": "55f4e6da",
+      "pid": "c5b93016",
+      "name": "options-page.scss",
+      "input": "assets/css-sources/options-page.scss",
+      "customOutput": "assets/css/options-page.css",
+      "type": "Scss",
+      "config": {
+        "autoCompile": true,
+        "lineNumbers": false,
+        "unixNewlines": false,
+        "sourcemaps": false,
+        "debug": false,
+        "compass": true,
+        "fullCompass": false,
+        "outputStyle": "compact",
+        "autoprefixer": false
+      }
+    },
+    "e01c0511": {
+      "id": "e01c0511",
+      "pid": "c5b93016",
+      "name": "socialbox.scss",
+      "input": "assets/css-sources/socialbox.scss",
+      "customOutput": "assets/css/socialbox.css",
+      "type": "Scss",
+      "config": {
+        "autoCompile": true,
+        "lineNumbers": false,
+        "unixNewlines": false,
+        "sourcemaps": false,
+        "debug": false,
+        "compass": true,
+        "fullCompass": false,
+        "outputStyle": "compact",
+        "autoprefixer": false
+      }
+    },
+    "67d29af0": {
+      "id": "67d29af0",
+      "pid": "c5b93016",
+      "name": "update-nag.scss",
+      "input": "assets/css-sources/update-nag.scss",
+      "customOutput": "assets/css/update-nag.css",
+      "type": "Scss",
+      "config": {
+        "autoCompile": true,
+        "lineNumbers": false,
+        "unixNewlines": false,
+        "sourcemaps": false,
+        "debug": false,
+        "compass": true,
+        "fullCompass": false,
+        "outputStyle": "compact",
+        "autoprefixer": false
+      }
+    },
+    "49224dc0": {
+      "id": "49224dc0",
+      "pid": "c5b93016",
+      "name": "widgets-page.scss",
+      "input": "assets/css-sources/widgets-page.scss",
+      "customOutput": "assets/css/widgets-page.css",
+      "type": "Scss",
+      "config": {
+        "autoCompile": true,
+        "lineNumbers": false,
+        "unixNewlines": false,
+        "sourcemaps": false,
+        "debug": false,
+        "compass": true,
+        "fullCompass": false,
+        "outputStyle": "compact",
+        "autoprefixer": false
+      }
+    },
+    "89e4a21f": {
+      "id": "89e4a21f",
+      "pid": "c5b93016",
+      "name": "options-page.js",
+      "input": "assets/js-sources/options-page.js",
+      "customOutput": "assets/js/options-page.js",
+      "type": "Js",
+      "config": {
+        "autoCompile": true,
+        "uglify": true,
+        "mangle": true,
+        "sourcemaps": false
+      }
+    }
+  },
+  "imports": {
+    "d209fa63": {
+      "id": "d209fa63",
+      "pid": "c5b93016",
+      "path": "assets/css-sources/options-page/_mixins.scss",
+      "parents": [
+        "55f4e6da"
+      ]
+    },
+    "bd97ed6b": {
+      "id": "bd97ed6b",
+      "pid": "c5b93016",
+      "path": "assets/css-sources/options-page/_icons.scss",
+      "parents": [
+        "55f4e6da"
+      ]
+    },
+    "73edc0cc": {
+      "id": "73edc0cc",
+      "pid": "c5b93016",
+      "path": "assets/js-sources/options-page/smooth-scroll-4.5.js",
+      "parents": [
+        "89e4a21f"
+      ]
+    },
+    "163212be": {
+      "id": "163212be",
+      "pid": "c5b93016",
+      "path": "assets/css-sources/socialbox/_mixins.scss",
+      "parents": [
+        "e01c0511"
+      ]
+    },
+    "cd938340": {
+      "id": "cd938340",
+      "pid": "c5b93016",
+      "path": "assets/css-sources/socialbox/_reset.scss",
+      "parents": [
+        "e01c0511"
+      ]
+    },
+    "32c43d6a": {
+      "id": "32c43d6a",
+      "pid": "c5b93016",
+      "path": "assets/css-sources/socialbox/_classic-style.scss",
+      "parents": [
+        "e01c0511"
+      ]
+    },
+    "a4e34e20": {
+      "id": "a4e34e20",
+      "pid": "c5b93016",
+      "path": "assets/css-sources/socialbox/_modern-style.scss",
+      "parents": [
+        "e01c0511"
+      ]
+    },
+    "4376dcde": {
+      "id": "4376dcde",
+      "pid": "c5b93016",
+      "path": "assets/css-sources/socialbox/_tutsflavor-style.scss",
+      "parents": [
+        "e01c0511"
+      ]
+    },
+    "c887c649": {
+      "id": "c887c649",
+      "pid": "c5b93016",
+      "path": "assets/css-sources/socialbox/_dark-style.scss",
+      "parents": [
+        "e01c0511"
+      ]
+    },
+    "a0f7dfe0": {
+      "id": "a0f7dfe0",
+      "pid": "c5b93016",
+      "path": "assets/css-sources/socialbox/_colorful-style.scss",
+      "parents": [
+        "e01c0511"
+      ]
+    },
+    "fce27916": {
+      "id": "fce27916",
+      "pid": "c5b93016",
+      "path": "assets/css-sources/socialbox/_fonts.scss",
+      "parents": [
+        "e01c0511"
+      ]
+    }
+  },
+  "images": {
+    "5954a1df": {
+      "id": "5954a1df",
+      "pid": "c5b93016",
+      "path": "assets/img/classic-background.png",
+      "size": 100,
+      "name": "classic-background.png",
+      "type": "Png",
+      "initialSize": 100,
+      "status": "NOT_OPTIMIZED"
+    },
+    "02401a43": {
+      "id": "02401a43",
+      "pid": "c5b93016",
+      "path": "assets/img/classic-button.png",
+      "size": 316,
+      "name": "classic-button.png",
+      "type": "Png",
+      "initialSize": 316,
+      "status": "NOT_OPTIMIZED"
+    },
+    "d78ff78f": {
+      "id": "d78ff78f",
+      "pid": "c5b93016",
+      "path": "assets/img/help/additional-settings.png",
+      "size": 9150,
+      "name": "additional-settings.png",
+      "type": "Png",
+      "initialSize": 9150,
+      "status": "NOT_OPTIMIZED"
+    },
+    "a3e8ab81": {
+      "id": "a3e8ab81",
+      "pid": "c5b93016",
+      "path": "assets/img/help/dribbble-settings.png",
+      "size": 7873,
+      "name": "dribbble-settings.png",
+      "type": "Png",
+      "initialSize": 7873,
+      "status": "NOT_OPTIMIZED"
+    },
+    "1447f250": {
+      "id": "1447f250",
+      "pid": "c5b93016",
+      "path": "assets/img/help/facebook-settings.png",
+      "size": 7946,
+      "name": "facebook-settings.png",
+      "type": "Png",
+      "initialSize": 7946,
+      "status": "NOT_OPTIMIZED"
+    },
+    "91aaf70b": {
+      "id": "91aaf70b",
+      "pid": "c5b93016",
+      "path": "assets/img/help/forrst-settings.png",
+      "size": 4633,
+      "name": "forrst-settings.png",
+      "type": "Png",
+      "initialSize": 4633,
+      "status": "NOT_OPTIMIZED"
+    },
+    "914a9a9e": {
+      "id": "914a9a9e",
+      "pid": "c5b93016",
+      "path": "assets/img/help/general-settings.png",
+      "size": 14925,
+      "name": "general-settings.png",
+      "type": "Png",
+      "initialSize": 14925,
+      "status": "NOT_OPTIMIZED"
+    },
+    "2eefeffc": {
+      "id": "2eefeffc",
+      "pid": "c5b93016",
+      "path": "assets/img/help/generic-network.png",
+      "size": 2973,
+      "name": "generic-network.png",
+      "type": "Png",
+      "initialSize": 2973,
+      "status": "NOT_OPTIMIZED"
+    },
+    "72457ed2": {
+      "id": "72457ed2",
+      "pid": "c5b93016",
+      "path": "assets/img/help/github-settings.png",
+      "size": 5226,
+      "name": "github-settings.png",
+      "type": "Png",
+      "initialSize": 5226,
+      "status": "NOT_OPTIMIZED"
+    },
+    "cbd9cdc3": {
+      "id": "cbd9cdc3",
+      "pid": "c5b93016",
+      "path": "assets/img/help/googleplus-settings.png",
+      "size": 9457,
+      "name": "googleplus-settings.png",
+      "type": "Png",
+      "initialSize": 9457,
+      "status": "NOT_OPTIMIZED"
+    },
+    "f8902aae": {
+      "id": "f8902aae",
+      "pid": "c5b93016",
+      "path": "assets/img/help/instagram-settings.png",
+      "size": 13081,
+      "name": "instagram-settings.png",
+      "type": "Png",
+      "initialSize": 13081,
+      "status": "NOT_OPTIMIZED"
+    },
+    "c3119f0b": {
+      "id": "c3119f0b",
+      "pid": "c5b93016",
+      "path": "assets/img/help/mailchimp-settings.png",
+      "size": 11194,
+      "name": "mailchimp-settings.png",
+      "type": "Png",
+      "initialSize": 11194,
+      "status": "NOT_OPTIMIZED"
+    },
+    "e4384379": {
+      "id": "e4384379",
+      "pid": "c5b93016",
+      "path": "assets/img/help/pinterest-settings.png",
+      "size": 7670,
+      "name": "pinterest-settings.png",
+      "type": "Png",
+      "initialSize": 7670,
+      "status": "NOT_OPTIMIZED"
+    },
+    "d7424627": {
+      "id": "d7424627",
+      "pid": "c5b93016",
+      "path": "assets/img/help/soundcloud-settings.png",
+      "size": 9845,
+      "name": "soundcloud-settings.png",
+      "type": "Png",
+      "initialSize": 9845,
+      "status": "NOT_OPTIMIZED"
+    },
+    "cb3943a4": {
+      "id": "cb3943a4",
+      "pid": "c5b93016",
+      "path": "assets/img/help/twitter-settings.png",
+      "size": 18938,
+      "name": "twitter-settings.png",
+      "type": "Png",
+      "initialSize": 18938,
+      "status": "NOT_OPTIMIZED"
+    },
+    "f316ba33": {
+      "id": "f316ba33",
+      "pid": "c5b93016",
+      "path": "assets/img/help/vimeo-settings.png",
+      "size": 7884,
+      "name": "vimeo-settings.png",
+      "type": "Png",
+      "initialSize": 7884,
+      "status": "NOT_OPTIMIZED"
+    },
+    "38464efc": {
+      "id": "38464efc",
+      "pid": "c5b93016",
+      "path": "assets/img/help/youtube-settings.png",
+      "size": 4766,
+      "name": "youtube-settings.png",
+      "type": "Png",
+      "initialSize": 4766,
+      "status": "NOT_OPTIMIZED"
+    },
+    "ac4e1669": {
+      "id": "ac4e1669",
+      "pid": "c5b93016",
+      "path": "assets/img/icons/32/dribbble.png",
+      "size": 390,
+      "name": "dribbble.png",
+      "type": "Png",
+      "initialSize": 390,
+      "status": "NOT_OPTIMIZED"
+    },
+    "7d4595d0": {
+      "id": "7d4595d0",
+      "pid": "c5b93016",
+      "path": "assets/img/icons/32/facebook.png",
+      "size": 224,
+      "name": "facebook.png",
+      "type": "Png",
+      "initialSize": 224,
+      "status": "NOT_OPTIMIZED"
+    },
+    "8b2c6f12": {
+      "id": "8b2c6f12",
+      "pid": "c5b93016",
+      "path": "assets/img/icons/32/forrst.png",
+      "size": 302,
+      "name": "forrst.png",
+      "type": "Png",
+      "initialSize": 302,
+      "status": "NOT_OPTIMIZED"
+    },
+    "c192556c": {
+      "id": "c192556c",
+      "pid": "c5b93016",
+      "path": "assets/img/icons/32/github.png",
+      "size": 422,
+      "name": "github.png",
+      "type": "Png",
+      "initialSize": 422,
+      "status": "NOT_OPTIMIZED"
+    },
+    "e756dcfb": {
+      "id": "e756dcfb",
+      "pid": "c5b93016",
+      "path": "assets/img/icons/32/googleplus.png",
+      "size": 345,
+      "name": "googleplus.png",
+      "type": "Png",
+      "initialSize": 345,
+      "status": "NOT_OPTIMIZED"
+    },
+    "fbea1dd0": {
+      "id": "fbea1dd0",
+      "pid": "c5b93016",
+      "path": "assets/img/icons/32/instagram.png",
+      "size": 291,
+      "name": "instagram.png",
+      "type": "Png",
+      "initialSize": 291,
+      "status": "NOT_OPTIMIZED"
+    },
+    "534608d1": {
+      "id": "534608d1",
+      "pid": "c5b93016",
+      "path": "assets/img/icons/32/mailchimp.png",
+      "size": 337,
+      "name": "mailchimp.png",
+      "type": "Png",
+      "initialSize": 337,
+      "status": "NOT_OPTIMIZED"
+    },
+    "92d5a967": {
+      "id": "92d5a967",
+      "pid": "c5b93016",
+      "path": "assets/img/icons/32/pinterest.png",
+      "size": 378,
+      "name": "pinterest.png",
+      "type": "Png",
+      "initialSize": 378,
+      "status": "NOT_OPTIMIZED"
+    },
+    "d37d1c58": {
+      "id": "d37d1c58",
+      "pid": "c5b93016",
+      "path": "assets/img/icons/32/soundcloud.png",
+      "size": 261,
+      "name": "soundcloud.png",
+      "type": "Png",
+      "initialSize": 261,
+      "status": "NOT_OPTIMIZED"
+    },
+    "09e9dba1": {
+      "id": "09e9dba1",
+      "pid": "c5b93016",
+      "path": "assets/img/icons/32/twitter.png",
+      "size": 338,
+      "name": "twitter.png",
+      "type": "Png",
+      "initialSize": 338,
+      "status": "NOT_OPTIMIZED"
+    },
+    "c4f736c8": {
+      "id": "c4f736c8",
+      "pid": "c5b93016",
+      "path": "assets/img/icons/32/vimeo.png",
+      "size": 315,
+      "name": "vimeo.png",
+      "type": "Png",
+      "initialSize": 315,
+      "status": "NOT_OPTIMIZED"
+    },
+    "e464c9da": {
+      "id": "e464c9da",
+      "pid": "c5b93016",
+      "path": "assets/img/icons/32/youtube.png",
+      "size": 344,
+      "name": "youtube.png",
+      "type": "Png",
+      "initialSize": 344,
+      "status": "NOT_OPTIMIZED"
+    },
+    "1275892f": {
+      "id": "1275892f",
+      "pid": "c5b93016",
+      "path": "assets/img/icons/64/dribbble.png",
+      "size": 631,
+      "name": "dribbble.png",
+      "type": "Png",
+      "initialSize": 631,
+      "status": "NOT_OPTIMIZED"
+    },
+    "561ada68": {
+      "id": "561ada68",
+      "pid": "c5b93016",
+      "path": "assets/img/icons/64/facebook.png",
+      "size": 293,
+      "name": "facebook.png",
+      "type": "Png",
+      "initialSize": 293,
+      "status": "NOT_OPTIMIZED"
+    },
+    "89e24e77": {
+      "id": "89e24e77",
+      "pid": "c5b93016",
+      "path": "assets/img/icons/64/forrst.png",
+      "size": 458,
+      "name": "forrst.png",
+      "type": "Png",
+      "initialSize": 458,
+      "status": "NOT_OPTIMIZED"
+    },
+    "f3754506": {
+      "id": "f3754506",
+      "pid": "c5b93016",
+      "path": "assets/img/icons/64/github.png",
+      "size": 658,
+      "name": "github.png",
+      "type": "Png",
+      "initialSize": 658,
+      "status": "NOT_OPTIMIZED"
+    },
+    "b802a53c": {
+      "id": "b802a53c",
+      "pid": "c5b93016",
+      "path": "assets/img/icons/64/googleplus.png",
+      "size": 537,
+      "name": "googleplus.png",
+      "type": "Png",
+      "initialSize": 537,
+      "status": "NOT_OPTIMIZED"
+    },
+    "8e8ad331": {
+      "id": "8e8ad331",
+      "pid": "c5b93016",
+      "path": "assets/img/icons/64/instagram.png",
+      "size": 380,
+      "name": "instagram.png",
+      "type": "Png",
+      "initialSize": 380,
+      "status": "NOT_OPTIMIZED"
+    },
+    "8e38f736": {
+      "id": "8e38f736",
+      "pid": "c5b93016",
+      "path": "assets/img/icons/64/mailchimp.png",
+      "size": 479,
+      "name": "mailchimp.png",
+      "type": "Png",
+      "initialSize": 479,
+      "status": "NOT_OPTIMIZED"
+    },
+    "83b29550": {
+      "id": "83b29550",
+      "pid": "c5b93016",
+      "path": "assets/img/icons/64/pinterest.png",
+      "size": 602,
+      "name": "pinterest.png",
+      "type": "Png",
+      "initialSize": 602,
+      "status": "NOT_OPTIMIZED"
+    },
+    "1db0e8d0": {
+      "id": "1db0e8d0",
+      "pid": "c5b93016",
+      "path": "assets/img/icons/64/soundcloud.png",
+      "size": 370,
+      "name": "soundcloud.png",
+      "type": "Png",
+      "initialSize": 370,
+      "status": "NOT_OPTIMIZED"
+    },
+    "01c7cc14": {
+      "id": "01c7cc14",
+      "pid": "c5b93016",
+      "path": "assets/img/icons/64/twitter.png",
+      "size": 493,
+      "name": "twitter.png",
+      "type": "Png",
+      "initialSize": 493,
+      "status": "NOT_OPTIMIZED"
+    },
+    "960eb065": {
+      "id": "960eb065",
+      "pid": "c5b93016",
+      "path": "assets/img/icons/64/vimeo.png",
+      "size": 463,
+      "name": "vimeo.png",
+      "type": "Png",
+      "initialSize": 463,
+      "status": "NOT_OPTIMIZED"
+    },
+    "0e30dfe2": {
+      "id": "0e30dfe2",
+      "pid": "c5b93016",
+      "path": "assets/img/icons/64/youtube.png",
+      "size": 551,
+      "name": "youtube.png",
+      "type": "Png",
+      "initialSize": 551,
+      "status": "NOT_OPTIMIZED"
+    },
+    "50572d16": {
+      "id": "50572d16",
+      "pid": "c5b93016",
+      "path": "assets/img/modern-background.png",
+      "size": 85,
+      "name": "modern-background.png",
+      "type": "Png",
+      "initialSize": 85,
+      "status": "NOT_OPTIMIZED"
+    },
+    "e31fb48e": {
+      "id": "e31fb48e",
+      "pid": "c5b93016",
+      "path": "assets/img/tutsflavor-background.png",
+      "size": 2397,
+      "name": "tutsflavor-background.png",
+      "type": "Png",
+      "initialSize": 2397,
+      "status": "NOT_OPTIMIZED"
+    },
+    "02d5afff": {
+      "id": "02d5afff",
+      "pid": "c5b93016",
+      "path": "assets/img/icon-25.png",
+      "size": 516,
+      "name": "icon-25.png",
+      "type": "Png",
+      "initialSize": 516,
+      "status": "NOT_OPTIMIZED"
+    }
+  },
+  "config": {
+    "watch": true,
+    "liveRefresh": true,
+    "liveRefreshDelay": 0,
+    "filterPatterns": "vendor/, *.md, assets/js/",
+    "useCustomServer": false,
+    "customServerUrl": "",
+    "cssPath": "css/",
+    "jsPath": "js/",
+    "htmlPath": "html/",
+    "minJsPath": "min/",
+    "htmlExtension": ".html",
+    "cssPathType": "REPLACE_TYPE",
+    "htmlPathType": "REPLACE_TYPE",
+    "jsPathType": "REPLACE_TYPE",
+    "minJsPathType": "RELATIVE_FILEDIR",
+    "htmlTypes": "jade, haml, slim, markdown, md",
+    "cssTypes": "less, sass, stylus, scss, styl",
+    "jsTypes": "coffee, coffeescript, coffeescripts, ls, livescript, livescripts",
+    "cssPreprocessorPath": "",
+    "htmlPreprocessorPath": "",
+    "jsPreprocessorPath": "",
+    "minJsPreprocessorPath": "",
+    "autoprefixerBrowsers": "",
+    "ftpHost": "",
+    "ftpPort": "21",
+    "ftpRemotePath": "",
+    "ftpIgnorePreprocessorFiles": true,
+    "ftpType": "FTP",
+    "ftpExcludePatterns": "",
+    "ftpPassword": "",
+    "ftpUsername": ""
+  }
+}

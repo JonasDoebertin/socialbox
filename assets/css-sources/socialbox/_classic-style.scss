@@ -10,7 +10,7 @@
 		background: url(../img/classic-background.png) repeat;
 		border: 1px solid #d8dcdf !important;
 		@include simple-border-radius(4px);
-		@include single-box-shadow(0px 2px 4px #dfe4e7);
+		@include single-box-shadow(0px, 2px, 4px, 0, #dfe4e7);
 		margin: 0 !important;
 		padding: 0;
 

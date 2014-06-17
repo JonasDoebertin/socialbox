@@ -7,7 +7,7 @@
 		background: #373737;
 		border: 1px solid #080808;
 		@include simple-border-radius(5px);
-		@include single-box-shadow(0 2px 1px rgba(0, 0, 0, .40));
+		@include single-box-shadow(0, 2px, 1px, 0, rgba(0, 0, 0, .40));
 		margin: 0 !important;
 		padding: 0;
 
@@ -22,7 +22,7 @@
 			&:first-child{
 				border-top: none;
 				@include border-top-radius(4px);
-				@include single-box-shadow(inset 0 1px 0 #777777);
+				@include single-box-shadow(0, 1px, 0, 0, #777777, inset);
 			}
 
 			&:last-child{

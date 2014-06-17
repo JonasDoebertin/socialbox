@@ -2,7 +2,7 @@
 
 
 /*
- * SocialBox 1.6.3
+ * SocialBox 1.7.0
  * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
@@ -13,7 +13,7 @@ class JD_SocialBox{
 	/**
 	 * Complete list of supported networks
 	 */
-	const SUPPORTED_NETWORKS = 'facebook,twitter,youtube,vimeo,instagram,pinterest,dribbble,forrst,github,mailchimp';
+	const SUPPORTED_NETWORKS = 'facebook,twitter,googleplus,youtube,vimeo,instagram,pinterest,soundcloud,dribbble,forrst,github,mailchimp';
 
 	/**
 	 * Max. # of log entries to keep
@@ -53,6 +53,7 @@ class JD_SocialBox{
 				$info = get_option('socialbox_update', array());
 				if(isset($info['update_available']) and $info['update_available']) {
 					add_action('admin_notices', array($this, 'addAdminNotice'));
+					add_action('admin_enqueue_scripts', array($this, 'registerUpdateNagStyle'));
 				}
 			}
 
@@ -175,35 +176,23 @@ class JD_SocialBox{
 	 *
 	 * Will be run through register_activation_hook()
 	 */
-	public static function activatePlugin(){
-
+	public static function activatePlugin()
+	{
 		/* Prepare for updated version */
-		$lastVersion = get_option('socialbox_last_version', false);
-		if(!$lastVersion or (version_compare('1.4.0', $lastVersion) == 1)) {
-			/* Remove all data from pre-1.4.0 versions */
-			delete_option('socialbox_update');
-			delete_option('socialbox_options');
-			delete_option('socialbox_cache');
-		}
+		$upgrader = new JD_SocialBoxUpgrader();
+		$upgrader->run();
 
 		/* Add options */
 		add_option('socialbox_update', array());
 		add_option('socialbox_options', array());
 		add_option('socialbox_cache', array());
+		add_option('socialbox_log', array());
 
 		/* Register cron events */
 		wp_schedule_event(time(), 'everytenminutes', 'socialbox_update_cache');
 		wp_schedule_event(time(), 'daily', 'socialbox_update_plugin');
 
-		/*
-			Save last version used.
-			By doing this, we can perform upgrade routines
-			based on the previously installed versions
-			in the future.
-		 */
-		update_option('socialbox_last_version', JD_SOCIALBOX_VERSION);
-
-		/* Trigger update check */
+		/* Trigger initial update check */
 		self::updatePlugin();
 	}
 
@@ -286,6 +275,22 @@ class JD_SocialBox{
         /* Enqueue Style */
         wp_enqueue_style('socialbox-widgets-page');
     }
+
+	/**
+	* Register the stylesheet for the "Update available" nag
+	*
+	* Will be run in "admin_enqueue_scripts" action and only if an update is
+	* in fact available.
+	*/
+	public function registerUpdateNagStyle()
+	{
+
+		/* register Style */
+		wp_register_style('socialbox-update-nag', JD_SOCIALBOX_URL . '/assets/css/update-nag.css', array(), JD_SOCIALBOX_VERSION, 'screen');
+
+		/* Enqueue Style */
+		wp_enqueue_style('socialbox-update-nag');
+	}
 
 
 
