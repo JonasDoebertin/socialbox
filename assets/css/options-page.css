@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /*!
- * SocialBox 1.4.1
+ * SocialBox 1.7.0
  * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
@@ -14,7 +14,6 @@
 \*------------------------------------*/
 /** Fonts */
 @font-face { font-family: 'admin-icons'; src: url("../fonts/admin-icons.eot?-ckwl15"); src: url("../fonts/admin-icons.eot?#iefix-ckwl15") format("embedded-opentype"), url("../fonts/admin-icons.woff?-ckwl15") format("woff"), url("../fonts/admin-icons.ttf?-ckwl15") format("truetype"), url("../fonts/admin-icons.svg?-ckwl15#admin-icons") format("svg"); font-weight: normal; font-style: normal; }
-
 /** General icon styles */
 [class^="socialbox-icon-"], [class*=" socialbox-icon-"] { font-family: 'admin-icons'; speak: none; font-style: normal; font-weight: normal; font-variant: normal; text-transform: none; line-height: 1; display: inline-block; margin-right: 4px; color: #888888; /* Better Font Rendering =========== */ -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 
@@ -35,21 +34,16 @@
 .socialbox-icon-loading:before { content: "\e606" !important; }
 
 /** Rotation animation */
-@-webkit-keyframes socialbox-rotate { 0% { -webkit-transform: rotate(0deg); -moz-transform: rotate(0deg); -ms-transform: rotate(0deg); -o-transform: rotate(0deg); transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); -moz-transform: rotate(360deg); -ms-transform: rotate(360deg); -o-transform: rotate(360deg); transform: rotate(360deg); } }
-
-@-moz-keyframes socialbox-rotate { 0% { -webkit-transform: rotate(0deg); -moz-transform: rotate(0deg); -ms-transform: rotate(0deg); -o-transform: rotate(0deg); transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); -moz-transform: rotate(360deg); -ms-transform: rotate(360deg); -o-transform: rotate(360deg); transform: rotate(360deg); } }
-
-@-ms-keyframes socialbox-rotate { 0% { -webkit-transform: rotate(0deg); -moz-transform: rotate(0deg); -ms-transform: rotate(0deg); -o-transform: rotate(0deg); transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); -moz-transform: rotate(360deg); -ms-transform: rotate(360deg); -o-transform: rotate(360deg); transform: rotate(360deg); } }
-
-@-o-keyframes socialbox-rotate { 0% { -webkit-transform: rotate(0deg); -moz-transform: rotate(0deg); -ms-transform: rotate(0deg); -o-transform: rotate(0deg); transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); -moz-transform: rotate(360deg); -ms-transform: rotate(360deg); -o-transform: rotate(360deg); transform: rotate(360deg); } }
-
-@keyframes socialbox-rotate { 0% { -webkit-transform: rotate(0deg); -moz-transform: rotate(0deg); -ms-transform: rotate(0deg); -o-transform: rotate(0deg); transform: rotate(0deg); }
-  100% { -webkit-transform: rotate(360deg); -moz-transform: rotate(360deg); -ms-transform: rotate(360deg); -o-transform: rotate(360deg); transform: rotate(360deg); } }
-
+@-webkit-keyframes socialbox-rotate { 0% { -moz-transform: rotate(0deg); -ms-transform: rotate(0deg); -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -moz-transform: rotate(360deg); -ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+@-moz-keyframes socialbox-rotate { 0% { -moz-transform: rotate(0deg); -ms-transform: rotate(0deg); -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -moz-transform: rotate(360deg); -ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+@-ms-keyframes socialbox-rotate { 0% { -moz-transform: rotate(0deg); -ms-transform: rotate(0deg); -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -moz-transform: rotate(360deg); -ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+@-o-keyframes socialbox-rotate { 0% { -moz-transform: rotate(0deg); -ms-transform: rotate(0deg); -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -moz-transform: rotate(360deg); -ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
+@keyframes socialbox-rotate { 0% { -moz-transform: rotate(0deg); -ms-transform: rotate(0deg); -webkit-transform: rotate(0deg); transform: rotate(0deg); }
+  100% { -moz-transform: rotate(360deg); -ms-transform: rotate(360deg); -webkit-transform: rotate(360deg); transform: rotate(360deg); } }
 /*------------------------------------*\
 	$OPTIONS PAGE
 \*------------------------------------*/
@@ -60,7 +54,7 @@
 .nav-tab:first-child { margin-left: 15px; }
 
 /** Help Page */
-.socialbox-help-header { background: #ffffff; border: 1px solid #e5e5e5; -webkit-box-shadow: 0px 0px 5px 0 1px 1px rgba(0, 0, 0, 0.04); -moz-box-shadow: 0px 0px 5px 0 1px 1px rgba(0, 0, 0, 0.04); box-shadow: 0px 0px 5px 0 1px 1px rgba(0, 0, 0, 0.04); margin: 16px 0; padding: 23px 10px 10px; }
+.socialbox-help-header { background: #ffffff; border: 1px solid #e5e5e5; -moz-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04); -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04); box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04); margin: 16px 0; padding: 23px 10px 10px; }
 
 .socialbox-help-title { margin: 0 13px; }
 .socialbox-help-title h3 { margin: 0; font-size: 21px; font-weight: 400; line-height: 1.2; color: #222222; }
@@ -82,7 +76,7 @@
 .socialbox-help-section ol li, .socialbox-help-section--quick ol li, .socialbox-help-section--widget ol li, .socialbox-help-section--networks ol li { font-weight: 700; color: #999999; }
 .socialbox-help-section p, .socialbox-help-section--quick p, .socialbox-help-section--widget p, .socialbox-help-section--networks p { font-size: 14px; line-height: 1.6; color: #444444; font-weight: normal; margin: 10px 0 0; }
 .socialbox-help-section a, .socialbox-help-section--quick a, .socialbox-help-section--widget a, .socialbox-help-section--networks a { text-decoration: none; }
-.socialbox-help-section .socialbox-help-image, .socialbox-help-section--quick .socialbox-help-image, .socialbox-help-section--widget .socialbox-help-image, .socialbox-help-section--networks .socialbox-help-image, .socialbox-help-section .socialbox-help-image--center, .socialbox-help-section--quick .socialbox-help-image--center, .socialbox-help-section--widget .socialbox-help-image--center, .socialbox-help-section--networks .socialbox-help-image--center { border: 1px solid #e5e5e5; -webkit-box-shadow: 0px 0px 5px 0 1px 1px rgba(0, 0, 0, 0.04); -moz-box-shadow: 0px 0px 5px 0 1px 1px rgba(0, 0, 0, 0.04); box-shadow: 0px 0px 5px 0 1px 1px rgba(0, 0, 0, 0.04); max-width: 90%; margin: 60px 0 30px; }
+.socialbox-help-section .socialbox-help-image, .socialbox-help-section--quick .socialbox-help-image, .socialbox-help-section--widget .socialbox-help-image, .socialbox-help-section--networks .socialbox-help-image, .socialbox-help-section .socialbox-help-image--center, .socialbox-help-section--quick .socialbox-help-image--center, .socialbox-help-section--widget .socialbox-help-image--center, .socialbox-help-section--networks .socialbox-help-image--center { border: 1px solid #e5e5e5; -moz-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04); -webkit-box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04); box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.04); max-width: 90%; margin: 60px 0 30px; }
 .socialbox-help-section .socialbox-help-image--center, .socialbox-help-section--quick .socialbox-help-image--center, .socialbox-help-section--widget .socialbox-help-image--center, .socialbox-help-section--networks .socialbox-help-image--center { display: block; margin: 60px auto 30px; }
 
 .socialbox-help-section--quick { max-width: 650px; margin: 0 auto; }

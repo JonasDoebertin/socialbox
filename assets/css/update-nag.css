@@ -1,3 +1,9 @@
+@charset "UTF-8";
+/*!
+ * SocialBox 1.7.0
+ * Copyright by Jonas Döbertin
+ * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
+ */
 div.updated.socialbox-update-available { border: none; background: #32aad2; color: #ffffff; padding: 20px 20px; overflow: hidden; }
 div.updated.socialbox-update-available .socialbox-logo { float: left; overflow: hidden; }
 div.updated.socialbox-update-available .socialbox-logo .socialbox-icon { width: 25px; height: 25px; display: block; float: left; background: transparent url("../img/socialbox-25.png") no-repeat top left; }
