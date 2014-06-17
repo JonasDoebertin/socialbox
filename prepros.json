@@ -614,6 +614,16 @@
       "type": "Png",
       "initialSize": 2397,
       "status": "NOT_OPTIMIZED"
+    },
+    "02d5afff": {
+      "id": "02d5afff",
+      "pid": "c5b93016",
+      "path": "assets/img/icon-25.png",
+      "size": 516,
+      "name": "icon-25.png",
+      "type": "Png",
+      "initialSize": 516,
+      "status": "NOT_OPTIMIZED"
     }
   },
   "config": {
