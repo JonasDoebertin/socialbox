@@ -363,8 +363,6 @@ class JD_SocialBoxWidget extends WP_Widget{
 				return "http://www.facebook.com/" . ((is_numeric($item['id'])) ? "profile.php?id=" . $item['id'] : $item['id']);
 			case 'twitter':
 				return "http://twitter.com/{$item['id']}";
-            case 'googleplus':
-                return "https://plus.google.com/{$item['id']}";
 			case 'youtube':
 				return "http://www.youtube.com/user/{$item['id']}";
 			case 'vimeo':
@@ -394,8 +392,6 @@ class JD_SocialBoxWidget extends WP_Widget{
 				return __('Like', 'socialbox');
 			case 'twitter':
 				return __('Follow', 'socialbox');
-            case 'googleplus':
-                return __('Follow', 'socialbox');
 			case 'youtube':
 				return __('Subscribe', 'socialbox');
 			case 'vimeo':
@@ -424,8 +420,6 @@ class JD_SocialBoxWidget extends WP_Widget{
 				return __('Like on Facebook', 'socialbox');
 			case 'twitter':
 				return __('Follow on Twitter', 'socialbox');
-            case 'googleplus':
-                return __('Follow on Google+', 'socialbox');
 			case 'youtube':
 				return __('Subscribe to Youtube Channel', 'socialbox');
 			case 'vimeo':
