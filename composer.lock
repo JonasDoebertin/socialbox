@@ -1,0 +1,111 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "5ecf501e62ba8b6d1c80a19135d5241d",
+    "packages": [
+        {
+            "name": "jdpowered/oauth",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JonasDoebertin/oauth.git",
+                "reference": "78b2028696a34fa51f956a996bd2546f944e7e1a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JonasDoebertin/oauth/zipball/78b2028696a34fa51f956a996bd2546f944e7e1a",
+                "reference": "78b2028696a34fa51f956a996bd2546f944e7e1a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "jdpowered\\OAuth\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonas Döbertin",
+                    "email": "hallo@jonasdoebertin.net",
+                    "homepage": "http://jd-powered.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "OAuth Implementation",
+            "keywords": [
+                "oauth"
+            ],
+            "time": "2014-06-18 12:24:47"
+        },
+        {
+            "name": "jdpowered/twitter",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/JonasDoebertin/twitter.git",
+                "reference": "3e932df0188f45226c8671d7599b9b4237a7d517"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/JonasDoebertin/twitter/zipball/3e932df0188f45226c8671d7599b9b4237a7d517",
+                "reference": "3e932df0188f45226c8671d7599b9b4237a7d517",
+                "shasum": ""
+            },
+            "require": {
+                "jdpowered/oauth": "dev-master",
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "jdpowered\\Twitter\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonas Döbertin",
+                    "email": "hallo@jonasdoebertin.net",
+                    "homepage": "http://jd-powered.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Twitter API Wrapper",
+            "keywords": [
+                "api",
+                "oauth",
+                "twitter"
+            ],
+            "time": "2014-06-18 15:00:30"
+        }
+    ],
+    "packages-dev": [
+
+    ],
+    "aliases": [
+
+    ],
+    "minimum-stability": "dev",
+    "stability-flags": {
+        "jdpowered/twitter": 20
+    },
+    "platform": {
+        "php": ">=5.3.0"
+    },
+    "platform-dev": [
+
+    ]
+}

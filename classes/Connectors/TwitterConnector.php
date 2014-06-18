@@ -1,6 +1,6 @@
 <?php namespace jdpowered\SocialBox\Connectors;
 
-use jdpowered\TwitterOAuth\TwitterOAuth as Twitter;
+use jdpowered\Twitter\Twitter;
 
 class TwitterConnector extends BaseConnector {
 

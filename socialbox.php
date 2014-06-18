@@ -43,9 +43,7 @@ require_once JD_SOCIALBOX_PATH . '/classes/SocialBoxTranslator.php';
 /**
  * Load vendor classes
  */
-// require_once JD_SOCIALBOX_PATH . '/vendor/abraham/twitteroauth/OAuth.php';
-// require_once JD_SOCIALBOX_PATH . '/vendor/abraham/twitteroauth/TwitterOAuth.php';
-require JD_SOCIALBOX_PATH . 'vendor/jdpowered/twitteroauth/loader.php';
+require JD_SOCIALBOX_PATH . 'vendor/autoload.php';
 
 
 /**
