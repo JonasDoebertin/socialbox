@@ -1,4 +1,4 @@
-<?php
+<?php namespace jdpowered\TwitterOAuth;
 
 /*
     Modified 2014 by Jonas Döbertin
