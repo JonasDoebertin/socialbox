@@ -22,27 +22,27 @@ class JD_SocialBoxConnector{
 
 	protected static function facebook($item) {
 
-		/* Fetch data from Graph API */
-		$result = self::remoteGet('https://graph.facebook.com/' . $item['id']);
-
-		/* Check for common errors */
-		if(self::wasCommonError($result)) {
-			return array('successful' => false);
-		}
-
-		/* Decode response */
-		$data = json_decode(wp_remote_retrieve_body($result), true);
-
-		/* Check for incorrect data */
-		if(!is_array($data) or isset($data['error']) or !isset($data[$item['metric']])){
-			return array('successful' => false);
-		}
-
-		/* Return value */
-		return array(
-			'successful' => true,
-			'value'      => $data[$item['metric']]
-		);
+		// /* Fetch data from Graph API */
+		// $result = self::remoteGet('https://graph.facebook.com/' . $item['id']);
+		//
+		// /* Check for common errors */
+		// if(self::wasCommonError($result)) {
+		// 	return array('successful' => false);
+		// }
+		//
+		// /* Decode response */
+		// $data = json_decode(wp_remote_retrieve_body($result), true);
+		//
+		// /* Check for incorrect data */
+		// if(!is_array($data) or isset($data['error']) or !isset($data[$item['metric']])){
+		// 	return array('successful' => false);
+		// }
+		//
+		// /* Return value */
+		// return array(
+		// 	'successful' => true,
+		// 	'value'      => $data[$item['metric']]
+		// );
 	}
 
 	protected static function twitter($item) {

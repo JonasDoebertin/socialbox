@@ -8,6 +8,9 @@ debug.txt
 *.sublime-workspace
 *.sublime-project
 
+#### Composer ####
+vendor/
+
 #### OSX ####
 
 .DS_Store
