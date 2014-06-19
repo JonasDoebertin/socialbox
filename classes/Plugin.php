@@ -216,7 +216,7 @@ class Plugin{
 	public function addAdminNotice(){
 
 		$info = get_option('socialbox_update', array());
-		include JD_SOCIALBOX_PATH . '/views/update.php';
+		include JD_SOCIALBOX_PATH . '/views/notices/update.php';
 	}
 
 	public function addPluginActionLink($actionLinks){

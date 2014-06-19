@@ -41,25 +41,6 @@
         "autoprefixer": false
       }
     },
-    "2d8e5268": {
-      "id": "2d8e5268",
-      "pid": "c5b93016",
-      "name": "update-nag.scss",
-      "input": "_src/scss/update-nag.scss",
-      "customOutput": "assets/css/update-nag.css",
-      "type": "Scss",
-      "config": {
-        "autoCompile": true,
-        "lineNumbers": false,
-        "unixNewlines": false,
-        "sourcemaps": false,
-        "debug": false,
-        "compass": true,
-        "fullCompass": false,
-        "outputStyle": "compact",
-        "autoprefixer": false
-      }
-    },
     "c19372e2": {
       "id": "c19372e2",
       "pid": "c5b93016",
@@ -91,6 +72,25 @@
         "uglify": true,
         "mangle": true,
         "sourcemaps": false
+      }
+    },
+    "cf14379f": {
+      "id": "cf14379f",
+      "pid": "c5b93016",
+      "name": "notices.scss",
+      "input": "_src/scss/notices.scss",
+      "customOutput": "assets/css/notices.css",
+      "type": "Scss",
+      "config": {
+        "autoCompile": true,
+        "lineNumbers": false,
+        "unixNewlines": false,
+        "sourcemaps": false,
+        "debug": false,
+        "compass": true,
+        "fullCompass": false,
+        "outputStyle": "compact",
+        "autoprefixer": false
       }
     }
   },

@@ -5,7 +5,8 @@
  */
 
 
-div.updated.socialbox-update-available{
+div.updated.socialbox-update-available,
+div.updated.socialbox-legacy{
     border: none;
     background: #32aad2;
     color: #ffffff;
@@ -15,13 +16,14 @@ div.updated.socialbox-update-available{
     .socialbox-logo{
         float: left;
         overflow: hidden;
+        margin-right: 20px;
 
         .socialbox-icon{
             width: 25px;
             height: 25px;
             display: block;
             float: left;
-            background: transparent url('../img/socialbox-25.png') no-repeat top left;
+            background: transparent url('../img/icon-25.png') no-repeat top left;
         }
 
         .socialbox-title{
@@ -39,7 +41,7 @@ div.updated.socialbox-update-available{
         float: left;
         font-size: 14px;
         padding: 0;
-        margin: 4px 0 0 20px;
+        margin: 4px 0 0;
 
         a{
             color: #ffffff;
