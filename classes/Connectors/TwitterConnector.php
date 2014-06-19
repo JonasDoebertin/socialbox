@@ -1,4 +1,5 @@
-<?php namespace jdpowered\SocialBox\Connectors;
+<?php
+namespace jdpowered\SocialBox\Connectors;
 
 use jdpowered\Twitter\Twitter;
 
@@ -22,7 +23,7 @@ class TwitterConnector extends BaseConnector {
         /*
             Fetch data from API
          */
-        $result = $this->get('users/show', array('screen_name' => $item['id'], 'include_entities' => false));
+        $result = $this->get('users/show', array('screen_name' => $args['id'], 'include_entities' => false));
 
         /*
             Check for http errors
@@ -32,10 +33,13 @@ class TwitterConnector extends BaseConnector {
             return array('successful' => false);
         }
 
+        /* TODO: Implement metric! */
+
         /*
             Check for incorrect data
          */
-        if(is_null($result) or !isset($result->followers_count)){
+        if(is_null($result) or !isset($result->followers_count))
+        {
             return array('successful' => false);
         }
 

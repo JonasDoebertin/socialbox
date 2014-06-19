@@ -1,10 +1,11 @@
 <?php
-
 namespace jdpowered\SocialBox\Connectors;
+
+use jdpowered\SocialBox\Helpers\Helper;
 
 abstract class BaseConnector {
 
-    abstract public function fire($args){}
+    abstract public function fire($args);
 
     /**
      * [wasCommonError description]
@@ -25,8 +26,8 @@ abstract class BaseConnector {
     protected function getRequestArgs($body = null)
     {
         return array(
-            'sslverify'  => ! \JD_SocialBoxHelper::getOption('disable_ssl'),
-            'user-agent' => sprintf('WordPress/%s; SocialBox/%s; %s', get_bloginfo('version'), \JD_SOCIALBOX_VERSION, get_bloginfo('url')),
+            'sslverify'  => ! Helper::getOption('disable_ssl'),
+            'user-agent' => sprintf('WordPress/%s; SocialBox/%s; %s', get_bloginfo('version'), JD_SOCIALBOX_VERSION, get_bloginfo('url')),
             'body'       => $body,
         );
     }
@@ -39,7 +40,7 @@ abstract class BaseConnector {
      */
     protected function get($url)
     {
-        return wp_remote_get($url, self::getRequestArgs());
+        return wp_remote_get($url, $this->getRequestArgs());
     }
 
     /**
@@ -52,7 +53,7 @@ abstract class BaseConnector {
      */
     protected function post($url, $body = null)
     {
-        return wp_remote_post($url, self::getRequestArgs($body));
+        return wp_remote_post($url, $this->getRequestArgs($body));
     }
 
 }

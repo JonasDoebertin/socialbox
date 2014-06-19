@@ -1,7 +1,7 @@
 <?php
 namespace jdpowered\SocialBox\Connectors;
 
-class FacebookConnector extends BaseConnector {
+class GooglePlusConnector extends BaseConnector {
 
     /**
      * [fire description]
@@ -12,9 +12,9 @@ class FacebookConnector extends BaseConnector {
     public function fire($args)
     {
         /*
-            Fetch data from Graph API
+            Fetch data from Google+ API
          */
-        $result = $this->get('https://graph.facebook.com/' . $args['id']);
+        $result = $this->get(sprintf('https://www.googleapis.com/plus/v1/people/%s?key=%s', $args['id'], $args['api_key']));
 
         /*
             Check for common errors
@@ -24,25 +24,19 @@ class FacebookConnector extends BaseConnector {
             return array('successful' => false);
         }
 
-        /*
-            Decode response
-         */
+        /* Decode response */
         $data = json_decode(wp_remote_retrieve_body($result));
 
-        /*
-            Check for invalid data
-         */
-        if(isset($data->error) or ! isset($data->{$args['metric']}))
+        /* Check for incorrect data */
+        if(isset($data->error) or !isset($data->circledByCount))
         {
             return array('successful' => false);
         }
 
-        /*
-            Return value
-         */
+        /* Return value */
         return array(
             'successful' => true,
-            'value'      => $data->{$args['metric']},
+            'value'      => $data->circledByCount,
         );
     }
 }

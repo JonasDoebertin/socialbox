@@ -1,7 +1,7 @@
 <?php
 namespace jdpowered\SocialBox\Connectors;
 
-class FacebookConnector extends BaseConnector {
+class InstagramConnector extends BaseConnector {
 
     /**
      * [fire description]
@@ -12,9 +12,9 @@ class FacebookConnector extends BaseConnector {
     public function fire($args)
     {
         /*
-            Fetch data from Graph API
+            Fetch data from Instagram API
          */
-        $result = $this->get('https://graph.facebook.com/' . $args['id']);
+        $result = $this->get(sprintf('https://api.instagram.com/v1/users/%s?client_id=%s', $args['user_id'], $args['client_id']));
 
         /*
             Check for common errors
@@ -30,9 +30,9 @@ class FacebookConnector extends BaseConnector {
         $data = json_decode(wp_remote_retrieve_body($result));
 
         /*
-            Check for invalid data
+            Check for incorrect data
          */
-        if(isset($data->error) or ! isset($data->{$args['metric']}))
+        if(is_null($data) or !isset($data->data) or !isset($data->data->counts->{$args['metric']}))
         {
             return array('successful' => false);
         }
@@ -42,7 +42,7 @@ class FacebookConnector extends BaseConnector {
          */
         return array(
             'successful' => true,
-            'value'      => $data->{$args['metric']},
+            'value'      => $data->data->counts->{$args['metric']},
         );
     }
 }

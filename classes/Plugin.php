@@ -1,14 +1,11 @@
-<?php if(!defined('ABSPATH')) die('Direct access is not allowed.');
+<?php
+namespace jdpowered\SocialBox;
 
+use jdpowered\SocialBox\Connectors\Factory as ConnectorFactory;
+use jdpowered\SocialBox\Helpers\Helper;
+use jdpowered\SocialBox\Helpers\Upgrader;
 
-/*
- * SocialBox 1.7.0
- * Copyright by Jonas Döbertin
- * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
- */
-
-
-class JD_SocialBox{
+class Plugin{
 
 	/**
 	 * Complete list of supported networks
@@ -179,7 +176,7 @@ class JD_SocialBox{
 	public static function activatePlugin()
 	{
 		/* Prepare for updated version */
-		$upgrader = new JD_SocialBoxUpgrader();
+		$upgrader = new Upgrader();
 		$upgrader->run();
 
 		/* Add options */
@@ -243,9 +240,9 @@ class JD_SocialBox{
      *
      * Will be run within "widgets_init" action
      */
-    public function registerWidget(){
-
-        register_widget('JD_SocialBoxWidget');
+    public function registerWidget()
+	{
+        register_widget('jdpowered\SocialBox\Widgets\Widget');
     }
 
 	/**
@@ -464,7 +461,7 @@ class JD_SocialBox{
 
 	public function printUpdateIntervalSettingsField($args){
 
-		$html = '<input type="text" id="' . $args['label_for'] . '" name="socialbox_options[update_interval]" value="' . JD_SocialBoxHelper::getOption('update_interval') . '" />';
+		$html = '<input type="text" id="' . $args['label_for'] . '" name="socialbox_options[update_interval]" value="' . Helper::getOption('update_interval') . '" />';
 		$html .= '<p class="description">' . __('The time (in minutes) that SocialBox waits before refreshing it\'s data. (Default: 180 = 3 hours)', 'socialbox') . '</p>';
 
 		echo $html;
@@ -472,7 +469,7 @@ class JD_SocialBox{
 
 	public function printDisableSslSettingsField($args){
 
-	    $html = '<input type="checkbox" id="' . $args['label_for'] . '" name="socialbox_options[disable_ssl]" value="1" ' . checked(1, JD_SocialBoxHelper::getOption('disable_ssl'), false) . '/>';
+	    $html = '<input type="checkbox" id="' . $args['label_for'] . '" name="socialbox_options[disable_ssl]" value="1" ' . checked(1, Helper::getOption('disable_ssl'), false) . '/>';
 	    $html .= ' <label for="' . $args['label_for'] . '">' . __('Disable SSL-Verification on API requests.', 'socialbox') . '</label>';
 	    $html .= '<p class="description">' . __('This can be useful on most "local servers" like MAMP or XAMPP.', 'socialbox') . '</p>';
 
@@ -637,8 +634,8 @@ class JD_SocialBox{
 	 *
 	 * @param boolean $forced Force a complete refresh
 	 */
-	public static function updateCache($forced = false) {
-
+	public function updateCache($forced = false)
+	{
 		/* Rebuild cache structure */
         if(!$forced) {
             self::rebuildCache();
@@ -651,7 +648,7 @@ class JD_SocialBox{
 		}
 
 		/* Get refresh interval */
-		$updateInterval = JD_SocialBoxHelper::getOption('update_interval');
+		$updateInterval = Helper::getOption('update_interval');
 
 		/* Call update function for each cache element that needs to be updated */
 		foreach($cache as $item) {
@@ -677,7 +674,10 @@ class JD_SocialBox{
 	public static function updateCacheItem($item) {
 
 		/* Fetch new value from connector */
-		$result = JD_SocialBoxConnector::get($item);
+		/* TODO: Use Factory */
+		$connector = ConnectorFactory::create($item);
+		$result = $connector->fire($item);
+		//$result = JD_SocialBoxConnector::get($item);
 
 		/* Set new value if fetch was successful */
 		if($result['successful']) {
@@ -721,7 +721,7 @@ class JD_SocialBox{
                 continue;
             }
 
-            foreach(JD_SocialBoxHelper::getSupportedNetworks() as $network) {
+            foreach(Helper::getSupportedNetworks() as $network) {
                 if(!empty($widget[$network . '_id'])) {
                     $items[] = $network . '||' . $widget[$network . '_id'];
                 }

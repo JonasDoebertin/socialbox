@@ -1,12 +1,5 @@
-<?php if(!defined('ABSPATH')) die('Direct access is not allowed.');
-
-
-/*
- * SocialBox 1.7.0
- * Copyright by Jonas Döbertin
- * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
- */
-
+<?php
+namespace jdpowered\SocialBox\Helpers;
 
 class JD_SocialBoxUpgrader{
 
@@ -128,7 +121,7 @@ class JD_SocialBoxUpgrader{
             Remove all old cron schedules.
          */
         wp_clear_scheduled_hook('socialbox_update_cache');
-		wp_clear_scheduled_hook('socialbox_check_for_update');
+        wp_clear_scheduled_hook('socialbox_check_for_update');
     }
 
     /**

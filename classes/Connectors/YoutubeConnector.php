@@ -1,7 +1,7 @@
 <?php
 namespace jdpowered\SocialBox\Connectors;
 
-class FacebookConnector extends BaseConnector {
+class YoutubeConnector extends BaseConnector {
 
     /**
      * [fire description]
@@ -12,9 +12,9 @@ class FacebookConnector extends BaseConnector {
     public function fire($args)
     {
         /*
-            Fetch data from Graph API
+            Fetch data from Youtube API
          */
-        $result = $this->get('https://graph.facebook.com/' . $args['id']);
+        $result = $this->get('http://gdata.youtube.com/feeds/api/users/' . $args['id']);
 
         /*
             Check for common errors
@@ -27,12 +27,12 @@ class FacebookConnector extends BaseConnector {
         /*
             Decode response
          */
-        $data = json_decode(wp_remote_retrieve_body($result));
+        $data = simplexml_load_string(wp_remote_retrieve_body($result));
 
         /*
-            Check for invalid data
+            Check for incorrect data
          */
-        if(isset($data->error) or ! isset($data->{$args['metric']}))
+        if(!$data or isset($data->err) or !isset($data->children('http://gdata.youtube.com/schemas/2007')->statistics->attributes()->{$args['metric']}))
         {
             return array('successful' => false);
         }
@@ -42,7 +42,7 @@ class FacebookConnector extends BaseConnector {
          */
         return array(
             'successful' => true,
-            'value'      => $data->{$args['metric']},
+            'value'      => (int) $data->children('http://gdata.youtube.com/schemas/2007')->statistics->attributes()->{$args['metric']},
         );
     }
 }

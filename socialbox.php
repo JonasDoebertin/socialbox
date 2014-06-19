@@ -11,17 +11,9 @@ Author URI:    http://codecanyon.net/user/jdpowered?ref=jdpowered
 */
 
 
-/**
- * Check for incompatible plugins
- */
-if(class_exists('JD_SocialBox') or class_exists('JD_SocialBoxWidget') or class_exists('JD_SocialBoxConnector') or class_exists('JD_SocialBoxHelper'))
-{
-	wp_die('Plugin incompatibility detected.');
-}
-
-
-/**
- * Define path and url constants
+/*
+	Define some constants, including the current plugin version, it's basename,
+	the full path and the url to the plugin files.
  */
 define('JD_SOCIALBOX_BASENAME', plugin_basename(__FILE__));
 define('JD_SOCIALBOX_PATH', plugin_dir_path(__FILE__));
@@ -29,31 +21,25 @@ define('JD_SOCIALBOX_URL', plugins_url('', __FILE__));
 define('JD_SOCIALBOX_VERSION', '1.7.0');
 
 
-/**
- * Load classes
+/*
+	Check for a compatible version of PHP
  */
-require_once JD_SOCIALBOX_PATH . '/classes/SocialBox.php';
-require_once JD_SOCIALBOX_PATH . '/classes/SocialBoxWidget.php';
-require_once JD_SOCIALBOX_PATH . '/classes/SocialBoxConnector.php';
-require_once JD_SOCIALBOX_PATH . '/classes/SocialBoxHelper.php';
-require_once JD_SOCIALBOX_PATH . '/classes/SocialBoxUpgrader.php';
-require_once JD_SOCIALBOX_PATH . '/classes/SocialBoxTranslator.php';
-
-
-/**
- * Load vendor classes
- */
-require JD_SOCIALBOX_PATH . 'vendor/autoload.php';
-
-
-/**
- * Register activation and deactivation hooks
- */
-register_activation_hook(__FILE__, array('JD_SocialBox', 'activatePlugin'));
-register_deactivation_hook(__FILE__, array('JD_SocialBox', 'deactivatePlugin'));
-
-
-/**
- * Finally get things rolling
- */
-$JD_SocialBox = new JD_SocialBox();
+if(version_compare(PHP_VERSION, '5.3.0', '<'))
+{
+	/*
+		If the PHP version is too old, we'll import our legacy code. This will
+		add a notice to the plugins.php page (stating that SocialBox requires
+		PHP 5.3.0 or newer) and register a stylesheet for this notification.
+		THE MAIN PLUGIN WILL NOT BE LOADED
+	 */
+	require JD_SOCIALBOX_PATH . 'legacy.php';
+}
+else
+{
+	/*
+		We do have a version of PHP that matches our criteria. To avoid any
+		syntax errors thrown by PHP < 5.3.0 when using namespaces, we'll load
+		our bootstrap file that will handle loading the plugin core.
+	 */
+	require JD_SOCIALBOX_PATH . 'bootstrap.php';
+}

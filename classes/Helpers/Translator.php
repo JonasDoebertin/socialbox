@@ -1,14 +1,7 @@
-<?php if(!defined('ABSPATH')) die('Direct access is not allowed.');
+<?php
+namespace jdpowered\SocialBox\Helpers;
 
-
-/*
- * SocialBox 1.7.0
- * Copyright by Jonas Döbertin
- * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
- */
-
-
-class JD_SocialBoxTranslator{
+class Translator{
 
     /**************************************************************************\
     *                                  METRIC                                  *

@@ -1,7 +1,7 @@
 <?php
 namespace jdpowered\SocialBox\Connectors;
 
-class FacebookConnector extends BaseConnector {
+class PinterestConnector extends BaseConnector {
 
     /**
      * [fire description]
@@ -12,9 +12,9 @@ class FacebookConnector extends BaseConnector {
     public function fire($args)
     {
         /*
-            Fetch data from Graph API
+            Fetch profile page
          */
-        $result = $this->get('https://graph.facebook.com/' . $args['id']);
+        $result = $this->get('https://pinterest.com/' . $args['id']);
 
         /*
             Check for common errors
@@ -25,14 +25,15 @@ class FacebookConnector extends BaseConnector {
         }
 
         /*
-            Decode response
+            Prepare regular expression and result body
          */
-        $data = json_decode(wp_remote_retrieve_body($result));
+        $regex = '/<meta[^>]*?property="pinterestapp:' . $args['metric'] . '"[^>]*?content="(\d+)"/i';
+        $html  = wp_remote_retrieve_body($result);
 
         /*
-            Check for invalid data
+            Check for incorrect data
          */
-        if(isset($data->error) or ! isset($data->{$args['metric']}))
+        if(preg_match($regex, $html, $matches) !== 1)
         {
             return array('successful' => false);
         }
@@ -42,7 +43,7 @@ class FacebookConnector extends BaseConnector {
          */
         return array(
             'successful' => true,
-            'value'      => $data->{$args['metric']},
+            'value'      => intval($matches[1]),
         );
     }
 }
