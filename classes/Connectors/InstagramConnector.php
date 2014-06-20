@@ -1,7 +1,7 @@
 <?php
 namespace jdpowered\SocialBox\Connectors;
 
-class InstagramConnector extends BaseConnector {
+class InstagramConnector extends BaseConnector  implements ConnectorInterface {
 
     /**
      * [fire description]

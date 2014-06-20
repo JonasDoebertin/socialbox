@@ -1,7 +1,7 @@
 <?php
 namespace jdpowered\SocialBox\Connectors;
 
-class DribbbleConnector extends BaseConnector {
+class DribbbleConnector extends BaseConnector implements ConnectorInterface {
 
     /**
      * [fire description]

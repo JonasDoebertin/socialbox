@@ -3,7 +3,7 @@ namespace jdpowered\SocialBox\Connectors;
 
 use jdpowered\SocialBox\Helpers\Helper;
 
-abstract class BaseConnector {
+abstract class BaseConnector implements ConnectorInterface{
 
     abstract public function fire($args);
 

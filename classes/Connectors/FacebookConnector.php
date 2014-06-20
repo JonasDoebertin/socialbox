@@ -1,7 +1,7 @@
 <?php
 namespace jdpowered\SocialBox\Connectors;
 
-class FacebookConnector extends BaseConnector {
+class FacebookConnector extends BaseConnector implements ConnectorInterface {
 
     /**
      * [fire description]

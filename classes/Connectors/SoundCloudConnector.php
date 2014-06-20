@@ -1,7 +1,7 @@
 <?php
 namespace jdpowered\SocialBox\Connectors;
 
-class SoundCloudConnector extends BaseConnector {
+class SoundCloudConnector extends BaseConnector implements ConnectorInterface {
 
     /**
      * [fire description]

@@ -3,7 +3,7 @@ namespace jdpowered\SocialBox\Connectors;
 
 use jdpowered\Twitter\Twitter;
 
-class TwitterConnector extends BaseConnector {
+class TwitterConnector extends BaseConnector implements ConnectorInterface {
 
     protected $twitter;
 

@@ -1,7 +1,7 @@
 <?php
 namespace jdpowered\SocialBox\Connectors;
 
-class PinterestConnector extends BaseConnector {
+class PinterestConnector extends BaseConnector implements ConnectorInterface {
 
     /**
      * [fire description]

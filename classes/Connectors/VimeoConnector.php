@@ -1,7 +1,7 @@
 <?php
 namespace jdpowered\SocialBox\Connectors;
 
-class VimeoConnector extends BaseConnector {
+class VimeoConnector extends BaseConnector implements ConnectorInterface {
 
     /**
      * [fire description]

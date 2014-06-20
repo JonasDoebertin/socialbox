@@ -1,7 +1,7 @@
 <?php
 namespace jdpowered\SocialBox\Connectors;
 
-class GitHubConnector extends BaseConnector {
+class GitHubConnector extends BaseConnector implements ConnectorInterface {
 
     /**
      * [fire description]

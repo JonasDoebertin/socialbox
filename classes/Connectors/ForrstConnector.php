@@ -1,7 +1,7 @@
 <?php
 namespace jdpowered\SocialBox\Connectors;
 
-class ForrstConnector extends BaseConnector {
+class ForrstConnector extends BaseConnector implements ConnectorInterface {
 
     /**
      * [fire description]

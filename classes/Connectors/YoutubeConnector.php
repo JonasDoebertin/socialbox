@@ -1,7 +1,7 @@
 <?php
 namespace jdpowered\SocialBox\Connectors;
 
-class YoutubeConnector extends BaseConnector {
+class YoutubeConnector extends BaseConnector implements ConnectorInterface {
 
     /**
      * [fire description]

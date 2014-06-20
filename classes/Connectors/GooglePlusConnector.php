@@ -1,7 +1,7 @@
 <?php
 namespace jdpowered\SocialBox\Connectors;
 
-class GooglePlusConnector extends BaseConnector {
+class GooglePlusConnector extends BaseConnector implements ConnectorInterface {
 
     /**
      * [fire description]
