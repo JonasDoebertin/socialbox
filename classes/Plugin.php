@@ -4,6 +4,7 @@ namespace jdpowered\SocialBox;
 use jdpowered\SocialBox\Connectors\Factory as ConnectorFactory;
 use jdpowered\SocialBox\Helpers\Helper;
 use jdpowered\SocialBox\Helpers\Upgrader;
+use jdpowered\SocialBox\Updater\Factory as UpdaterFactory;
 
 class Plugin{
 
@@ -28,6 +29,10 @@ class Plugin{
 	public function __construct(){
 
 		global $pagenow;
+
+
+		$updater = UpdaterFactory::make();
+
 
 		/* Inject custom cron schedule */
 		add_filter('cron_schedules', array($this, 'addCronSchedule'));
