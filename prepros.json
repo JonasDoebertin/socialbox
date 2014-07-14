@@ -3,12 +3,12 @@
   "cfgVersion": 1,
   "name": "socialbox",
   "files": {
-    "81319ad4": {
-      "id": "81319ad4",
+    "55f4e6da": {
+      "id": "55f4e6da",
       "pid": "c5b93016",
       "name": "options-page.scss",
-      "input": "_src/scss/options-page.scss",
-      "customOutput": "assets/css/options-page.css",
+      "input": "assets/css-sources/options-page.scss",
+      "customOutput": false,
       "type": "Scss",
       "config": {
         "autoCompile": true,
@@ -16,18 +16,18 @@
         "unixNewlines": false,
         "sourcemaps": false,
         "debug": false,
-        "compass": true,
+        "compass": false,
         "fullCompass": false,
-        "outputStyle": "compact",
+        "outputStyle": "expanded",
         "autoprefixer": false
       }
     },
-    "3c07002c": {
-      "id": "3c07002c",
+    "e01c0511": {
+      "id": "e01c0511",
       "pid": "c5b93016",
       "name": "socialbox.scss",
-      "input": "_src/scss/socialbox.scss",
-      "customOutput": "assets/css/socialbox.css",
+      "input": "assets/css-sources/socialbox.scss",
+      "customOutput": false,
       "type": "Scss",
       "config": {
         "autoCompile": true,
@@ -35,18 +35,18 @@
         "unixNewlines": false,
         "sourcemaps": false,
         "debug": false,
-        "compass": true,
+        "compass": false,
         "fullCompass": false,
-        "outputStyle": "compact",
+        "outputStyle": "expanded",
         "autoprefixer": false
       }
     },
-    "c19372e2": {
-      "id": "c19372e2",
+    "67d29af0": {
+      "id": "67d29af0",
       "pid": "c5b93016",
-      "name": "widgets-page.scss",
-      "input": "_src/scss/widgets-page.scss",
-      "customOutput": "assets/css/widgets-page.css",
+      "name": "update-nag.scss",
+      "input": "assets/css-sources/update-nag.scss",
+      "customOutput": false,
       "type": "Scss",
       "config": {
         "autoCompile": true,
@@ -54,10 +54,43 @@
         "unixNewlines": false,
         "sourcemaps": false,
         "debug": false,
-        "compass": true,
+        "compass": false,
         "fullCompass": false,
-        "outputStyle": "compact",
+        "outputStyle": "expanded",
         "autoprefixer": false
+      }
+    },
+    "49224dc0": {
+      "id": "49224dc0",
+      "pid": "c5b93016",
+      "name": "widgets-page.scss",
+      "input": "assets/css-sources/widgets-page.scss",
+      "customOutput": false,
+      "type": "Scss",
+      "config": {
+        "autoCompile": true,
+        "lineNumbers": false,
+        "unixNewlines": false,
+        "sourcemaps": false,
+        "debug": false,
+        "compass": false,
+        "fullCompass": false,
+        "outputStyle": "expanded",
+        "autoprefixer": false
+      }
+    },
+    "89e4a21f": {
+      "id": "89e4a21f",
+      "pid": "c5b93016",
+      "name": "options-page.js",
+      "input": "assets/js-sources/options-page.js",
+      "customOutput": false,
+      "type": "Js",
+      "config": {
+        "autoCompile": true,
+        "uglify": true,
+        "mangle": true,
+        "sourcemaps": false
       }
     },
     "29a05baa": {
@@ -65,7 +98,7 @@
       "pid": "c5b93016",
       "name": "options-page.js",
       "input": "_src/js/options-page.js",
-      "customOutput": "assets/js/options-page.js",
+      "customOutput": false,
       "type": "Js",
       "config": {
         "autoCompile": true,
@@ -79,7 +112,7 @@
       "pid": "c5b93016",
       "name": "notices.scss",
       "input": "_src/scss/notices.scss",
-      "customOutput": "assets/css/notices.css",
+      "customOutput": false,
       "type": "Scss",
       "config": {
         "autoCompile": true,
@@ -87,14 +120,167 @@
         "unixNewlines": false,
         "sourcemaps": false,
         "debug": false,
-        "compass": true,
+        "compass": false,
         "fullCompass": false,
-        "outputStyle": "compact",
+        "outputStyle": "expanded",
+        "autoprefixer": false
+      }
+    },
+    "81319ad4": {
+      "id": "81319ad4",
+      "pid": "c5b93016",
+      "name": "options-page.scss",
+      "input": "_src/scss/options-page.scss",
+      "customOutput": false,
+      "type": "Scss",
+      "config": {
+        "autoCompile": true,
+        "lineNumbers": false,
+        "unixNewlines": false,
+        "sourcemaps": false,
+        "debug": false,
+        "compass": false,
+        "fullCompass": false,
+        "outputStyle": "expanded",
+        "autoprefixer": false
+      }
+    },
+    "3c07002c": {
+      "id": "3c07002c",
+      "pid": "c5b93016",
+      "name": "socialbox.scss",
+      "input": "_src/scss/socialbox.scss",
+      "customOutput": false,
+      "type": "Scss",
+      "config": {
+        "autoCompile": true,
+        "lineNumbers": false,
+        "unixNewlines": false,
+        "sourcemaps": false,
+        "debug": false,
+        "compass": false,
+        "fullCompass": false,
+        "outputStyle": "expanded",
+        "autoprefixer": false
+      }
+    },
+    "c19372e2": {
+      "id": "c19372e2",
+      "pid": "c5b93016",
+      "name": "widgets-page.scss",
+      "input": "_src/scss/widgets-page.scss",
+      "customOutput": false,
+      "type": "Scss",
+      "config": {
+        "autoCompile": true,
+        "lineNumbers": false,
+        "unixNewlines": false,
+        "sourcemaps": false,
+        "debug": false,
+        "compass": false,
+        "fullCompass": false,
+        "outputStyle": "expanded",
         "autoprefixer": false
       }
     }
   },
   "imports": {
+    "73edc0cc": {
+      "id": "73edc0cc",
+      "pid": "c5b93016",
+      "path": "assets/js-sources/options-page/smooth-scroll-4.5.js",
+      "parents": [
+        "89e4a21f"
+      ]
+    },
+    "d209fa63": {
+      "id": "d209fa63",
+      "pid": "c5b93016",
+      "path": "assets/css-sources/options-page/_mixins.scss",
+      "parents": [
+        "55f4e6da"
+      ]
+    },
+    "bd97ed6b": {
+      "id": "bd97ed6b",
+      "pid": "c5b93016",
+      "path": "assets/css-sources/options-page/_icons.scss",
+      "parents": [
+        "55f4e6da"
+      ]
+    },
+    "163212be": {
+      "id": "163212be",
+      "pid": "c5b93016",
+      "path": "assets/css-sources/socialbox/_mixins.scss",
+      "parents": [
+        "e01c0511"
+      ]
+    },
+    "cd938340": {
+      "id": "cd938340",
+      "pid": "c5b93016",
+      "path": "assets/css-sources/socialbox/_reset.scss",
+      "parents": [
+        "e01c0511"
+      ]
+    },
+    "32c43d6a": {
+      "id": "32c43d6a",
+      "pid": "c5b93016",
+      "path": "assets/css-sources/socialbox/_classic-style.scss",
+      "parents": [
+        "e01c0511"
+      ]
+    },
+    "a4e34e20": {
+      "id": "a4e34e20",
+      "pid": "c5b93016",
+      "path": "assets/css-sources/socialbox/_modern-style.scss",
+      "parents": [
+        "e01c0511"
+      ]
+    },
+    "4376dcde": {
+      "id": "4376dcde",
+      "pid": "c5b93016",
+      "path": "assets/css-sources/socialbox/_tutsflavor-style.scss",
+      "parents": [
+        "e01c0511"
+      ]
+    },
+    "c887c649": {
+      "id": "c887c649",
+      "pid": "c5b93016",
+      "path": "assets/css-sources/socialbox/_dark-style.scss",
+      "parents": [
+        "e01c0511"
+      ]
+    },
+    "a0f7dfe0": {
+      "id": "a0f7dfe0",
+      "pid": "c5b93016",
+      "path": "assets/css-sources/socialbox/_colorful-style.scss",
+      "parents": [
+        "e01c0511"
+      ]
+    },
+    "fce27916": {
+      "id": "fce27916",
+      "pid": "c5b93016",
+      "path": "assets/css-sources/socialbox/_fonts.scss",
+      "parents": [
+        "e01c0511"
+      ]
+    },
+    "462dd638": {
+      "id": "462dd638",
+      "pid": "c5b93016",
+      "path": "_src/js/options-page/smooth-scroll-4.5.js",
+      "parents": [
+        "29a05baa"
+      ]
+    },
     "de325528": {
       "id": "de325528",
       "pid": "c5b93016",
@@ -109,14 +295,6 @@
       "path": "_src/scss/options-page/_icons.scss",
       "parents": [
         "81319ad4"
-      ]
-    },
-    "462dd638": {
-      "id": "462dd638",
-      "pid": "c5b93016",
-      "path": "_src/js/options-page/smooth-scroll-4.5.js",
-      "parents": [
-        "29a05baa"
       ]
     },
     "ad7da7a1": {

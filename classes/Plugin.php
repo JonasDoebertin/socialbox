@@ -30,10 +30,6 @@ class Plugin{
 
 		global $pagenow;
 
-
-		$updater = UpdaterFactory::make();
-
-
 		/* Inject custom cron schedule */
 		add_filter('cron_schedules', array($this, 'addCronSchedule'));
 
@@ -54,8 +50,8 @@ class Plugin{
 			if(in_array($pagenow, array('index.php', 'plugins.php'))) {
 				$info = get_option('socialbox_update', array());
 				if(isset($info['update_available']) and $info['update_available']) {
-					add_action('admin_notices', array($this, 'addAdminNotice'));
-					add_action('admin_enqueue_scripts', array($this, 'registerUpdateNagStyle'));
+					add_action('admin_notices', array($this, 'registerUpdateNotice'));
+					add_action('admin_enqueue_scripts', array($this, 'registerUpdateNoticeStyle'));
 				}
 			}
 
@@ -218,10 +214,21 @@ class Plugin{
 	 *
 	 * Will be run within "admin_notices" action
 	 */
-	public function addAdminNotice(){
+	public function registerUpdateNotice(){
 
 		$info = get_option('socialbox_update', array());
 		include JD_SOCIALBOX_PATH . '/views/notices/update.php';
+	}
+
+	/**
+	* Register the stylesheet for the "Update available" notice
+	*
+	* @action admin_enqueue_scripts
+	*/
+	public function registerUpdateNoticeStyle()
+	{
+		/* Register & Enqueue Style */
+		wp_enqueue_style('socialbox-notices', JD_SOCIALBOX_URL . '/assets/css/notices.css', array(), JD_SOCIALBOX_VERSION, 'screen');
 	}
 
 	public function addPluginActionLink($actionLinks){
@@ -277,22 +284,6 @@ class Plugin{
         /* Enqueue Style */
         wp_enqueue_style('socialbox-widgets-page');
     }
-
-	/**
-	* Register the stylesheet for the "Update available" nag
-	*
-	* Will be run in "admin_enqueue_scripts" action and only if an update is
-	* in fact available.
-	*/
-	public function registerUpdateNagStyle()
-	{
-
-		/* register Style */
-		wp_register_style('socialbox-update-nag', JD_SOCIALBOX_URL . '/assets/css/update-nag.css', array(), JD_SOCIALBOX_VERSION, 'screen');
-
-		/* Enqueue Style */
-		wp_enqueue_style('socialbox-update-nag');
-	}
 
 
 

@@ -5,6 +5,9 @@ use jdpowered\Twitter\Twitter;
 
 class TwitterConnector extends BaseConnector implements ConnectorInterface {
 
+    /**
+     * @type jdpowered\Twitter\Twitter $twitter
+     */
     protected $twitter;
 
     /**
@@ -28,7 +31,7 @@ class TwitterConnector extends BaseConnector implements ConnectorInterface {
         /*
             Check for http errors
          */
-        if($this->lastStatus() != 200)
+        if($this->getLastStatusCode() != 200)
         {
             return array('successful' => false);
         }
@@ -70,5 +73,15 @@ class TwitterConnector extends BaseConnector implements ConnectorInterface {
     protected function get($endpoint, $args)
     {
         return $this->twitter->get($endpoint, $args);
+    }
+
+    /**
+     * [getLastStatusCode description]
+     *
+     * @return int
+     */
+    protected function getLastStatusCode()
+    {
+        return $this->twitter->getLastStatusCode();
     }
 }

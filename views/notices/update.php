@@ -16,6 +16,6 @@
 		<p class="socialbox-title"><?php _e('SocialBox') ?>
 	</div>
 	<p class="socialbox-message">
-		<?php printf(__('An new version of SocialBox (%s) is available. <a href="%s">Get it now!</a>', 'socialbox'), $info['latest_version'], $info['download_url']) ?>
+		<?php printf(__('An updated version of SocialBox (%s) is available. <a href="%s">Go get it now!</a>', 'socialbox'), $info['latest_version'], $info['download_url']) ?>
 	</p>
 </div>

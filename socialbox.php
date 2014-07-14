@@ -16,9 +16,10 @@ Author URI:    http://codecanyon.net/user/jdpowered?ref=jdpowered
 	the full path and the url to the plugin files.
  */
 define('JD_SOCIALBOX_BASENAME', plugin_basename(__FILE__));
+define('JD_SOCIALBOX_MAINFILE', __FILE__);
 define('JD_SOCIALBOX_PATH', plugin_dir_path(__FILE__));
 define('JD_SOCIALBOX_URL', plugins_url('', __FILE__));
-define('JD_SOCIALBOX_VERSION', '1.7.0');
+define('JD_SOCIALBOX_VERSION', '1.6.0');
 
 
 /*

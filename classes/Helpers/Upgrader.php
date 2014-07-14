@@ -1,12 +1,17 @@
 <?php
 namespace jdpowered\SocialBox\Helpers;
 
-class JD_SocialBoxUpgrader{
+class Upgrader{
 
     /**
      * @var
      */
     protected $lastVersion;
+
+    /**
+     * @var
+     */
+    protected $currentVersion;
 
 
 
@@ -56,7 +61,6 @@ class JD_SocialBoxUpgrader{
         if($this->lastVersionLowerThan('1.4.0'))
         {
             $this->do140Cleanup();
-            // $this->do140Upgrade();
         }
 
         /*

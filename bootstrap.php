@@ -9,12 +9,16 @@ require JD_SOCIALBOX_PATH . 'vendor/autoload.php';
 
 /*
     Register activation and deactivation hooks
-*/
-register_activation_hook(__FILE__, array('jdpowered\SocialBox\Plugin', 'activatePlugin'));
-register_deactivation_hook(__FILE__, array('jdpowered\SocialBox\Plugin', 'deactivatePlugin'));
+ */
+register_activation_hook(JD_SOCIALBOX_MAINFILE, array('jdpowered\SocialBox\Plugin', 'activatePlugin'));
+register_deactivation_hook(JD_SOCIALBOX_MAINFILE, array('jdpowered\SocialBox\Plugin', 'deactivatePlugin'));
 
 
 /*
-    Finally, get things rolling by instanciating the core plugin class
-*/
-$JD_SocialBox = new jdpowered\SocialBox\Plugin();
+    Finally, get things rolling by instanciating the core plugin class within
+    the "plugins_loaded" hook.
+ */
+add_action('plugins_loaded', function()
+{
+    $JD_SocialBox = new jdpowered\SocialBox\Plugin();
+});
