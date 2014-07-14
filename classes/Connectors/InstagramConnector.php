@@ -9,20 +9,17 @@ class InstagramConnector extends BaseConnector  implements ConnectorInterface {
      * @param  array $args
      * @return array
      */
-    public function fire($args)
+    public function fire()
     {
         /*
             Fetch data from Instagram API
          */
-        $result = $this->get(sprintf('https://api.instagram.com/v1/users/%s?client_id=%s', $args['user_id'], $args['client_id']));
+        $result = $this->get(sprintf('https://api.instagram.com/v1/users/%s?client_id=%s', $this->args['user_id'], $this->args['client_id']));
 
         /*
             Check for common errors
          */
-        if($this->wasCommonError($result))
-        {
-            return array('successful' => false);
-        }
+        $this->checkForCommonErrors($result);
 
         /*
             Decode response
@@ -32,17 +29,13 @@ class InstagramConnector extends BaseConnector  implements ConnectorInterface {
         /*
             Check for incorrect data
          */
-        if(is_null($data) or !isset($data->data) or !isset($data->data->counts->{$args['metric']}))
-        {
-            return array('successful' => false);
+        if (is_null($data) or !isset($data->data) or !isset($data->data->counts->{$this->args['metric']})) {
+            throw new MalformedDataException($data);
         }
 
         /*
             Return value
          */
-        return array(
-            'successful' => true,
-            'value'      => $data->data->counts->{$args['metric']},
-        );
+        return $data->data->counts->{$this->args['metric']};
     }
 }

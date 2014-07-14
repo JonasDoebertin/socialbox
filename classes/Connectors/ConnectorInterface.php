@@ -9,6 +9,6 @@ interface ConnectorInterface {
      * @param  Array $args
      * @return Array
      */
-    public function fire($args);
+    public function fire();
 
 }

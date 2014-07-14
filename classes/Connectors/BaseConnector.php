@@ -5,7 +5,22 @@ use jdpowered\SocialBox\Helpers\Helper;
 
 abstract class BaseConnector implements ConnectorInterface{
 
-    abstract public function fire($args);
+    /**
+     * Connection details and arguments
+     *
+     * @type array
+     */
+    protected $args;
+
+    /**
+     * Instantiate connector and store connection details and arguments
+     */
+    public function __construct($args)
+    {
+        $this->args = $args;
+    }
+
+    abstract public function fire();
 
     /**
      * [wasCommonError description]
@@ -13,9 +28,11 @@ abstract class BaseConnector implements ConnectorInterface{
      * @param array $result
      * @return bool
      */
-    protected function wasCommonError($result)
+    protected function checkForCommonErrors($result)
     {
-        return is_wp_error($result) or (wp_remote_retrieve_response_code($result) != 200);
+        if (is_wp_error($result) or (wp_remote_retrieve_response_code($result) != 200)) {
+            throw new HttpErrorException($result);
+        }
     }
 
     /**

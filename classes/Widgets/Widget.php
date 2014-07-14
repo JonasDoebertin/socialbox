@@ -237,7 +237,7 @@ class Widget extends \WP_Widget{
         update_option('socialbox_cache', $cache);
 
         /* Force cache refresh */
-        Plugin::updateCache(true);
+        $JD_SocialBox->updateCache(true);
 
         return $instance;
     }

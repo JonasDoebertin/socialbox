@@ -9,20 +9,17 @@ class DribbbleConnector extends BaseConnector implements ConnectorInterface {
      * @param  array $args
      * @return array
      */
-    public function fire($args)
+    public function fire()
     {
         /*
             Fetch data from Dribbble API
          */
-        $result = $this->get('http://api.dribbble.com/players/' . $args['id']);
+        $result = $this->get('http://api.dribbble.com/players/' . $this->args['id']);
 
         /*
             Check for common errors
          */
-        if($this->wasCommonError($result))
-        {
-            return array('successful' => false);
-        }
+        $this->checkForCommonErrors($result);
 
         /*
             Decode response
@@ -32,17 +29,13 @@ class DribbbleConnector extends BaseConnector implements ConnectorInterface {
         /*
             Check for incorrect data
          */
-        if(is_null($data) or ! isset($data->{$args['metric']}))
-        {
-            return array('successful' => false);
+        if (is_null($data) or ! isset($data->{$this->args['metric']})) {
+            throw new MalformedDataException($data);
         }
 
         /*
             Return value
          */
-        return array(
-            'successful' => true,
-            'value'      => $data->{$args['metric']},
-        );
+        return $data->{$this->args['metric']};
     }
 }

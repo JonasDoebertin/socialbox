@@ -6,9 +6,28 @@ use jdpowered\Twitter\Twitter;
 class TwitterConnector extends BaseConnector implements ConnectorInterface {
 
     /**
+     * TWitter API Wrapper class instance
+     *
      * @type jdpowered\Twitter\Twitter $twitter
      */
     protected $twitter;
+
+    /**
+     * [__construct description]
+     *
+     * @param  array $args
+     *
+     * @return jdpowered\SocialBox\Connectors\TwitterConnector
+     */
+    public function __construct($args)
+    {
+        /*
+            Instantiate TwitterOAuth API wrapper
+         */
+        $this->instantiateWrapper($args);
+
+        parent::__construct($args);
+    }
 
     /**
      * [fire description]
@@ -16,24 +35,19 @@ class TwitterConnector extends BaseConnector implements ConnectorInterface {
      * @param  array $args
      * @return array
      */
-    public function fire($args)
+    public function fire()
     {
-        /*
-            Instantiate TwitterOAuth API wrapper
-         */
-        $this->instantiateWrapper($args);
-
         /*
             Fetch data from API
          */
-        $result = $this->get('users/show', array('screen_name' => $args['id'], 'include_entities' => false));
+        $result = $this->get('users/show', array('screen_name' => $this->args['id'], 'include_entities' => false));
 
         /*
             Check for http errors
          */
         if($this->getLastStatusCode() != 200)
         {
-            return array('successful' => false);
+            throw new HttpErrorException($result);
         }
 
         /* TODO: Implement metric! */
@@ -41,16 +55,12 @@ class TwitterConnector extends BaseConnector implements ConnectorInterface {
         /*
             Check for incorrect data
          */
-        if(is_null($result) or !isset($result->followers_count))
-        {
-            return array('successful' => false);
+        if (is_null($result) or !isset($result->followers_count)) {
+            throw new MalformedDataException($result);
         }
 
         /* Return value */
-        return array(
-            'successful' => true,
-            'value'      => $result->followers_count
-        );
+        return $result->followers_count;
     }
 
     /**

@@ -1,6 +1,8 @@
 <?php
 namespace jdpowered\SocialBox\Connectors;
 
+use jdpowered\SocialBox\Exceptions\HttpErrorException;
+
 class FacebookConnector extends BaseConnector implements ConnectorInterface {
 
     /**
@@ -9,20 +11,19 @@ class FacebookConnector extends BaseConnector implements ConnectorInterface {
      * @param  array $args
      * @return array
      */
-    public function fire($args)
+    public function fire()
     {
         /*
             Fetch data from Graph API
          */
-        $result = $this->get('https://graph.facebook.com/' . $args['id']);
+        $result = $this->get('https://graph.facebook.com/' . $this->args['id']);
+
+        /* TODO: Facebook Graph API v2.0 */
 
         /*
             Check for common errors
          */
-        if($this->wasCommonError($result))
-        {
-            return array('successful' => false);
-        }
+        $this->checkForCommonErrors($result);
 
         /*
             Decode response
@@ -32,17 +33,13 @@ class FacebookConnector extends BaseConnector implements ConnectorInterface {
         /*
             Check for invalid data
          */
-        if(isset($data->error) or ! isset($data->{$args['metric']}))
-        {
-            return array('successful' => false);
+        if(isset($data->error) or ! isset($data->{$this->args['metric']})) {
+            throw new MalformedDataException($data);
         }
 
         /*
             Return value
          */
-        return array(
-            'successful' => true,
-            'value'      => $data->{$args['metric']},
-        );
+        return $data->{$this->args['metric']};
     }
 }

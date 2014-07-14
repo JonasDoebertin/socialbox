@@ -9,20 +9,17 @@ class ForrstConnector extends BaseConnector implements ConnectorInterface {
      * @param  array $args
      * @return array
      */
-    public function fire($args)
+    public function fire()
     {
         /*
             Fetch data from Forrst API
          */
-        $result = $this->get('https://forrst.com/api/v2/users/info?username=' . $args['id']);
+        $result = $this->get('https://forrst.com/api/v2/users/info?username=' . $this->args['id']);
 
         /*
             Check for common errors
          */
-        if($this->wasCommonError($result))
-        {
-            return array('successful' => false);
-        }
+        $this->checkForCommonErrors($result);
 
         /*
             Decode response
@@ -32,15 +29,13 @@ class ForrstConnector extends BaseConnector implements ConnectorInterface {
         /*
             Check for incorrect data
          */
-        if(is_null($data) or ! isset($data->resp->typecast_followers)){
-            return array('successful' => false);
+        if (is_null($data) or ! isset($data->resp->typecast_followers)){
+            throw new MalformedDataException($data);
         }
 
         /*
             Return value
          */
-        return array(
-            'successful' => true,
-            'value'      => $data->resp->typecast_followers,
+        return $data->resp->typecast_followers;
     }
 }

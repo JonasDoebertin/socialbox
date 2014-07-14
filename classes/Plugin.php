@@ -4,7 +4,7 @@ namespace jdpowered\SocialBox;
 use jdpowered\SocialBox\Connectors\Factory as ConnectorFactory;
 use jdpowered\SocialBox\Helpers\Helper;
 use jdpowered\SocialBox\Helpers\Upgrader;
-use jdpowered\SocialBox\Updater\Factory as UpdaterFactory;
+use jdpowered\SocialBox\Logging\Factory as LogFactory;
 
 class Plugin{
 
@@ -14,14 +14,16 @@ class Plugin{
 	const SUPPORTED_NETWORKS = 'facebook,twitter,googleplus,youtube,vimeo,instagram,pinterest,soundcloud,dribbble,forrst,github,mailchimp';
 
 	/**
-	 * Max. # of log entries to keep
-	 */
-	const LOG_SIZE = 25;
-
-	/**
 	 * Holds the slug of the settings page, once it has been registered
 	 */
 	protected $settingsPageSlug;
+
+	/**
+	 * Instance of the logging class
+	 *
+	 * @type jdpowered\SocialBox\Logging\LogInterface
+	 */
+	protected $log;
 
 	/**
 	 * Create an instance of the plugin
@@ -29,6 +31,11 @@ class Plugin{
 	public function __construct(){
 
 		global $pagenow;
+
+		/*
+			Create log instance
+		 */
+		$this->log = LogFactory::make();
 
 		/* Inject custom cron schedule */
 		add_filter('cron_schedules', array($this, 'addCronSchedule'));
@@ -634,7 +641,7 @@ class Plugin{
 	{
 		/* Rebuild cache structure */
         if(!$forced) {
-            self::rebuildCache();
+            $this->rebuildCache();
         }
 
         /* Abort if no widget has been set up */
@@ -658,7 +665,7 @@ class Plugin{
 			if($forced or ($elemAge >= $maxElemAge)) {
 
 				//self::updateCacheElement($item);
-				self::updateCacheItem($item);
+				$this->updateCacheItem($item);
 			}
 		}
 	}
@@ -667,27 +674,40 @@ class Plugin{
 	 * Update a single cache item
 	 * @param  array $item
 	 */
-	public static function updateCacheItem($item) {
+	public function updateCacheItem($item) {
 
-		/* Fetch new value from connector */
-		/* TODO: Use Factory */
-		$connector = ConnectorFactory::create($item);
-		$result = $connector->fire($item);
-		//$result = JD_SocialBoxConnector::get($item);
+		/*
+			Try to fetch the new value from connector, store and log the result
+		 */
+		try {
 
-		/* Set new value if fetch was successful */
-		if($result['successful']) {
-			$newValue = $result['value'];
-			self::logActivity(true, $item['network'], $item['id']);
+			/*
+				Create connector object and fire it
+			 */
+			$connector = ConnectorFactory::create($item);
+			$result = $connector->fire();
 
-		/* Indicate that fetch was unseccessful */
-		} else {
-			$newValue = null;
-			self::logActivity(false, $item['network'], $item['id']);
+			/*
+				Set new value and log success message
+			 */
+			$value = $result;
+			$this->logApiSuccess($item);
+
+
+		} catch (\Exception $e) {
+
+			/*
+				Set 0 as value and log error message with the exception
+			 */
+			$value = 0;
+			$this->logApiFailure($item, $e);
+
 		}
 
+		/* TODO: Clear log on upgrade */
+
 		/* Update cache item */
-		$item['value']       = $newValue;
+		$item['value']       = $value;
 		$item['lastUpdated'] = time();
 
 		/* Save updated cache item */
@@ -759,43 +779,46 @@ class Plugin{
     *                                   LOG                                    *
     \**************************************************************************/
 
-	/**
-	 * Add an entry to the API Log
-	 *
-	 * @param String $network The slug of the related network
-	 * @param String $id The username/id for the related network
-	 * @param String $status A status flag
-	 * @param String $msg The actual error message
-	 */
-	public static function logActivity($successful, $network, $id) {
-
-		/* Get existing log entries */
-		$log = get_option('socialbox_log', array());
-
-		/* Add new log entry */
-		$log[] = array(
-			'timestamp'  => time(),
-			'successful' => $successful,
-			'network'    => $network,
-			'id'         => $id
+	public function logApiSuccess($item)
+	{
+		/*
+			Prepopulate context with item
+		*/
+		$context = array(
+			'item' => $item
 		);
 
-		/* Trancate log */
-		if(count($log) > self::LOG_SIZE){
-			array_shift($log);
+		$message = __('Fetched new data from {item.network} for {item.id}', 'socialbox');
+		$this->log->success($message, $context);
+	}
+
+	public function logApiFailure($item, $exception = null)
+	{
+		/*
+			Prepopulate context with item
+		 */
+		$context = array(
+			'item' => $item
+		);
+
+		if( ! is_null($exception)) {
+			$context['exception'] = array(
+				'type' => get_class($exception),
+				'message' => $exception->getMessage(),
+			);
 		}
 
-		/* Save updated log */
-		update_option('socialbox_log', $log);
+		$message = __('Could not fetched new data from {item.network} for {item.id}', 'socialbox');
+		$this->log->error($message, $context);
 	}
 
 	/**
-	 * Get an array with all entries from the API log
+	 * Get all entries from log
 	 *
-	 * @return Array
+	 * @return array
 	 */
-	public static function getLog() {
-
-		return get_option('socialbox_log', array());
+	public function getLog()
+	{
+		return $this->log->get(3);
 	}
 }

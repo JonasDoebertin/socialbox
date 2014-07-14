@@ -14,6 +14,10 @@ $log = $this->getLog();
 
 ?>
 
+<pre>
+	<?php var_dump($log) ?>
+</pre>
+
 <div class="socialbox-log">
 	<table class="wp-list-table widefat" cellspacing="0">
 		<thead>

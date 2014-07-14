@@ -9,20 +9,17 @@ class YoutubeConnector extends BaseConnector implements ConnectorInterface {
      * @param  array $args
      * @return array
      */
-    public function fire($args)
+    public function fire()
     {
         /*
             Fetch data from Youtube API
          */
-        $result = $this->get('http://gdata.youtube.com/feeds/api/users/' . $args['id']);
+        $result = $this->get('http://gdata.youtube.com/feeds/api/users/' . $this->args['id']);
 
         /*
             Check for common errors
          */
-        if($this->wasCommonError($result))
-        {
-            return array('successful' => false);
-        }
+        $this->checkForCommonErrors($result);
 
         /*
             Decode response
@@ -32,17 +29,13 @@ class YoutubeConnector extends BaseConnector implements ConnectorInterface {
         /*
             Check for incorrect data
          */
-        if(!$data or isset($data->err) or !isset($data->children('http://gdata.youtube.com/schemas/2007')->statistics->attributes()->{$args['metric']}))
-        {
-            return array('successful' => false);
+        if (!$data or isset($data->err) or !isset($data->children('http://gdata.youtube.com/schemas/2007')->statistics->attributes()->{$this->args['metric']})) {
+            throw new MalformedDataException($data);
         }
 
         /*
             Return value
          */
-        return array(
-            'successful' => true,
-            'value'      => (int) $data->children('http://gdata.youtube.com/schemas/2007')->statistics->attributes()->{$args['metric']},
-        );
+        return (int) $data->children('http://gdata.youtube.com/schemas/2007')->statistics->attributes()->{$this->args['metric']};
     }
 }

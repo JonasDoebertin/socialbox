@@ -9,15 +9,15 @@ class FacebookConnector extends BaseConnector implements ConnectorInterface {
      * @param  array $args
      * @return array
      */
-    public function fire($args)
+    public function fire()
     {
         /*
             Extract data center from api key
          */
         $datacenter = 'us1';
-        if(strstr($item['api_key'], '-'))
+        if(strstr($this->args['api_key'], '-'))
         {
-            list($key, $datacenter) = explode('-', $item['api_key'], 2);
+            list($key, $datacenter) = explode('-', $this->args['api_key'], 2);
             if( ! $datacenter)
                 $datacenter = 'us1';
         }
@@ -26,9 +26,9 @@ class FacebookConnector extends BaseConnector implements ConnectorInterface {
             Build data object
          */
         $data = array(
-            'apikey' => $item['api_key'],
+            'apikey' => $this->args['api_key'],
             'filters' => array(
-                'list_id' => $item['id'],
+                'list_id' => $this->args['id'],
             ),
             'limit' => 1,
         );
@@ -41,10 +41,7 @@ class FacebookConnector extends BaseConnector implements ConnectorInterface {
         /*
             Check for common errors
          */
-        if($this->wasCommonError($result))
-        {
-            return array('successful' => false);
-        }
+        $this->checkForCommonErrors($result);
 
         /*
             Decode response
@@ -54,17 +51,13 @@ class FacebookConnector extends BaseConnector implements ConnectorInterface {
         /*
             Check for incorrect data
          */
-        if(is_null($data) or !isset($data->data[0]->stats->member_count))
-        {
-            return array('successful' => false);
+        if (is_null($data) or !isset($data->data[0]->stats->member_count)) {
+            throw new MalformedDataException($data);
         }
 
         /*
             Return value
          */
-        return array(
-            'successful' => true,
-            'value'      => $data->data[0]->stats->member_count,
-        );
+        return $data->data[0]->stats->member_count;
     }
 }

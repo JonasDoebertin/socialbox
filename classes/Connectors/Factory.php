@@ -16,15 +16,14 @@ class Factory {
         /*
             Throw an exception if no related connector class exists
          */
-        if( ! class_exists($connector))
-        {
+        if ( ! class_exists($connector)) {
             throw new ConnectorNotFoundException($network);
         }
 
         /*
             Create new connector object
          */
-        return new $connector;
+        return new $connector($item);
     }
 
 }

@@ -1,7 +1,9 @@
 <?php
 namespace jdpowered\SocialBox\Exceptions;
 
-class ConnectorNotFoundException extends \Exception {
+use jdpowered\SocialBox\Exception;
+
+class ConnectorNotFoundException extends Exception {
 
     public function __construct($network)
     {

@@ -9,41 +9,34 @@ class PinterestConnector extends BaseConnector implements ConnectorInterface {
      * @param  array $args
      * @return array
      */
-    public function fire($args)
+    public function fire()
     {
         /*
             Fetch profile page
          */
-        $result = $this->get('https://pinterest.com/' . $args['id']);
+        $result = $this->get('https://pinterest.com/' . $this->args['id']);
 
         /*
             Check for common errors
          */
-        if($this->wasCommonError($result))
-        {
-            return array('successful' => false);
-        }
+        $this->checkForCommonErrors($result);
 
         /*
             Prepare regular expression and result body
          */
-        $regex = '/<meta[^>]*?property="pinterestapp:' . $args['metric'] . '"[^>]*?content="(\d+)"/i';
+        $regex = '/<meta[^>]*?property="pinterestapp:' . $this->args['metric'] . '"[^>]*?content="(\d+)"/i';
         $html  = wp_remote_retrieve_body($result);
 
         /*
             Check for incorrect data
          */
-        if(preg_match($regex, $html, $matches) !== 1)
-        {
-            return array('successful' => false);
+        if (preg_match($regex, $html, $matches) !== 1) {
+            throw new MalformedDataException($html);
         }
 
         /*
             Return value
          */
-        return array(
-            'successful' => true,
-            'value'      => intval($matches[1]),
-        );
+        return intval($matches[1]);
     }
 }
