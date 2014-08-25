@@ -20,10 +20,26 @@ class JD_SocialBoxConnector{
 		return call_user_func_array(array('JD_SocialBoxConnector', $item['network']), array($item));
 	}
 
-	protected static function facebook($item) {
-
-		/* Fetch data from Graph API */
-		$result = self::remoteGet('https://graph.facebook.com/' . $item['id']);
+	protected static function facebook($item)
+	{
+		/*
+			Check if an App ID and an App Secret are set
+		 */
+		if(isset($item['app_id']) and ! empty($item['app_id']) and
+		   isset($item['app_secret']) and ! empty($item['app_secret']))
+		{
+			/*
+				If yes, use Facebook API v2.0
+			 */
+			$result = self::remoteGet(sprintf('https://graph.facebook.com/v2.1/%s?access_token=%s|%s', $item['id'], $item['app_id'], $item['app_secret']));
+		}
+		else
+		{
+			/*
+				If no, use Facebook API v1.0
+			*/
+			$result = self::remoteGet('https://graph.facebook.com/' . $item['id']);
+		}
 
 		/* Check for common errors */
 		if(self::wasCommonError($result)) {
