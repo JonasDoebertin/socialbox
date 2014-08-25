@@ -2,7 +2,7 @@
 
 
 /*
- * SocialBox 1.7.0
+ * SocialBox 1.7.1
  * Copyright by Jonas Döbertin
  * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
  */
@@ -138,6 +138,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 		}
 
 		/* Update values for uncommon/special options */
+		$instance['facebook_app_id']             = $newInstance['facebook_app_id'];
+		$instance['facebook_app_secret']         = $newInstance['facebook_app_secret'];
 		$instance['facebook_metric']             = $newInstance['facebook_metric'];
 		$instance['twitter_api_key']             = $newInstance['twitter_api_key'];
 		$instance['twitter_api_secret']          = $newInstance['twitter_api_secret'];
@@ -197,6 +199,8 @@ class JD_SocialBoxWidget extends WP_Widget{
                 /* Save/update uncommon/special attributes */
                 switch($network) {
                     case 'facebook':
+						$cache['facebook||' . $instance['facebook_id']]['app_id']            = $instance['facebook_app_id'];
+						$cache['facebook||' . $instance['facebook_id']]['app_secret']        = $instance['facebook_app_secret'];
                         $cache['facebook||' . $instance['facebook_id']]['metric']            = $instance['facebook_metric'];
                         break;
                     case 'twitter':
@@ -277,6 +281,8 @@ class JD_SocialBoxWidget extends WP_Widget{
 		}
 
 		/* Set default values for uncommon/special options */
+		$defaults['facebook_app_id']             = '';
+		$defaults['facebook_app_secret']         = '';
 		$defaults['facebook_metric']             = 'likes';
 		$defaults['twitter_api_key']             = '';
 		$defaults['twitter_api_secret']          = '';
