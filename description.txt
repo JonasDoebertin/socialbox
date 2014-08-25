@@ -57,6 +57,23 @@
 
 <h3>Updates</h3>
 
+<strong>Version 1.7.1</strong><br/>
+<ul>
+	<li>
+		<strong>Bugfixes</strong>
+		<ul>
+			<li>Added support for Facebook Graph API v2.1.</li>
+			<li>Updated language file template.</li>
+		</ul>
+	</li>
+	<li>
+		<strong>Additional Notes</strong>
+		<ul>
+			<li>SocialBox now let's you enter an Facebook App ID and the related App Secret. This is optional until April 30th, 2015. Only at this date, changes to the API Socialbox uses will take effect. However, if you want to be on the save side, you should obtain and enter App credentials right now. The help section has been extended accordingly.</li>
+		</ul>
+	</li>
+</ul>
+
 <strong>Version 1.7.0</strong><br/>
 <ul>
 	<li>
