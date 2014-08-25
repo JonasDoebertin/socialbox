@@ -102,6 +102,18 @@
 			<input type="text" id="<?php echo $this->get_field_id('facebook_id'); ?>" name="<?php echo $this->get_field_name('facebook_id'); ?>" value="<?php echo $instance['facebook_id']; ?>" class="widefat" />
 		</p>
 
+		<!-- App ID -->
+		<p>
+			<label for="<?php echo $this->get_field_id('facebook_app_id'); ?>" title="<?php _e('Your App ID', 'socialbox'); ?>"><?php _e('App ID', 'socialbox'); ?>:</label><br/>
+			<input type="text" id="<?php echo $this->get_field_id('facebook_app_id'); ?>" name="<?php echo $this->get_field_name('facebook_app_id'); ?>" value="<?php echo $instance['facebook_app_id']; ?>" class="widefat" />
+		</p>
+
+		<!-- App Secret -->
+		<p>
+			<label for="<?php echo $this->get_field_id('facebook_app_secret'); ?>" title="<?php _e('Your App Secret', 'socialbox'); ?>"><?php _e('App Secret', 'socialbox'); ?>:</label><br/>
+			<input type="text" id="<?php echo $this->get_field_id('facebook_app_secret'); ?>" name="<?php echo $this->get_field_name('facebook_app_secret'); ?>" value="<?php echo $instance['facebook_app_secret']; ?>" class="widefat" />
+		</p>
+
 		<!-- Metric -->
 		<p>
 			<label for="<?php echo $this->get_field_id('facebook_metric'); ?>" title="<?php _e('What metric shall be displayed', 'socialbox'); ?>"><?php _e('Metric', 'socialbox'); ?>:</label>
