@@ -10,7 +10,7 @@
 		li{
 			border: 1px solid #ffffff;
 			@include simple-border-radius(4px);
-			@include box-shadow(0px 1px 1px rgba(0, 0, 0, 0.3));
+			box-shadow: 0px 1px 1px rgba(0, 0, 0, .3);
 			margin-bottom: 3px;
 			overflow: hidden;
 			padding: 9px;
@@ -29,7 +29,7 @@
 				font-family: Arial, Helvetica, sans-serif;
 				font-size: 12px;
 				line-height: 32px;
-				@include single-transition(color, 0.25s, ease-in-out, 0);
+				transition: color 0.25s ease-in-out 0;
 
 				span{
 					font-weight: bold;
@@ -59,7 +59,7 @@
 				a.socialbox-button{
 					@include simple-linear-gradient(#617db3, #2a4585);
 					border-color: #374d90;
-					@include box-shadow(inset 0px 1px 0px #789ac5);
+					box-shadow: inset 0px 1px 0px #789ac5;
 				}
 			}
 
@@ -73,7 +73,7 @@
 					@include simple-linear-gradient(#b6edef, #88e1e6);
 					border-color: #47d1d7;
 					border-top-color: #a8eaec;
-					@include box-shadow(inset 0px 1px 0px #dbf7f8);
+					box-shadow: inset 0px 1px 0px #dbf7f8;
 				}
 			}
 
@@ -87,7 +87,7 @@
 					@include simple-linear-gradient(#f54b31, #dc422b);
 					border-color: #b53824;
 					//border-top-color: shade(#b53824, 10%);
-					@include box-shadow(inset 1px 0 0 rgba(255,255,255,0.05), inset -1px 0 0 rgba(255,255,255,0.05), inset 0 1px 0 rgba(255, 255, 255, 0.2));
+					box-shadow: inset 1px 0 0 rgba(255, 255, 255, 0.05), inset -1px 0 0 rgba(255, 255, 255, 0.05), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 					text-shadow: 1px 1px #b53824;
 				}
 			}
@@ -102,7 +102,7 @@
 					@include simple-linear-gradient(#ed292b, #ce2a2d);
 					border-color: #981a1d;
 					border-top-color: #be302f;
-					@include box-shadow(inset 0px 1px 0px #d66b55);
+					box-shadow: inset 0px 1px 0px #d66b55;
 					text-shadow: 1px 1px #b92527;
 				}
 			}
@@ -117,7 +117,7 @@
 					@include simple-linear-gradient(#47c0df, #19a0d0);
 					border-color: #0c70b7;
 					border-top-color: #4fbdde;
-					@include box-shadow(inset 0px 1px 0px #7fd2e8);
+					box-shadow: inset 0px 1px 0px #7fd2e8;
 					text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
 				}
 			}
@@ -132,7 +132,7 @@
 					@include simple-linear-gradient(#6f97b6, #3f729b);
 					border-color: shade(#1c5380, 10%);
 					border-top-color: #1c5380;
-					@include box-shadow(inset 1px 0 0 rgba(255,255,255,0.05), inset -1px 0 0 rgba(255,255,255,0.05), inset 0 1px 0 rgba(255, 255, 255, 0.2));
+					box-shadow: inset 1px 0 0 rgba(255,255,255,0.05), inset -1px 0 0 rgba(255,255,255,0.05), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 					text-shadow: 1px 1px 0 #1c5380;
 				}
 			}
@@ -147,7 +147,7 @@
 					@include simple-linear-gradient(#ff8f27, #ff7700);
 					border-color: shade(#cc5f00, 10%);
 					border-top-color: #cc5f00;
-					@include box-shadow(inset 1px 0 0 rgba(255,255,255,0.05), inset -1px 0 0 rgba(255,255,255,0.05), inset 0 1px 0 rgba(255, 255, 255, 0.2));
+					box-shadow: inset 1px 0 0 rgba(255,255,255,0.05), inset -1px 0 0 rgba(255,255,255,0.05), inset 0 1px 0 rgba(255, 255, 255, 0.2);
 					text-shadow: 1px 1px 0 #cc5f00;
 				}
 			}
@@ -162,7 +162,7 @@
 					@include simple-linear-gradient(#eb578f, #c8396f);
 					border-color: #a62f5c;
 					border-top-color: #cf4d7e;
-					@include box-shadow(inset 0px 1px 0px #f374b3);
+					box-shadow: inset 0px 1px 0px #f374b3;
 					text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
 				}
 			}
@@ -177,7 +177,7 @@
 					@include simple-linear-gradient(#2a602a, #163f19);
 					border-color: #123515;
 					border-top-color: #255325;
-					@include box-shadow(inset 0px 1px 0px #377c36);
+					box-shadow: inset 0px 1px 0px #377c36;
 					text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.4);
 				}
 			}
@@ -192,7 +192,7 @@
 					@include simple-linear-gradient(#f8f8f8, #d5d5d5);
 					border-color: #acacac;
 					border-top-color: #e1e1e1;
-					@include box-shadow(inset 0px 1px 0px #ffffff);
+					box-shadow: inset 0px 1px 0px #ffffff;
 					text-shadow: 1px 1px rgba(255, 255, 255, .75);
 				}
 			}
@@ -207,7 +207,7 @@
 					@include simple-linear-gradient(tint(#999999, 40%), shade(#999999, 5%));
 					border-color: shade(#999999, 5%);
 					border-top-color: shade(#999999, 5%);
-					@include box-shadow(inset 0px 1px 0px tint(#999999, 50%));
+					box-shadow: inset 0px 1px 0px tint(#999999, 50%);
 					text-shadow: 1px 1px rgba(0, 0, 0, .5);
 				}
 			}

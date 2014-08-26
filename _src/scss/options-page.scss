@@ -1,21 +1,11 @@
-/*!
- * SocialBox 1.7.0
- * Copyright by Jonas Döbertin
- * Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
- */
-
-
-@import "compass";
-@import "options-page/mixins";
-@import "options-page/icons";
-
-
 /*------------------------------------*\
 	$OPTIONS PAGE
 \*------------------------------------*/
 
 
-
+@import "options-page/icons";
+@import "options-page/tabs";
+@import "options-page/settings";
 
 
 /**
@@ -29,19 +19,7 @@
 
 
 
-/**
- * Tab navigation
- */
-.nav-tab{
 
-	&:first-child{
-		margin-left: 15px;
-	}
-
-	&.nav-tab-active{
-
-	}
-}
 
 
 
@@ -53,7 +31,7 @@
 .socialbox-help-header{
 	background: #ffffff;
 	border: 1px solid #e5e5e5;
-	@include single-box-shadow(0, 1px, 1px, 0, rgba(0,0,0,.04));
+	box-shadow: 0 1px 1px 0 rgba(0,0,0,.04);
 	margin: 16px 0;
 	padding: 23px 10px 10px;
 }
@@ -173,7 +151,7 @@
 
 	.socialbox-help-image{
 		border: 1px solid #e5e5e5;
-		@include single-box-shadow(0, 1px, 1px, 0, rgba(0,0,0,.04));
+		box-shadow: 0 1px 1px 0 rgba(0,0,0,.04);
 		max-width: 90%;
 		margin: 60px 0 30px;
 	}

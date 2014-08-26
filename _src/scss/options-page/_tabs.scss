@@ -1,0 +1,13 @@
+/**
+ * Tab navigation
+ */
+.nav-tab{
+
+    &:first-child{
+        margin-left: 15px;
+    }
+
+    &.nav-tab-active{
+
+    }
+}

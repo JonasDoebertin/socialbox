@@ -27,7 +27,8 @@ class Helper{
             'update_interval' => 180,
             'disable_ssl'     => 0,
             'enable_log'      => 0,
-            'log_entries'     => 20
+            'log_entries'     => 20,
+            'purchase_code'   => '',
         );
 
         /* Load existing values */

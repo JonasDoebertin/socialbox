@@ -67,7 +67,7 @@
 }
 
 .socialbox-icon-loading{
-	@include vendor(animation, socialbox-rotate 2s linear 0s infinite);
+	animation: socialbox-rotate 2s linear 0s infinite;
 
 	&:before{
 		content: "\e606" !important;
@@ -81,12 +81,12 @@
 /**
  * Rotation animation
  */
-@include keyframe(socialbox-rotate) {
+@keyframe socialbox-rotate {
 	0% {
-		@include rotate(0deg);
+		transform: rotate(0deg);
 	}
 
 	100% {
-		@include rotate(360deg);
+		transform: rotate(360deg);
 	}
 }

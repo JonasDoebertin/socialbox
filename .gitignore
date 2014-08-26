@@ -2,6 +2,7 @@
 
 Licensing/
 debug.txt
+_releases/
 
 #### Sublime Text ####
 
@@ -9,7 +10,12 @@ debug.txt
 *.sublime-project
 
 #### Composer ####
+
 vendor/
+
+#### Node.js ####
+
+node_modules/
 
 #### OSX ####
 

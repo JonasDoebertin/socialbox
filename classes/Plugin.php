@@ -3,6 +3,7 @@ namespace jdpowered\SocialBox;
 
 use jdpowered\SocialBox\Connectors\Factory as ConnectorFactory;
 use jdpowered\SocialBox\Helpers\Helper;
+use jdpowered\SocialBox\Helpers\Updater;
 use jdpowered\SocialBox\Helpers\Upgrader;
 use jdpowered\SocialBox\Logging\Factory as LogFactory;
 
@@ -24,6 +25,13 @@ class Plugin{
 	 * @type jdpowered\SocialBox\Logging\LogInterface
 	 */
 	protected $log;
+
+	/**
+	* Instance of the updater class
+	*
+	* @type jdpowered\SocialBox\Helpers\Updater
+	*/
+	protected $updater;
 
 	/**
 	 * Create an instance of the plugin
@@ -49,6 +57,11 @@ class Plugin{
 
 		/* Register and load textdomain */
 		load_plugin_textdomain('socialbox', null, dirname(JD_SOCIALBOX_BASENAME) . '/languages/');
+
+		/*
+			Initialize Updater
+		 */
+		$this->updater = new Updater('http://wp-updates.com/api/2/plugin', JD_SOCIALBOX_BASENAME, HELPER::getOption('purchase_code'));
 
 		/* Backend only stuff */
 		if(is_admin()){
@@ -430,11 +443,30 @@ class Plugin{
 			null
 		);
 
+		/*
+			Register "License" section and fields
+		 */
+		add_settings_section(
+			'socialbox_license',
+			__('License', 'socialbox'),
+			null,
+			'socialbox'
+		);
+
+		add_settings_field(
+			'purchase_code',
+			__('Purchase Code', 'socialbox'),
+			array($this, 'printPurchaseCodeSettingsField'),
+			'socialbox',
+			'socialbox_license',
+			array('label_for' => 'socialbox_purchase_code')
+		);
+
 		/* Register settings section for "Advanced Settings" */
 		add_settings_section(
 			'socialbox_advanced',
 			__('Advanced Settings', 'socialbox'),
-			array($this, 'printAdvancedSettingsSection'),
+			null,
 			'socialbox'
 		);
 
@@ -457,9 +489,18 @@ class Plugin{
 		);
 	}
 
-	public function printAdvancedSettingsSection(){
-
-		echo '<p>' . __('Some advanced options to tweak SocialBox\'s internals', 'socialbox') . '</p>';
+	/**
+	 * Output the "Purchase Code" settings field
+	 *
+	 * @since 1.8.0
+	 *
+	 * @param array $args
+	 */
+	public function printPurchaseCodeSettingsField($args)
+	{
+		$html = '<input type="text" id="' . $args['label_for'] . '" name="socialbox_options[purchase_code]" value="' . Helper::getOption('purchase_code') . '" />';
+		$html .= '<p class="description">' . __('Please enter your CodeCanyon purchase code.', 'socialbox') . '</p>';
+		echo $html;
 	}
 
 	public function printUpdateIntervalSettingsField($args){

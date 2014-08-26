@@ -12,14 +12,35 @@
 
 <div class="socialbox-settings">
 
-	<?php settings_errors(); ?>
-
 	<form method="post" action="options.php">
-		<?php
-			settings_fields('socialbox_options');
-			do_settings_sections('socialbox');
-			submit_button();
-		?>
+		<?php settings_fields('socialbox_options') ?>
+
+		<!-- Heading -->
+		<div class="socialbox-settings__section socialbox-settings__section--header">
+			<h3><?php _e('Settings', 'socialbox') ?></h3>
+			<p class="socialbox-settings__section__description"><?php _e('This is the place, this is the time. Go ahead! Configure this!', 'socialbox') ?></p>
+		</div>
+
+		<!-- License -->
+		<div class="socialbox-settings__section">
+			<h3><?php _e('License', 'socialbox') ?></h3>
+			<p class="socialbox-settings__section__description"><?php _e('Enter valid license information to enable automatic updates of SocialBox.', 'socialbox') ?></p>
+			<table class="form-table">
+				<?php do_settings_fields('socialbox', 'socialbox_license') ?>
+			</table>
+		</div>
+
+		<!-- Advanced Settings -->
+		<div class="socialbox-settings__section">
+			<h3><?php _e('Advanced Settings', 'socialbox') ?></h3>
+			<p class="socialbox-settings__section__description"><?php _e('With this set of options, you are able to tweak / modify some of the internals of SocialBox. Please use with care!', 'socialbox') ?></p>
+			<table class="form-table">
+				<?php do_settings_fields('socialbox', 'socialbox_advanced') ?>
+			</table>
+		</div>
+
+		<?php submit_button() ?>
+
 	</form>
 
 </div>
