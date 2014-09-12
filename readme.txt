@@ -3,7 +3,7 @@ Contributors: JonasDoebertin
 Tags: socialbox, social networking
 Requires at least: 3.6
 Tested up to: 4.0
-Stable tag: 1.7.2
+Stable tag: 1.7.3
 License: Envato Market
 License URI: http://codecanyon.net/licenses
 
@@ -24,6 +24,17 @@ To install SocialBox, simply follow these steps:
 5. That's it!
 
 == Changelog ==
+
+= Version 1.7.3 =
+
+**Bugfixes**
+
+* Fixed Google+ wrong links
+* Re-added missing Google+ icons
+
+**Additional notes**
+
+* Updates language files: en_US
 
 = Version 1.7.2 =
 
@@ -154,6 +165,9 @@ To install SocialBox, simply follow these steps:
 * Updated localization files
 
 == Upgrade Notice ==
+
+= 1.7.3 =
+Google+ related bugfixes.
 
 = 1.7.2 =
 Added automatic plugin updates.
