@@ -1,6 +1,7 @@
 <?php
 namespace jdpowered\SocialBox\Connectors;
 
+use jdpowered\SocialBox\Exceptions\HttpErrorException;
 use jdpowered\SocialBox\Helpers\Helper;
 
 abstract class BaseConnector implements ConnectorInterface{

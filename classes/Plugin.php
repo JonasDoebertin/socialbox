@@ -50,7 +50,7 @@ class Plugin{
 
 		/* Register custom actions */
 		add_action('socialbox_update_cache', array($this, 'updateCache'));
-		add_action('socialbox_update_plugin', array($this, 'updatePlugin'));
+		// add_action('socialbox_update_plugin', array($this, 'updatePlugin'));
 
 		/* Register Widget */
 		add_action('widgets_init', array($this, 'registerWidget'));
@@ -66,14 +66,14 @@ class Plugin{
 		/* Backend only stuff */
 		if(is_admin()){
 
-			/* Display update notice */
-			if(in_array($pagenow, array('index.php', 'plugins.php'))) {
-				$info = get_option('socialbox_update', array());
-				if(isset($info['update_available']) and $info['update_available']) {
-					add_action('admin_notices', array($this, 'registerUpdateNotice'));
-					add_action('admin_enqueue_scripts', array($this, 'registerUpdateNoticeStyle'));
-				}
-			}
+			// /* Display update notice */
+			// if(in_array($pagenow, array('index.php', 'plugins.php'))) {
+			// 	$info = get_option('socialbox_update', array());
+			// 	if(isset($info['update_available']) and $info['update_available']) {
+			// 		add_action('admin_notices', array($this, 'registerUpdateNotice'));
+			// 		add_action('admin_enqueue_scripts', array($this, 'registerUpdateNoticeStyle'));
+			// 	}
+			// }
 
 			/* Add custom "Settings" link to plugin actions */
 			add_action('plugin_action_links_' . JD_SOCIALBOX_BASENAME, array($this, 'addPluginActionLink'));
@@ -128,66 +128,66 @@ class Plugin{
 		return $schedules;
 	}
 
-	/**
-	 * Fetch update information and store it to the database
-	 *
-	 * This will be executed as scheduled cron event
-	 */
-	public static function updatePlugin() {
-
-		/* Build query string */
-		$data = array(
-			'slug'            => 'socialboxwp',
-			'current_version' => JD_SOCIALBOX_VERSION,
-			'host'            => preg_replace('/^www\./','',$_SERVER['SERVER_NAME'])
-		);
-
-		/* Fetch latest version */
-		$result = wp_remote_get('http://updates.jd-powered.net/?' . http_build_query($data));
-
-		/* Check for common errors */
-		if(is_wp_error($result) or (wp_remote_retrieve_response_code($result) != 200)) {
-
-			/* Update info and abort */
-			update_option('socialbox_update', array(
-				'last_checked'     => time(),
-				'update_available' => false
-			));
-			return;
-		}
-
-		/* Decode response */
-		$response = json_decode(wp_remote_retrieve_body($result), true);
-
-		/* Check for incorrect data */
-		if(isset($response['error']) or !isset($response['latest_version'])) {
-
-			/* Update info and abort */
-			update_option('socialbox_update', array(
-				'last_checked'     => time(),
-				'update_available' => false
-			));
-			return;
-		}
-
-		/* Check if remote version is newer */
-		if(version_compare($response['latest_version'], JD_SOCIALBOX_VERSION) == 1) {
-
-			update_option('socialbox_update', array(
-				'last_checked'     => time(),
-				'update_available' => true,
-				'latest_version'   => $response['latest_version'],
-				'download_url'     => $response['download_url'],
-				'product_url'      => $response['product_url']
-			));
-		} else {
-
-			update_option('socialbox_update', array(
-				'last_checked'     => time(),
-				'update_available' => false
-			));
-		}
-	}
+	// /**
+	//  * Fetch update information and store it to the database
+	//  *
+	//  * This will be executed as scheduled cron event
+	//  */
+	// public static function updatePlugin() {
+	//
+	// 	/* Build query string */
+	// 	$data = array(
+	// 		'slug'            => 'socialboxwp',
+	// 		'current_version' => JD_SOCIALBOX_VERSION,
+	// 		'host'            => preg_replace('/^www\./','',$_SERVER['SERVER_NAME'])
+	// 	);
+	//
+	// 	/* Fetch latest version */
+	// 	$result = wp_remote_get('http://updates.jd-powered.net/?' . http_build_query($data));
+	//
+	// 	/* Check for common errors */
+	// 	if(is_wp_error($result) or (wp_remote_retrieve_response_code($result) != 200)) {
+	//
+	// 		/* Update info and abort */
+	// 		update_option('socialbox_update', array(
+	// 			'last_checked'     => time(),
+	// 			'update_available' => false
+	// 		));
+	// 		return;
+	// 	}
+	//
+	// 	/* Decode response */
+	// 	$response = json_decode(wp_remote_retrieve_body($result), true);
+	//
+	// 	/* Check for incorrect data */
+	// 	if(isset($response['error']) or !isset($response['latest_version'])) {
+	//
+	// 		/* Update info and abort */
+	// 		update_option('socialbox_update', array(
+	// 			'last_checked'     => time(),
+	// 			'update_available' => false
+	// 		));
+	// 		return;
+	// 	}
+	//
+	// 	/* Check if remote version is newer */
+	// 	if(version_compare($response['latest_version'], JD_SOCIALBOX_VERSION) == 1) {
+	//
+	// 		update_option('socialbox_update', array(
+	// 			'last_checked'     => time(),
+	// 			'update_available' => true,
+	// 			'latest_version'   => $response['latest_version'],
+	// 			'download_url'     => $response['download_url'],
+	// 			'product_url'      => $response['product_url']
+	// 		));
+	// 	} else {
+	//
+	// 		update_option('socialbox_update', array(
+	// 			'last_checked'     => time(),
+	// 			'update_available' => false
+	// 		));
+	// 	}
+	// }
 
 	/**
 	 * Register options and cron schedules
@@ -201,14 +201,14 @@ class Plugin{
 		$upgrader->run();
 
 		/* Add options */
-		add_option('socialbox_update', array());
+		// add_option('socialbox_update', array());
 		add_option('socialbox_options', array());
 		add_option('socialbox_cache', array());
 		add_option('socialbox_log', array());
 
 		/* Register cron events */
 		wp_schedule_event(time(), 'everytenminutes', 'socialbox_update_cache');
-		wp_schedule_event(time(), 'daily', 'socialbox_update_plugin');
+		// wp_schedule_event(time(), 'daily', 'socialbox_update_plugin');
 
 		/* Trigger initial update check */
 		self::updatePlugin();
@@ -226,30 +226,30 @@ class Plugin{
 
 		/* Deregister cron events */
 		wp_clear_scheduled_hook('socialbox_update_cache');
-		wp_clear_scheduled_hook('socialbox_update_plugin');
+		// wp_clear_scheduled_hook('socialbox_update_plugin');
 	}
 
-	/**
-	 * Output an update notice on admin screens
-	 *
-	 * Will be run within "admin_notices" action
-	 */
-	public function registerUpdateNotice(){
+	// /**
+	//  * Output an update notice on admin screens
+	//  *
+	//  * Will be run within "admin_notices" action
+	//  */
+	// public function registerUpdateNotice(){
+	//
+	// 	$info = get_option('socialbox_update', array());
+	// 	include JD_SOCIALBOX_PATH . '/views/notices/update.php';
+	// }
 
-		$info = get_option('socialbox_update', array());
-		include JD_SOCIALBOX_PATH . '/views/notices/update.php';
-	}
-
-	/**
-	* Register the stylesheet for the "Update available" notice
-	*
-	* @action admin_enqueue_scripts
-	*/
-	public function registerUpdateNoticeStyle()
-	{
-		/* Register & Enqueue Style */
-		wp_enqueue_style('socialbox-notices', JD_SOCIALBOX_URL . '/assets/css/notices.css', array(), JD_SOCIALBOX_VERSION, 'screen');
-	}
+	// /**
+	// * Register the stylesheet for the "Update available" notice
+	// *
+	// * @action admin_enqueue_scripts
+	// */
+	// public function registerUpdateNoticeStyle()
+	// {
+	// 	/* Register & Enqueue Style */
+	// 	wp_enqueue_style('socialbox-notices', JD_SOCIALBOX_URL . '/assets/css/notices.css', array(), JD_SOCIALBOX_VERSION, 'screen');
+	// }
 
 	public function addPluginActionLink($actionLinks){
 
@@ -860,6 +860,6 @@ class Plugin{
 	 */
 	public function getLog()
 	{
-		return $this->log->get(3);
+		return $this->log->get(20);
 	}
 }

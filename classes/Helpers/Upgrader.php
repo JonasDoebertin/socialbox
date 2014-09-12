@@ -160,6 +160,21 @@ class Upgrader{
         ));
     }
 
+    protected function do180Upgrade()
+    {
+        /*
+            First step:
+            Remove all old options.
+         */
+        delete_option('socialbox_update');
+
+        /*
+            Second step:
+            Remove all old cron schedules.
+         */
+        wp_clear_scheduled_hook('socialbox_update_plugin');
+    }
+
     /**
      * [doGeneralCleanup description]
      */
