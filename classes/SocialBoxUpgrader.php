@@ -93,6 +93,15 @@ class JD_SocialBoxUpgrader{
             $this->do171Upgrade();
         }
 
+        /*
+            Upgrading to 1.7.2
+            Remove old plugin update cron schedule
+         */
+        if($this->lastVersionLowerThan('1.7.2'))
+        {
+            $this->do172Cleanup();
+        }
+
 
         /*
             Always
@@ -188,6 +197,24 @@ class JD_SocialBoxUpgrader{
                 'app_secret' => '',
             ),
         ));
+    }
+
+    /**
+     * [do172Cleanup description]
+     */
+    protected function do172Cleanup()
+    {
+        /*
+            First step:
+            Remove all old options.
+         */
+        delete_option('socialbox_update');
+
+        /*
+            Second step:
+            Remove all old cron schedules.
+         */
+        wp_clear_scheduled_hook('socialbox_update_plugin');
     }
 
     /**

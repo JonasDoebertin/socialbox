@@ -29,6 +29,7 @@ class JD_SocialBoxHelper{
 
 		/* Set up default values */
 		$defaults = array(
+			'purchase_code'   => '',
 			'update_interval' => 180,
 			'disable_ssl'     => 0,
 			'enable_log'      => 0,

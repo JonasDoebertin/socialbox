@@ -37,14 +37,13 @@ require_once JD_SOCIALBOX_PATH . '/classes/SocialBoxWidget.php';
 require_once JD_SOCIALBOX_PATH . '/classes/SocialBoxConnector.php';
 require_once JD_SOCIALBOX_PATH . '/classes/SocialBoxHelper.php';
 require_once JD_SOCIALBOX_PATH . '/classes/SocialBoxUpgrader.php';
+require_once JD_SOCIALBOX_PATH . '/classes/SocialBoxUpdater.php';
 require_once JD_SOCIALBOX_PATH . '/classes/SocialBoxTranslator.php';
 
 
 /**
  * Load vendor classes
  */
-// require_once JD_SOCIALBOX_PATH . '/vendor/abraham/twitteroauth/OAuth.php';
-// require_once JD_SOCIALBOX_PATH . '/vendor/abraham/twitteroauth/TwitterOAuth.php';
 require JD_SOCIALBOX_PATH . 'vendor/jdpowered/twitteroauth/loader.php';
 
 
