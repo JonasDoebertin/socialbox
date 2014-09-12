@@ -2,8 +2,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SocialBox\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-25 14:14+0100\n"
-"PO-Revision-Date: 2014-08-25 14:15+0100\n"
+"POT-Creation-Date: 2014-09-12 15:34+0100\n"
+"PO-Revision-Date: 2014-09-12 15:35+0100\n"
 "Last-Translator: Jonas Döbertin <hallo@jonasdoebertin.net>\n"
 "Language-Team: Jonas Döbertin <support@jd-powered.net>\n"
 "Language: en_US\n"
@@ -15,94 +15,114 @@ msgstr ""
 "esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.6.8\n"
+"X-Generator: Poedit 1.6.9\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../classes/SocialBox.php:108
 msgid "Every Ten Minutes"
 msgstr ""
 
-#: ../classes/SocialBox.php:227
+#: ../classes/SocialBox.php:166
 msgid "SocialBox Settings"
 msgstr ""
 
-#: ../classes/SocialBox.php:227 ../views/options-page/frame.php:19
+#: ../classes/SocialBox.php:166 ../views/options-page/frame.php:19
 msgid "Settings"
 msgstr ""
 
-#: ../classes/SocialBox.php:321
+#: ../classes/SocialBox.php:260
 msgid "Classic (default)"
 msgstr ""
 
-#: ../classes/SocialBox.php:328
+#: ../classes/SocialBox.php:267
 msgid "Modern"
 msgstr ""
 
-#: ../classes/SocialBox.php:335
+#: ../classes/SocialBox.php:274
 msgid "Tuts+ Flavor"
 msgstr ""
 
-#: ../classes/SocialBox.php:342
+#: ../classes/SocialBox.php:281
 msgid "Dark"
 msgstr ""
 
-#: ../classes/SocialBox.php:349
+#: ../classes/SocialBox.php:288
 msgid "Colorful"
 msgstr ""
 
-#: ../classes/SocialBox.php:362
+#: ../classes/SocialBox.php:301
 msgid "Plain (small icons)"
 msgstr ""
 
-#: ../classes/SocialBox.php:369
+#: ../classes/SocialBox.php:308
 msgid "Plain (large icons)"
 msgstr ""
 
-#: ../classes/SocialBox.php:436
+#: ../classes/SocialBox.php:375
+msgid "Automatic Updates"
+msgstr ""
+
+#: ../classes/SocialBox.php:382
+msgid "Purchase Code"
+msgstr ""
+
+#: ../classes/SocialBox.php:392
 msgid "Advanced Settings"
 msgstr ""
 
-#: ../classes/SocialBox.php:443
+#: ../classes/SocialBox.php:399
 msgid "Update Interval"
 msgstr ""
 
-#: ../classes/SocialBox.php:452
+#: ../classes/SocialBox.php:408
 msgid "SSL-Verification"
 msgstr ""
 
-#: ../classes/SocialBox.php:462
+#: ../classes/SocialBox.php:418
+msgid ""
+"Enter your Envato Market purchase code to receive automatic plugin updates."
+msgstr ""
+
+#: ../classes/SocialBox.php:424
+msgid ""
+"Enter your Envato Market purchase code for SocialBox. <a href=\"http://"
+"support.envato.com/index.php?/Knowledgebase/Article/View/506/54/where-can-i-"
+"find-my-purchase-code\">Where can I find my Purchase Code?</a>"
+msgstr ""
+
+#: ../classes/SocialBox.php:431
 msgid "Some advanced options to tweak SocialBox's internals"
 msgstr ""
 
-#: ../classes/SocialBox.php:468
+#: ../classes/SocialBox.php:437
 msgid ""
 "The time (in minutes) that SocialBox waits before refreshing it's data. "
 "(Default: 180 = 3 hours)"
 msgstr ""
 
-#: ../classes/SocialBox.php:476
+#: ../classes/SocialBox.php:445
 msgid "Disable SSL-Verification on API requests."
 msgstr ""
 
-#: ../classes/SocialBox.php:477
+#: ../classes/SocialBox.php:446
 msgid "This can be useful on most \"local servers\" like MAMP or XAMPP."
 msgstr ""
 
-#: ../classes/SocialBox.php:498 ../classes/SocialBox.php:499
+#: ../classes/SocialBox.php:467 ../classes/SocialBox.php:468
 #: ../views/options-page/frame.php:18 ../views/update.php:16
 msgid "SocialBox"
 msgstr ""
 
-#: ../classes/SocialBox.php:577 ../classes/SocialBox.php:593
-#: ../classes/SocialBox.php:612
+#: ../classes/SocialBox.php:546 ../classes/SocialBox.php:562
+#: ../classes/SocialBox.php:581
 msgid "Security check failed!"
 msgstr ""
 
-#: ../classes/SocialBox.php:600
+#: ../classes/SocialBox.php:569
 msgid "Cache cleared!"
 msgstr ""
 
-#: ../classes/SocialBox.php:622
+#: ../classes/SocialBox.php:591
 msgid "Cache refreshed!"
 msgstr ""
 
@@ -319,6 +339,16 @@ msgstr ""
 msgid "Newsletter"
 msgstr ""
 
+#: ../classes/SocialBoxUpdater.php:95
+msgid ""
+"An Unexpected HTTP Error occurred during the API request.</p> <p><a href=\"?"
+"\" onclick=\"document.location.reload(); return false;\">Try again</a>"
+msgstr ""
+
+#: ../classes/SocialBoxUpdater.php:101
+msgid "An unknown error occurred"
+msgstr ""
+
 #: ../classes/SocialBoxWidget.php:29
 msgid ""
 "A super easy widget which displays various statistics from Facebook, "
@@ -326,63 +356,67 @@ msgid ""
 "Dribbble, Forrst, GitHub and MailChimp."
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:398
+#: ../classes/SocialBoxWidget.php:400
 msgid "Like"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:400 ../classes/SocialBoxWidget.php:406
-#: ../classes/SocialBoxWidget.php:408 ../classes/SocialBoxWidget.php:410
-#: ../classes/SocialBoxWidget.php:412 ../classes/SocialBoxWidget.php:414
-#: ../classes/SocialBoxWidget.php:416
+#: ../classes/SocialBoxWidget.php:402 ../classes/SocialBoxWidget.php:404
+#: ../classes/SocialBoxWidget.php:410 ../classes/SocialBoxWidget.php:412
+#: ../classes/SocialBoxWidget.php:414 ../classes/SocialBoxWidget.php:416
+#: ../classes/SocialBoxWidget.php:418 ../classes/SocialBoxWidget.php:420
 msgid "Follow"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:402 ../classes/SocialBoxWidget.php:404
-#: ../classes/SocialBoxWidget.php:418
+#: ../classes/SocialBoxWidget.php:406 ../classes/SocialBoxWidget.php:408
+#: ../classes/SocialBoxWidget.php:422
 msgid "Subscribe"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:426
+#: ../classes/SocialBoxWidget.php:430
 msgid "Like on Facebook"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:428
+#: ../classes/SocialBoxWidget.php:432
 msgid "Follow on Twitter"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:430
-msgid "Subscribe to Youtube Channel"
-msgstr ""
-
-#: ../classes/SocialBoxWidget.php:432
-msgid "Subscribe to Vimeo Channel"
-msgstr ""
-
 #: ../classes/SocialBoxWidget.php:434
-msgid "Follow on Instagram"
+msgid "Follow on Google+"
 msgstr ""
 
 #: ../classes/SocialBoxWidget.php:436
-msgid "Follow on Pinterest"
+msgid "Subscribe to Youtube Channel"
 msgstr ""
 
 #: ../classes/SocialBoxWidget.php:438
-msgid "Follow on Dribbble"
+msgid "Subscribe to Vimeo Channel"
 msgstr ""
 
 #: ../classes/SocialBoxWidget.php:440
-msgid "Follow on SoundCloud"
+msgid "Follow on Instagram"
 msgstr ""
 
 #: ../classes/SocialBoxWidget.php:442
-msgid "Follow on Forrst"
+msgid "Follow on Pinterest"
 msgstr ""
 
 #: ../classes/SocialBoxWidget.php:444
-msgid "Follow on GitHub"
+msgid "Follow on Dribbble"
 msgstr ""
 
 #: ../classes/SocialBoxWidget.php:446
+msgid "Follow on SoundCloud"
+msgstr ""
+
+#: ../classes/SocialBoxWidget.php:448
+msgid "Follow on Forrst"
+msgstr ""
+
+#: ../classes/SocialBoxWidget.php:450
+msgid "Follow on GitHub"
+msgstr ""
+
+#: ../classes/SocialBoxWidget.php:452
 msgid "Subscribe to newsletter"
 msgstr ""
 
