@@ -27,6 +27,7 @@ class JD_SocialBox{
 
 	/**
 	 * Holds the updater class
+	 * @since 1.7.2
 	 */
 	protected $updater;
 
@@ -55,15 +56,6 @@ class JD_SocialBox{
 
 		/* Backend only stuff */
 		if(is_admin()){
-
-			/* Display update notice */
-			if(in_array($pagenow, array('index.php', 'plugins.php'))) {
-				$info = get_option('socialbox_update', array());
-				if(isset($info['update_available']) and $info['update_available']) {
-					add_action('admin_notices', array($this, 'addAdminNotice'));
-					add_action('admin_enqueue_scripts', array($this, 'registerUpdateNagStyle'));
-				}
-			}
 
 			/* Add custom "Settings" link to plugin actions */
 			add_action('plugin_action_links_' . JD_SOCIALBOX_BASENAME, array($this, 'addPluginActionLink'));
@@ -118,6 +110,11 @@ class JD_SocialBox{
 		return $schedules;
 	}
 
+	/**
+	 * Load updater class if user entered purchase code
+	 *
+	 * @since 1.7.2
+	 */
 	protected function maybeLoadUpdater()
 	{
 		$license = JD_SocialBoxHelper::getOption('purchase_code');
@@ -159,16 +156,11 @@ class JD_SocialBox{
 	}
 
 	/**
-	 * Output an update notice on admin screens
+	 * [addPluginActionLink description]
 	 *
-	 * Will be run within "admin_notices" action
+	 * @param  array $actionLinks
+	 * @return array
 	 */
-	public function addAdminNotice(){
-
-		$info = get_option('socialbox_update', array());
-		include JD_SOCIALBOX_PATH . '/views/update.php';
-	}
-
 	public function addPluginActionLink($actionLinks){
 
 		$html = '<a href="options-general.php?page=socialbox&tab=settings" title="' . __('SocialBox Settings', 'socialbox') . '">' . __('Settings', 'socialbox') . '</a>';
