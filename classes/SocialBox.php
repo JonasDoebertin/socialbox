@@ -26,11 +26,20 @@ class JD_SocialBox{
 	protected $settingsPageSlug;
 
 	/**
+	 * Holds the updater class
+	 * @since 1.7.2
+	 */
+	protected $updater;
+
+	/**
 	 * Create an instance of the plugin
 	 */
 	public function __construct(){
 
 		global $pagenow;
+
+		/* Load updater class */
+		$this->maybeLoadUpdater();
 
 		/* Inject custom cron schedule */
 		add_filter('cron_schedules', array($this, 'addCronSchedule'));
@@ -47,15 +56,6 @@ class JD_SocialBox{
 
 		/* Backend only stuff */
 		if(is_admin()){
-
-			/* Display update notice */
-			if(in_array($pagenow, array('index.php', 'plugins.php'))) {
-				$info = get_option('socialbox_update', array());
-				if(isset($info['update_available']) and $info['update_available']) {
-					add_action('admin_notices', array($this, 'addAdminNotice'));
-					add_action('admin_enqueue_scripts', array($this, 'registerUpdateNagStyle'));
-				}
-			}
 
 			/* Add custom "Settings" link to plugin actions */
 			add_action('plugin_action_links_' . JD_SOCIALBOX_BASENAME, array($this, 'addPluginActionLink'));
@@ -111,63 +111,16 @@ class JD_SocialBox{
 	}
 
 	/**
-	 * Fetch update information and store it to the database
+	 * Load updater class if user entered purchase code
 	 *
-	 * This will be executed as scheduled cron event
+	 * @since 1.7.2
 	 */
-	public static function updatePlugin() {
-
-		/* Build query string */
-		$data = array(
-			'slug'            => 'socialboxwp',
-			'current_version' => JD_SOCIALBOX_VERSION,
-			'host'            => preg_replace('/^www\./','',$_SERVER['SERVER_NAME'])
-		);
-
-		/* Fetch latest version */
-		$result = wp_remote_get('http://updates.jd-powered.net/?' . http_build_query($data));
-
-		/* Check for common errors */
-		if(is_wp_error($result) or (wp_remote_retrieve_response_code($result) != 200)) {
-
-			/* Update info and abort */
-			update_option('socialbox_update', array(
-				'last_checked'     => time(),
-				'update_available' => false
-			));
-			return;
-		}
-
-		/* Decode response */
-		$response = json_decode(wp_remote_retrieve_body($result), true);
-
-		/* Check for incorrect data */
-		if(isset($response['error']) or !isset($response['latest_version'])) {
-
-			/* Update info and abort */
-			update_option('socialbox_update', array(
-				'last_checked'     => time(),
-				'update_available' => false
-			));
-			return;
-		}
-
-		/* Check if remote version is newer */
-		if(version_compare($response['latest_version'], JD_SOCIALBOX_VERSION) == 1) {
-
-			update_option('socialbox_update', array(
-				'last_checked'     => time(),
-				'update_available' => true,
-				'latest_version'   => $response['latest_version'],
-				'download_url'     => $response['download_url'],
-				'product_url'      => $response['product_url']
-			));
-		} else {
-
-			update_option('socialbox_update', array(
-				'last_checked'     => time(),
-				'update_available' => false
-			));
+	protected function maybeLoadUpdater()
+	{
+		$license = JD_SocialBoxHelper::getOption('purchase_code');
+		if( ! empty($license))
+		{
+			$this->updater = new WPUpdatesPluginUpdater_691('http://wp-updates.com/api/2/plugin', JD_SOCIALBOX_BASENAME, $license);
 		}
 	}
 
@@ -183,17 +136,12 @@ class JD_SocialBox{
 		$upgrader->run();
 
 		/* Add options */
-		add_option('socialbox_update', array());
 		add_option('socialbox_options', array());
 		add_option('socialbox_cache', array());
 		add_option('socialbox_log', array());
 
 		/* Register cron events */
 		wp_schedule_event(time(), 'everytenminutes', 'socialbox_update_cache');
-		wp_schedule_event(time(), 'daily', 'socialbox_update_plugin');
-
-		/* Trigger initial update check */
-		self::updatePlugin();
 	}
 
 	/**
@@ -203,25 +151,16 @@ class JD_SocialBox{
 	 */
 	public static function deactivatePlugin(){
 
-		/* Delete options */
-		delete_option('socialbox_update');
-
 		/* Deregister cron events */
 		wp_clear_scheduled_hook('socialbox_update_cache');
-		wp_clear_scheduled_hook('socialbox_update_plugin');
 	}
 
 	/**
-	 * Output an update notice on admin screens
+	 * [addPluginActionLink description]
 	 *
-	 * Will be run within "admin_notices" action
+	 * @param  array $actionLinks
+	 * @return array
 	 */
-	public function addAdminNotice(){
-
-		$info = get_option('socialbox_update', array());
-		include JD_SOCIALBOX_PATH . '/views/update.php';
-	}
-
 	public function addPluginActionLink($actionLinks){
 
 		$html = '<a href="options-general.php?page=socialbox&tab=settings" title="' . __('SocialBox Settings', 'socialbox') . '">' . __('Settings', 'socialbox') . '</a>';
@@ -430,6 +369,23 @@ class JD_SocialBox{
 			null
 		);
 
+		/* Register settings section for "Automatic Updates" */
+		add_settings_section(
+			'socialbox_autoupdate',
+			__('Automatic Updates', 'socialbox'),
+			array($this, 'printAutomaticUpdatesSection'),
+			'socialbox'
+		);
+
+		add_settings_field(
+			'purchase_code',
+			__('Purchase Code', 'socialbox'),
+			array($this, 'printPurchaseCodeField'),
+			'socialbox',
+			'socialbox_autoupdate',
+			array('label_for' => 'socialbox_purchase_code')
+		);
+
 		/* Register settings section for "Advanced Settings" */
 		add_settings_section(
 			'socialbox_advanced',
@@ -455,6 +411,19 @@ class JD_SocialBox{
 			'socialbox' . '_advanced',
 			array('label_for' => 'socialbox_disable_ssl')
 		);
+	}
+
+	public function printAutomaticUpdatesSection(){
+
+		echo '<p>' . __('Enter your Envato Market purchase code to receive automatic plugin updates.', 'socialbox') . '</p>';
+	}
+
+	public function printPurchaseCodeField($args){
+
+		$html = '<input type="text" id="' . $args['label_for'] . '" name="socialbox_options[purchase_code]" value="' . JD_SocialBoxHelper::getOption('purchase_code') . '" />';
+		$html .= '<p class="description">' . __('Enter your Envato Market purchase code for SocialBox. <a href="http://support.envato.com/index.php?/Knowledgebase/Article/View/506/54/where-can-i-find-my-purchase-code">Where can I find my Purchase Code?</a>', 'socialbox') . '</p>';
+
+		echo $html;
 	}
 
 	public function printAdvancedSettingsSection(){
