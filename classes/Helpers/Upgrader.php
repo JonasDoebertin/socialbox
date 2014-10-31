@@ -90,6 +90,15 @@ class Upgrader{
             $this->do171Upgrade();
         }
 
+        /*
+            Upgrading to 1.7.2
+            Remove old plugin update cron schedule
+         */
+        if($this->lastVersionLowerThan('1.7.2'))
+        {
+            $this->do172Cleanup();
+        }
+
 
         /*
             Always
@@ -187,7 +196,10 @@ class Upgrader{
         ));
     }
 
-    protected function do180Upgrade()
+    /**
+     * [do172Cleanup description]
+     */
+    protected function do172Cleanup()
     {
         /*
             First step:
@@ -200,6 +212,21 @@ class Upgrader{
             Remove all old cron schedules.
          */
         wp_clear_scheduled_hook('socialbox_update_plugin');
+    }
+
+    protected function do180Upgrade()
+    {
+        // /*
+        //     First step:
+        //     Remove all old options.
+        //  */
+        // delete_option('socialbox_update');
+        //
+        // /*
+        //     Second step:
+        //     Remove all old cron schedules.
+        //  */
+        // wp_clear_scheduled_hook('socialbox_update_plugin');
     }
 
     /**
@@ -282,7 +309,7 @@ class Upgrader{
                 }
             }
         }
-        
+
         /* Resave updated widget instances */
         update_option('widget_socialbox', $widgets);
     }
