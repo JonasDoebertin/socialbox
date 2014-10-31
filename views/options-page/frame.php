@@ -16,7 +16,6 @@
 	<?php screen_icon(); ?>
 	<h2 class="nav-tab-wrapper">
 		<?php _e('SocialBox', 'socialbox'); ?>
-		<a class="nav-tab <?php if($tab == 'license') echo 'nav-tab-active'; ?>" href="?page=socialbox&amp;tab=license"><?php _e('License', 'socialbox'); ?></a>
 		<a class="nav-tab <?php if($tab == 'settings') echo 'nav-tab-active'; ?>" href="?page=socialbox&amp;tab=settings"><?php _e('Settings', 'socialbox'); ?></a>
 		<a class="nav-tab <?php if($tab == 'help') echo 'nav-tab-active'; ?>" href="?page=socialbox&amp;tab=help"><?php _e('Help', 'socialbox'); ?></a>
 		<a class="nav-tab <?php if($tab == 'log') echo 'nav-tab-active'; ?>" href="?page=socialbox&amp;tab=log"><?php _e('Log', 'socialbox'); ?></a>

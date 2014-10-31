@@ -40,7 +40,7 @@ class TwitterConnector extends BaseConnector implements ConnectorInterface {
         /*
             Fetch data from API
          */
-        $result = $this->get('users/show', array('screen_name' => $this->args['id'], 'include_entities' => false));
+        $result = $this->getFromWrapper('users/show', array('screen_name' => $this->args['id'], 'include_entities' => false));
 
         /*
             Check for http errors
@@ -80,7 +80,7 @@ class TwitterConnector extends BaseConnector implements ConnectorInterface {
      * @param  array  $args
      * @return object
      */
-    protected function get($endpoint, $args)
+    protected function getFromWrapper($endpoint, $args)
     {
         return $this->twitter->get($endpoint, $args);
     }
