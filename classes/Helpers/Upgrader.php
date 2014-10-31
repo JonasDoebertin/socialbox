@@ -73,12 +73,21 @@ class Upgrader{
         }
 
         /*
-            Upgradeing to 1.7.0
+            Upgrading to 1.7.0
             Inject the default values for the newly added metrics.
          */
         if($this->lastVersionLowerThan('1.7.0'))
         {
             $this->do170Upgrade();
+        }
+
+        /*
+            Upgrading to 1.7.1
+            Inject the default values for the newly added Facebook app credentials
+         */
+        if($this->lastVersionLowerThan('1.7.1'))
+        {
+            $this->do171Upgrade();
         }
 
 
@@ -160,6 +169,24 @@ class Upgrader{
         ));
     }
 
+    /**
+     * [do171Upgrade description]
+     */
+    protected function do171Upgrade()
+    {
+        /*
+            Only step:
+            Set the default Facebook App ID and secret for all widgets and cache
+            items.
+         */
+        $this->setDefaultValues(array(
+            'facebook' => array(
+                'app_id'     => '',
+                'app_secret' => '',
+            ),
+        ));
+    }
+
     protected function do180Upgrade()
     {
         /*
@@ -203,16 +230,33 @@ class Upgrader{
      */
     protected function setDefaultMetrics($metrics)
     {
-        $this->setDefaultWidgetMetrics($metrics);
-        $this->setDefaultCacheMetrics($metrics);
+        $values = array();
+        foreach($metrics as $network => $value)
+        {
+            $values[$network] = array('metric', $value);
+        }
+
+        $this->setDefaultValues($values);
     }
 
     /**
-     * [setDefaultWidgetMetrics description]
+     * [setDefaultValues description]
      *
-     * @param array $metrics
+     * @param array $values
      */
-    protected function setDefaultWidgetMetrics($metrics)
+    protected function setDefaultValues($values)
+    {
+        $this->setDefaultWidgetValues($values);
+        $this->setDefaultCacheValues($values);
+    }
+
+
+    /**
+     * [setDefaultWidgetValues description]
+     *
+     * @param array $values
+     */
+    protected function setDefaultWidgetValues($values)
     {
         /* Get all SocialBox widget instances */
         $widgets = get_option('widget_socialbox', array());
@@ -226,28 +270,29 @@ class Upgrader{
             if(!is_array($widget))
                 continue;
 
-            /* Loop through all metrics that shall be set */
-            foreach($metrics as $network => $metric)
+            /* Loop through all values that shall be set */
+            foreach($values as $network => $options)
             {
-                /* If the metric is not set or is empty... */
-                if(!isset($widget[$network . '_metric']) or empty($widget[$network . '_metric']))
+                foreach($options as $option => $value)
                 {
-                    /* ...set default value. */
-                    $widget[$network . '_metric'] = $metric;
+                    if( ! isset($widget[$network . '_' . $option]) or empty($widget[$network . '_' . $option]))
+                    {
+                        $widget[$network . '_' . $option] = $value;
+                    }
                 }
             }
         }
-
+        
         /* Resave updated widget instances */
         update_option('widget_socialbox', $widgets);
     }
 
     /**
-     * [setDefaultCacheMetrics description]
+     * [setDefaultCacheValues description]
      *
-     * @param array $metrics
+     * @param array $values
      */
-    protected function setDefaultCacheMetrics($metrics)
+    protected function setDefaultCacheValues($values)
     {
         /* Get cache from database */
         $cache = get_option('socialbox_cache', array());
@@ -257,18 +302,21 @@ class Upgrader{
         /* Loop through all available networks */
         foreach($cache as &$item)
         {
-            /* Skip if we don't have a metric to set for this items network */
-            if(!isset($metrics[$item['network']]))
+            /* Skip if we don't have a value to set for this items network */
+            if( ! array_key_exists($item['network'], $values))
                 continue;
 
-            /* If the metric is not set or is empty... */
-            if(!isset($item['metric']) or empty($item['metric']))
+            /* Loop through all values that shall be set */
+            foreach($values[$item['network']] as $key => $value)
             {
-                /* ...set default value. */
-                $item['metric'] = $metrics[$item['network']];
+                /* If the value is not set or is empty... */
+                if( ! isset($item[$key]) or empty($item[$key]))
+                {
+                    /* ...set default value. */
+                    $item[$key] = $value;
+                }
             }
         }
-
         update_option('socialbox_cache', $cache);
     }
 

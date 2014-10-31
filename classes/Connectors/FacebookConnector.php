@@ -14,11 +14,23 @@ class FacebookConnector extends BaseConnector implements ConnectorInterface {
     public function fire()
     {
         /*
-            Fetch data from Graph API
-         */
-        $result = $this->get('https://graph.facebook.com/' . $this->args['id']);
-
-        /* TODO: Facebook Graph API v2.0 */
+			Check if an App ID and an App Secret are set
+		 */
+		if(isset($this->args['app_id']) and ! empty($this->args['app_id']) and
+		   isset($this->args['app_secret']) and ! empty($this->args['app_secret']))
+		{
+			/*
+				If yes, use Facebook API v2.0
+			 */
+            $result = $this->get(sprintf('https://graph.facebook.com/v2.1/%s?access_token=%s|%s', $item['id'], $item['app_id'], $item['app_secret']));
+		}
+		else
+		{
+			/*
+				If no, use Facebook API v1.0
+			*/
+			$result = $this->get('https://graph.facebook.com/' . $this->args['id']);
+		}
 
         /*
             Check for common errors
