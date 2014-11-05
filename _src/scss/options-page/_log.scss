@@ -1,0 +1,48 @@
+/**
+ * Log
+ */
+
+
+.socialbox-log{
+
+    .empty-log{
+        font-weight: bold;
+        padding: 10px;
+        text-align: center;
+    }
+
+    .socialbox-log__line {
+        margin: 0px -15px;
+        padding: 8px 50px 8px 15px;
+        font-family: Consolas, Monaco, monospace;
+        position: relative;
+
+        &:last-child {
+            margin-bottom: -15px;
+            border-bottom-right-radius: 4px;
+            border-bottom-left-radius: 4px;
+        }
+    }
+
+        .socialbox-log__line__context {
+            position: absolute;
+            right: 15px;
+        }
+
+    .success{
+        background-color: tint(#BDECB6, 30%);
+
+        &.alternate{
+            background-color: #BDECB6;
+        }
+    }
+
+    .error{
+        background-color: tint(#FF7878, 20%);
+
+        &.alternate{
+            background-color: #FF7878;
+        }
+    }
+
+}

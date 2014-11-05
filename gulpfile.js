@@ -4,7 +4,11 @@ var gulp       = require('gulp'),
     zip        = require('gulp-zip'),
     sass       = require('gulp-sass'),
     autoprefix = require('gulp-autoprefixer'),
-    minifyCSS  = require('gulp-minify-css');
+    minifyCSS  = require('gulp-minify-css'),
+    jshint     = require('gulp-jshint'),
+    stylish    = require('jshint-stylish'),
+    uglify     = require('gulp-uglify'),
+    include    = require('gulp-include');
 
 
 var releasePaths = [
@@ -39,11 +43,24 @@ gulp.task('css', function() {
 });
 
 
+/*
+    Task: Combine and uglify JS
+ */
+gulp.task('js', function() {
+    return gulp.src('_src/js/*.js')
+        .pipe(include())
+        .pipe(jshint())
+        .pipe(jshint.reporter('jshint-stylish'))
+        .pipe(jshint.reporter('fail'))
+        .pipe(uglify())
+        .pipe(gulp.dest('assets/js'));
+});
+
 
 /*
     Release a package
  */
-gulp.task('release', ['css'], function() {
+gulp.task('release', ['css', 'js'], function() {
 
     /* Create package zip file */
     gulp.src(releasePaths)
@@ -63,6 +80,7 @@ gulp.task('release', ['css'], function() {
  */
 gulp.task('watch', function() {
     gulp.watch('_src/scss/**/*.scss', ['css']);
+    gulp.watch('_src/js/**/*.js', ['js']);
 });
 
 /*

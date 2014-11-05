@@ -18,7 +18,7 @@
 		<?php _e('SocialBox', 'socialbox'); ?>
 		<a class="nav-tab <?php if($tab == 'settings') echo 'nav-tab-active'; ?>" href="?page=socialbox&amp;tab=settings"><?php _e('Settings', 'socialbox'); ?></a>
 		<a class="nav-tab <?php if($tab == 'help') echo 'nav-tab-active'; ?>" href="?page=socialbox&amp;tab=help"><?php _e('Help', 'socialbox'); ?></a>
-		<a class="nav-tab <?php if($tab == 'log') echo 'nav-tab-active'; ?>" href="?page=socialbox&amp;tab=log"><?php _e('Log', 'socialbox'); ?></a>
+		<a class="nav-tab <?php if($tab == 'debug') echo 'nav-tab-active'; ?>" href="?page=socialbox&amp;tab=debug"><?php _e('Debug', 'socialbox'); ?></a>
 	</h2>
 
 	<?php
@@ -26,8 +26,8 @@
 			case 'settings':
 				include JD_SOCIALBOX_PATH . '/views/options-page/settings.php';
 				break;
-			case 'log':
-				include JD_SOCIALBOX_PATH . '/views/options-page/log.php';
+			case 'debug':
+				include JD_SOCIALBOX_PATH . '/views/options-page/debug.php';
 				break;
 			case 'help':
 			default:

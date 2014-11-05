@@ -1,4 +1,4 @@
-//@prepros-prepend "options-page/smooth-scroll-4.5.js"
+//= include options-page/smooth-scroll-4.5.js
 
 
 
@@ -8,6 +8,34 @@
 	$SMOOTH SCROLLING
 \*------------------------------------*/
 smoothScroll.init();
+
+
+
+
+
+/*------------------------------------*\
+	$LOG CONTEXTS
+\*------------------------------------*/
+jQuery(function($) {
+
+	var $contextIcons = $('.js-socialbox-context');
+
+
+    $contextIcons.each(function() {
+
+		var $this = $(this);
+
+		$this.tooltipster({
+			content: $this.attr('data-message'),
+			maxWidth: 700,
+			position: 'top-right',
+			theme: 'tooltipster-socialbox'
+		});
+
+	});
+
+
+});
 
 
 
