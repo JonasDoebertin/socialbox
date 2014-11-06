@@ -63,7 +63,22 @@ $addons = $this->detectAddons();
             </div>
         </div>
 
+    </div>
 
+    <!-- Newsletter -->
+    <div class="socialbox-options__section  socialbox-options__section--news">
+        <h3><?php _e('Stay Up to Date', 'socialbox') ?> <span><?php _e('New addons, the latest plugins and more...', 'socialbox') ?></span></h3>
+
+        <!-- Begin MailChimp Signup Form -->
+        <div class="socialbox-addons__news">
+            <form action="//jd-powered.us2.list-manage.com/subscribe/post?u=66a82b91ff1c411db14b08c57&amp;id=5680677674" method="post"  name="mc-embedded-subscribe-form" target="_blank" novalidate>
+                <input type="email" value="" name="EMAIL" placeholder="<?php _e('ben@smith.com', 'socialbox') ?>" />
+                <input type="text" name="b_66a82b91ff1c411db14b08c57_5680677674" tabindex="-1" value="" style="position: absolute; left: -5000px;" />
+                <input type="submit" value="Subscribe" name="subscribe" />
+            </form>
+        </div>
+
+        <!--End mc_embed_signup-->
 
     </div>
 
