@@ -240,6 +240,11 @@ class Upgrader{
         wp_clear_scheduled_hook('socialbox_update_cache');
         wp_clear_scheduled_hook('socialbox_update_plugin');
         wp_clear_scheduled_hook('socialbox_check_for_update');
+
+        /*
+            Clear old api log lines
+         */
+        update_option('socialbox_log', array());
     }
 
 
