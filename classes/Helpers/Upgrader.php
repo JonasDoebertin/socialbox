@@ -22,9 +22,9 @@ class Upgrader{
     \**************************************************************************/
 
     /**
-     * [__construct description]
+     * Store last used and current versions
      *
-     * @return JD_SocialBoxUpgrader
+     * @return jdpowered\SocialBox\Helpers\Upgrader
      */
     public function __construct()
     {
@@ -48,7 +48,7 @@ class Upgrader{
     \**************************************************************************/
 
     /**
-     * [run description]
+     * Run all the upgrade steps
      */
     public function run()
     {

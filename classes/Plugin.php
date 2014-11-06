@@ -7,7 +7,7 @@ use jdpowered\SocialBox\Helpers\Updater;
 use jdpowered\SocialBox\Helpers\Upgrader;
 use jdpowered\SocialBox\Logging\Factory as LogFactory;
 
-class Plugin{
+class Plugin {
 
 	/**
 	 * Complete list of supported networks
@@ -16,6 +16,8 @@ class Plugin{
 
 	/**
 	 * Holds the slug of the settings page, once it has been registered
+	 *
+	 * @type string
 	 */
 	protected $settingsPageSlug;
 
@@ -36,8 +38,8 @@ class Plugin{
 	/**
 	 * Create an instance of the plugin
 	 */
-	public function __construct(){
-
+	public function __construct()
+	{
 		global $pagenow;
 
 		/*
@@ -50,7 +52,6 @@ class Plugin{
 
 		/* Register custom actions */
 		add_action('socialbox_update_cache', array($this, 'updateCache'));
-		// add_action('socialbox_update_plugin', array($this, 'updatePlugin'));
 
 		/* Register Widget */
 		add_action('widgets_init', array($this, 'registerWidget'));
@@ -64,8 +65,8 @@ class Plugin{
 		$this->updater = new Updater('http://wp-updates.com/api/2/plugin', JD_SOCIALBOX_BASENAME, HELPER::getOption('purchase_code'));
 
 		/* Backend only stuff */
-		if(is_admin()){
-
+		if(is_admin())
+		{
 			/* Add custom "Settings" link to plugin actions */
 			add_action('plugin_action_links_' . JD_SOCIALBOX_BASENAME, array($this, 'addPluginActionLink'));
 
@@ -79,7 +80,6 @@ class Plugin{
 			add_action('admin_init', array($this, 'registerSettings'));
 
 			/* Register styles for options page */
-			//add_action('admin_print_styles-settings_page_socialbox', array($this, 'registerOptionsPageStyle'));
 			add_action('admin_enqueue_scripts', array($this, 'registerOptionsPageScripts'));
 
 			/* Register custum actions for options page */
@@ -87,9 +87,9 @@ class Plugin{
 			add_action('wp_ajax_socialbox_clear_cache', array($this, 'ajaxClearCache'));
 			add_action('wp_ajax_socialbox_refresh_cache', array($this, 'ajaxRefreshCache'));
 
-		/* Fronted only stuff */
-		} else if(is_active_widget(false, false, 'socialbox', true)){
-
+		} /* Fronted only stuff */
+		else if(is_active_widget(false, false, 'socialbox', true))
+		{
 			/* Register SocialBox widget styles */
 			add_action('wp_enqueue_scripts', array($this, 'registerStyle'));
 		}
@@ -109,8 +109,8 @@ class Plugin{
 	 * @param Array $schedules Preexisting cron schedule timeframes
 	 * @return Array Extended cron schedule timeframes
 	 */
-	public function addCronSchedule($schedules) {
-
+	public function addCronSchedule($schedules)
+	{
 		/* Add "Every Ten Minutes" for cache updates */
 		$schedules['everytenminutes'] = array(
 			'interval' => 600,
@@ -150,10 +150,9 @@ class Plugin{
 		wp_clear_scheduled_hook('socialbox_update_cache');
 	}
 
-	public function addPluginActionLink($actionLinks){
-
+	public function addPluginActionLink($actionLinks)
+	{
 		$html = '<a href="options-general.php?page=socialbox&tab=settings" title="' . __('SocialBox Settings', 'socialbox') . '">' . __('Settings', 'socialbox') . '</a>';
-
 		array_unshift($actionLinks, $html);
 		return $actionLinks;
 	}
@@ -169,7 +168,7 @@ class Plugin{
     /**
      * Register the Widget
      *
-     * Will be run within "widgets_init" action
+     * @action widgets_init
      */
     public function registerWidget()
 	{
@@ -179,10 +178,10 @@ class Plugin{
 	/**
 	 * Register & enqueue the widgets stylesheet
 	 *
-	 * Will be run in "wp_print_styles" action and only on frontend pages and if widget is actually used
+	 * @action wp_print_styles
 	 */
-	public function registerStyle(){
-
+	public function registerStyle()
+	{
 		/* Register style */
 		wp_register_style('socialbox', JD_SOCIALBOX_URL . '/assets/css/socialbox.css', array(), JD_SOCIALBOX_VERSION, 'screen');
 
@@ -193,11 +192,11 @@ class Plugin{
     /**
      * Register the widgets admin stylesheet
      *
-     * Will be run in "admin_print_styles-widgets.php" action and only on widgets admin page
+     * @action admin_print_styles-widgets.php
      */
     public function registerWidgetsPageStyle(){
 
-        /* register Style */
+        /* Register Style */
         wp_register_style('socialbox-widgets-page', JD_SOCIALBOX_URL . '/assets/css/widgets-page.css', array(), JD_SOCIALBOX_VERSION, 'screen');
 
         /* Enqueue Style */
@@ -212,6 +211,11 @@ class Plugin{
 	*                                  ADDONS                                  *
 	\**************************************************************************/
 
+	/**
+	 * Detect all installed addons
+	 *
+	 * @return array
+	 */
 	public function detectAddons()
 	{
 		return array(
@@ -229,9 +233,10 @@ class Plugin{
     *                                  THEMES                                  *
     \**************************************************************************/
 
-    public function getThemes($mode = 'grouped') {
-
-        if($mode === 'grouped') {
+    public function getThemes($mode = 'grouped')
+	{
+        if($mode === 'grouped')
+		{
             return array(
                 'core'   => self::getCoreThemes(),
                 'plain'  => self::getPlainThemes(),
@@ -242,8 +247,8 @@ class Plugin{
         return array_merge($this->getCoreThemes(), $this->getPlainThemes(), $this->getAddonThemes());
     }
 
-    protected function getCoreThemes() {
-
+    protected function getCoreThemes()
+	{
         return array(
             'classic' => array(
                 'slug'         => 'classic',
@@ -283,8 +288,8 @@ class Plugin{
         );
     }
 
-    protected function getPlainThemes() {
-
+    protected function getPlainThemes()
+	{
         return array(
             'plainsmall' => array(
                 'slug'         => 'plainsmall',
@@ -303,20 +308,20 @@ class Plugin{
         );
     }
 
-    protected function getAddonThemes() {
-
+    protected function getAddonThemes()
+	{
         $themes = array();
         return apply_filters('socialbox_addon_themes', $themes);
     }
 
-    public function getThemeBySlug($slug) {
-
+    public function getThemeBySlug($slug)
+	{
         /* Walk through all theme categories */
-        foreach($this->getThemes() as $themes) {
-
+        foreach($this->getThemes() as $themes)
+		{
             /* Walk through each theme */
-            foreach($themes as $key => $theme) {
-
+            foreach($themes as $key => $theme)
+			{
                 /* Return theme info if array key and slug match */
                 if($key == $slug)
                     return $theme;
@@ -326,8 +331,8 @@ class Plugin{
         return false;
     }
 
-    public function getThemeTexts($slug) {
-
+    public function getThemeTexts($slug)
+	{
         /* Get theme by slug */
         $theme = $this->getThemeBySlug($slug);
 
@@ -350,8 +355,8 @@ class Plugin{
 	/**
 	 * Register all setting sections and fields
 	 */
-	public function registerSettings(){
-
+	public function registerSettings()
+	{
 		/* Register setting */
 		register_setting(
 			'socialbox_options',
@@ -408,8 +413,6 @@ class Plugin{
 	/**
 	 * Output the "Purchase Code" settings field
 	 *
-	 * @since 1.8.0
-	 *
 	 * @param array $args
 	 */
 	public function printPurchaseCodeSettingsField($args)
@@ -419,20 +422,18 @@ class Plugin{
 		echo $html;
 	}
 
-	public function printUpdateIntervalSettingsField($args){
-
+	public function printUpdateIntervalSettingsField($args)
+	{
 		$html = '<input type="text" id="' . $args['label_for'] . '" name="socialbox_options[update_interval]" value="' . Helper::getOption('update_interval') . '" />';
 		$html .= '<p class="description">' . __('The time (in minutes) that SocialBox waits before refreshing it\'s data. (Default: 180 = 3 hours)', 'socialbox') . '</p>';
-
 		echo $html;
 	}
 
-	public function printDisableSslSettingsField($args){
-
+	public function printDisableSslSettingsField($args)
+	{
 	    $html = '<input type="checkbox" id="' . $args['label_for'] . '" name="socialbox_options[disable_ssl]" value="1" ' . checked(1, Helper::getOption('disable_ssl'), false) . '/>';
 	    $html .= ' <label for="' . $args['label_for'] . '">' . __('Disable SSL-Verification on API requests.', 'socialbox') . '</label>';
 	    $html .= '<p class="description">' . __('This can be useful on most "local servers" like MAMP or XAMPP.', 'socialbox') . '</p>';
-
 	    echo $html;
 	}
 
@@ -447,10 +448,10 @@ class Plugin{
     /**
      * Add the options page
      *
-     * Will be run in "admin_menu" action
+     * @action admin_menu
      */
-    public function registerOptionsPage(){
-
+    public function registerOptionsPage()
+	{
         $this->settingsPageSlug = add_options_page(
             __('SocialBox', 'socialbox'),
             __('SocialBox', 'socialbox'),
@@ -461,27 +462,15 @@ class Plugin{
     }
 
 	/**
-	 * Register & enqueue styles for the options page
-	 *
-	 * Will be run in "admin_print_styles-settings_page_socialbox" action
-	 */
-	public function registerOptionsPageStyle(){
-
-		// wp_register_style('socialbox-options', JD_SOCIALBOX_URL . '/assets/css/options-page.css', array(), JD_SOCIALBOX_VERSION, 'screen');
-		// wp_enqueue_style('socialbox-options');
-	}
-
-	/**
 	 * Register & enqueue scripts for the options page
 	 *
-	 * Will be run in "admin_enqueue_scripts-settings_page_socialbox" action
+	 * @action admin_enqueue_scripts
 	 */
 	public function registerOptionsPageScripts($hook)
 	{
-
 		/* Only on our own options page */
-		if($hook == 'settings_page_socialbox') {
-
+		if($hook == 'settings_page_socialbox')
+		{
 			/* Register vendor scripts & styles */
 			wp_register_script('tooltipster', JD_SOCIALBOX_URL . '/assets/vendor/tooltipster/js/jquery.tooltipster.min.js', array('jquery'), '3.2.6', true);
 			wp_register_style('tooltipster', JD_SOCIALBOX_URL . '/assets/vendor/tooltipster/css/tooltipster.css', array(), '3.2.6', 'all');
@@ -515,8 +504,8 @@ class Plugin{
 	 *
 	 * This will make sure, that at least the default tab is active
 	 */
-	public function renderOptionsPage(){
-
+	public function renderOptionsPage()
+	{
 		$tab = (isset($_GET['tab']) and !empty($_GET['tab'])) ? $_GET['tab'] : 'settings';
 		include JD_SOCIALBOX_PATH . '/views/options-page/frame.php';
 	}
@@ -532,12 +521,13 @@ class Plugin{
 	/**
 	 * Return formatted cache content
 	 *
-	 * Will be run through an AJAX call in "wp_ajax_socialbox_show_cache" action
+	 * @action wp_ajax_socialbox_show_cache
 	 */
-	public function ajaxShowCache() {
-
+	public function ajaxShowCache()
+	{
 		/* Security check */
-		if(!wp_verify_nonce($_POST['nonce'], $_POST['action'])) {
+		if(!wp_verify_nonce($_POST['nonce'], $_POST['action']))
+		{
 			die(__('Security check failed!', 'socialbox'));
 		}
 
@@ -548,12 +538,13 @@ class Plugin{
 	/**
 	 * Clear cache content
 	 *
-	 * Will be run through an AJAX call in "wp_ajax_socialbox_clear_cache" action
+	 * @action wp_ajax_socialbox_clear_cache
 	 */
-	public function ajaxClearCache() {
-
+	public function ajaxClearCache()
+	{
 		/* Security check */
-		if(!wp_verify_nonce($_POST['nonce'], $_POST['action'])) {
+		if(!wp_verify_nonce($_POST['nonce'], $_POST['action']))
+		{
 			die(__('Security check failed!', 'socialbox'));
 		}
 
@@ -567,12 +558,13 @@ class Plugin{
 	/**
 	 * Refresh cache content
 	 *
-	 * Will be run through an AJAX call in "wp_ajax_socialbox_refresh_cache" action
+	 * @action wp_ajax_socialbox_refresh_cache
 	 */
-	public function ajaxRefreshCache() {
-
+	public function ajaxRefreshCache()
+	{
 		/* Security check */
-		if(!wp_verify_nonce($_POST['nonce'], $_POST['action'])) {
+		if(!wp_verify_nonce($_POST['nonce'], $_POST['action']))
+		{
 			die(__('Security check failed!', 'socialbox'));
 		}
 
@@ -604,31 +596,30 @@ class Plugin{
 	public function updateCache($forced = false)
 	{
 		/* Rebuild cache structure */
-        if(!$forced) {
+        if(!$forced)
+		{
             $this->rebuildCache();
         }
 
         /* Abort if no widget has been set up */
 		$cache = get_option('socialbox_cache', null);
-		if( !is_array($cache) ){
+		if(!is_array($cache))
 			return;
-		}
 
 		/* Get refresh interval */
 		$updateInterval = Helper::getOption('update_interval');
 
 		/* Call update function for each cache element that needs to be updated */
-		foreach($cache as $item) {
-
+		foreach($cache as $item)
+		{
 			/* Calculate cache element age (in minutes) */
 			$elemAge = (time() - $item['lastUpdated']) / 60;
 
 			/* Calculate max cache item age */
 			$maxElemAge = $updateInterval - mt_rand(0, round($updateInterval / 5));
 
-			if($forced or ($elemAge >= $maxElemAge)) {
-
-				//self::updateCacheElement($item);
+			if($forced or ($elemAge >= $maxElemAge))
+			{
 				$this->updateCacheItem($item);
 			}
 		}
@@ -636,15 +627,16 @@ class Plugin{
 
 	/**
 	 * Update a single cache item
+	 *
 	 * @param  array $item
 	 */
-	public function updateCacheItem($item) {
-
+	public function updateCacheItem($item)
+	{
 		/*
 			Try to fetch the new value from connector, store and log the result
 		 */
-		try {
-
+		try
+		{
 			/*
 				Create connector object and fire it
 			 */
@@ -656,16 +648,14 @@ class Plugin{
 			 */
 			$value = $result;
 			$this->logApiSuccess($item);
-
-
-		} catch (\Exception $e) {
-
+		}
+		catch (\Exception $e)
+		{
 			/*
 				Set 0 as value and log error message with the exception
 			 */
 			$value = 0;
 			$this->logApiFailure($item, $e);
-
 		}
 
 		/* TODO: Clear log on upgrade */
@@ -685,8 +675,8 @@ class Plugin{
      *
      * Will be called right before updating the cache
      */
-    public static function rebuildCache() {
-
+    public static function rebuildCache()
+	{
         /* Get all SocialBox widget instances */
         $widgets = get_option('widget_socialbox', array());
         if(!is_array($widgets))
@@ -694,15 +684,18 @@ class Plugin{
 
         /* Make a list of all used networks */
         $items = array();
-        foreach($widgets as $widget) {
-
+        foreach($widgets as $widget)
+		{
             /* Skip configuration values */
-            if(!is_array($widget) or !array_key_exists('new_window', $widget)) {
+            if(!is_array($widget) or !array_key_exists('new_window', $widget))
+			{
                 continue;
             }
 
-            foreach(Helper::getSupportedNetworks() as $network) {
-                if(!empty($widget[$network . '_id'])) {
+            foreach(Helper::getSupportedNetworks() as $network)
+			{
+                if(!empty($widget[$network . '_id']))
+				{
                     $items[] = $network . '||' . $widget[$network . '_id'];
                 }
             }
@@ -710,8 +703,10 @@ class Plugin{
 
         /* Remove all cache items that are not on the list */
         $cache = get_option('socialbox_cache', array());
-        foreach($cache as $key => $value) {
-            if(!in_array($key, $items)) {
+        foreach($cache as $key => $value)
+		{
+            if(!in_array($key, $items))
+			{
                 unset($cache[$key]);
             }
         }
@@ -722,16 +717,16 @@ class Plugin{
 	 * Return raw cache contents
 	 * @return array
 	 */
-	public function getCache() {
-
+	public function getCache()
+	{
 		return get_option('socialbox_cache', array());
 	}
 
 	/**
 	 * Clear cache
 	 */
-	public function clearCache() {
-
+	public function clearCache()
+	{
 		update_option('socialbox_cache', array());
 	}
 
@@ -765,7 +760,8 @@ class Plugin{
 			'item' => $item
 		);
 
-		if( ! is_null($exception)) {
+		if( ! is_null($exception))
+		{
 			$context['exception'] = array(
 				'type' => get_class($exception),
 				'message' => $exception->getMessage(),

@@ -4,7 +4,7 @@ namespace jdpowered\SocialBox\Connectors;
 use jdpowered\SocialBox\Exceptions\HttpErrorException;
 use jdpowered\SocialBox\Helpers\Helper;
 
-abstract class BaseConnector implements ConnectorInterface{
+abstract class BaseConnector implements ConnectorInterface {
 
     /**
      * Connection details and arguments
@@ -15,18 +15,25 @@ abstract class BaseConnector implements ConnectorInterface{
 
     /**
      * Instantiate connector and store connection details and arguments
+     *
+     * @param array $args
      */
     public function __construct($args)
     {
         $this->args = $args;
     }
 
+    /**
+     * Will get a connection object and shall get the value
+     *
+     * @return Array
+     */
     abstract public function fire();
 
     /**
-     * [wasCommonError description]
+     * Check for WordPress errors and failed http requests
      *
-     * @param array $result
+     * @param  array $result
      * @return bool
      */
     protected function checkForCommonErrors($result)
@@ -37,9 +44,10 @@ abstract class BaseConnector implements ConnectorInterface{
     }
 
     /**
-     * [getRequestArgs description]
+     * Build http request arguments array
      *
-     * @param string $body = null
+     * @param  string $body = null
+     * @return array
      */
     protected function getRequestArgs($body = null)
     {
@@ -51,7 +59,7 @@ abstract class BaseConnector implements ConnectorInterface{
     }
 
     /**
-     * [get description]
+     * Perform a GET http request
      *
      * @param  string $url
      * @return array
@@ -62,11 +70,10 @@ abstract class BaseConnector implements ConnectorInterface{
     }
 
     /**
-     * [post description]
+     * Preform a POST http request
      *
      * @param  string $url
      * @param  array  $body = null
-     *
      * @return array
      */
     protected function post($url, $body = null)
