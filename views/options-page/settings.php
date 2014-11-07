@@ -30,6 +30,17 @@
 			</table>
 		</div>
 
+		<!-- Addon Settings -->
+		<?php foreach(apply_filters('socialbox_addon_options', array()) as $section => $info): ?>
+			<div class="socialbox-options__section">
+				<h3><?php echo $info['title'] ?></h3>
+				<p class="socialbox-options__section__description"><?php echo $info['description'] ?></p>
+				<table class="form-table">
+					<?php do_settings_fields('socialbox', $section) ?>
+				</table>
+			</div>
+		<?php endforeach ?>
+
 		<!-- Advanced Settings -->
 		<div class="socialbox-options__section">
 			<h3><?php _e('Advanced Settings', 'socialbox') ?></h3>
