@@ -1,11 +1,44 @@
-<p><a href="http://twitter.com/DieserJonas" title="Follow me on Twitter"><img src="http://jd-daten.de/envato/button-left-twitter.png" alt="Follow me on Twitter - News, Updates & more"/></a><a href="http://themeforest.net/user/jdpowered/follow" title="Follow me on the Envato Marketplaces - New Themes and Plugins"><img src="http://jd-daten.de/envato/button-right-envato.png" alt="Follow me on the Envato Marketplaces"/></a></p>
+<p><a href="http://twitter.com/DieserJonas"><img src="http://cdn.jd-powered.net/envato/buttons/flat-left-top-twitter.png" /></a><a href="http://codecanyon.net/user/jdpowered/follow"><img src="http://cdn.jd-powered.net/envato/buttons/flat-right-top-envato-market.png" /></a><a href="http://studiotracking.envato.com/SH36"><img src="http://cdn.jd-powered.net/envato/buttons/flat-left-bottom-envato-studio.png" /></a><a href="http://codecanyon.net/item/socialbox-social-profile-showcase/627127/support"><img src="http://cdn.jd-powered.net/envato/buttons/flat-right-bottom-support.png" /></a></p>
 
-<p><img src="http://jd-daten.de/envato/item-socialbox-header.png" alt=""/></p>
+<p>
+	<a href="http://codecanyon.net/item/socialbox-social-profile-showcase/627127/support#contact">
+		<img src="http://cdn.jd-powered.net/envato/notices/testers-wanted.png" />
+	</a>
+</p>
 
-<p>With SocialBox you get an absolutely easy to use WordPress Plugin which enables you to add a sleek social widget to your WordPress site or blog. It supports several social networks and displays a variety of statistics from several social networks including, but not limited to, the current number of Facebook Page Likes & Checkins, Twitter, Instagram, Pinterest, Dribbble, Forrst &amp; GitHub Followers, YouTube and Vimeo Channel Subscriptions and MailChimp List Subscribers. You can enter sensible default values which will be shown as a fallback if the related APIs are not reachable.</p>
+<p>
+	<img src="http://jd-daten.de/envato/item-socialbox-header.png" alt=""/>
+</p>
 
-<p><img src="http://jd-daten.de/envato/item-socialbox-addons.png" alt=""/></p>
-<p><a href="http://codecanyon.net/item/flat-styles-addon-for-socialbox/7585389" title="Flat Styles Addon for SocialBox"><img src="http://jd-daten.de/envato/item-socialbox-flatstyles-addon.png" alt="Flat Styles Addon for SocialBox"/></a></p>
+<p>
+	With SocialBox you get an absolutely easy to use WordPress Plugin which enables you to add a sleek social widget to your WordPress site or blog. It supports several social networks and displays a variety of statistics from several social networks including, but not limited to, the current number of Facebook Page Likes & Checkins, Twitter, Instagram, Pinterest, Dribbble, Forrst &amp; GitHub Followers, YouTube and Vimeo Channel Subscriptions and MailChimp List Subscribers. You can enter sensible default values which will be shown as a fallback if the related APIs are not reachable.
+</p>
+
+<p>
+	<img src="http://jd-daten.de/envato/item-socialbox-addons.png" alt=""/>
+</p>
+
+<p>
+	<a href="http://codecanyon.net/item/flat-styles-addon-for-socialbox/7585389" title="Flat Styles Addon for SocialBox">
+		<img src="http://jd-daten.de/envato/item-socialbox-flatstyles-addon.png" alt="Flat Styles Addon for SocialBox"/>
+	</a>
+</p>
+
+<p>
+	<a href="http://codecanyon.net/item/bubble-styles-addon-for-socialbox/8231052" title="Bubble Styles Addon for SocialBox">
+		<img src="http://jd-daten.de/envato/item-socialbox-bubblestyles-addon.png" alt="Bubble Styles Addon for SocialBox"/>
+	</a>
+</p>
+
+<p>
+	<a href="http://envatostudio.go2cloud.org/SH2o" title="Custom SocialBox Plugin Style Design on Envato Studio">
+		<img src="http://jd-daten.de/envato/notice-custom-themes.png" alt="Custom SocialBox Plugin Style Design on Envato Studio"/>
+	</a>
+</p>
+
+<p>
+	<img src="http://jd-daten.de/envato/item-socialbox-features.png" alt=""/>
+</p>
 
 <h3>Features</h3>
 <ul>
@@ -36,7 +69,9 @@
 	<li>Free future updates, to support even more networks and additional features</li>
 </ul>
 
-<p><img src="http://jd-daten.de/envato/item-socialbox-features.png" alt=""/></p>
+<p>
+	<img src="http://jd-daten.de/envato/item-socialbox-features-graphic.png" alt=""/>
+</p>
 
 <h4>Requirements</h4>
 <ul>
@@ -56,6 +91,80 @@
 <p>Let me know if you have anything else in mind that you'd like to see in the next update!</p>
 
 <h3>Updates</h3>
+
+<strong>Version 1.8.0</strong><br/>
+<ul>
+	<li>
+		<strong>Enhancements</strong>
+		<ul>
+			<li>Added support for the <strong>WordPress Plugin Repository</strong>, allowing to fetch the number of plugins and total downloads.</li>
+			<li>Redesigned options pages.</li>
+			<li>Optimized documentation navigation and content.</li>
+			<li>Introduced new addons overview page.</li>
+			<li>Reworked log to show additional failure details.</li>
+			<li>Major code rewrite to make it future proof.</li>
+			<li>Switched to a modern implementation of the Twitter and OAuth libraries.</li>
+		</ul>
+	</li>
+	<li>
+		<strong>Bugfixes</strong>
+		<ul>
+			<li>Compact numbers now display billions correctly.</li>
+			<li>Clear log on plugin updates.</li>
+		</ul>
+	</li>
+	<li>
+		<strong>Additional notes</strong>
+		<ul>
+			<li><strong>This version requires PHP 5.3 or above.</strong> If your host doesn't fit this requirement, you'll see a nice notification and the plugin will disable itself gracefully.</li>
+			<li>Updates language files: en_US</li>
+		</ul>
+	</li>
+</ul>
+
+<strong>Version 1.7.3</strong><br/>
+<ul>
+	<li>
+		<strong>Bugfixes</strong>
+		<ul>
+			<li>Fixed wrong Google+ links</li>
+            <li>Re-added missing Google+ icons</li>
+		</ul>
+	</li>
+        <li>
+		<strong>Additional notes</strong>
+		<ul>
+			<li>Updates language files: en_US</li>
+		</ul>
+	</li>
+</ul>
+
+<strong>Version 1.7.2</strong><br/>
+<ul>
+	<li>
+		<strong>Enhancements</strong>
+		<ul>
+			<li>Added automatic plugin updates.</li>
+		</ul>
+	</li>
+</ul>
+
+<strong>Version 1.7.1</strong><br/>
+<ul>
+	<li>
+		<strong>Bugfixes</strong>
+		<ul>
+			<li>Added support for Facebook Graph API v2.1.</li>
+			<li>Updated language file template.</li>
+		</ul>
+	</li>
+	<li>
+		<strong>Additional Notes</strong>
+		<ul>
+			<li>SocialBox now let's you enter an Facebook App ID and the related App Secret. This is optional until April 30th, 2015. Only at this date, changes to the API Socialbox uses will take effect. However, if you want to be on the save side, you should obtain and enter App credentials right now. The help section has been extended accordingly.</li>
+		</ul>
+	</li>
+</ul>
 
 <strong>Version 1.7.0</strong><br/>
 <ul>
@@ -87,14 +196,17 @@
 <ul>
 	<li>Fixed a bug that caused links to Facebook pages to break when a numeric id was used</li>
 </ul>
+
 <strong>Version 1.6.2</strong><br/>
 <ul>
 	<li>Added support for theme addons (stay tuned!)</li>
 </ul>
+
 <strong>Version 1.6.1</strong><br/>
 <ul>
 	<li>Fixed a bug that caused problems fetching Pinterest and Dribbble numbers in some cases</li>
 </ul>
+
 <strong>Version 1.6.0</strong><br/>
 <ul>
 	<li>Added support for <strong>Pinterest</strong> and <strong>MailChimp</strong></li>
@@ -102,12 +214,14 @@
 	<li>Fixed option to disable SSL Verification</li>
 	<li>Optimized cache implementation (less disk space & faster updates)</li>
 </ul>
+
 <strong>Version 1.5.0</strong><br/>
 <ul>
 	<li>Added support for <strong>Instagram</strong></li>
 	<li>Completely revamped help section</li>
 	<li>Added advanced cache debugging options</li>
 </ul>
+
 <strong>Version 1.4.1</strong><br/>
 <ul>
 	<li>Restore compatibility with PHP 5.3</li>
@@ -184,3 +298,4 @@
 </ul>
 
 <img src="http://analytics.jd-powered.net/piwik.php?idsite=2&amp;rec=1" />
+<img src="http://envatostudio.go2cloud.org/aff_i?offer_id=4&aff_id=1256&aff_sub=https://studio.envato.com/explore/wordpress-customization/14739-custom-socialbox-plugin-style-design&source=SocialBox Item Page&tiny_url=1" width="1" height="1" />

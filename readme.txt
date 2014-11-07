@@ -3,7 +3,7 @@ Contributors: JonasDoebertin
 Tags: socialbox, social networking
 Requires at least: 3.6
 Tested up to: 4.0
-Stable tag: 1.7.2
+Stable tag: 1.8.0
 License: Envato Market License
 License URI: http://codecanyon.net/licenses
 
@@ -24,6 +24,40 @@ To install SocialBox, simply follow these steps:
 5. That's it!
 
 == Changelog ==
+
+= Version 1.8.0 =
+
+**Enhancements**
+
+* Added support for the **WordPress Plugin Repository**, allowing to fetch the number of plugins and total downloads.
+* Redesigned options pages.
+* Optimized documentation navigation and content.
+* Introduced new addons overview page.
+* Reworked log to show additional failure details.
+* Major code rewrite to make it future proof.
+* Switched to a modern implementation of the Twitter and OAuth libraries.
+
+**Bugfixes**
+
+* Compact numbers now display billions correctly.
+* Clear log on plugin updates.
+* Updated language file template.
+
+**Additional Notes**
+
+* **This version requires PHP 5.3 or above.** If your host doesn't fit this requirement, you'll see a nice notification and the plugin will disable itself.
+* Updates language files: en_US
+
+= Version 1.7.3 =
+
+**Bugfixes**
+
+* Fixed wrong Google+ links.
+* Re-added missing Google+ icons
+
+**Additional Notes**
+
+* Updates language files: en_US
 
 = Version 1.7.2 =
 

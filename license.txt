@@ -1,5 +1,5 @@
 
-SocialBox 1.7.0
+SocialBox 1.8.0
 Copyright by Jonas Doebertin
 Available only at CodeCanyon: http://codecanyon.net/item/socialbox-social-wordpress-widget/627127
 
@@ -13,7 +13,7 @@ This WordPress plugin is comprised of two parts:
 		http://codex.wordpress.org/GPL
 
 	(2) All other parts of the plugin including, but not limited to, the CSS code, images, language files and design are licensed according to the license purchased at CodeCanyon.
-		http://codecanyon.net/legal/licences
+		http://codecanyon.net/licenses/standard
 
 
 2. Third-Party Components
