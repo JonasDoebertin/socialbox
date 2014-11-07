@@ -155,6 +155,7 @@ class Widget extends \WP_Widget{
         $instance['dribbble_metric']             = $newInstance['dribbble_metric'];
         $instance['mailchimp_api_key']           = $newInstance['mailchimp_api_key'];
         $instance['mailchimp_form_url']          = $newInstance['mailchimp_form_url'];
+        $instance['wptally_metric']              = $newInstance['wptally_metric'];
 
         /* Update values for theme specific options */
         foreach($JD_SocialBox->getThemes('ungrouped') as $theme) {
@@ -235,6 +236,9 @@ class Widget extends \WP_Widget{
                         $cache['mailchimp||' . $instance['mailchimp_id']]['api_key']         = $instance['mailchimp_api_key'];
                         $cache['mailchimp||' . $instance['mailchimp_id']]['form_url']        = $instance['mailchimp_form_url'];
                         break;
+                    case 'wptally':
+                        $cache['wptally||' . $instance['wptally_id']]['metric']              = $instance['wptally_metric'];
+                        break;
                 }
             }
         }
@@ -299,6 +303,7 @@ class Widget extends \WP_Widget{
         $defaults['dribbble_metric']             = 'followers_count';
         $defaults['mailchimp_api_key']           = '';
         $defaults['mailchimp_form_url']          = '';
+        $defaults['wptally_metric']              = 'plugins';
 
         /* Set default values for theme specific options */
         foreach($JD_SocialBox->getThemes('ungrouped') as $theme) {
@@ -358,10 +363,10 @@ class Widget extends \WP_Widget{
      * @param String $id
      * @return String
      */
-    private function getNetworkLink($item) {
-
-        switch($item['network']) {
-
+    private function getNetworkLink($item)
+    {
+        switch($item['network'])
+        {
             case 'facebook':
                 return "http://www.facebook.com/" . ((is_numeric($item['id'])) ? "profile.php?id=" . $item['id'] : $item['id']);
             case 'twitter':
@@ -386,13 +391,15 @@ class Widget extends \WP_Widget{
                 return "https://github.com/{$item['id']}";
             case 'mailchimp':
                 return $item['form_url'];
+            case 'wptally':
+                return "https://profiles.wordpress.org/{$item['id']}";
         }
-
     }
 
-    private function getNetworkButtonText($item) {
-
-        switch($item['network']) {
+    private function getNetworkButtonText($item)
+    {
+        switch($item['network'])
+        {
             case 'facebook':
                 return __('Like', 'socialbox');
             case 'twitter':
@@ -417,12 +424,15 @@ class Widget extends \WP_Widget{
                 return __('Follow', 'socialbox');
             case 'mailchimp':
                 return __('Subscribe', 'socialbox');
+            case 'wptally':
+                return __('Show', 'socialbox'); /* TODO: Add notes, so each word is translatable on it's own! */
         }
     }
 
-    private function getNetworkButtonHint($item) {
-
-        switch($item['network']) {
+    private function getNetworkButtonHint($item)
+    {
+        switch($item['network'])
+        {
             case 'facebook':
                 return __('Like on Facebook', 'socialbox');
             case 'twitter':
@@ -447,6 +457,8 @@ class Widget extends \WP_Widget{
                 return __('Follow on GitHub', 'socialbox');
             case 'mailchimp':
                 return __('Subscribe to newsletter', 'socialbox');
+            case 'wptally':
+                return __('Show profile on WordPress.org', 'socialbox');
         }
     }
 
@@ -456,9 +468,10 @@ class Widget extends \WP_Widget{
      * @param String $style
      * @return Bool
      */
-    private function getAllowButtons($style = 'classic') {
-
-        switch($style) {
+    private function getAllowButtons($style = 'classic')
+    {
+        switch($style)
+        {
             case 'modern':
                 return false;
             case 'classic':
@@ -472,11 +485,14 @@ class Widget extends \WP_Widget{
         }
     }
 
-    private function formatNumber($number, $useCompactNumbers) {
-
-        if($useCompactNumbers) {
+    private function formatNumber($number, $useCompactNumbers)
+    {
+        if($useCompactNumbers)
+        {
             return $this->getCompactNumber($number);
-        } else {
+        }
+        else
+        {
             return number_format($number);
         }
     }
@@ -487,9 +503,10 @@ class Widget extends \WP_Widget{
      * @param Int $number
      * @return String
      */
-    private function getCompactNumber($number) {
-
-        switch(true) {
+    private function getCompactNumber($number)
+    {
+        switch(true)
+        {
             case $number < 1000:
                 return $number;
 
@@ -502,8 +519,15 @@ class Widget extends \WP_Widget{
             case $number < 100000000:
                 return floor($number / 100000) / 10 . 'M';
 
-            default:
+            case $number < 1000000000:
                 return floor($number / 1000000) . 'M';
+
+            case $number < 100000000000:
+                return floor($number / 100000000) / 10 . 'B';
+
+            case $number < 1000000000:
+            default:
+                return floor($number / 1000000000) . 'B';
         }
     }
 }

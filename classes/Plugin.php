@@ -12,7 +12,7 @@ class Plugin {
 	/**
 	 * Complete list of supported networks
 	 */
-	const SUPPORTED_NETWORKS = 'facebook,twitter,googleplus,youtube,vimeo,instagram,pinterest,soundcloud,dribbble,forrst,github,mailchimp';
+	const SUPPORTED_NETWORKS = 'facebook,twitter,googleplus,youtube,vimeo,instagram,pinterest,soundcloud,dribbble,forrst,github,mailchimp,wptally';
 
 	/**
 	 * Holds the slug of the settings page, once it has been registered

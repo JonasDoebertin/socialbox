@@ -225,6 +225,20 @@ class Translator{
                 break;
 
             /*
+                WP Tally
+             */
+            case 'wptally':
+                switch($item['metric'])
+                {
+                    case 'count':
+                        return _x('Plugins', 'WordPress Plugins', 'socialbox');
+
+                    case 'total_downloads':
+                        return _x('Downloads', 'WordPress Plugin Downloads', 'socialbox');
+                }
+                break;
+
+            /*
                 Forrst
              */
             case 'forrst':
@@ -346,6 +360,9 @@ class Translator{
 
             case 'mailchimp':
                 return __('Newsletter', 'socialbox');
+
+            case 'wptally':
+                return __('WordPress Plugin Repository', 'socialbox');
         }
     }
 }

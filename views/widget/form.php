@@ -606,8 +606,46 @@
 
     </fieldset>
 
+	<!-- WP Tally -->
+	<h5><?php $this->translator->network('wptally') ?></h5>
+
+	<fieldset>
+
+		<!-- ID -->
+		<p>
+			<label for="<?php echo $this->get_field_id('wptally_id'); ?>" title="<?php _e('Your gitHub username', 'socialbox'); ?>"><?php _e('Username', 'socialbox'); ?>:</label>
+			<input type="text" id="<?php echo $this->get_field_id('wptally_id'); ?>" name="<?php echo $this->get_field_name('wptally_id'); ?>" value="<?php echo $instance['wptally_id']; ?>" class="widefat"  />
+		</p>
+
+		<!-- Metric -->
+		<p>
+			<label for="<?php echo $this->get_field_id('wptally_metric'); ?>" title="<?php _e('What metric shall be displayed', 'socialbox'); ?>"><?php _e('Metric', 'socialbox'); ?>:</label>
+			<select id="<?php echo $this->get_field_id('wptally_metric'); ?>" name="<?php echo $this->get_field_name('wptally_metric'); ?>" class="widefat">
+				<option <?php if($instance['wptally_metric'] == 'count' ) echo 'selected="selected"'; ?> value="count">
+					<?php $this->translator->metric('wptally', 'count') ?>
+				</option>
+				<option <?php if($instance['wptally_metric'] == 'total_downloads' ) echo 'selected="selected"'; ?> value="total_downloads">
+					<?php $this->translator->metric('wptally', 'total_downloads') ?>
+				</option>
+			</select>
+		</p>
+
+		<!-- Default -->
+		<div class="socialbox-default">
+			<label for="<?php echo $this->get_field_id('wptally_default'); ?>" title="<?php _e('Your fallback follower count', 'socialbox'); ?>"><?php _e('Default:', 'socialbox'); ?></label>
+			<input type="text" id="<?php echo $this->get_field_id('wptally_default'); ?>" name="<?php echo $this->get_field_name('wptally_default'); ?>" value="<?php echo $instance['wptally_default']; ?>" size="6" class="widefat" />
+		</div>
+
+		<!-- Position -->
+		<div class="socialbox-position">
+			<label for="<?php echo $this->get_field_id('wptally_position'); ?>" title="<?php _e('Display position within SocialBox', 'socialbox'); ?>"><?php _e('Position:', 'socialbox'); ?></label>
+			<input type="text" id="<?php echo $this->get_field_id('wptally_position'); ?>" name="<?php echo $this->get_field_name('wptally_position'); ?>" value="<?php echo $instance['wptally_position']; ?>" size="2" class="widefat" />
+		</div>
+
+	</fieldset>
+
 	<!-- Additional Settings -->
-	<h5><?php _e('Additional Settings', 'socialbox'); ?></h5>
+	<h5><?php _e('Additional Settings (handle with care)', 'socialbox'); ?></h5>
 
 	<fieldset class="socialbox-additional">
 
