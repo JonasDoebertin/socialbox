@@ -1,6 +1,8 @@
 <?php
 namespace jdpowered\SocialBox\Connectors;
 
+use jdpowered\SocialBox\Exceptions\MalformedDataException;
+
 class GitHubConnector extends BaseConnector implements ConnectorInterface {
 
     /**

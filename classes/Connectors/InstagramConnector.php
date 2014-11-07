@@ -1,6 +1,8 @@
 <?php
 namespace jdpowered\SocialBox\Connectors;
 
+use jdpowered\SocialBox\Exceptions\MalformedDataException;
+
 class InstagramConnector extends BaseConnector  implements ConnectorInterface {
 
     /**

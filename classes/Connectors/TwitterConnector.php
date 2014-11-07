@@ -50,17 +50,15 @@ class TwitterConnector extends BaseConnector implements ConnectorInterface {
             throw new HttpErrorException($result);
         }
 
-        /* TODO: Implement metric! */
-
         /*
             Check for incorrect data
          */
-        if (is_null($result) or !isset($result->followers_count)) {
+        if (is_null($result) or !isset($result->{$this->args['metric']})) {
             throw new MalformedDataException($result);
         }
 
         /* Return value */
-        return $result->followers_count;
+        return $result->{$this->args['metric']};
     }
 
     /**
