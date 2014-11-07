@@ -14,6 +14,35 @@ smoothScroll.init();
 
 
 /*------------------------------------*\
+	$HELP TOC
+\*------------------------------------*/
+jQuery(function($) {
+
+	var $tocItems = $('.js-socialbox-toc-item');
+
+	$tocItems.each(function() {
+
+		var $this = $(this);
+
+		$this.tooltipster({
+			animation: 'fade',
+			content: $this.attr('data-tooltip'),
+			delay: 0,
+			maxWidth: 400,
+			position: 'top',
+			theme: 'tooltipster-socialbox'
+		});
+
+	});
+
+});
+
+
+
+
+
+
+/*------------------------------------*\
 	$LOG CONTEXTS
 \*------------------------------------*/
 jQuery(function($) {

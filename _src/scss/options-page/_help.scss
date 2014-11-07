@@ -1,0 +1,33 @@
+
+.socialbox-options__section--toc {}
+
+    .socialbox-options__section--toc ul {
+        @include clearfix();
+        margin: 30px 0 20px;
+        text-align: center;
+    }
+
+        .socialbox-options__section--toc li {
+            display: inline-block;
+            margin: 0;
+        }
+
+            .socialbox-options__section--toc a {
+                display: inline-block;
+                position: relative;
+            }
+
+                .socialbox-options__section--toc img {
+                    //display: inline-block;
+                    vertical-align: bottom
+                }
+
+                .socialbox-options__section--toc li:first-child img {
+                    border-top-left-radius: 3px;
+                    border-bottom-left-radius: 3px;
+                }
+
+                .socialbox-options__section--toc li:last-child img {
+                    border-top-right-radius: 3px;
+                    border-bottom-right-radius: 3px;
+                }
