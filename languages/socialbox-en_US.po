@@ -2,9 +2,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: SocialBox\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-06-13 17:55+0100\n"
-"PO-Revision-Date: 2014-06-13 17:55+0100\n"
-"Last-Translator: Jonas Döbertin\n"
+"POT-Creation-Date: 2014-11-07 23:09+0100\n"
+"PO-Revision-Date: 2014-11-07 23:10+0100\n"
+"Last-Translator: Jonas Döbertin <hallo@jonasdoebertin.net>\n"
 "Language-Team: Jonas Döbertin <support@jd-powered.net>\n"
 "Language: en_US\n"
 "MIME-Version: 1.0\n"
@@ -15,379 +15,487 @@ msgstr ""
 "esc_attr__;esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Generator: Poedit 1.6.5\n"
+"X-Generator: Poedit 1.6.10\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../classes/SocialBox.php:108
+#: ../classes/Exceptions/ConnectorNotFoundException.php:13
+#, php-format
+msgid "Connector for network type \"%s\" not found"
+msgstr ""
+
+#: ../classes/Exceptions/HttpErrorException.php:23
+msgid "Unknown HTTP error"
+msgstr ""
+
+#: ../classes/Exceptions/MalformedDataException.php:13
+msgid "Received malformed data from API"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:77
+msgctxt "Facebook Likes"
+msgid "Likes"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:80
+msgctxt "Facebook Checkins"
+msgid "Checkins"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:83
+msgctxt "Facebook Were Here"
+msgid "Were Here"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:86
+msgctxt "Facebook Talking About"
+msgid "Talking About"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:97
+msgctxt "Twitter Followers"
+msgid "Followers"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:100
+msgctxt "Twitter Following"
+msgid "Following"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:103
+msgctxt "Twitter Tweets"
+msgid "Tweets"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:106
+msgctxt "Twitter Favorites"
+msgid "Favorites"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:109
+msgctxt "Twitter Listed"
+msgid "Listed"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:117
+msgctxt "Google+ Followers"
+msgid "Followers"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:126
+msgctxt "Youtube Subscribers"
+msgid "Subscribers"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:129
+msgctxt "Youtube Video Views"
+msgid "Video Views"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:140
+msgctxt "Vimeo Subscribers"
+msgid "Subscribers"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:143
+msgctxt "Vimeo Video Views"
+msgid "Videos"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:154
+msgctxt "Instagram Posts"
+msgid "Posts"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:157
+msgctxt "Instagram Followers"
+msgid "Followers"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:160
+msgctxt "Instagram Follows"
+msgid "Following"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:171
+msgctxt "Pinterest Followers"
+msgid "Followers"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:174
+msgctxt "Pinterest Pins"
+msgid "Pins"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:177
+msgctxt "Pinterest Boards"
+msgid "Boards"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:188
+msgctxt "SoundCloud Followers"
+msgid "Followers"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:191
+msgctxt "SoundCloud Following"
+msgid "Following"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:194
+msgctxt "SoundCloud Public Favorites"
+msgid "Favorites"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:197
+msgctxt "SoundCloud Playlists"
+msgid "Playlists"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:200
+msgctxt "SoundCloud Track Count"
+msgid "Tracks"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:211
+msgctxt "Dribbble Followers"
+msgid "Followers"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:214
+msgctxt "Dribbble Likes"
+msgid "Likes"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:217
+msgctxt "Dribbble Comments"
+msgid "Comments"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:220
+msgctxt "Dribbble Rebounds"
+msgid "Rebounds"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:223
+msgctxt "Dribbble Shots"
+msgid "Shots"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:234
+msgctxt "WordPress Plugins"
+msgid "Plugins"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:237
+msgctxt "WordPress Plugin Downloads"
+msgid "Downloads"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:245
+msgctxt "Forrst Followers"
+msgid "Followers"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:251
+msgctxt "GitHub Followers"
+msgid "Followers"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:257
+msgctxt "MailChimp Subscribers"
+msgid "Subscribers"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:329
+msgid "Facebook"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:332
+msgid "Twitter"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:335
+msgid "Google+"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:338
+msgid "YouTube"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:341
+msgid "Vimeo"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:344
+msgid "Instagram"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:347
+msgid "Pinterest"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:350
+msgid "SoundCloud"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:353
+msgid "Dribbble"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:356
+msgid "Forrst"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:359
+msgid "GitHub"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:362
+msgid "Newsletter"
+msgstr ""
+
+#: ../classes/Helpers/Translator.php:365
+msgid "WordPress Plugin Repository"
+msgstr ""
+
+#: ../classes/Helpers/Updater.php:84
+msgid ""
+"An Unexpected HTTP Error occurred during the API request.</p> <p><a href=\"?"
+"\" onclick=\"document.location.reload(); return false;\">Try again</a>"
+msgstr ""
+
+#: ../classes/Helpers/Updater.php:88
+msgid "An unknown error occurred"
+msgstr ""
+
+#: ../classes/Plugin.php:117
 msgid "Every Ten Minutes"
 msgstr ""
 
-#: ../classes/SocialBox.php:227
+#: ../classes/Plugin.php:155
 msgid "SocialBox Settings"
 msgstr ""
 
-#: ../classes/SocialBox.php:227 ../views/options-page/frame.php:19
+#: ../classes/Plugin.php:155 ../views/options-page/frame.php:19
+#: ../views/options-page/settings.php:20
 msgid "Settings"
 msgstr ""
 
-#: ../classes/SocialBox.php:321
+#: ../classes/Plugin.php:255
 msgid "Classic (default)"
 msgstr ""
 
-#: ../classes/SocialBox.php:328
+#: ../classes/Plugin.php:262
 msgid "Modern"
 msgstr ""
 
-#: ../classes/SocialBox.php:335
+#: ../classes/Plugin.php:269
 msgid "Tuts+ Flavor"
 msgstr ""
 
-#: ../classes/SocialBox.php:342
+#: ../classes/Plugin.php:276
 msgid "Dark"
 msgstr ""
 
-#: ../classes/SocialBox.php:349
+#: ../classes/Plugin.php:283
 msgid "Colorful"
 msgstr ""
 
-#: ../classes/SocialBox.php:362
+#: ../classes/Plugin.php:296
 msgid "Plain (small icons)"
 msgstr ""
 
-#: ../classes/SocialBox.php:369
+#: ../classes/Plugin.php:303
 msgid "Plain (large icons)"
 msgstr ""
 
-#: ../classes/SocialBox.php:436
+#: ../classes/Plugin.php:372 ../views/options-page/settings.php:26
+msgid "License"
+msgstr ""
+
+#: ../classes/Plugin.php:379
+msgid "Purchase Code"
+msgstr ""
+
+#: ../classes/Plugin.php:389 ../views/options-page/settings.php:46
 msgid "Advanced Settings"
 msgstr ""
 
-#: ../classes/SocialBox.php:443
+#: ../classes/Plugin.php:396
 msgid "Update Interval"
 msgstr ""
 
-#: ../classes/SocialBox.php:452
+#: ../classes/Plugin.php:405
 msgid "SSL-Verification"
 msgstr ""
 
-#: ../classes/SocialBox.php:462
-msgid "Some advanced options to tweak SocialBox's internals"
+#: ../classes/Plugin.php:421
+msgid "Please enter your CodeCanyon purchase code."
 msgstr ""
 
-#: ../classes/SocialBox.php:468
+#: ../classes/Plugin.php:428
 msgid ""
 "The time (in minutes) that SocialBox waits before refreshing it's data. "
 "(Default: 180 = 3 hours)"
 msgstr ""
 
-#: ../classes/SocialBox.php:476
+#: ../classes/Plugin.php:435
 msgid "Disable SSL-Verification on API requests."
 msgstr ""
 
-#: ../classes/SocialBox.php:477
+#: ../classes/Plugin.php:436
 msgid "This can be useful on most \"local servers\" like MAMP or XAMPP."
 msgstr ""
 
-#: ../classes/SocialBox.php:498 ../classes/SocialBox.php:499
-#: ../views/options-page/frame.php:18 ../views/update.php:16
+#: ../classes/Plugin.php:456 ../classes/Plugin.php:457
+#: ../views/notices/legacy.php:6 ../views/options-page/frame.php:18
 msgid "SocialBox"
 msgstr ""
 
-#: ../classes/SocialBox.php:577 ../classes/SocialBox.php:593
-#: ../classes/SocialBox.php:612
+#: ../classes/Plugin.php:531 ../classes/Plugin.php:548
+#: ../classes/Plugin.php:568
 msgid "Security check failed!"
 msgstr ""
 
-#: ../classes/SocialBox.php:600
+#: ../classes/Plugin.php:555
 msgid "Cache cleared!"
 msgstr ""
 
-#: ../classes/SocialBox.php:622
+#: ../classes/Plugin.php:578
 msgid "Cache refreshed!"
 msgstr ""
 
-#: ../classes/SocialBoxTranslator.php:84
-msgctxt "Facebook Likes"
-msgid "Likes"
+#: ../classes/Plugin.php:750
+msgid "Fetched new data from {item.network} for {item.id}"
 msgstr ""
 
-#: ../classes/SocialBoxTranslator.php:87
-msgctxt "Facebook Checkins"
-msgid "Checkins"
+#: ../classes/Plugin.php:771
+msgid "Could not fetched new data from {item.network} for {item.id}"
 msgstr ""
 
-#: ../classes/SocialBoxTranslator.php:90
-msgctxt "Facebook Were Here"
-msgid "Were Here"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:93
-msgctxt "Facebook Talking About"
-msgid "Talking About"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:104
-msgctxt "Twitter Followers"
-msgid "Followers"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:107
-msgctxt "Twitter Following"
-msgid "Following"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:110
-msgctxt "Twitter Tweets"
-msgid "Tweets"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:113
-msgctxt "Twitter Favorites"
-msgid "Favorites"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:116
-msgctxt "Twitter Listed"
-msgid "Listed"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:124
-msgctxt "Google+ Followers"
-msgid "Followers"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:133
-msgctxt "Youtube Subscribers"
-msgid "Subscribers"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:136
-msgctxt "Youtube Video Views"
-msgid "Video Views"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:147
-msgctxt "Vimeo Subscribers"
-msgid "Subscribers"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:150
-msgctxt "Vimeo Video Views"
-msgid "Videos"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:161
-msgctxt "Instagram Posts"
-msgid "Posts"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:164
-msgctxt "Instagram Followers"
-msgid "Followers"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:167
-msgctxt "Instagram Follows"
-msgid "Following"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:178
-msgctxt "Pinterest Followers"
-msgid "Followers"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:181
-msgctxt "Pinterest Pins"
-msgid "Pins"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:184
-msgctxt "Pinterest Boards"
-msgid "Boards"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:195
-msgctxt "SoundCloud Followers"
-msgid "Followers"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:198
-msgctxt "SoundCloud Following"
-msgid "Following"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:201
-msgctxt "SoundCloud Public Favorites"
-msgid "Favorites"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:204
-msgctxt "SoundCloud Playlists"
-msgid "Playlists"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:207
-msgctxt "SoundCloud Track Count"
-msgid "Tracks"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:218
-msgctxt "Dribbble Followers"
-msgid "Followers"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:221
-msgctxt "Dribbble Likes"
-msgid "Likes"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:224
-msgctxt "Dribbble Comments"
-msgid "Comments"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:227
-msgctxt "Dribbble Rebounds"
-msgid "Rebounds"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:230
-msgctxt "Dribbble Shots"
-msgid "Shots"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:238
-msgctxt "Forrst Followers"
-msgid "Followers"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:244
-msgctxt "GitHub Followers"
-msgid "Followers"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:250
-msgctxt "MailChimp Subscribers"
-msgid "Subscribers"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:322
-msgid "Facebook"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:325
-msgid "Twitter"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:328
-msgid "Google+"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:331
-msgid "YouTube"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:334
-msgid "Vimeo"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:337
-msgid "Instagram"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:340
-msgid "Pinterest"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:343
-msgid "SoundCloud"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:346
-msgid "Dribbble"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:349
-msgid "Forrst"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:352
-msgid "GitHub"
-msgstr ""
-
-#: ../classes/SocialBoxTranslator.php:355
-msgid "Newsletter"
-msgstr ""
-
-#: ../classes/SocialBoxWidget.php:29
+#: ../classes/Widgets/Widget.php:26
 msgid ""
 "A super easy widget which displays various statistics from Facebook, "
 "Twitter, Google+, Youtube, Vimeo, Instagram, Pinterest, SoundCloud, "
 "Dribbble, Forrst, GitHub and MailChimp."
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:394
+#: ../classes/Widgets/Widget.php:404
 msgid "Like"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:396 ../classes/SocialBoxWidget.php:398
-#: ../classes/SocialBoxWidget.php:404 ../classes/SocialBoxWidget.php:406
-#: ../classes/SocialBoxWidget.php:408 ../classes/SocialBoxWidget.php:410
-#: ../classes/SocialBoxWidget.php:412 ../classes/SocialBoxWidget.php:414
+#: ../classes/Widgets/Widget.php:406 ../classes/Widgets/Widget.php:408
+#: ../classes/Widgets/Widget.php:414 ../classes/Widgets/Widget.php:416
+#: ../classes/Widgets/Widget.php:418 ../classes/Widgets/Widget.php:420
+#: ../classes/Widgets/Widget.php:422 ../classes/Widgets/Widget.php:424
 msgid "Follow"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:400 ../classes/SocialBoxWidget.php:402
-#: ../classes/SocialBoxWidget.php:416
+#: ../classes/Widgets/Widget.php:410 ../classes/Widgets/Widget.php:412
+#: ../classes/Widgets/Widget.php:426
 msgid "Subscribe"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:424
+#: ../classes/Widgets/Widget.php:428
+msgid "Show"
+msgstr ""
+
+#: ../classes/Widgets/Widget.php:437
 msgid "Like on Facebook"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:426
+#: ../classes/Widgets/Widget.php:439
 msgid "Follow on Twitter"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:428
+#: ../classes/Widgets/Widget.php:441
 msgid "Follow on Google+"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:430
+#: ../classes/Widgets/Widget.php:443
 msgid "Subscribe to Youtube Channel"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:432
+#: ../classes/Widgets/Widget.php:445
 msgid "Subscribe to Vimeo Channel"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:434
+#: ../classes/Widgets/Widget.php:447
 msgid "Follow on Instagram"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:436
+#: ../classes/Widgets/Widget.php:449
 msgid "Follow on Pinterest"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:438
+#: ../classes/Widgets/Widget.php:451
 msgid "Follow on Dribbble"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:440
+#: ../classes/Widgets/Widget.php:453
 msgid "Follow on SoundCloud"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:442
+#: ../classes/Widgets/Widget.php:455
 msgid "Follow on Forrst"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:444
+#: ../classes/Widgets/Widget.php:457
 msgid "Follow on GitHub"
 msgstr ""
 
-#: ../classes/SocialBoxWidget.php:446
+#: ../classes/Widgets/Widget.php:459
 msgid "Subscribe to newsletter"
+msgstr ""
+
+#: ../classes/Widgets/Widget.php:461
+msgid "Show profile on WordPress.org"
+msgstr ""
+
+#: ../views/notices/legacy.php:9
+#, php-format
+msgid ""
+"SocialBox requires <strong>PHP 5.3.0</strong> or newer. You are currently "
+"using PHP %s. Why don't you try contacting your hosting provider and ask for "
+"an upgrade?"
+msgstr ""
+
+#: ../views/options-page/addons.php:14
+msgid "Addons for SocialBox"
+msgstr ""
+
+#: ../views/options-page/addons.php:15
+msgid "Need some additional styles? Well, here you go!"
+msgstr ""
+
+#: ../views/options-page/addons.php:70
+msgid "Stay Up to Date"
+msgstr ""
+
+#: ../views/options-page/addons.php:70
+msgid "New addons, the latest plugins and more..."
+msgstr ""
+
+#: ../views/options-page/addons.php:75
+msgid "ben@smith.com"
+msgstr ""
+
+#: ../views/options-page/debug.php:16
+msgid "Debug Tools"
+msgstr ""
+
+#: ../views/options-page/debug.php:17
+msgid "See what's going on under the hood!"
+msgstr ""
+
+#: ../views/options-page/debug.php:22
+msgid "API Log"
+msgstr ""
+
+#: ../views/options-page/debug.php:23
+msgid ""
+"Just like you'd propably guessed, green means everything went well while red "
+"indicates that some kind of error occured while fetching the value."
 msgstr ""
 
 #: ../views/options-page/frame.php:20
@@ -395,74 +503,149 @@ msgid "Help"
 msgstr ""
 
 #: ../views/options-page/frame.php:21
-msgid "Log"
+msgid "Addons"
 msgstr ""
 
-#: ../views/options-page/help.php:15
+#: ../views/options-page/frame.php:22
+msgid "Debug"
+msgstr ""
+
+#: ../views/options-page/help.php:17
+msgid "What do you need help with?"
+msgstr ""
+
+#: ../views/options-page/help.php:18
+msgid "Choose the help section you'd like to see."
+msgstr ""
+
+#: ../views/options-page/help.php:21 ../views/options-page/help.php:22
+#: ../views/options-page/help.php:171
+msgid "Facebook Setup"
+msgstr ""
+
+#: ../views/options-page/help.php:26 ../views/options-page/help.php:27
+#: ../views/options-page/help.php:195
+msgid "Twitter Setup"
+msgstr ""
+
+#: ../views/options-page/help.php:31 ../views/options-page/help.php:32
+#: ../views/options-page/help.php:214
+msgid "Google+ Setup"
+msgstr ""
+
+#: ../views/options-page/help.php:36 ../views/options-page/help.php:37
+#: ../views/options-page/help.php:235
+msgid "Youtube Setup"
+msgstr ""
+
+#: ../views/options-page/help.php:41 ../views/options-page/help.php:243
+msgid "Vimeo Setup"
+msgstr ""
+
+#: ../views/options-page/help.php:46 ../views/options-page/help.php:47
+#: ../views/options-page/help.php:253
+msgid "Instagram Setup"
+msgstr ""
+
+#: ../views/options-page/help.php:51 ../views/options-page/help.php:52
+#: ../views/options-page/help.php:272
+msgid "Pinterest Setup"
+msgstr ""
+
+#: ../views/options-page/help.php:56 ../views/options-page/help.php:57
+#: ../views/options-page/help.php:283
+msgid "SoundCloud Setup"
+msgstr ""
+
+#: ../views/options-page/help.php:61 ../views/options-page/help.php:62
+#: ../views/options-page/help.php:302
+msgid "Dribbble Setup"
+msgstr ""
+
+#: ../views/options-page/help.php:66 ../views/options-page/help.php:67
+msgid "Forrst Setup"
+msgstr ""
+
+#: ../views/options-page/help.php:71 ../views/options-page/help.php:72
+#: ../views/options-page/help.php:321
+msgid "Github Setup"
+msgstr ""
+
+#: ../views/options-page/help.php:76 ../views/options-page/help.php:77
+#: ../views/options-page/help.php:329
+msgid "MailChimp Setup"
+msgstr ""
+
+#: ../views/options-page/help.php:81 ../views/options-page/help.php:82
+#: ../views/options-page/help.php:347
+msgid "WordPress Plugin Repository Setup"
+msgstr ""
+
+#: ../views/options-page/help.php:91
 msgid "Welcome to SocialBox"
 msgstr ""
 
-#: ../views/options-page/help.php:16
+#: ../views/options-page/help.php:92
 msgid "Here you can find some help to get you started:"
 msgstr ""
 
-#: ../views/options-page/help.php:20
+#: ../views/options-page/help.php:96
 msgid "Covered Topics"
 msgstr ""
 
-#: ../views/options-page/help.php:22 ../views/options-page/help.php:47
+#: ../views/options-page/help.php:98 ../views/options-page/help.php:123
 msgid "Quick Setup"
 msgstr ""
 
-#: ../views/options-page/help.php:23 ../views/options-page/help.php:59
+#: ../views/options-page/help.php:99 ../views/options-page/help.php:135
 msgid "Widget Options"
 msgstr ""
 
-#: ../views/options-page/help.php:24 ../views/options-page/help.php:82
+#: ../views/options-page/help.php:100
 msgid "Social Network Options"
 msgstr ""
 
-#: ../views/options-page/help.php:28
+#: ../views/options-page/help.php:104
 msgid "Additional Cache Tools"
 msgstr ""
 
-#: ../views/options-page/help.php:30
+#: ../views/options-page/help.php:106
 msgid "Update cache"
 msgstr ""
 
-#: ../views/options-page/help.php:31
+#: ../views/options-page/help.php:107
 msgid "Show contents"
 msgstr ""
 
-#: ../views/options-page/help.php:32
+#: ../views/options-page/help.php:108
 msgid "Clear cache"
 msgstr ""
 
-#: ../views/options-page/help.php:36
+#: ../views/options-page/help.php:112
 msgid "Further Help"
 msgstr ""
 
-#: ../views/options-page/help.php:39
+#: ../views/options-page/help.php:115
 #, php-format
 msgid "Send a %s tweet %s"
 msgstr ""
 
-#: ../views/options-page/help.php:40
+#: ../views/options-page/help.php:116
 #, php-format
 msgid "Open a %s support ticket %s"
 msgstr ""
 
-#: ../views/options-page/help.php:49
+#: ../views/options-page/help.php:125
 msgid "There is really not much to it. Just follow these simple steps:"
 msgstr ""
 
-#: ../views/options-page/help.php:51
+#: ../views/options-page/help.php:127
 msgid ""
 "Install and activate the SocialBox plugin (by the time you're reading this, "
 "you've already completed this step)."
 msgstr ""
 
-#: ../views/options-page/help.php:52
+#: ../views/options-page/help.php:128
 #, php-format
 msgid ""
 "Head over to %s Appearance &raquo; Widgets %s and drag a SocialBox widget "
@@ -470,21 +653,21 @@ msgid ""
 "or sidebar."
 msgstr ""
 
-#: ../views/options-page/help.php:53
+#: ../views/options-page/help.php:129
 msgid ""
 "Enter the usernames and credentials for the social networks you want to show "
 "up."
 msgstr ""
 
-#: ../views/options-page/help.php:54
+#: ../views/options-page/help.php:130
 msgid "Finally, hit &raquo;Save&laquo;. That's about it!"
 msgstr ""
 
-#: ../views/options-page/help.php:63 ../views/widget/form.php:23
+#: ../views/options-page/help.php:139 ../views/widget/form.php:23
 msgid "Open Links in new Window/Tab"
 msgstr ""
 
-#: ../views/options-page/help.php:64
+#: ../views/options-page/help.php:140
 msgid ""
 "This option adds <code>target=\"_blank\"</code> to all links within "
 "SocialBox. This forces the browser to open them in a new window or tab. This "
@@ -492,11 +675,11 @@ msgid ""
 "Follow&laquo; or &raquo;Subscribe&laquo; button."
 msgstr ""
 
-#: ../views/options-page/help.php:66 ../views/widget/form.php:30
+#: ../views/options-page/help.php:142 ../views/widget/form.php:30
 msgid "Show Buttons"
 msgstr ""
 
-#: ../views/options-page/help.php:67
+#: ../views/options-page/help.php:143
 msgid ""
 "Choose if you want to display the &raquo;Follow&laquo; or &raquo;"
 "Subscribe&laquo; buttons within SocialBox. Please note that some of the "
@@ -504,40 +687,44 @@ msgid ""
 "option has no effect."
 msgstr ""
 
-#: ../views/options-page/help.php:69 ../views/widget/form.php:70
+#: ../views/options-page/help.php:145 ../views/widget/form.php:70
 msgid "Use Compact Numbers"
 msgstr ""
 
-#: ../views/options-page/help.php:70
+#: ../views/options-page/help.php:146
 msgid ""
 "When this option has been activated, the numbers within SocialBox will be "
 "dispay in a compact form. For example, the value <code>35.442</code> will be "
 "displayed as <code>35K</code>."
 msgstr ""
 
-#: ../views/options-page/help.php:74
+#: ../views/options-page/help.php:150
 msgid "Forced Widget Width"
 msgstr ""
 
-#: ../views/options-page/help.php:75
+#: ../views/options-page/help.php:151
 msgid ""
 "If you set this something other than <code>0</code>, the SocialBox widget "
 "will be forced into the specified size. This is useful if your sidebar or "
 "widget area is too narrow or too wide."
 msgstr ""
 
-#: ../views/options-page/help.php:77
+#: ../views/options-page/help.php:153
 msgid "Forced Button Width"
 msgstr ""
 
-#: ../views/options-page/help.php:78
+#: ../views/options-page/help.php:154
 msgid ""
 "If set to something other than <code>0</code>, all &raquo;Follow&laquo; and "
 "&raquo;Subscribe&laquo; buttons will be forced to be of this size. Use this "
 "option if you want to see consistent buttons (the captions will be centered)."
 msgstr ""
 
-#: ../views/options-page/help.php:85
+#: ../views/options-page/help.php:158
+msgid "General Network Setup"
+msgstr ""
+
+#: ../views/options-page/help.php:161
 msgid ""
 "For most of the networks available within SocialBox, the plugin only needs "
 "the username of the account that shall be showcased. However, some networks "
@@ -545,11 +732,11 @@ msgid ""
 "in the following sections."
 msgstr ""
 
-#: ../views/options-page/help.php:87
+#: ../views/options-page/help.php:163
 msgid "Default"
 msgstr ""
 
-#: ../views/options-page/help.php:88
+#: ../views/options-page/help.php:164
 msgid ""
 "For each network you have the option to set a default value. If the related "
 "API is not reachable temporarely or if SocialBox is unable to pull in the "
@@ -558,22 +745,22 @@ msgid ""
 "value."
 msgstr ""
 
-#: ../views/options-page/help.php:90
+#: ../views/options-page/help.php:166
 msgid "Position"
 msgstr ""
 
-#: ../views/options-page/help.php:91
+#: ../views/options-page/help.php:167
 msgid ""
 "Of course you want to be able to change the order of the social networks "
 "within the SocialBox widget. Well, this option let's you do so. The social "
 "networks will be order by this number from small (top) to large (bottom)."
 msgstr ""
 
-#: ../views/options-page/help.php:94 ../views/widget/form.php:101
+#: ../views/options-page/help.php:174 ../views/widget/form.php:101
 msgid "Page ID or Shortname"
 msgstr ""
 
-#: ../views/options-page/help.php:95
+#: ../views/options-page/help.php:175
 msgid ""
 "In order to pull in Facebook statistics, the only thing you need to enter is "
 "your pages shortname or id. If your page has an url like <code>https://www."
@@ -581,11 +768,11 @@ msgid ""
 "want to enter."
 msgstr ""
 
-#: ../views/options-page/help.php:97 ../views/options-page/help.php:119
+#: ../views/options-page/help.php:177 ../views/options-page/help.php:217
 msgid "Please Note"
 msgstr ""
 
-#: ../views/options-page/help.php:98
+#: ../views/options-page/help.php:178
 msgid ""
 "Please keep in mind that the Facebook Graph API does not expose your pages "
 "statistics if you limited access to your page to certain countries or ages "
@@ -593,17 +780,18 @@ msgid ""
 "&raquo;Likes&laquo; your page has in this case."
 msgstr ""
 
-#: ../views/options-page/help.php:100 ../views/options-page/help.php:142
-#: ../views/options-page/help.php:164 ../views/options-page/help.php:179
-#: ../views/options-page/help.php:186 ../views/widget/form.php:107
-#: ../views/widget/form.php:175 ../views/widget/form.php:253
-#: ../views/widget/form.php:291 ../views/widget/form.php:341
-#: ../views/widget/form.php:382 ../views/widget/form.php:429
-#: ../views/widget/form.php:476
+#: ../views/options-page/help.php:180 ../views/options-page/help.php:248
+#: ../views/options-page/help.php:278 ../views/options-page/help.php:297
+#: ../views/options-page/help.php:308 ../views/options-page/help.php:353
+#: ../views/widget/form.php:119 ../views/widget/form.php:187
+#: ../views/widget/form.php:265 ../views/widget/form.php:303
+#: ../views/widget/form.php:353 ../views/widget/form.php:394
+#: ../views/widget/form.php:441 ../views/widget/form.php:488
+#: ../views/widget/form.php:622
 msgid "Metric"
 msgstr ""
 
-#: ../views/options-page/help.php:101
+#: ../views/options-page/help.php:181
 msgid ""
 "Typically, you'd want to display the number of &raquo;Likes&laquo; your page "
 "collected. But, if your page belongs to a place (a restaurant, a retail "
@@ -611,27 +799,67 @@ msgid ""
 "Checkins&laquo; instead."
 msgstr ""
 
-#: ../views/options-page/help.php:104 ../views/options-page/help.php:146
-#: ../views/options-page/help.php:161 ../views/options-page/help.php:183
-#: ../views/options-page/help.php:190 ../views/options-page/help.php:194
-#: ../views/widget/form.php:145 ../views/widget/form.php:323
-#: ../views/widget/form.php:376 ../views/widget/form.php:470
-#: ../views/widget/form.php:517 ../views/widget/form.php:542
+#: ../views/options-page/help.php:183
+msgid "App ID & Secret"
+msgstr ""
+
+#: ../views/options-page/help.php:184
+msgid ""
+"Entering an App ID and the related App Secret is optional until April 30th, "
+"2015. At this date, changes to the API Socialbox uses will take effect. "
+"However, if you want to be on the save side, you should obtain and enter App "
+"credentials right now. Just follow these steps:"
+msgstr ""
+
+#: ../views/options-page/help.php:186
+#, php-format
+msgid "Visit %s Facebook Developers %s and sign in with your Facebook account."
+msgstr ""
+
+#: ../views/options-page/help.php:187
+msgid "Click &raquo;Apps&laquo; > &raquo;Create a New App&laquo;."
+msgstr ""
+
+#: ../views/options-page/help.php:188
+msgid ""
+"Enter a &raquo;Name&laquo;, choose a &raquo;Category&laquo; and click &raquo;"
+"Create App&laquo;."
+msgstr ""
+
+#: ../views/options-page/help.php:189
+msgid ""
+"At the top of the apps overview page you'll see your &raquo;App ID&laquo; "
+"and &raquo;App Secret&laquo;."
+msgstr ""
+
+#: ../views/options-page/help.php:190
+msgid ""
+"Copy the &raquo;App ID&laquo; and &raquo;App Secret&laquo; values and enter "
+"them in the respective fields within SocialBox."
+msgstr ""
+
+#: ../views/options-page/help.php:198 ../views/options-page/help.php:256
+#: ../views/options-page/help.php:275 ../views/options-page/help.php:305
+#: ../views/options-page/help.php:316 ../views/options-page/help.php:324
+#: ../views/options-page/help.php:350 ../views/widget/form.php:157
+#: ../views/widget/form.php:335 ../views/widget/form.php:388
+#: ../views/widget/form.php:482 ../views/widget/form.php:529
+#: ../views/widget/form.php:554 ../views/widget/form.php:616
 msgid "Username"
 msgstr ""
 
-#: ../views/options-page/help.php:105
+#: ../views/options-page/help.php:199
 msgid ""
 "Please enter the username of the account you want to showcase (without the "
 "&raquo;@&laquo;). This does not have to be your own account; any public "
 "account goes."
 msgstr ""
 
-#: ../views/options-page/help.php:107
+#: ../views/options-page/help.php:201
 msgid "API Key &amp; Secret, Access Token &amp; Secret"
 msgstr ""
 
-#: ../views/options-page/help.php:108
+#: ../views/options-page/help.php:202
 msgid ""
 "Pulling in the numbers from Twitter is a little more work than for the other "
 "social networks. Since Twitter doesn't allow public access to it's API, you "
@@ -639,53 +867,53 @@ msgid ""
 "just follow these simple steps:"
 msgstr ""
 
-#: ../views/options-page/help.php:110
+#: ../views/options-page/help.php:204
 #, php-format
 msgid "Visit %s Twitter Developers %s and sign in with your Twitter account."
 msgstr ""
 
-#: ../views/options-page/help.php:111
+#: ../views/options-page/help.php:205
 #, php-format
 msgid ""
 "Go to %s My Applications %s and click &raquo;Create a new Application&laquo;."
 msgstr ""
 
-#: ../views/options-page/help.php:112
+#: ../views/options-page/help.php:206
 msgid ""
 "Enter any value for &raquo;Name&laquo;, &raquo;Description&laquo; and &raquo;"
 "Website&laquo;, agree to the &raquo;Developer Rules&laquo; and click &raquo;"
 "Create your Twitter application&laquo;."
 msgstr ""
 
-#: ../views/options-page/help.php:113
+#: ../views/options-page/help.php:207
 msgid ""
 "At the top of the apps overview page navigate to the &raquo;API Keys&laquo; "
 "tab."
 msgstr ""
 
-#: ../views/options-page/help.php:114
+#: ../views/options-page/help.php:208
 msgid "At the bottom of the page click &raquo;Create my access token&laquo;."
 msgstr ""
 
-#: ../views/options-page/help.php:115
+#: ../views/options-page/help.php:209
 msgid ""
 "Copy the &raquo;API Key&laquo;, &raquo;API Secret&laquo;, &raquo;Access "
 "Token&laquo; and &raquo;Access Token Secret&laquo; values and enter them in "
 "the respective fields within SocialBox."
 msgstr ""
 
-#: ../views/options-page/help.php:120
+#: ../views/options-page/help.php:218
 msgid ""
 "Please be aware that the Google+ API only exposes the number of followers "
 "you have if you made your followers publicly visible on your profile page."
 msgstr ""
 
-#: ../views/options-page/help.php:121 ../views/options-page/help.php:149
-#: ../views/widget/form.php:216 ../views/widget/form.php:329
+#: ../views/options-page/help.php:219 ../views/options-page/help.php:259
+#: ../views/widget/form.php:228 ../views/widget/form.php:341
 msgid "User ID"
 msgstr ""
 
-#: ../views/options-page/help.php:122
+#: ../views/options-page/help.php:220
 #, php-format
 msgid ""
 "Please enter your numeric User ID. If you have no idea what your User ID "
@@ -693,13 +921,13 @@ msgid ""
 "should look something like %s where %s is your unique User ID."
 msgstr ""
 
-#: ../views/options-page/help.php:124 ../views/options-page/help.php:201
-#: ../views/widget/form.php:151 ../views/widget/form.php:222
-#: ../views/widget/form.php:573
+#: ../views/options-page/help.php:222 ../views/options-page/help.php:335
+#: ../views/widget/form.php:163 ../views/widget/form.php:234
+#: ../views/widget/form.php:585
 msgid "API Key"
 msgstr ""
 
-#: ../views/options-page/help.php:125
+#: ../views/options-page/help.php:223
 msgid ""
 "Pulling in the numbers from Google+ is, like for Twitter, a little more work "
 "than for the other social networks. Google doesn't allow public access to "
@@ -707,77 +935,77 @@ msgid ""
 "just follow these simple steps:"
 msgstr ""
 
-#: ../views/options-page/help.php:127
+#: ../views/options-page/help.php:225
 #, php-format
 msgid ""
 "Visit %s Google Developers Console %s and sign in with your Google account."
 msgstr ""
 
-#: ../views/options-page/help.php:128
+#: ../views/options-page/help.php:226
 msgid ""
 "If you haven't used any of Google API until now, you'll be prompted to "
 "create a project. In this case, click \"Create project\" . You'll be "
 "forwarded to the API console."
 msgstr ""
 
-#: ../views/options-page/help.php:129
+#: ../views/options-page/help.php:227
 msgid ""
 "From the menu on the left, under &raquo;APIs & auth&laquo; choose &raquo;"
 "APIs&laquo;. You'll see a long list of all available APIs. Find &raquo;Google"
 "+ API&laquo; and click the &raquo;Off&laquo; button to enable it."
 msgstr ""
 
-#: ../views/options-page/help.php:130
+#: ../views/options-page/help.php:228
 msgid ""
 "From the menu on the left, again under &raquo;APIs & auth&laquo; choose "
 "&raquo;Credentials&laquo;. Click &raquo;CREATE NEW KEY&laquo; within the "
 "&raquo;Public API Access&laquo; section."
 msgstr ""
 
-#: ../views/options-page/help.php:131
+#: ../views/options-page/help.php:229
 msgid ""
 "Choose &raquo;Server key&laquo;, leave the &raquo;IP addresses&laquo; field "
 "blank and click &raquo;Create&laquo;."
 msgstr ""
 
-#: ../views/options-page/help.php:132
+#: ../views/options-page/help.php:230
 msgid ""
 "Copy the &raquo;API key&laquo; value and enter them in the respective field "
 "within SocialBox."
 msgstr ""
 
-#: ../views/options-page/help.php:136 ../views/options-page/help.php:140
-#: ../views/widget/form.php:247 ../views/widget/form.php:285
+#: ../views/options-page/help.php:238 ../views/options-page/help.php:246
+#: ../views/widget/form.php:259 ../views/widget/form.php:297
 msgid "Channel"
 msgstr ""
 
-#: ../views/options-page/help.php:137
+#: ../views/options-page/help.php:239
 msgid ""
 "Please enter the name of the channel you want to showcase. If your channels "
 "url was like <code>https://www.youtube.com/user/envato</code>, then "
 "<code>envato</code>is the name you'd have to enter."
 msgstr ""
 
-#: ../views/options-page/help.php:141
+#: ../views/options-page/help.php:247
 msgid ""
 "Again, please enter the name of the <strong>channel</strong> you want to "
 "showcase. If your channels url was <code>http://vimeo.com/channels/vimeohq/</"
 "code>, then please enter <code>vimeohq</code>."
 msgstr ""
 
-#: ../views/options-page/help.php:143
+#: ../views/options-page/help.php:249
 msgid ""
 "Maybe you don't want to show how many followers your channel has but how "
 "many videos where posted to it? Well, you can choose here."
 msgstr ""
 
-#: ../views/options-page/help.php:147
+#: ../views/options-page/help.php:257
 msgid ""
 "Please enter the username of the account you want to showcase. This does not "
 "have to be your own account; any public account goes."
 msgstr ""
 
-#: ../views/options-page/help.php:150
+#: ../views/options-page/help.php:260
 #, php-format
 msgid ""
 "In order to function correctly, SocialBox needs both your username "
@@ -785,12 +1013,12 @@ msgid ""
 "don't know your user id yet: %s Instagram User Id Lookup Tool %s."
 msgstr ""
 
-#: ../views/options-page/help.php:152 ../views/options-page/help.php:171
-#: ../views/widget/form.php:335 ../views/widget/form.php:423
+#: ../views/options-page/help.php:262 ../views/options-page/help.php:289
+#: ../views/widget/form.php:347 ../views/widget/form.php:435
 msgid "Client ID"
 msgstr ""
 
-#: ../views/options-page/help.php:153
+#: ../views/options-page/help.php:263
 msgid ""
 "Like with Twitter, pulling in the numbers from Instagram is a little more "
 "complex. Since Instagram doesn't allow public access to their API, you have "
@@ -798,12 +1026,12 @@ msgid ""
 "follow these simple steps:"
 msgstr ""
 
-#: ../views/options-page/help.php:155
+#: ../views/options-page/help.php:265
 #, php-format
 msgid "Visit %s Instagram Developer %s and log in with your Instagram account."
 msgstr ""
 
-#: ../views/options-page/help.php:156
+#: ../views/options-page/help.php:266
 #, php-format
 msgid ""
 "Go to %s Register new Client ID %s, enter any value for &raquo;Name&laquo;, "
@@ -811,33 +1039,33 @@ msgid ""
 "URI&laquo; and click &raquo;Register&laquo;."
 msgstr ""
 
-#: ../views/options-page/help.php:157 ../views/options-page/help.php:176
+#: ../views/options-page/help.php:267 ../views/options-page/help.php:294
 msgid ""
 "Copy the &raquo;Client ID&laquo; value and paste it in the respective field "
 "within SocialBox."
 msgstr ""
 
-#: ../views/options-page/help.php:162 ../views/options-page/help.php:184
-#: ../views/options-page/help.php:191 ../views/options-page/help.php:195
+#: ../views/options-page/help.php:276 ../views/options-page/help.php:306
+#: ../views/options-page/help.php:317 ../views/options-page/help.php:325
 msgid "Please enter the username of the account you want to showcase."
 msgstr ""
 
-#: ../views/options-page/help.php:165
+#: ../views/options-page/help.php:279
 msgid "You can choose to display your number of followers, pins or boards."
 msgstr ""
 
-#: ../views/options-page/help.php:168 ../views/widget/form.php:417
+#: ../views/options-page/help.php:286 ../views/widget/form.php:429
 msgid "Permalink"
 msgstr ""
 
-#: ../views/options-page/help.php:169
+#: ../views/options-page/help.php:287
 msgid ""
 "Please enter the permalink of the user you want to showcase. If the users "
 "profile page is located at <code>https://soundcloud.com/your-username</code> "
 "then <code>your-username</code> is that users permalink."
 msgstr ""
 
-#: ../views/options-page/help.php:172
+#: ../views/options-page/help.php:290
 msgid ""
 "Like with Twitter and Instagram, setting up SoundCloud requires a small "
 "extra step. Since SoundCloud doesn't allow public access to their API, you "
@@ -845,99 +1073,99 @@ msgid ""
 "so, just follow these simple steps:"
 msgstr ""
 
-#: ../views/options-page/help.php:174
+#: ../views/options-page/help.php:292
 #, php-format
 msgid "Visit %s Register your app %s and log in with your SoundCloud account."
 msgstr ""
 
-#: ../views/options-page/help.php:175
+#: ../views/options-page/help.php:293
 msgid ""
 "Enter a name for your app (this can be anything you want) and click &raquo;"
 "Register&laquo;."
 msgstr ""
 
-#: ../views/options-page/help.php:180
+#: ../views/options-page/help.php:298
 msgid ""
 "Not only can you display the number of followers a user has. You may also "
 "choose to display the number of people the user is following and how many "
 "tracks, playlists or favorites the user has."
 msgstr ""
 
-#: ../views/options-page/help.php:187
+#: ../views/options-page/help.php:309
 msgid ""
 "Not only can you display the number of followers you have. You can also "
 "choose to display the number of Shots you posted or how many Likes, Comments "
 "& Rebounds you received."
 msgstr ""
 
-#: ../views/options-page/help.php:198 ../views/widget/form.php:567
+#: ../views/options-page/help.php:313
+msgid "Forst Setup"
+msgstr ""
+
+#: ../views/options-page/help.php:332 ../views/widget/form.php:579
 msgid "List ID"
 msgstr ""
 
-#: ../views/options-page/help.php:199
+#: ../views/options-page/help.php:333
 msgid ""
 "Please enter the ID of the list you want to showcase. You can find the List "
 "ID on the this page: Lists &raquo; <strong>Your List</strong> &raquo; "
 "Settings &raquo; List name & defaults&laquo;"
 msgstr ""
 
-#: ../views/options-page/help.php:202
+#: ../views/options-page/help.php:336
 msgid ""
 "Pulling in the numbers from MailChimp needs some more steps than simply "
 "entering your List ID. Since MailChimp doesn't allow public access to it's "
 "lists, you need to set up an API Key first."
 msgstr ""
 
-#: ../views/options-page/help.php:204
+#: ../views/options-page/help.php:338
 #, php-format
 msgid "Visit %s MailChimp %s and log in with your account credentials."
 msgstr ""
 
-#: ../views/options-page/help.php:205
+#: ../views/options-page/help.php:339
 #, php-format
 msgid ""
 "Go to %s Your Account &raquo; Extras &raquo; API keys %s and click &raquo;"
 "Create A Key&laquo;. A new API Key will be generated and added to the list."
 msgstr ""
 
-#: ../views/options-page/help.php:208 ../views/widget/form.php:579
+#: ../views/options-page/help.php:342 ../views/widget/form.php:591
 msgid "Subscription Form URL"
 msgstr ""
 
-#: ../views/options-page/help.php:209
+#: ../views/options-page/help.php:343
 msgid ""
 "Enter the URL of your subscription form or any other website. The email icon "
 "and the &raquo;Subscribe&laquo; button will link here."
 msgstr ""
 
-#: ../views/options-page/log.php:21 ../views/options-page/log.php:28
-msgid "Time"
-msgstr ""
-
-#: ../views/options-page/log.php:22 ../views/options-page/log.php:29
-msgid "Network"
-msgstr ""
-
-#: ../views/options-page/log.php:23
-msgid "Username/ID"
-msgstr ""
-
-#: ../views/options-page/log.php:30
-msgid "Userame/ID"
-msgstr ""
-
-#: ../views/options-page/log.php:38
-msgid "Set up or resave a SocialBox widget first..."
-msgstr ""
-
-#: ../views/options-page/log.php:47
-msgid "Y/m/d H:i:s"
-msgstr ""
-
-#: ../views/update.php:19
-#, php-format
+#: ../views/options-page/help.php:351
 msgid ""
-"An new version of SocialBox (%s) is available. <a href=\"%s\">Get it now!</a>"
+"Please enter your WordPress.org username of the account you want to showcase."
+msgstr ""
+
+#: ../views/options-page/help.php:354
+msgid ""
+"You can choose between displaying the number of plugins the user has created "
+"and the number of downloads for all the users plugins summed up."
+msgstr ""
+
+#: ../views/options-page/settings.php:21
+msgid "This is the place, this is the time. Go ahead! Configure this!"
+msgstr ""
+
+#: ../views/options-page/settings.php:27
+msgid ""
+"Enter valid license information to enable automatic updates for SocialBox."
+msgstr ""
+
+#: ../views/options-page/settings.php:47
+msgid ""
+"With this set of options, you are able to tweak / modify some of the "
+"internals of SocialBox. Please use with care!"
 msgstr ""
 
 #: ../views/widget/form.php:16
@@ -980,187 +1208,207 @@ msgstr ""
 msgid "Your Pages ID or Shortname (e.g. envato)"
 msgstr ""
 
-#: ../views/widget/form.php:107 ../views/widget/form.php:175
-#: ../views/widget/form.php:253 ../views/widget/form.php:291
-#: ../views/widget/form.php:341 ../views/widget/form.php:382
-#: ../views/widget/form.php:429 ../views/widget/form.php:476
+#: ../views/widget/form.php:107
+msgid "Your App ID"
+msgstr ""
+
+#: ../views/widget/form.php:107
+msgid "App ID"
+msgstr ""
+
+#: ../views/widget/form.php:113
+msgid "Your App Secret"
+msgstr ""
+
+#: ../views/widget/form.php:113
+msgid "App Secret"
+msgstr ""
+
+#: ../views/widget/form.php:119 ../views/widget/form.php:187
+#: ../views/widget/form.php:265 ../views/widget/form.php:303
+#: ../views/widget/form.php:353 ../views/widget/form.php:394
+#: ../views/widget/form.php:441 ../views/widget/form.php:488
+#: ../views/widget/form.php:622
 msgid "What metric shall be displayed"
 msgstr ""
 
-#: ../views/widget/form.php:126
+#: ../views/widget/form.php:138
 msgid "Your fallback like count"
 msgstr ""
 
-#: ../views/widget/form.php:126 ../views/widget/form.php:197
-#: ../views/widget/form.php:228 ../views/widget/form.php:266
-#: ../views/widget/form.php:304 ../views/widget/form.php:357
-#: ../views/widget/form.php:398 ../views/widget/form.php:451
-#: ../views/widget/form.php:498 ../views/widget/form.php:523
-#: ../views/widget/form.php:548 ../views/widget/form.php:585
+#: ../views/widget/form.php:138 ../views/widget/form.php:209
+#: ../views/widget/form.php:240 ../views/widget/form.php:278
+#: ../views/widget/form.php:316 ../views/widget/form.php:369
+#: ../views/widget/form.php:410 ../views/widget/form.php:463
+#: ../views/widget/form.php:510 ../views/widget/form.php:535
+#: ../views/widget/form.php:560 ../views/widget/form.php:597
+#: ../views/widget/form.php:635
 msgid "Default:"
 msgstr ""
 
-#: ../views/widget/form.php:132 ../views/widget/form.php:203
-#: ../views/widget/form.php:234 ../views/widget/form.php:272
-#: ../views/widget/form.php:310 ../views/widget/form.php:363
-#: ../views/widget/form.php:404 ../views/widget/form.php:457
-#: ../views/widget/form.php:504 ../views/widget/form.php:529
-#: ../views/widget/form.php:554 ../views/widget/form.php:591
+#: ../views/widget/form.php:144 ../views/widget/form.php:215
+#: ../views/widget/form.php:246 ../views/widget/form.php:284
+#: ../views/widget/form.php:322 ../views/widget/form.php:375
+#: ../views/widget/form.php:416 ../views/widget/form.php:469
+#: ../views/widget/form.php:516 ../views/widget/form.php:541
+#: ../views/widget/form.php:566 ../views/widget/form.php:603
+#: ../views/widget/form.php:641
 msgid "Display position within SocialBox"
 msgstr ""
 
-#: ../views/widget/form.php:132 ../views/widget/form.php:203
-#: ../views/widget/form.php:234 ../views/widget/form.php:272
-#: ../views/widget/form.php:310 ../views/widget/form.php:363
-#: ../views/widget/form.php:404 ../views/widget/form.php:457
-#: ../views/widget/form.php:504 ../views/widget/form.php:529
-#: ../views/widget/form.php:554 ../views/widget/form.php:591
+#: ../views/widget/form.php:144 ../views/widget/form.php:215
+#: ../views/widget/form.php:246 ../views/widget/form.php:284
+#: ../views/widget/form.php:322 ../views/widget/form.php:375
+#: ../views/widget/form.php:416 ../views/widget/form.php:469
+#: ../views/widget/form.php:516 ../views/widget/form.php:541
+#: ../views/widget/form.php:566 ../views/widget/form.php:603
+#: ../views/widget/form.php:641
 msgid "Position:"
 msgstr ""
 
-#: ../views/widget/form.php:145
+#: ../views/widget/form.php:157
 msgid "Your Twitter screenname (e.g. envatowebdev)"
 msgstr ""
 
-#: ../views/widget/form.php:151
+#: ../views/widget/form.php:163
 msgid "Your Twitter application API key"
 msgstr ""
 
-#: ../views/widget/form.php:157
+#: ../views/widget/form.php:169
 msgid "Your Twitter application API secret"
 msgstr ""
 
-#: ../views/widget/form.php:157
+#: ../views/widget/form.php:169
 msgid "API Secret"
 msgstr ""
 
-#: ../views/widget/form.php:163
+#: ../views/widget/form.php:175
 msgid "Your Twitter application access token"
 msgstr ""
 
-#: ../views/widget/form.php:163
+#: ../views/widget/form.php:175
 msgid "Access Token"
 msgstr ""
 
-#: ../views/widget/form.php:169
+#: ../views/widget/form.php:181
 msgid "Your Twitter application access token secret"
 msgstr ""
 
-#: ../views/widget/form.php:169
+#: ../views/widget/form.php:181
 msgid "Access Token Secret"
 msgstr ""
 
-#: ../views/widget/form.php:197 ../views/widget/form.php:357
-#: ../views/widget/form.php:398 ../views/widget/form.php:451
-#: ../views/widget/form.php:498 ../views/widget/form.php:523
-#: ../views/widget/form.php:548
+#: ../views/widget/form.php:209 ../views/widget/form.php:369
+#: ../views/widget/form.php:410 ../views/widget/form.php:463
+#: ../views/widget/form.php:510 ../views/widget/form.php:535
+#: ../views/widget/form.php:560 ../views/widget/form.php:635
 msgid "Your fallback follower count"
 msgstr ""
 
-#: ../views/widget/form.php:216
+#: ../views/widget/form.php:228
 msgid "Your numeric Google+ User ID (eg. 117923080797643373311)"
 msgstr ""
 
-#: ../views/widget/form.php:222
+#: ../views/widget/form.php:234
 msgid "Your Google+ API Key"
 msgstr ""
 
-#: ../views/widget/form.php:228
+#: ../views/widget/form.php:240
 msgid "Your fallback \"In Others Circles\" count"
 msgstr ""
 
-#: ../views/widget/form.php:247
+#: ../views/widget/form.php:259
 msgid "Your YouTube Channel (e.g. nettutsplus)"
 msgstr ""
 
-#: ../views/widget/form.php:266 ../views/widget/form.php:304
+#: ../views/widget/form.php:278 ../views/widget/form.php:316
 msgid "Your fallback subscriber count"
 msgstr ""
 
-#: ../views/widget/form.php:285
+#: ../views/widget/form.php:297
 msgid "Your Vimeo Channel"
 msgstr ""
 
-#: ../views/widget/form.php:323 ../views/widget/form.php:470
+#: ../views/widget/form.php:335 ../views/widget/form.php:482
 msgid "Your Dribbble username (e.g. envato)"
 msgstr ""
 
-#: ../views/widget/form.php:329
+#: ../views/widget/form.php:341
 msgid "Your Instagram user ID"
 msgstr ""
 
-#: ../views/widget/form.php:335
+#: ../views/widget/form.php:347
 msgid "Your Instagram application client ID"
 msgstr ""
 
-#: ../views/widget/form.php:376
+#: ../views/widget/form.php:388
 msgid "Your Pinterest username (e.g. envato)"
 msgstr ""
 
-#: ../views/widget/form.php:417
+#: ../views/widget/form.php:429
 msgid "Your SoundCloud permalink (e.g. your-name)"
 msgstr ""
 
-#: ../views/widget/form.php:423
+#: ../views/widget/form.php:435
 msgid "Your SoundCloud application client id."
 msgstr ""
 
-#: ../views/widget/form.php:517
+#: ../views/widget/form.php:529
 msgid "Your Forrst username"
 msgstr ""
 
-#: ../views/widget/form.php:542
+#: ../views/widget/form.php:554 ../views/widget/form.php:616
 msgid "Your gitHub username"
 msgstr ""
 
-#: ../views/widget/form.php:561
+#: ../views/widget/form.php:573
 msgid "MailChimp"
 msgstr ""
 
-#: ../views/widget/form.php:567
+#: ../views/widget/form.php:579
 msgid "Your MailChimp List ID"
 msgstr ""
 
-#: ../views/widget/form.php:573
+#: ../views/widget/form.php:585
 msgid "Your MailChimp API Key"
 msgstr ""
 
-#: ../views/widget/form.php:579
+#: ../views/widget/form.php:591
 msgid "Your Subscribtion form URL"
 msgstr ""
 
-#: ../views/widget/form.php:585
+#: ../views/widget/form.php:597
 msgid "Your fallback subscribers count"
 msgstr ""
 
-#: ../views/widget/form.php:598
-msgid "Additional Settings"
+#: ../views/widget/form.php:648
+msgid "Additional Settings (handle with care)"
 msgstr ""
 
-#: ../views/widget/form.php:604
+#: ../views/widget/form.php:654
 msgid "Forced Widget Width:"
 msgstr ""
 
-#: ../views/widget/form.php:606
+#: ../views/widget/form.php:656
 msgid "Force Widget to have a specific width (0 to disable)"
 msgstr ""
 
-#: ../views/widget/form.php:611
+#: ../views/widget/form.php:661
 msgid "Forced Button Width:"
 msgstr ""
 
-#: ../views/widget/form.php:613
+#: ../views/widget/form.php:663
 msgid "Force Buttons to have a specific width (0 to disable)"
 msgstr ""
 
-#: ../views/widget/form.php:623
+#: ../views/widget/form.php:673
 msgid "Need help configuring this widget?"
 msgstr ""
 
-#: ../views/widget/form.php:623
+#: ../views/widget/form.php:673
 msgid "Send a message!"
 msgstr ""
 
-#: ../views/widget/form.php:623
+#: ../views/widget/form.php:673
 msgid "Get some!"
 msgstr ""
