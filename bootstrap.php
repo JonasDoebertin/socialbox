@@ -22,4 +22,4 @@ add_action('plugins_loaded', function()
 {
     global $JD_SocialBox;
     $JD_SocialBox = new jdpowered\SocialBox\Plugin();
-});
+}, 10);

@@ -220,7 +220,7 @@ class Plugin {
 	{
 		return array(
 			'flat-styles'   => (defined('JD_SOCIALBOXADDON_FLATSTYLES_VERSION')) ? JD_SOCIALBOXADDON_FLATSTYLES_VERSION : false,
-			'bubble-styles' => (defined('JD_SOCIALBOXADDON_BUBBLESTYLES_VERSION')) ? JD_SOCIALBOXADDON_BUBBLESTYLES_VERSION : false,
+			'bubble-styles' => (defined('JD_SOCIALBOX_BUBBLESTYLES_VERSION')) ? JD_SOCIALBOX_BUBBLESTYLES_VERSION : false,
 			'custom-styles' => (defined('JD_SOCIALBOXADDON_CUSTOMSTYLES_VERSION')) ? JD_SOCIALBOXADDON_CUSTOMSTYLES_VERSION : false,
 		);
 	}
